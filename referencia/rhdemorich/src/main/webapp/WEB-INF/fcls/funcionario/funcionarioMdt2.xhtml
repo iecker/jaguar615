@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"  >  
+<ui:composition> 
+	<h:panelGrid columns="3" styleClass="rf-dt">
+		<h:outputLabel value="Rua"  for="endereco_rua" />
+		<h:outputLabel value="Bairro" for="endereco_bairro" />
+		<h:outputLabel value="Número"  for="endereco_numero" />
+		<h:inputText id="endereco_rua" value="#{funcionario.endereco.rua}" size="40" maxlength="40" />
+		<h:inputText id="endereco_bairro" value="#{funcionario.endereco.bairro}" size="40" maxlength="40" />
+		<h:inputText id="endereco_numero" value="#{funcionario.endereco.numero}" size="15" maxlength="15" />
+		<h:outputLabel value="CEP" for="endereco_cep"  />
+		<h:outputLabel value="UF" for="endereco_uf"/>
+		<h:column/>
+		<h:inputText id="endereco_cep" value="#{funcionario.endereco.cep}"  size="10" maxlength="10"/>
+		<h:selectOneMenu id="endereco_uf" label="UF" value="#{funcionario.endereco.uf.id}">
+			<f:selectItem itemValue="" itemLabel="Selecione..."  />
+			<f:selectItems value="#{plcDominios.dominios['UfEntityItems']}" noSelectionLabel="Selecione..." />
+		</h:selectOneMenu>
+		<h:column/>
+		<input type="collapse" class="inibeFoco" style="position: absolute; left:-100000px;" onfocus="comutaAbaFacelets(2)" />
+	</h:panelGrid> 
+</ui:composition> 
+</html>

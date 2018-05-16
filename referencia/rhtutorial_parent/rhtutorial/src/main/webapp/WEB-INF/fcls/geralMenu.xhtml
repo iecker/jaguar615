@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:plct="http://www.powerlogic.com.br/plct" xmlns:plcf="http://www.powerlogic.com.br/plcf">
+		<ul>
+			<li style="#{plct:execOneArg(request,'isUserInRole','Administrador')?'':'display:none;'}">
+				<a>
+					<span class="ico iLeiautepadrao"/>
+					<label jsfc="plcf:titulo" tituloChave="app.m.inicial">Unid. Organizacional</label>
+				</a>
+				<ul class="ui-state-hover">
+					<li>
+						<a href="#{request.contextPath}/f/n/uftab">
+							<label jsfc="plcf:titulo" tituloChave="menu.uf.titulo">Unidades da Federação</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/unidadeOrganizacionalman?tree_acao=tree_ini">
+							<label jsfc="plcf:titulo" tituloChave="menu.unidadeOrganizacional.titulo">Unidade Organizacional</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/municipio">
+							<label jsfc="plcf:titulo" tituloChave="menu.municipio.titulo">Municipio</label>
+						</a>
+					</li>					
+				</ul>
+			</li>
+			<li>
+				<a>
+					<span class="ico iOnLine"/>
+					<label jsfc="plcf:titulo" tituloChave="app.m.func">Funcionário</label>
+				</a>
+				<ul class="ui-state-hover">
+					<li>
+						<a href="#{request.contextPath}/f/n/funcionariosel?fwPlc=funcionariomdt">
+							<label jsfc="plcf:titulo" tituloChave="menu.funcionario.titulo">Funcionário</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/funcionariosel?fwPlc=funcionariomdt&amp;mfPlc=v&amp;mcPlc=v">
+							<label jsfc="plcf:titulo" tituloChave="menu.funcionario.con.titulo">Consulta Funcionário</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/proventodescontoctb">
+							<label jsfc="plcf:titulo" tituloChave="menu.proventodesconto.titulo">Proventos e Descontos</label>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuAjuda.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuPrefLang.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuAreaTecnica.xhtml"/>			
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuThemeSwitcher.xhtml"/>
+		</ul>
+	</ui:composition>

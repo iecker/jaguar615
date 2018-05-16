@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+
+		<title>RHDemo MVP</title>
+
+		<!-- CSS jQuery UI, e Pele -->
+		<link rel="StyleSheet" href="css/itunes/pele.css" type="text/css" charset="UTF-8">
+		<link rel="StyleSheet" href="css/plc.geral.css" type="text/css" charset="UTF-8">
+		<link rel="StyleSheet" href="css/app.geral.css" type="text/css" charset="UTF-8">
+
+		<!-- JS jQuery -->
+		<script type="text/javascript" src="js/jquery/jquery.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/jquery/jquery-ui.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/jquery/jquery.json-2.2.js" charset="UTF-8"></script>
+		<!-- JS PageBus -->
+		<script src="js/pagebus/pagebus.js" type="text/javascript" charset="UTF-8"></script>
+
+		<!-- JS Plc -->
+		<script type="text/javascript" src="js/res-plc/classe.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/res-plc/ui.js" charset="UTF-8"></script>
+
+	</head>
+	<body>
+
+		<script type="text/javascript" charset="UTF-8">
+
+		new plc.ui.UiLoader('app/PlcAplicacao', function(ui){
+			$(document.body).append(ui.html());
+		});
+
+		</script>
+
+	</body>
+</html>

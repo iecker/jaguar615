@@ -1,0 +1,36 @@
+<!-- {CORPO-FORMULARIO} -->
+<table>
+	<tr>
+		<td><input type="text" id="console-tipo" size="80"/></td>
+	</tr>
+	<tr>
+		<td><textarea id="console-param" cols="80" rows="8"></textarea></td>
+	</tr>
+	<tr>
+		<td valign="right">
+			<button title="Gravar" onclick="plc.Bus.evento('plc.acao.console.executar')" class="botao_menu ui-state-default plc-botao">
+				<table>
+					<tr>
+						<td>
+							<div class="plc-corpo-acao-i">
+								<span class="ico iGravar"></span>
+							</div>
+						</td>
+						<td>
+							<div class="plc-corpo-acao-t">Executar</div>
+						</td>
+					</tr>
+				</table>
+			</button>
+		</td>
+	</tr>
+</table>
+<!-- {/CORPO-FORMULARIO} -->
+
+<script type="text/javascript">
+
+plc.Bus.escutar('plc.acao.console.executar', function(){
+	plc.Bus.evento($('#console-tipo').val(), $.parseJSON($('#console-param').val()));
+});
+
+</script>

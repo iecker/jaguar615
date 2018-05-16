@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Jaguar-jCompany Developer Suite. Powerlogic 2010-2014. Please read licensing 
+	information in your installation directory.Contact Powerlogic for more information 
+	or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- dados do projeto -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.jcompany</groupId>
+	<artifactId>projeto-plc</artifactId>
+	<version>6.1.5</version>
+	<name>Projeto Plc</name>
+	<packaging>pom</packaging>
+
+	<!-- Todos os projetos que utilizam o framework jCompany devem estender 
+		esse Pom. Configurações padrões para todos os projetos são configurados aqui. 
+		O pom.xml é dividido em dependências gerais e profiles. Os profiles são utilizados 
+		para importarem dependências, plugins, executar tarefas, específicas para 
+		um fim. Ex. realizar testes ou não, empacotar a aplicação para um servidor 
+		específico como Tomcat ou JBoss, dentre outras. O que é definido fora dos 
+		profiles torna-se uma dependência geral e todos utilizam e o que é definido 
+		dentro do profile somente terá efeito quando o profile for utilizado. Para 
+		utilizar um profile, deve colocar um argumento na linha de comando do maven: 
+		-P <id_profile> Se nenhum profile for definido na linha de comando do maven, 
+		é utilizado o profile que contém o argumento "<activeByDefault>" definido 
+		como "true". -->
+
+	<!-- Dependências gerais -->
+	<dependencies>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-annotations-ejb</artifactId>
+			<version>3</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_qa_unit</artifactId>
+			<version>${jcompany.versao}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.oss_base_qa</groupId>
+			<artifactId>oss_base_qa</artifactId>
+			<version>${jcompany.versao}</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Dependências gerenciadas. Especificação direta das versões de artefatos 
+		a serem utilizados. Quando eles são encontrados nas dependências transitivas 
+		ou nas dependências onde nenhuma versão foi especificado. Todas as versões 
+		são trocadas pelo token "${project.version}", que reflete a verão informada 
+		na tag <version> definida para o projeto. Ex: Caso a versão acima seja definida 
+		pela versão 6.0.1, todas as dependências abaixo vão seguir essa verão no 
+		momento do build. Com isso, evitamos de definir a mesma versão para todas 
+		as dependências do projeto. Só serão utilizadas se o projeto filho declaá-las 
+		novamente em seu pom.xml É útil para organizar versões. -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bom</artifactId>
+				<version>6.1.5</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<!-- OSS_BASE_* -->
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_servletcontainer</groupId>
+				<artifactId>oss_base_servletcontainer</artifactId>
+				<type>pom</type>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_service</groupId>
+				<artifactId>oss_base_service</artifactId>
+				<type>pom</type>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_model</groupId>
+				<artifactId>oss_base_model</artifactId>
+				<version>${jcompany.versao}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_qa</groupId>
+				<artifactId>oss_base_qa</artifactId>
+				<version>${jcompany.versao}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_controller</groupId>
+				<artifactId>oss_base_controller</artifactId>
+				<version>${jcompany.versao}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_commons</groupId>
+				<artifactId>oss_base_commons</artifactId>
+				<version>${jcompany.versao}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_classic</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_classic_visao</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_commons</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_model</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_integration</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_qa_unit</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_controller</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_metadata</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_service</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_view</artifactId>
+				<version>${jcompany.versao}</version>
+				<type>war</type>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bridge_jar</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bridgejsf</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bridgejsf</artifactId>
+				<version>${jcompany.versao}</version>
+				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bridgejsf_commons</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bridgejsf_model</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bridgefcls</artifactId>
+				<version>${jcompany.versao}</version>
+				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bridgefcls_commons</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bridgefcls_model</artifactId>
+				<version>${jcompany.versao}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>ejb3-persistence</artifactId>
+				<version>3.1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Plugins que serão executados durante a construção e devem ser configuradas 
+		no elemento <build/> do POM. -->
+	<build>
+		<!-- Nome do artefato final, o padrão será ${project.artifactId}-${project.version} -->
+		<finalName>${project.artifactId}</finalName>
+
+		<!-- Os recursos para teste no padrão MAVEN ficam em ${basedir}/src/test/resources 
+			mas isso traz incovenientes e tendo que duplicar arquivos. ex.: para testes 
+			de DAO o hibernate.cfg deveria estar no ${basedir}/src/test/resources e ${basedir}/src/main/resources -->
+		<testResources>
+			<testResource>
+				<directory>${basedir}/src/test/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.jcqa</include>
+				</includes>
+			</testResource>
+			<testResource>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<!-- Seta o compilador para JDK 6.0 no momento do build -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<!-- Usado para gerar relatórios de informações sobre o projeto -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.1.2</version>
+			</plugin>
+
+			<!-- É usado durante a fase de testes do build, para executar os testes 
+				de unidade de uma aplicação. Ele gera relatórios em dois formatos diferentes: 
+				* Plain text files (*.txt) * XML files (*.xml) -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.7.1</version>
+				<configuration>
+					<forkMode>pertest</forkMode>
+					<testFailureIgnore>true</testFailureIgnore>
+					<excludes>
+						<exclude>**/*WebTest.java</exclude>
+						<exclude>**/*WebTestSuite.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- Pré configuração do Plugin desenvolvido pela Powerlogic -->
+			<plugin>
+				<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+				<artifactId>plc-maven-plugin</artifactId>
+				<version>${jcompany.versao}</version>
+				<executions>
+					<execution>
+						<id>unpack Geral</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>add source path</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>add-sourcepath</goal>
+						</goals>
+					</execution>
+					<!-- Removido por não conter mais projeto ear execution> <phase>package</phase> 
+						<goals> <goal>process-ear-archive</goal> </goals> </execution -->
+				</executions>
+				<!-- Configuração para não gerar a pasta do CVS no arquivo WAR -->
+				<configuration>
+					<excludes>
+						<exclude>CVS</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- Responsável por obter um único número de compilação de cada vez que 
+				você criar seu projeto. Um timestamp após a versão. Assim, enquanto a sua 
+				versão pode permanecer constante em 1.0 por muitas iterações até 
+				o lançamento, terá um número de compilação que podem identificar exclusivamente 
+				cada compilação durante esse tempo. -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.0-beta-4</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+					<format>{0,date,yyyyMMddHHmmss}</format>
+					<items>
+						<item>timestamp</item>
+					</items>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!-- Contém elementos da mesma maneira que <plugins>, exceto que ao invés 
+			de configurar as informações do plugin para o build deste projeto em particular, 
+			essas informações se estendem a quem herda desde pom. Isso apenas configura 
+			plugins que atualmente são referenciados pelos filhos. Um detalhe é que os 
+			filhos têm todo o direito de substituir as definições do pluginManagement. -->
+		<pluginManagement>
+			<plugins>
+				<!-- Plugin desenvolvido pela Powerlogic para complementar o build do 
+					Maven -->
+				<plugin>
+					<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+					<artifactId>plc-maven-plugin</artifactId>
+					<version>${jcompany.versao}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<groupId>powerlogic.jcompany.maven</groupId>
+					<artifactId>plcSite-maven-plugin</artifactId>
+					<version>2.0-beta-8.1-plc</version>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											powerlogic.jaguar.jcompany.maven
+										</groupId>
+										<artifactId>
+											plc-maven-plugin
+										</artifactId>
+										<versionRange>
+											[6.0.0,)
+										</versionRange>
+										<goals>
+											<goal>add-sourcepath</goal>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.1.2</version>
+				<configuration>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+			</plugin>
+			<!--plugin> <groupId>powerlogic.jcompany.maven</groupId> <artifactId>maven-jxr-plugin</artifactId> 
+				<version>2.2.1-plc</version> </plugin> <plugin> <groupId>powerlogic.jaguar.jcompany.maven</groupId> 
+				<artifactId>plc-maven-plugin</artifactId> <version>${jcompany.versao}</version> 
+				</plugin> <plugin> <groupId>powerlogic.jcompany.maven</groupId> <artifactId>cobertura-maven-plugin</artifactId> 
+				<version>2.2.2-SNP-plc</version> </plugin> <plugin> <groupId>powerlogic.jcompany.maven</groupId> 
+				<artifactId>maven-plc-reports-plugin</artifactId> <version>6</version> </plugin> 
+				<plugin> <groupId>powerlogic.jcompany.maven</groupId> <artifactId>maven-changelog-plugin</artifactId> 
+				<version>2.1.1-plc</version> </plugin> <plugin> <groupId>powerlogic.jcompany.maven</groupId> 
+				<artifactId>maven-javadoc-plugin</artifactId> <version>2.4.1-plc</version> 
+				</plugin> <plugin> <groupId>powerlogic.jcompany.maven</groupId> <artifactId>maven-changes-plugin</artifactId> 
+				<version>2.0-beta-2.1-plc</version> </plugin> <plugin> <groupId>powerlogic.jcompany.maven</groupId> 
+				<artifactId>jdepend-maven-plugin</artifactId> <version>2.0-beta-2.1-plc</version> 
+				</plugin> <plugin> <groupId>powerlogic.jcompany.maven</groupId> <artifactId>maven-checkstyle-plugin</artifactId> 
+				<version>2.1.1-plc</version> </plugin> <plugin> <groupId>powerlogic.jcompany.maven</groupId> 
+				<artifactId>maven-surefire-report-plugin</artifactId> <version>2.3.1-plc</version> 
+				</plugin> <plugin> <groupId>powerlogic.jcompany.maven</groupId> <artifactId>taglist-maven-plugin</artifactId> 
+				<version>2.1.1-plc</version> </plugin -->
+		</plugins>
+	</reporting>
+
+	<profiles>
+		<!-- Profile utilizado para ao realizar deploy, rodando os testes funcionais 
+			do jCompany Fit e jCompany QA. -->
+		<profile>
+			<id>qafit</id>
+			<activation>
+				<property>
+					<name>ambiente</name>
+					<value>qafit</value>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+							<artifactId>plc-maven-plugin</artifactId>
+							<version>${jcompany.versao}</version>
+							<executions>
+								<execution>
+									<id>CI</id>
+									<phase>pre-integration-test</phase>
+									<goals>
+										<goal>deploy-completo</goal>
+									</goals>
+								</execution>
+							</executions>
+						</plugin>
+						<!-- Plugin que invoca os testes com o fit -->
+						<plugin>
+							<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+							<artifactId>plc-maven-plugin-fit</artifactId>
+							<version>${jcompany.versao}</version>
+							<executions>
+								<execution>
+									<id>pre-it-test</id>
+									<phase>pre-integration-test</phase>
+									<goals>
+										<goal>inicia-teste-integracao</goal>
+									</goals>
+								</execution>
+								<execution>
+									<id>post-it-test</id>
+									<phase>post-integration-test</phase>
+									<goals>
+										<goal>finaliza-teste-itegracao</goal>
+									</goals>
+								</execution>
+								<execution>
+									<id>it-test</id>
+									<phase>integration-test</phase>
+									<goals>
+										<goal>executa-teste-integracao</goal>
+									</goals>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- Profile utilizado em tempo de desenvolvimento Mantém a aplicação como 
+			um diretório no servidor -->
+		<profile>
+			<id>desenv</id>
+			<activation>
+				<property>
+					<name>ambiente</name>
+					<value>desenv</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.7.1</version>
+						<configuration>
+							<testFailureIgnore>false</testFailureIgnore>
+							<forkMode>pertest</forkMode>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<webXml>${project.build.directory}/${project.name}/WEB-INF/web.xml</webXml>
+							<archive>
+								<manifestEntries>
+									<Implementation-Title>
+										${project.name}
+									</Implementation-Title>
+									<Implementation-Build>
+										${build.number}
+									</Implementation-Build>
+									<Implementation-Version>
+										${project.version}
+									</Implementation-Version>
+									<Implementation-Date>
+										${buildNumber}
+									</Implementation-Date>
+								</manifestEntries>
+							</archive>
+							<archiver />
+						</configuration>
+					</plugin>
+				</plugins>
+				<pluginManagement>
+					<plugins>
+						<!-- Esse plugin é necessário para filtar alguns recursos que existem 
+							no web.xml da aplicação -->
+						<plugin>
+							<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+							<artifactId>plc-maven-plugin</artifactId>
+							<version>${jcompany.versao}</version>
+							<executions>
+								<execution>
+									<id>Filtro</id>
+									<goals>
+										<goal>filtrar-recursos</goal>
+									</goals>
+									<configuration>
+										<resources>
+											<resource>
+												<file>
+													WEB-INF/web.xml
+												</file>
+												<filters>
+													<filter>
+														<token>
+															/*[name()='web-app']/*[name()='context-param']/*[name()='param-name'
+															and
+															text()='modoExecucao']/../*[name()='param-value']
+														</token>
+														<value>D</value>
+													</filter>
+													<filter>
+														<token>
+															/*[name()='web-app']/*[name()='context-param']/*[name()='param-name'
+															and
+															text()='facelets.DEVELOPMENT']/../*[name()='param-value']
+														</token>
+														<value>false</value>
+													</filter>
+												</filters>
+											</resource>
+										</resources>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- Profile utilizado em ambiente de produção Faz a troca de algumas propriedades 
+			do web.xml -->
+
+		<profile>
+			<id>prod</id>
+			<activation>
+				<property>
+					<name>ambiente</name>
+					<value>prod</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Pré compilação das JSPs ${project.build.directory}/${project.artifactId}-${project.version} -->
+					<plugin>
+						<groupId>powerlogic.jcompany.maven</groupId>
+						<artifactId>jspc-maven-plugin</artifactId>
+						<version>1.4.6-jasper6.0.1-plc</version>
+						<configuration>
+							<warSourceDirectory>
+								${project.build.directory}/${project.artifactId}
+							</warSourceDirectory>
+							<outputWebXml>
+								${project.build.directory}/${project.artifactId}/WEB-INF/web.xml
+							</outputWebXml>
+							<javaEncoding>ISO-8859-1</javaEncoding>
+						</configuration>
+						<executions>
+							<execution>
+								<id>jspc</id>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+								<configuration>
+									<source>1.5</source>
+									<target>1.5</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.7.1</version>
+						<configuration>
+							<forkMode>pertest</forkMode>
+							<testFailureIgnore>false</testFailureIgnore>
+							<excludes>
+								<exclude>**/*WebTest.java</exclude>
+								<exclude>**/*WebTestSuite.java</exclude>
+								<exclude>
+									**/ConjuntoTestesFuncionais.java
+								</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<webXml>${project.build.directory}/${project.name}/WEB-INF/web.xml</webXml>
+							<archive>
+								<manifestEntries>
+									<Implementation-Title>
+										${project.name}
+									</Implementation-Title>
+									<Implementation-Build>
+										${build.number}
+									</Implementation-Build>
+									<Implementation-Version>
+										${project.version}
+									</Implementation-Version>
+									<Implementation-Date>
+										${buildNumber}
+									</Implementation-Date>
+								</manifestEntries>
+							</archive>
+							<archiver />
+						</configuration>
+					</plugin>
+				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+							<artifactId>plc-maven-plugin</artifactId>
+							<version>${jcompany.versao}</version>
+							<executions>
+								<execution>
+									<id>Filtro</id>
+									<goals>
+										<goal>filtrar-recursos</goal>
+									</goals>
+									<configuration>
+										<resources>
+											<resource>
+												<file>log4j.properties</file>
+												<filters>
+													<filter>
+														<token>log4j.rootLogger=WARN</token>
+														<value>log4j.rootLogger=INFO</value>
+													</filter>
+													<filter>
+														<token>log4j.logger.email=WARN</token>
+														<value>log4j.logger.email=INFO</value>
+													</filter>
+													<filter>
+														<token>log4j.logger.estatistica=WARN</token>
+														<value>log4j.logger.estatistica=INFO</value>
+													</filter>
+													<filter>
+														<token>Threshold=INFO</token>
+														<value>Threshold=WARN</value>
+													</filter>
+													<filter>
+														<token>Threshold=DEBUG</token>
+														<value>Threshold=WARN</value>
+													</filter>
+													<filter>
+														<token>log4j.logger.com.powerlogic.jcompany.log.advertencia=DEBUG
+														</token>
+														<value>log4j.logger.com.powerlogic.jcompany.log.advertencia=INFO
+														</value>
+													</filter>
+													<filter>
+														<token>log4j.logger.com.powerlogic.${project.artifactId}=DEBUG
+														</token>
+														<value>log4j.logger.com.powerlogic.${project.artifactId}=INFO
+														</value>
+													</filter>
+													<filter>
+														<token>=DEBUG</token>
+														<value>=WARN</value>
+													</filter>
+													<filter>
+														<token>=ALL</token>
+														<value>=WARN</value>
+													</filter>
+													<filter>
+														<token>=TRACE</token>
+														<value>=WARN</value>
+													</filter>
+												</filters>
+											</resource>
+											<resource>
+												<file>
+													**/hibernate*.cfg.xml
+												</file>
+												<filters>
+													<filter>
+														<token>
+															//property[@name='show_sql']
+														</token>
+														<value>
+															false
+														</value>
+													</filter>
+												</filters>
+											</resource>
+											<resource>
+												<file>
+													WEB-INF/web.xml
+												</file>
+												<filters>
+													<filter>
+														<token>
+															/*[name()='web-app']/*[name()='context-param']/*[name()='param-name'
+															and
+															text()='modoExecucao']/../*[name()='param-value']
+														</token>
+														<value>P</value>
+													</filter>
+													<filter>
+														<token>
+															/*[name()='web-app']/*[name()='context-param']/*[name()='param-name'
+															and
+															text()='facelets.DEVELOPMENT']/../*[name()='param-value']
+														</token>
+														<value>false</value>
+													</filter>
+												</filters>
+											</resource>
+										</resources>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+		<!-- Profile com as mesmas características do ambiente de CI, mas sem compilação 
+			de jsp -->
+		<profile>
+			<id>ci-n-jspc</id>
+			<activation>
+				<property>
+					<name>ambiente</name>
+					<value>ci-n-jspc</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.7.1</version>
+						<configuration>
+							<forkMode>pertest</forkMode>
+							<testFailureIgnore>true</testFailureIgnore>
+							<excludes>
+								<exclude>**/*WebTest.java</exclude>
+								<exclude>**/*WebTestSuite.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<webXml>${project.build.directory}/${project.name}/WEB-INF/web.xml</webXml>
+							<archive>
+								<manifestEntries>
+									<Implementation-Title>
+										${project.name}
+									</Implementation-Title>
+									<Implementation-Build>
+										${build.number}
+									</Implementation-Build>
+									<Implementation-Version>
+										${project.version}
+									</Implementation-Version>
+									<Implementation-Date>
+										${buildNumber}
+									</Implementation-Date>
+								</manifestEntries>
+							</archive>
+							<archiver />
+						</configuration>
+					</plugin>
+				</plugins>
+
+				<pluginManagement>
+					<!-- Plugin que realiza o deploy completo e roda os testes funcionais -->
+					<plugins>
+						<plugin>
+							<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+							<artifactId>plc-maven-plugin</artifactId>
+							<version>${jcompany.versao}</version>
+							<executions>
+								<execution>
+									<id>CI</id>
+									<phase>package</phase>
+									<goals>
+										<goal>arquivar</goal>
+										<goal>deploy-completo</goal>
+										<goal>deploy-dependencias</goal>
+										<goal>recarregar-bd</goal>
+										<goal>iniciar-servico</goal>
+										<goal>funcional</goal>
+										<goal>jmeter</goal>
+										<goal>parar-servico</goal>
+									</goals>
+								</execution>
+								<execution>
+									<id>Filtro</id>
+									<goals>
+										<goal>filtrar-recursos</goal>
+									</goals>
+									<configuration>
+										<resources>
+											<resource>
+												<file>log4j.properties</file>
+												<filters>
+													<filter>
+														<token>log4j.rootLogger=WARN</token>
+														<value>log4j.rootLogger=INFO</value>
+													</filter>
+													<filter>
+														<token>log4j.logger.email=WARN</token>
+														<value>log4j.logger.email=INFO</value>
+													</filter>
+													<filter>
+														<token>log4j.logger.estatistica=WARN</token>
+														<value>log4j.logger.estatistica=INFO</value>
+													</filter>
+													<filter>
+														<token>Threshold=INFO</token>
+														<value>Threshold=WARN</value>
+													</filter>
+													<filter>
+														<token>Threshold=DEBUG</token>
+														<value>Threshold=WARN</value>
+													</filter>
+												</filters>
+											</resource>
+											<resource>
+												<file>
+													**/hibernate*.cfg.xml
+												</file>
+												<filters>
+													<filter>
+														<token>
+															//property[@name='show_sql']
+														</token>
+														<value>
+															false
+														</value>
+													</filter>
+												</filters>
+											</resource>
+											<resource>
+												<file>
+													WEB-INF/web.xml
+												</file>
+												<filters>
+													<filter>
+														<token>
+															/*[name()='web-app']/*[name()='context-param']/*[name()='param-name'
+															and
+															text()='modoExecucao']/../*[name()='param-value']
+														</token>
+														<value>T</value>
+													</filter>
+													<filter>
+														<token>
+															/*[name()='web-app']/*[name()='context-param']/*[name()='param-name'
+															and
+															text()='facelets.DEVELOPMENT']/../*[name()='param-value']
+														</token>
+														<value>false</value>
+													</filter>
+												</filters>
+											</resource>
+										</resources>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>xslt-maven-plugin</artifactId>
+							<configuration>
+								<destDir>
+									${project.build.directory}${project.artifactId}/meter/report
+								</destDir>
+								<srcDir>
+									${project.build.directory}/${project.artifactId}/jmeter
+								</srcDir>
+								<xslFile>
+									src/test/resources/performance/jmeter-results-detail-report_21.xsl
+								</xslFile>
+								<srcIncludes>**/*.jtl</srcIncludes>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+
+			</build>
+		</profile>
+
+		<!-- Profile que realiza deploy e realiza os testes de integração contínua -->
+		<profile>
+			<id>ci</id>
+			<activation>
+				<property>
+					<name>ambiente</name>
+					<value>ci</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Pré compilação das JSPs ${project.build.directory}/${project.artifactId}-${project.version} -->
+					<plugin>
+						<groupId>powerlogic.jcompany.maven</groupId>
+						<artifactId>jspc-maven-plugin</artifactId>
+						<version>1.4.6-jasper6.0.1-plc</version>
+						<configuration>
+							<warSourceDirectory>
+								${project.build.directory}/${project.artifactId}
+							</warSourceDirectory>
+							<outputWebXml>
+								${project.build.directory}/${project.artifactId}/WEB-INF/web.xml
+							</outputWebXml>
+							<javaEncoding>ISO-8859-1</javaEncoding>
+						</configuration>
+						<executions>
+							<execution>
+								<id>jspc</id>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+								<configuration>
+									<source>1.5</source>
+									<target>1.5</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.7.1</version>
+						<configuration>
+							<forkMode>pertest</forkMode>
+							<testFailureIgnore>true</testFailureIgnore>
+							<excludes>
+								<exclude>**/*WebTest.java</exclude>
+								<exclude>**/*WebTestSuite.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<webXml>${project.build.directory}/${project.name}/WEB-INF/web.xml</webXml>
+							<archive>
+								<manifestEntries>
+									<Implementation-Title>
+										${project.name}
+									</Implementation-Title>
+									<Implementation-Build>
+										${build.number}
+									</Implementation-Build>
+									<Implementation-Version>
+										${project.version}
+									</Implementation-Version>
+									<Implementation-Date>
+										${buildNumber}
+									</Implementation-Date>
+								</manifestEntries>
+							</archive>
+							<archiver />
+						</configuration>
+					</plugin>
+				</plugins>
+
+				<pluginManagement>
+					<!-- Plugin que realiza os teste funcionais -->
+					<plugins>
+						<plugin>
+							<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+							<artifactId>plc-maven-plugin</artifactId>
+							<version>${jcompany.versao}</version>
+							<executions>
+								<execution>
+									<id>CI</id>
+									<phase>install</phase>
+									<goals>
+										<goal>arquivar</goal>
+										<goal>deploy-completo</goal>
+										<goal>deploy-dependencias</goal>
+										<goal>recarregar-bd</goal>
+										<goal>iniciar-servico</goal>
+										<goal>funcional</goal>
+										<goal>jmeter</goal>
+										<goal>parar-servico</goal>
+									</goals>
+								</execution>
+								<execution>
+									<id>Filtro</id>
+									<goals>
+										<goal>filtrar-recursos</goal>
+									</goals>
+									<configuration>
+										<resources>
+											<resource>
+												<file>log4j.properties</file>
+												<filters>
+													<filter>
+														<token>log4j.rootLogger=WARN</token>
+														<value>log4j.rootLogger=INFO</value>
+													</filter>
+													<filter>
+														<token>log4j.logger.email=WARN</token>
+														<value>log4j.logger.email=INFO</value>
+													</filter>
+													<filter>
+														<token>log4j.logger.estatistica=WARN</token>
+														<value>log4j.logger.estatistica=INFO</value>
+													</filter>
+													<filter>
+														<token>Threshold=INFO</token>
+														<value>Threshold=WARN</value>
+													</filter>
+													<filter>
+														<token>Threshold=DEBUG</token>
+														<value>Threshold=WARN</value>
+													</filter>
+												</filters>
+											</resource>
+											<!-- >resource> <file> **/hibernate*.cfg.xml </file> <filters> 
+												<filter> <token> //property[@name='show_sql'] </token> <value> false </value> 
+												</filter> </filters> </resource -->
+											<resource>
+												<file>
+													WEB-INF/web.xml
+												</file>
+												<filters>
+													<filter>
+														<token>
+															/*[name()='web-app']/*[name()='context-param']/*[name()='param-name'
+															and
+															text()='modoExecucao']/../*[name()='param-value']
+														</token>
+														<value>T</value>
+													</filter>
+													<filter>
+														<token>
+															/*[name()='web-app']/*[name()='context-param']/*[name()='param-name'
+															and
+															text()='facelets.DEVELOPMENT']/../*[name()='param-value']
+														</token>
+														<value>false</value>
+													</filter>
+												</filters>
+											</resource>
+										</resources>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>xslt-maven-plugin</artifactId>
+							<configuration>
+								<destDir>
+									${project.build.directory}${project.artifactId}/meter/report
+								</destDir>
+								<srcDir>
+									${project.build.directory}/${project.artifactId}/jmeter
+								</srcDir>
+								<xslFile>
+									src/test/resources/performance/jmeter-results-detail-report_21.xsl
+								</xslFile>
+								<srcIncludes>**/*.jtl</srcIncludes>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+
+			</build>
+		</profile>
+	</profiles>
+
+	<!-- Definição da versão do jCompany -->
+	<properties>
+		<jcompany.versao>6.1.5</jcompany.versao>
+	</properties>
+
+	<!-- Repositório que será distribuído a aplicação -->
+	<distributionManagement>
+		<repository>
+			<id>powerlogic</id>
+			<name>Repositorio Powerlogic</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powerreleases
+			</url>
+		</repository>
+		<snapshotRepository>
+			<id>powerlogic</id>
+			<name>Repositorio de Snapshots</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powersnapshots
+			</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<!-- Dados de conexão no SVN -->
+	<scm>
+		<connection>scm:svn:http://svn.produto.powerlogic.com.br/jcompany/trunk/jcompany/</connection>
+		<developerConnection>scm:svn:http://svn.produto.powerlogic.com.br/jcompany/trunk/jcompany</developerConnection>
+		<url>http://svn.produto.powerlogic.com.br/jcompany/trunk/jcompany/framework/</url>
+	</scm>
+
+</project> 

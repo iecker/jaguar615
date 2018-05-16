@@ -1,0 +1,17 @@
+<validation-config xmlns="http://jboss.org/xml/ns/javax/validation/configuration"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://jboss.org/xml/ns/javax/validation/configuration http://jboss.org/xml/ns/javax/validation/configuration/validation-configuration-1.0.xsd">
+ 
+ 
+    <!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+	-->
+    <default-provider>org.hibernate.validator.HibernateValidator</default-provider>
+    <message-interpolator>com.powerlogic.jcompany.controller.jsf.validator.PlcResourceBundleMessageInterpolator</message-interpolator>
+    <traversable-resolver>org.hibernate.validator.engine.resolver.DefaultTraversableResolver</traversable-resolver>
+    <constraint-validator-factory>org.hibernate.validator.engine.ConstraintValidatorFactoryImpl</constraint-validator-factory>
+</validation-config>

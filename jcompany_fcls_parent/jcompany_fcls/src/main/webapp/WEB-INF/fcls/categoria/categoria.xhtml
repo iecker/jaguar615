@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+
+	<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml"> 
+		<ui:define name="plc-corpo-formulario">
+			<div id="plc-corpo-formulario" class="plc-corpo-formulario plc-form-tabular">
+				<fieldset class="plc-fieldset" >
+					<legend class="plc-fieldset-legend">Categoria</legend>
+					<plcf:iteracao id="plcLogicaItens" var="categoria" value="#{categoriaLista.itensPlc}"
+								styleClass="plc-table-tabsel delimitador tabelaFormulario"
+								columnClasses="celulaFormulario" headerClass="celulaFormulario" > 
+						<h:column>
+							 <h:outputText value="#{rowCounter.index}." />
+						</h:column>
+						<h:column rendered="#{empty requestScope.visualizaDocumentoPlc}">
+							<f:facet name="header"><plcf:tituloExclusao>Exc.</plcf:tituloExclusao></f:facet>
+							<span class="celulaFormularioCaixaMarcacao">							
+								<plcf:caixaExclusao id="indExcPlc" valorChave="#{categoria.indExcPlc}" />
+							</span> 
+						</h:column>						
+						<h:column>
+							<f:facet name="header"><span class="plc-title af_outputLabel">Cód</span></f:facet>							
+							<plcf:texto id="categoria_id" value="#{categoria.idNatural.sigla}"/>							 
+						</h:column>
+						<h:column>
+							<f:facet name="header"><span class="plc-title af_outputLabel">Nome</span></f:facet>
+							<plcf:texto id="nome" value="#{categoria.nome}" ajudaChave="ajuda.nome" />							 
+						</h:column> 
+					</plcf:iteracao>
+				</fieldset>
+			</div>
+		</ui:define>	
+	</ui:composition> 
+</html>

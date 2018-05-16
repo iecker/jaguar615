@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" >   
+<ui:composition> 
+<div>
+	 <rich:dataTable id="dependente" var="dependente" value="#{funcionario.dependente}" iterationStatusVar="i" >
+	   <f:facet name="header" >
+	       <rich:columnGroup >
+	       		<rich:column />		
+	 	 	  	<rich:column styleClass="celulaFormularioCaixaMarcacao">
+	 	 	  		<h:graphicImage alt="Exc." url="/res-plc/midia/form-lixeira.png" title="Para excluir, marque o(s) item(ns) e clique em gravar" />
+	 	 	  	</rich:column>					
+				<rich:column><h:outputText value="Cod." /></rich:column>			
+				<rich:column><h:outputText value="Nome" /></rich:column>
+				<rich:column/>
+			</rich:columnGroup>
+		</f:facet>
+		<rich:column>
+			<h:outputText value="#{i.count}." />
+		</rich:column>	
+ 		<rich:column styleClass="celulaFormularioCaixaMarcacao">
+			<h:selectBooleanCheckbox id="indExcPlc" value="#{dependente.indExcPlc}" rendered="#{not empty dependente.id}"/>
+			<h:link id="excPlc" styleClass="ico iExcluir" style="cursor:pointer;" rendered="#{empty dependente.id}" 
+					title="Clique para remover linha" onclick="deleteItem('dependente','#{i.index}');"></h:link>
+		</rich:column>					
+		<rich:column >		
+			<h:inputText id="id" value="#{dependente.id}" readonly="true" disabled="true" size="5" />										
+		</rich:column >			
+		<rich:column>
+			<h:inputText id="nome" value="#{dependente.nome}" size="30" maxlength="30" title="Informe nome do dependente"/>
+		</rich:column>
+		<rich:column>
+			<h:outputLabel value="#{msg['label.sexo']}"  for="sexo" />
+			<h:selectOneRadio id="sexo" value="#{dependente.sexo}" label="#{msg['label.sexo']}" style="width:200px;" styleClass="plc-radio" >
+   				<f:selectItems value="#{plcDominios.dominios['Sexo']}" var="item" itemLabel="#{label}" itemValue="#{item}" />
+	   		</h:selectOneRadio>
+		</rich:column>
+	</rich:dataTable>
+	<input type="collapse" class="inibeFoco" style="position: absolute; left:-100000px;" onfocus="comutaAbaFacelets(3)" />
+</div>
+</ui:composition> 
+</html>

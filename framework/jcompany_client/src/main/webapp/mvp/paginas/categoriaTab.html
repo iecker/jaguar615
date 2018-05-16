@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+	<head>
+		<style type="text/css">
+			.template-linha-tabular {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- {CORPO-ACOES} -->
+		<div id="plc-corpo-acao" class="plc-corpo-acao">
+			<div id="plc-corpo-acao-generico" class="plc-corpo-acao-generico">
+				<button title="Novo" onclick="plc.Bus.evento('plc.acao.categoriatab.novo')" class="botao_menu ui-state-default plc-botao">
+					<table>
+						<tr>
+							<td>
+								<div class="plc-corpo-acao-i">
+									<span class="ico iNovo"></span>
+								</div>
+							</td>
+							<td>
+								<div class="plc-corpo-acao-t">Novo</div>
+							</td>
+						</tr>
+					</table>
+				</button>
+				<button title="Gravar" onclick="plc.Bus.evento('plc.acao.categoriatab.gravar')" class="botao_menu ui-state-default plc-botao">
+					<table>
+						<tr>
+							<td>
+								<div class="plc-corpo-acao-i">
+									<span class="ico iGravar"></span>
+								</div>
+							</td>
+							<td>
+								<div class="plc-corpo-acao-t">Gravar</div>
+							</td>
+						</tr>
+					</table>
+				</button>
+				<button title="Pesquisar" onclick="plc.Bus.evento('plc.acao.categoriatab.pesquisar')" class="botao_menu ui-state-default plc-botao">
+					<table>
+						<tr>
+							<td>
+								<div class="plc-corpo-acao-i">
+									<span class="ico iPesquisar"></span>
+								</div>
+							</td>
+							<td>
+								<div class="plc-corpo-acao-t">Pesquisar</div>
+							</td>
+						</tr>
+					</table>
+				</button>
+			</div>
+		</div>
+		<hr style="clear: both; border: none;" />
+		<!-- {CORPO-ACOES} -->
+
+		<!-- {CORPO-FORMULARIO} -->
+		<div id="plc-form-basico" class="plc-form-basico-topo">
+			<div class="plc-corpo-formulario plc-form-tabular" id="plc-corpo-formulario">
+				<fieldset class="plc-fieldset">
+					<legend class="plc-fieldset-legend">Categoria</legend>
+					<table cellspacing="0" cellpadding="0" border="0" summary="" class="plc-table-tabsel plc-table-tabsel delimitador tabelaFormulario">
+						<thead>
+							<tr>
+								<td class="celulaFormulario">&nbsp;</td>
+								<td class="celulaFormulario">
+									<img src="/jcompany_fcls/res-plc/midia/form-lixeira.png" alt=""/>
+								</td>
+								<td class="celulaFormulario">
+									<span class="af_outputLabel">Sigla</span>
+								</td>
+								<td class="celulaFormulario">
+									<span class="af_outputLabel">Nome</span>
+								</td>
+							</tr>
+						</thead>
+						<tbody id="categoria-tbody">
+						</tbody>
+					</table>
+				</fieldset>
+			</div>
+		</div>
+
+		<table id="categoriatab-template" style="display:none">
+			<tr>
+				<td class="celulaFormularioContador">
+					<span class="af_outputLabel">#{i}.</span>
+				</td>
+				<td class="celulaFormularioCaixaMarcacao">&nbsp;</td>
+				<td class="celulaFormulario">
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="float: left;" class="af_inputText p_AFRequired plc-obrigatorio">
+										<input type="text" maxlength="20" size="20" class="af_inputText_content" title="Sigla" id="#{i}-idNatural_sigla" value="#{idNatural_sigla}"/>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png"/>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText">
+						<input type="text" maxlength="40" size="40" class="af_inputText_content" title="Nome" id="#{i}-nome" value="#{nome}"/>
+					</span>
+				</td>
+			</tr>
+		</table>
+
+		<!-- {/CORPO-FORMULARIO} -->
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#*" PATH="/*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:0" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logout::#res#login#loginDesconectaPlc.html"
+    NAME="output" PATH="/res/login/loginDesconectaPlc.html"
+    TARGET="rules:#res#login#loginDesconectaPlc.html" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#res#login#loginDesconectaPlc.html"
+  PATH="/res/login/loginDesconectaPlc.html" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#f#n#funcionariosel?evento=y"
+  PATH="/f/n/funcionariosel?evento=y" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#n#funcionariomdt*" PATH="/n/funcionariomdt*"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#n#funcionariomdt*:0" NAME="item"
+   PATH="/n/funcionariomdt*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="selecaofuncionario::#f#n#funcionariosel?evento=y" NAME="output"
+    PATH="/f/n/funcionariosel?evento=y"
+    TARGET="rules:#f#n#funcionariosel?evento=y"
+    TITLE="selecaofuncionario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

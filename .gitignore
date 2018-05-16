@@ -1,0 +1,15 @@
+*.class
+
+.settings
+
+.metadata
+
+target*
+
+*.log
+
+*.jar
+
+*.war
+
+hs_err_pid*

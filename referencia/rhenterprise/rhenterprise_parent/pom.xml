@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" >
+	
+  <parent>
+    <artifactId>projeto-plc</artifactId>
+    <groupId>powerlogic.jaguar.jcompany</groupId>
+    <version>6.1.5</version>
+  </parent>
+  
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>powerlogic.jaguar.app</groupId>
+  <artifactId>projeto_rhenterprise_parent</artifactId>
+  <packaging>pom</packaging>
+  <name>RHEnterprise Parent</name>
+  <version>6.1.5</version>
+  <description>Descrição do projeto</description>
+  <url>www.meuprojeto.com.br</url>
+  <issueManagement>
+    <system>eprocess</system>
+    <url>http://www.minhaempresa.com.br/eprj</url>
+  </issueManagement>
+  <ciManagement>
+    <system>Sistema de IntegraÃ§Ã£o</system>
+    <url>www.sisintegracao.com</url>
+    <notifiers>
+      <notifier>
+        <type>email</type>
+        <sendOnWarning>false</sendOnWarning>
+        <address>test@address.com</address>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+  <mailingLists>
+    <mailingList>
+      <name>Forum do Projeto</name>
+      <subscribe>http://www.minhaempresa.com.br/ecp/forum.do</subscribe>
+      <unsubscribe>http://www.minhaempresa.com.br/ecp/forum.do</unsubscribe>
+      <post>http://www.minhaempresa.com.br/ecp/forum.do</post>
+      <archive>http://www.minhaempresa.com.br/ecp/forum.do</archive>
+    </mailingList>
+  </mailingLists>
+  <developers>
+    <developer>
+      <id>admin</id>
+      <name>Desenvolvedor 1</name>
+      <email>desen1@desenvolvedor.com.br</email>
+      <organization>Empresa</organization>
+      <organizationUrl>www.minhaempresa.com.br</organizationUrl>
+      <roles>
+        <role>desenvolvedor</role>
+      </roles>
+      <timezone>-3</timezone>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Contribuidor</name>
+      <email>cont@contribuidor.com.br</email>
+      <organization>MinhaEmpresa</organization>
+      <organizationUrl>www.minhaempresa.com.br</organizationUrl>
+      <roles>
+        <role>Contribuidor</role>
+      </roles>
+      <timezone>-3</timezone>
+    </contributor>
+  </contributors>
+  <organization>
+    <name>Minha Empresa</name>
+    <url>www.minhaempresa.com.br</url>
+  </organization>
+  <modules>
+    <module>../rhenterprise_bridge</module>
+    <module>rhenterprise_commons</module>
+    <module>rhenterprise_model</module>
+    <module>rhenterprise</module>
+    <module>../rhenterprise_modulo</module>
+    <module>../rhenterprise_modulo_negocio</module>
+  </modules>
+  <properties>
+    <finalName>rhdemoenterprise</finalName>
+  </properties>
+</project>

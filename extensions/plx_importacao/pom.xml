@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Jaguar-jCompany Developer Suite. Powerlogic 2010-2014. Please read licensing 
+	information in your installation directory.Contact Powerlogic for more information 
+	or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>projeto-plc</artifactId>
+		<groupId>powerlogic.jaguar.jcompany</groupId>
+		<version>6.1.5</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.empresa.rhtutorial.importacao</groupId>
+	<artifactId>plx_importacao</artifactId>
+	<name>plx_importacao</name>
+	<version>1.0</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_commons</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_controller</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_model</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!--This plugin's configuration is used to store Eclipse m2e settings only. 
+			It has no influence on the Maven build itself. -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.4,)</versionRange>
+										<goals>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+										<artifactId>plc-maven-plugin</artifactId>
+										<versionRange>[6.1.5,)</versionRange>
+										<goals>
+											<goal>add-sourcepath</goal>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+
+</project> 

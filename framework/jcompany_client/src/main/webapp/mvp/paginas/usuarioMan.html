@@ -1,0 +1,176 @@
+<!-- {CORPO-FORMULARIO} -->
+<div id="plc-form-basico" class="plc-form-basico-topo">
+
+<div class="plc-form-tab plc-form-basico-topo ui-tabs-panel ui-widget-content ui-corner-bottom" id="funcionarioMestre">
+	<table cellspacing="0" cellpadding="0" border="0" summary="" class="plc-table-tabsel delimitador tabelaFormulario">
+		<tbody>
+			<tr>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Cód</span>
+					<span style="float: left;" class="af_inputText p_AFDisabled">
+						<input type="text" maxlength="8" size="8" class="af_inputText_content" disabled="" onfocus="insereValorCampo('detCorrPlc', '');" onkeydown="return validaCaracter(this, event, 'V');" title="Cód" name="corpo:formulario:funcionario_id" id="corpo:formulario:funcionario_id" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:funcionario_id">Cód</label>
+					</span>
+				</td>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Nome</span>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="float: left;" class="af_inputText p_AFRequired plc-obrigatorio">
+										<input type="text" maxlength="40" size="40" class="af_inputText_content" onfocus="insereValorCampo('detCorrPlc', '');" title="Nome" name="corpo:formulario:nome" id="corpo:formulario:nome" />
+										<label class="p_OraHiddenLabel" for="corpo:formulario:nome">Nome</label>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:nome_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Data Nascimento</span>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="float: left;" class="af_inputDate p_AFRequired plc-obrigatorio">
+										<input type="text" maxlength="11" size="11" class="af_inputDate_content hasDatepicker" onfocus="insereValorCampo('detCorrPlc', '');" onblur="_dfb(this)" onkeypress="formataDataComMascara('corpo:formulario:dataNascimento',event,'dd/MM/yyyy');"
+											onkeyup="return validaCaracter(this, event, 'D');" title="Data Nascimento" name="corpo:formulario:dataNascimento" id="corpo:formulario:dataNascimento" />
+										<button type="button" class="ui-datepicker-trigger ui-state-default plc-botao" tabindex="-1">
+											<span class="ico iCalendario">
+											</span>
+										</button>
+										<label class="p_OraHiddenLabel" for="corpo:formulario:dataNascimento">Data Nascimento
+										</label>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:dataNascimento_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Departamento</span>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span class="p_AFRequired plc-obrigatorio" onkeydown="selecionaPorTecla(event,this);" style="float: left;" id="vinculado-corpo:formulario:departamento">
+										<input type="text" size="5" title="Departamento" value="" name="corpo:formulario:departamento" id="corpo:formulario:departamento" />
+										<input type="text" onkeydown="selecionaPorTecla(event,this);" size="20" readonly="false" title="Departamento" value="" name="lookup_corpo:formulario:departamento" id="lookup_corpo:formulario:departamento" />
+										<span class="ui-state-default plc-botao bt" title="..." id="corpo:formulario:departamentoSel">
+											<span class="ico iRecupera"></span>
+											...
+										</span>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:departamento_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Sexo</span>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="" class="af_selectOneRadio p_AFRequired plc-obrigatorio">
+										<span class="af_selectOneRadio_content" title="Sexo" id="corpo:formulario:sexo">
+											<fieldset style="border: medium none; margin: 0px; padding: 0px;">
+												<legend class="p_OraHiddenLabel">Sexo</legend>
+												<input type="radio" value="0" id="corpo:formulario:sexo:_0" name="corpo:formulario:sexo" />
+												<label for="corpo:formulario:sexo:_0">Feminino</label>
+												<br style="clear: both;" />
+												<input type="radio" value="1" id="corpo:formulario:sexo:_1" name="corpo:formulario:sexo" />
+												<label for="corpo:formulario:sexo:_1">Masculino</label>
+											</fieldset>
+										</span>
+										<label class="p_OraHiddenLabel" for="corpo:formulario:sexo">Sexo</label>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:sexo_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Tem Curso Superior</span>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span id="corpo:formulario:temCursoSuperior__xc_c" style="float: left;" class="af_selectBooleanCheckbox p_AFRequired plc-obrigatorio">
+										<span class="af_selectBooleanCheckbox_content">
+											<input type="checkbox" value="t" onfocus="insereValorCampo('detCorrPlc', '');" class="checkbox" title="Tem Curso Superior" name="corpo:formulario:temCursoSuperior" id="corpo:formulario:temCursoSuperior" />
+											<label class="p_OraHiddenLabel" for="corpo:formulario:temCursoSuperior">Tem Curso Superior
+											</label>
+										</span>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" class="celulaFormulario">
+					<span class="af_outputLabel">Observacao</span>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="float: left;" class="af_inputText p_AFRequired plc-obrigatorio">
+										<textarea rows="10" cols="40" class="af_inputText_content" title="Observacao" name="corpo:formulario:observacao" id="corpo:formulario:observacao"></textarea>
+										<label class="p_OraHiddenLabel" for="corpo:formulario:observacao">Observacao</label>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:observacao_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table cellspacing="0" cellpadding="0" style="table-layout: fixed; height: 0px; text-align: right;">
+		<tbody>
+			<tr>
+				<td style="height: 0px;">
+					<input type="text" style="height: 0pt; width: 0pt; margin: 0pt; padding: 0pt; border: 0pt none;" class="inibeFoco" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<!-- {/CORPO-FORMULARIO} -->

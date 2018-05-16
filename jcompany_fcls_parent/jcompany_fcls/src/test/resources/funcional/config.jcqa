@@ -1,0 +1,19 @@
+
+<configuracoes>
+  <host>localhost</host>
+  <port>8080</port>
+  <protocolo>http</protocolo>
+  <tipoLogin>GLOBAL</tipoLogin>
+  <usuario>admin</usuario>
+  <senha>senha</senha>
+  <path>jcompany_fcls</path>
+  <navegador>
+    <tipo>FIREFOX</tipo>
+    <caminho-navegador>/opt/powerlogic/firefox/firefox-bin</caminho-navegador>
+  </navegador>
+  <rodaSpider>false</rodaSpider>
+  <pesquisar>Pesquisar</pesquisar>
+  <gravar>Gravar</gravar>
+  <novo>Novo</novo>
+  <abrir>Abrir</abrir>
+</configuracoes>

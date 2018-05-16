@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="profissional.mestre.2.titulo.comp"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.endereco.rua"/>  
+					<plcf:texto id="endereco_rua" value="#{profissional.endereco.rua}" ajudaChave="ajuda.endereco.rua"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.endereco.numero"/>  
+					<plcf:texto id="endereco_numero" value="#{profissional.endereco.numero}" ajudaChave="ajuda.endereco.numero"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.endereco.bairro"/>  
+					<plcf:texto id="endereco_bairro" value="#{profissional.endereco.bairro}" ajudaChave="ajuda.endereco.bairro"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.endereco.cep"/>  
+					<plcf:texto id="endereco_cep" value="#{profissional.endereco.cep}" ajudaChave="ajuda.endereco.cep"/> 
+				</plcf:celula>  
+				<plcf:celula columnSpan="2"> 
+					<plcf:titulo tituloChave="label.endereco.uf"/>  
+					<plcf:comboDinamico id="endereco_uf" value="#{profissional.endereco.uf}" dominio="UfEntity" exibeBranco="S" ajudaChave="ajuda.endereco.uf"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

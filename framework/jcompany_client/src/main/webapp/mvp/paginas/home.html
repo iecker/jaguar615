@@ -1,0 +1,61 @@
+<div>
+
+	<style type="text/css">
+		
+		#plc-bus-log {
+			height: 350px;
+			overflow: scroll;
+			margin: 1px;
+			padding: 1px;
+		}
+		
+		#plc-bus-log h1,h2 {
+			padding: 1px;
+			margin: 1px; 
+		}
+		
+		#plc-bus-log h1 {
+			font-size: 2em;
+		}
+		#plc-bus-log h2 {
+			font-size: 1.5em;
+			border-top: solid 1px blue;
+			padding-top: 5px;
+			padding-left: 5px;
+		}
+		
+		#plc-bus-log ul {
+			border: dashed 1px black;
+			padding: 2px;
+			margin: 2px;
+		}
+		
+		#plc-bus-log li {
+			font-family: courier;
+			font-weight: bold;
+			font-size: 1.5em;
+		}
+		
+		
+	</style>
+
+	<div id="plc-bus-log">
+		<h1>jCompany Page Bus</h1>
+	</div>
+	
+	<script type="text/javascript">
+	
+	plc.Bus.escutar('**', function(evento){
+		var s = '<h2>'+ evento +'</h2>';
+		s += '<ul>';
+		for (var i = 1; i < arguments.length; i++) {
+			if (arguments[i] !== null && arguments[i] !== undefined) {
+				s += '<li>'+ $.toJSON(arguments[i]) +'</li>';
+			}
+		}
+		s += '</ul>';
+		$('#plc-bus-log').append( s );
+	});
+	
+	</script>
+</div>

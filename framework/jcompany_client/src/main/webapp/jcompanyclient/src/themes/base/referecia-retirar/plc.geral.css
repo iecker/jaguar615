@@ -1,0 +1,74 @@
+div.aux{border-color: transparent;}
+
+/* geral */
+*{margin: 0px;padding: 0px;}
+img.plc-imagem{border:none;}
+a.plc.link{cursor: pointer;border-left:none;}
+span.af_inputText {}
+
+/* topo */
+div.plc-topo { margin-left: 2px;margin-right: 2px;margin-top: 1px;height:30px;border:solid; border-bottom:none;border-width: 1px;border-color: black;}
+div.plc-topo-empresa {float: left;height: 30px;margin-left: 5px;margin-top: 1px;}
+div.plc-topo-titulo {float: left;height: 21px;position:relative;left:20%;margin-top:2px;width:400px;text-align:center;-moz-border-radius: 15px; -webkit-border-radius: 15px;}
+div.plc-topo-aplicacao{float:right;margin-right: 5px;height: 26px;vertical-align: bottom;}
+
+/* menu */
+div.plc-menu {font-size: 80%;margin-left: 2px;margin-right: 2px;border-left: solid;border-right:solid;border-width: 1px;border-top: none;border-bottom: none;border-color: black;}
+div.plc-menu-sistema{border-width:0px;border-color:transparent;border-top-width:1px;border-style:solid;margin-left:5px;}
+div.plc-menu-classico{}
+div.plc-menu-sistema a{background-image:none;border-color:transparent;background-color:transparent;cursor: pointer;border-left-color:activeborder;padding-left: 4px; }
+/* TODO fazer ul e li especifico, abaixo de div.plc-menu-sistema - nao funcionou como o link - melhor posicao, hover, etc */
+ul {font-size: 80%;background-image:none;border-color:transparent;list-style-type: none;background-color:transparent;}
+li {background-image:none;border-color:transparent;background-color:transparent;}
+li a{text-decoration: none;}
+
+/* corpo */
+div.plc-corpo {margin-left: 2px;border-bottom:none;margin-right: 2px;padding-bottom:2px;border-left: solid;border-right:solid;border-width: 1px;border-color: black;}
+/* corpo - mensagens */
+div.plc-msg-sucesso {margin:4px; padding:2px;background-image: url(../midia/plc-msg-sucesso-bg.png); background-repeat:repeat-x;}
+div.plc-msg-advertencia {vertical-align:middle;margin:4px;padding:2px;}
+div.plc-msg-erro { vertical-align:middle;margin:4px;padding:2px;}
+span.plc-msg-ico {float: left; margin-right: 0.3em;}
+/* corpo - acoes/botoes */
+div.plc-corpo-acao{font-size: 70%;height:27px;margin-top:4px;}
+div.plc-corpo-acao-generico{float: right;margin-right: 2px;}
+div.plc-corpo-acao-complemento{float: right;margin-right: 5px;}
+div.plc-corpo-acao-t {float:left;cursor: pointer;}
+div.plc-corpo-acao-i {float:right;cursor: pointer;}
+/* corpo - formulario */
+fieldset.plc-fieldset{padding:2px;margin-left:1px;margin-right:1px;}
+legend.plc-fieldset-legend {font-size: 70%;padding-left: 2px;padding-right: 2px;margin-left: 5px;font-weight: bold;}
+/* os formularios tabular e de selecao permanecem com table porque neste caso o construtor e apropriado */
+table.plc-table-tabsel {width:100%}
+/* crud + argumentos TODO IE */
+/* uso do trinidad .p_OraHiddenLabel{font-size:70%;float:left;margin-top:-43px;*margin-top:-17px;} */
+.p_OraHiddenLabel{max-height:1px;float:left;width:0;height:1px;overflow: hidden; visibility: hidden;}
+div.plc-corpo span.af_outputLabel{font-size:70%;}
+/* selecao */
+div.plc-form-basico-sel th{font-size: 80%;}
+div.plc-form-basico-sel tr{cursor:pointer;}
+div.plc-form-basico-sel tr.plc-destaque td{color: #C33246;background-color: #FFE3BF;}
+div.plc-form-basico-sel tr.linhaimpar {cursor:pointer;	background-color: inherit;}
+div.plc-form-basico-sel tr.linhapar{cursor:pointer;	background-color: threedlightshadow;}
+/* corpo - formulario apos */
+div.plc-imagem-processo {border:0px solid black; width: 80%; height: 600px; display:none;}
+div.plc-auxiliar{height: 1px;visibility: hidden;}
+/* tab */
+div.plc-form-tab {border:none;margin:2px;}
+div.plc-form-tab ul{font-size:70%}
+/* componentes */
+span.plc-botao{margin-left: 1px;cursor: pointer;font-size: 90%;padding-left: 5px;padding-right: 5px;vertical-align:baseline;}
+
+/* rodape */
+div.plc-rodape {margin-left: 2px;margin-right: 2px;height:36px;font-size: 60%;border: solid;border-top:none;border-width: 1px;border-color: black;}
+div.plc-rodape-desconecta,div.plc-rodape-menu,
+div.plc-rodape-bemvindo,div.plc-rodape-timeout {float: right;border-left-style: solid;border-color:activeborder; 
+border-left-width: 1px;height:30px;padding-left: 2px;padding-right: 2px;padding-top: 6px;}
+div.plc-rodape-menu {border-left: none;}
+div.plc-rodape-timeout-t {margin-top: 5px;cursor: help;}
+div.plc-rodape-bemvindo-t2{text-align: center;font-weight: bolder;}
+div.plc-rodape-complemento {float: left;margin-left: 100px;height: 30px;padding-top: 6px;}
+div.plc-rodape-complemento-empresa{float:left;}
+div.plc-rodape-complemento-memoria{float:left;margin-left: 10px;border-left: solid;border-left-width: 1px;border-color:activeborder;padding-left: 20px;}
+span.plc-rodape-menu-ico {float: right;}
+

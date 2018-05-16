@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Button" id="1" x="8" y="8" text="{unchecked} Limpar" measuredWidth="101" measuredHeight="34">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="2" x="120" y="8" text="{new} Novo" measuredWidth="90" measuredHeight="34">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="3" x="227" y="8" text="{find} Pesquisar" measuredWidth="121" measuredHeight="34">
+    <font size="16px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

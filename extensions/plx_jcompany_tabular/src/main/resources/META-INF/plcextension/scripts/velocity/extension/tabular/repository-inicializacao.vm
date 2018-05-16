@@ -1,0 +1,91 @@
+package ${contexto.pacotebase}.model.${contexto.casouso};
+
+import ${contexto.entidade};
+
+import javax.inject.Inject;
+
+import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.PropertyUtils;
+
+import com.powerlogic.jcompany.commons.PlcBaseContextVO;
+import com.powerlogic.jcompany.commons.PlcBeanMessages;
+import com.powerlogic.jcompany.commons.PlcException;
+import org.apache.log4j.Logger;
+import com.powerlogic.jcompany.commons.config.stereotypes.SPlcRepository;
+import com.powerlogic.jcompany.commons.annotation.PlcAggregationIoC;
+import com.powerlogic.jcompany.model.PlcBaseRepository;	
+
+/**
+ * Classe de Modelo gerada pelo extension plx_jcompany_tabular
+  */
+@SPlcRepository 
+@PlcAggregationIoC(clazz=${contexto.entidade}.class)
+public class ${contexto.casoUsoC}Repository extends PlcBaseRepository {
+
+	/**
+	 * objeto para saida centralizada de LOG.
+	 */
+	@Inject
+	protected transient Logger log;
+
+	/*
+	* Método para importar registros
+	*/
+	public void importRecords(PlcBaseContextVO context) {
+		
+		${contexto.nomeEntidade} entidade = new ${contexto.nomeEntidade}();
+		
+		//Verificando se já existem registros;
+		Long total = findCount(context,entidade);
+		if (total != 0) {
+			return;
+		}
+		
+		for (int i=1; i < 11; i++) {
+			entidade = new ${contexto.nomeEntidade}();
+#foreach ($umaProp in $contexto.propsentidade.listaPropriedades)
+	#if ( $umaProp.gerar == 'S' && $umaProp.nome != 'id')
+	setValue(entidade, "$umaProp.nome", i);
+	#end
+#end
+			try {
+				insert(context,entidade);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}	
+		
+		
+
+		
+	}
+	
+	private void setValue(${contexto.nomeEntidade} entidade, String propertyName, Integer indice) {
+		
+		try {
+		
+			Class clazz = PropertyUtils.getPropertyType(entidade, propertyName);
+			
+			if (String.class.isAssignableFrom(clazz)) {
+				BeanUtils.copyProperty(entidade, propertyName, "Nome" + indice);
+			} else if (Long.class.isAssignableFrom(clazz) || 
+					Integer.class.isAssignableFrom(clazz) ||  
+					Double.class.isAssignableFrom(clazz) ||
+					BigDecimal.class.isAssignableFrom(clazz)) {
+				BeanUtils.copyProperty(entidade, propertyName, indice);	
+			} else if (Date.class.isAssignableFrom(clazz) || Calendar.class.isAssignableFrom(clazz)) {
+				BeanUtils.copyProperty(entidade, propertyName, new Date(System.currentTimeMillis() + (86400*indice)));	
+			}
+		} catch (Exception e) {
+			throw new PlcException(PlcBeanMessages.JCOMPANY_ERROR_GENERIC, new Object[] {e }, e, log);
+		}	
+	
+	}
+	
+
+
+}

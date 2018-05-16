@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br-->
+<plc-dados logica="livre" xmlns="http://plc.powerlogic.com">
+  <descricao>Este teste faz a verificação de uma lógica com entrada em lote.</descricao>
+  <palavra-reservada nome="LabelBotaoPesquisar" texto="Pesquisar"/>
+  <palavra-reservada nome="LabelBotaoNovo" texto="Novo"/>
+  <palavra-reservada nome="LabelBotaoGravar" texto="Gravar"/>
+  <palavra-reservada nome="LabelBotaoExcluir" texto="Excluir"/>
+  <palavra-reservada nome="LabelBotaoLimpar" texto="Limpar"/>
+  <palavra-reservada nome="TextoPosDelecao" texto="Registro excluído com sucesso."/>
+  <palavra-reservada nome="TextoPosGravacao" texto="Registro gravado com sucesso"/>
+  <palavra-reservada nome="UrlPaginaInicial" texto=""/>
+  <palavra-reservada nome="Login" texto="admin"/>
+  <palavra-reservada nome="Senha" texto="senha"/>
+  <generico>
+    <cenario-livre nome="Cadastrar Usuario">
+      <redirecionar url="f/n/usuarioman"/>
+      <preencher>
+        <campo nome="j_username" tipo="input" label="Senha:" valor="admin"/>
+        <campo nome="j_password" tipo="input" valor="senha"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Ok" esperar="2"/>
+      <preencher>
+        <campo nome="nomeCompleto" tipo="input" label="Nome Completo" valor="Usuário de Testes"/>
+        <campo nome="idade" tipo="input" label="Idade" valor="3"/>
+        <campo nome="numeroIdentidade" tipo="input" label="Numero Identidade" valor="123456789"/>
+        <campo nome="contribuicaoInicial" tipo="input" label="Contribuicao Inicial" valor="10.000,00"/>
+        <campo nome="login" tipo="input" label="Login" valor="teste.teste"/>
+        <campo nome="dataCriacaoPerfilUsuario" tipo="input" label="Data Criacao Perfil Usuario" valor="06/05/2010"/>
+        <campo nome="observacao" tipo="textarea" label="Observacao" valor="TESTE"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso" esperar="1"/>
+      <verificar>
+        <campo nome="nomeCompleto" tipo="input" padrao="Usuário de Testes" label="Nome Completo"/>
+        <campo nome="idade" tipo="input" padrao="3" label="Idade"/>
+        <campo nome="numeroIdentidade" tipo="input" padrao="123456789" label="Numero Identidade"/>
+        <campo nome="contribuicaoInicial" tipo="input" padrao="10.000,00" label="Contribuicao Inicial"/>
+        <campo nome="login" tipo="input" padrao="teste.teste" label="Login"/>
+        <campo nome="dataCriacaoPerfilUsuario" tipo="input" padrao="06/05/2010" label="Data Criacao Perfil Usuario"/>
+        <campo nome="observacao" tipo="textarea" padrao="TESTE" label="Observacao"/>
+      </verificar>
+    </cenario-livre>
+    <cenario-livre nome="Pesquisar Usuario">
+      <redirecionar url="/f/n/usuariosel"/>
+      <preencher>
+        <campo nome="nomeCompleto" tipo="input" label="Nome Completo" valor="Usuário de Testes"/>
+      </preencher>
+      <clicar esperar="3"/>
+      <clicar tipo="botao" rotulo="Pesquisar" esperar="2"/>
+     <clicar tipo="xpath" rotulo="//tr[@id='corpo:formulario:plcLogicaItens:0:linhaSel']/td[1]/span" esperar="1"/>
+    </cenario-livre>
+    <cenario-livre nome="Clonar Usuario">
+      <verificar>
+        <campo nome="nomeCompleto" tipo="input" padrao="Usuário de Testes" label="Nome Completo"/>
+        <campo nome="idade" tipo="input" padrao="3" label="Idade"/>
+        <campo nome="numeroIdentidade" tipo="input" padrao="123456789" label="Numero Identidade"/>
+        <campo nome="contribuicaoInicial" tipo="input" padrao="10.000,00" label="Contribuicao Inicial"/>
+        <campo nome="login" tipo="input" padrao="teste.teste" label="Login"/>
+        <campo nome="dataCriacaoPerfilUsuario" tipo="input" padrao="06/05/2010" label="Data Criacao Perfil Usuario"/>
+        <campo nome="observacao" tipo="textarea" padrao="TESTE" label="Observacao"/>
+      </verificar>
+      <clicar tipo="botao" rotulo="Clonar" verificar="Clonagem realizada com sucesso. Altere as informações e submeta a gravação para criar um novo registro. "/>
+      <preencher>
+        <campo nome="nomeCompleto" tipo="input" label="Nome Completo" valor="ALTERADO"/>
+        <campo nome="dataCriacaoPerfilUsuario" tipo="input" label="Data Criacao Perfil Usuario" valor="10/05/2010"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso" esperar="1"/>
+      <verificar>
+        <campo nome="nomeCompleto" tipo="input" padrao="ALTERADO" label="Nome Completo"/>
+        <campo nome="idade" tipo="input" padrao="3" label="Idade"/>
+        <campo nome="numeroIdentidade" tipo="input" padrao="123456789" label="Numero Identidade"/>
+        <campo nome="contribuicaoInicial" tipo="input" padrao="10.000,00" label="Contribuicao Inicial"/>
+        <campo nome="login" tipo="input" padrao="teste.teste" label="Login"/>
+        <campo nome="dataCriacaoPerfilUsuario" tipo="input" padrao="10/05/2010" label="Data Criacao Perfil Usuario"/>
+        <campo nome="observacao" tipo="textarea" padrao="TESTE" label="Observacao"/>
+      </verificar>
+    </cenario-livre>
+    <cenario-livre nome="Excluir registro clonado">
+      <redirecionar url="/f/n/usuariosel"/>
+      <clicar esperar="3"/>
+      <clicar tipo="botao" rotulo="Pesquisar" esperar="2"/>
+      <clicar tipo="xpath" rotulo="//tr[@id='corpo:formulario:plcLogicaItens:0:linhaSel']/td[1]/span" esperar="1"/>
+      <clicar tipo="botao" rotulo="Excluir"/>
+      <clicar tipo="confirmacao" rotulo="Tem certeza que deseja excluir?" verificar="Registro excluído com sucesso"/>
+    </cenario-livre>
+    <cenario-livre nome="Excluir Usuario">
+      <redirecionar url="/f/n/usuariosel"/>
+      <clicar esperar="3"/>
+      <clicar tipo="botao" rotulo="Pesquisar" esperar="2"/>
+      <clicar tipo="xpath" rotulo="//tr[@id='corpo:formulario:plcLogicaItens:0:linhaSel']/td[1]/span" verificar="Usuário"/>
+      <clicar tipo="botao" rotulo="Excluir"/>
+      <clicar tipo="confirmacao" rotulo="Tem certeza que deseja excluir?" verificar="Registro excluído com sucesso"/>
+    </cenario-livre>
+  </generico>
+  <programado>
+    <itemprogramado>
+      <nome>Classe de Teste</nome>
+      <classe>br.com.plc.jcompany_fcls.jcompanyqa.UsuarioWebTest</classe>
+    </itemprogramado>
+  </programado>
+</plc-dados>

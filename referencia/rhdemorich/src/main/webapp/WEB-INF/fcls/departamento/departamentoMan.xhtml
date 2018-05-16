@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:rich="http://richfaces.org/rich">  
+<ui:composition> 
+<fieldset class="plc-fieldset">
+	<legend class="plc-fieldset-legend">Unidade Organizacional</legend>
+	<h:panelGrid columns="3" styleClass="rf-dt">
+	   <rich:column>
+		    <h:outputLabel value="Cód."  for="id" />
+	    	<h:inputText id="id" value="#{departamento.id}" readonly="true" disabled="true" size="5" maxlength="5"/>
+	   </rich:column>
+	   <rich:column>
+	      	<h:outputLabel value="Nome"  for="nome"/>
+	      	<h:inputText id="nome" value="#{departamento.nome}" size="60" maxlength="60"  label="#{msg['label.nome']}" title="#{msg['ajuda.nome']}"/>
+	   </rich:column>
+	   <rich:column>
+	      		<h:outputLabel value="Departamento Pai"   for="departamentoPai"/> 
+	      		<plcf:vinculado id="departamentoPai" value="#{departamento.departamentoPai}"
+					 propSelPop="departamento" idExibe="N" idSomenteLeitura="N" 
+					 autoRecuperacaoClasse="com.empresa.rhrich.entity.DepartamentoEntity" 
+					 actionSel="departamentosel" 
+					 modal="S" ajudaChave="ajuda.departamentoPai" onkeydown="selecionaPorTecla(event,this);"
+					 parametro="cid=#{conversation.id}" /> 
+	   </rich:column>
+	</h:panelGrid> 
+</fieldset>
+</ui:composition> 	 
+</html>

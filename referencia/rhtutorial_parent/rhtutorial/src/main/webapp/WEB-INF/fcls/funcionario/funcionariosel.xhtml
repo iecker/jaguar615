@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml"> 
+ <ui:define name="plc-corpo-formulario">
+	<div id="plc-form-basico">
+		<f:validateBean validationGroups="com.powerlogic.jcomapny.domain.validation.PlcValGroupArgumento">
+		<plcf:tabela tituloChave="funcionarioarg.titulo"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.nome"/>  
+					<plcf:texto id="nome" value="#{funcionario.nome}" ajudaChave="ajuda.nome" tamanho="20"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.cpf"/>  
+					<plcf:texto id="cpf" value="#{funcionario.cpf}" ajudaChave="ajuda.cpf" /> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.estadoCivil"/>  
+					<plcf:comboEstatico id="estadoCivil" value="#{funcionario.estadoCivil}" dominio="EstadoCivil"
+					 exibeBranco="S" ajudaChave="ajuda.estadoCivil"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.enderecoResidencial.logradouro"/>  
+					<plcf:texto id="enderecoResidencial_logradouro" value="#{funcionario.enderecoResidencial.logradouro}" 
+					ajudaChave="ajuda.enderecoResidencial.logradouro" tamanho="20"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.idadeMin"/>  
+					<plcf:numerico id="idadeMin" value="#{funcionario.idadeMin}" ajudaChave="ajuda.idadeMin" numCasas="0"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.idadeMax"/>  
+					<plcf:numerico id="idadeMax" value="#{funcionario.idadeMax}" ajudaChave="ajuda.idadeMax" numCasas="0"/> 
+				</plcf:celula>  
+				<plcf:celula > 
+					<plcf:titulo tituloChave="label.unidadeOrganizacional"/>  
+					<plcf:vinculado id="unidadeOrganizacional" value="#{funcionario.unidadeOrganizacional}" 
+					 propSelPop="unidadeOrganizacional" idExibe="S" idSomenteLeitura="N" 
+					 autoRecuperacaoClasse="com.empresa.rhtutorial.entity.UnidadeOrganizacionalEntity" 
+					 actionSel="unidadeOrganizacionalsel" modal="S" ajudaChave="ajuda.unidadeOrganizacional" 
+					 onkeydown="selecionaPorTecla(event,this);"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+		</f:validateBean>
+	<div id="funcionarioSel" class="plc-form-basico-sel">
+		<script type="text/javascript">//<![CDATA[
+				jQuery(function(){
+				plc.criaSelecaoJqGrid('plc-grid', 'plc-grid-navegador', {
+					evento: '${param.evento}',
+					modoJanelaPlc: '${param.modoJanelaPlc}',
+					nomeLogica: 'funcionario',
+					propAgregada: 'funcionario',
+					jqGrid: {
+						caption: 'Funcionário',		
+						colNames:['Nome','Data Nascimento','CPF','Estado Civil','Unidade Organizacional','Logradouro'],
+						colModel:[{name: 'nome',index: 'nome'},  
+								   {name: 'dataNascimento',index: 'dataNascimento'},
+								   {name: 'cpf',index: 'cpf'},  
+								   {name: 'estadoCivil',index: 'estadoCivil'},
+								   {name: 'unidadeOrganizacional',index: 'unidadeOrganizacional'},
+								   {name: 'enderecoResidencial.logradouro',index: 'enderecoResidencial.logradouro'
+								}																																																																																																																	]
+					}
+					,urlEdicao: '#{request.contextPath}/f/n/funcionariomdt'});
+			});
+		//]]> </script>  
+		<table id="plc-grid" width="100%" class="scroll" cellpadding="0" cellspacing="0"/>  
+		<div id="plc-grid-navegador" class="scroll" style="text-align:center;"/> 
+		<div id="plc-grid-navegador" class="scroll" style="text-align:center;"/> 
+		</div>
+	</div>
+</ui:define>
+</ui:composition>  
+</html>

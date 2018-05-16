@@ -1,0 +1,3 @@
+## Criando declaração do evento para Caso de Uso Padrão
+
+			<plcf:botaoAcao urlIcone="ico iEspecifico" label="jcompany.evt.${contexto.nomeEvento}" action="#{plcAction.${contexto.nomeEvento}}" rendered="#{requestScope.plcURLSemBarra == '${contexto.casouso}'}"/>

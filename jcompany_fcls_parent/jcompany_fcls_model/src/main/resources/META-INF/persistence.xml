@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<persistence 
+	xmlns="http://java.sun.com/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" 
+	version="2.0">
+
+	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>java:/comp/env/jdbc/jcompany_fcls</non-jta-data-source>
+
+		<class>br.com.plc.jcompany_fcls.entity.uf.UfEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.departamento.Endereco</class>
+		<class>br.com.plc.jcompany_fcls.entity.departamento.DepartamentoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.funcionario.FuncionarioEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.funcionario.HistoricoFuncionalEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.funcionario.DependenteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.CandidatoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.HistoricoPoliticoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.PartidoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.OutrosCandidatosEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.ReferenciaGeraisEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.EmpresaEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.EnderecoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.ComplementoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.ParceirosEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.ContratoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.preferencia.PreferenciaUsuarioEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.preferencia.PreferenciaAplicacaoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.album.AlbumEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.album.MusicaEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.album.EncarteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.album.EncarteConteudoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.categoria.CategoriaEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.tipodocumento.TipoDocumentoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.pedido.PedidoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.pedido.ProdutosEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.pedido.CompradorEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.colaborador.ColaboradorEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.colaborador.SetorEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.colaborador.PromocaoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.usuario.UsuarioEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.ProfissionalEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.DependenteProfissionalEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.HistoricoProfissionalEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.FotoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.FotoConteudoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.cliente.ClienteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.cliente.GrupoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.cliente.GrupoClienteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.suitecasoteste.CasoTesteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.suitecasoteste.SuiteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.suitecasoteste.SuiteCasoTesteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.funcionario.ProventoDescontoEntity</class>
+		<class>com.powerlogic.jcompany.domain.dynamicmenu.PlcDynamicMenuEntity</class>
+		
+	<properties>
+			<property name="hibernate.archive.autodetection" value="class, hbm"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<!--property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/-->
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="default_teste" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>java:/comp/env/jdbc/jcompany_fcls</non-jta-data-source>
+
+		<class>br.com.plc.jcompany_fcls.entity.uf.UfEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.departamento.Endereco</class>
+		<class>br.com.plc.jcompany_fcls.entity.departamento.DepartamentoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.funcionario.FuncionarioEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.funcionario.HistoricoFuncionalEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.funcionario.DependenteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.CandidatoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.HistoricoPoliticoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.PartidoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.OutrosCandidatosEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.candidato.ReferenciaGeraisEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.EmpresaEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.EnderecoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.ComplementoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.ParceirosEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.empresa.ContratoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.preferencia.PreferenciaUsuarioEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.preferencia.PreferenciaAplicacaoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.album.AlbumEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.album.MusicaEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.album.EncarteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.album.EncarteConteudoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.categoria.CategoriaEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.tipodocumento.TipoDocumentoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.pedido.PedidoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.pedido.ProdutosEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.pedido.CompradorEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.colaborador.ColaboradorEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.colaborador.SetorEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.colaborador.PromocaoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.usuario.UsuarioEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.ProfissionalEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.DependenteProfissionalEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.HistoricoProfissionalEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.FotoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.profissional.FotoConteudoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.cliente.ClienteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.cliente.GrupoEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.cliente.GrupoClienteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.suitecasoteste.CasoTesteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.suitecasoteste.SuiteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.suitecasoteste.SuiteCasoTesteEntity</class>
+		<class>br.com.plc.jcompany_fcls.entity.funcionario.ProventoDescontoEntity</class>
+		<class>com.powerlogic.jcompany.domain.dynamicmenu.PlcDynamicMenuEntity</class>
+		
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class, hbm"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+		</properties>
+
+	</persistence-unit>	
+</persistence>

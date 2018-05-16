@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core">
+	<head>
+    <link rel="StyleSheet" href="#{request.contextPath}/res-plc/css/jquery/ui/themes/ui.all.css" type="text/css" charset="UTF-8" />
+    <link rel="StyleSheet" href="#{request.contextPath}/res-plc/css/itunes/jquery/jquery-ui-1.7.custom.css" type="text/css" charset="UTF-8" />	
+    <link rel="StyleSheet" href="#{request.contextPath}/res-plc/css/plc.geral.css" type="text/css" charset="UTF-8" />
+	</head>
+<body>
+Exemplo de página inicial para customização. Por default o jCompany sugere uma página inicial com botões tipo quiosque para principais transações
+e explicações sobre como se obter ajuda para a aplicação. Esta pagina é um exemplo simples para customização, sem I18n.
+<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+<ui:define name="plc-header-complemento">
+	<style>
+		plc-botao{outline: 0;   margin:0 4px 0 0;   padding: .4em 1em;   text-decoration:none !important;   cursor:pointer;   position: relative;   text-align: center;   zoom: 1;}
+		div.home {width:100%;height:450px;font-size:80%;}
+		div.home-coluna-esq {float:left;width:35%;padding:2px;margin-left:10px;}
+		div.home-coluna-dir {float:left;width:60%;padding:2px;}
+		a.plc-botao-quiosque{outline: 0;   margin:4px 4px 0 0;   padding: .4em 1em;   text-decoration:none !important; 
+		     width: 80%;height:32px;font: bold 180% Arial, Tahoma, sans-serif;text-decoration: none;display: block;}
+		div.home-titulo{font-weight:bold;font-size: 160%;margin:10px 0 10px 0;}
+		div.home-subtitulo{margin-bottom:10px;}
+		div.home-subtopico{float:left;margin-top:10px;}
+		div.home-subtopico-esq{width: 20px;vertical-align:middle;float:left;text-align:right;}
+		div.home-subtopico-dir{margin-left:25px;padding-left:5px;border-left: 2px solid rgb(153, 153, 153);min-width:400px;}
+		div.home-subtitulo-rodape{margin:200px 0 10px 20px;}
+		div.home-browser-esq{float:left;margin-left:10px;padding:15px; vertical-align: left;vertical-align: text-top;}
+		div.home-browser-dir{float:left;padding:2px;vertical-align: middle;}
+		div.home-subtitulo-rodape{margin:200px 0 10px 20px;}
+		div.home-browser-firefox{float:none;padding:2px;line-height:10px;position:relative;right:-2px;}
+		div.home-browser-chrome{float:none;padding:2px;line-height:10px;position:relative;right:-4px;}
+		div.home-browser-opera{float:none;padding:2px;line-height:10px;position:relative;right:-8px;}
+		div.home-browser-ie{float:none;padding:2px; line-height:10px;position:relative;right:14px;}
+		div.home-browser-safari{float:none;position:relative;right:-8px;padding:2px;line-height:10px;}
+		*+html div.home-subtitulo-rodape{margin:100px 0 10px 20px !important;} /*variação para IE 7 somente*/
+		</style>
+</ui:define>
+<ui:define name="plc-corpo">
+			<ui:insert name="plc-corpo-mensagem">
+				<ui:include src="/WEB-INF/fcls-plc/geralMensagemPlc.xhtml" />
+			</ui:insert>
+<div class="home">
+	<div class="home-coluna-esq">
+		<div class="home-titulo">Operações Frequentes</div>
+		<div class="home-botao"> 
+			<a href="#{request.contextPath}/f/inicial.xhtml" class="ui-state-default ui-corner-all plc-botao-quiosque">
+			<div><img class="ui-state-default plc-imagem" style="border: none;" src="#{request.contextPath}/res/midia/home-quiosque-home.png"/></div><div>Home</div></a>
+			<a href="javascript: document.location = '#{request.contextPath}/f/n/uftab'" class="ui-state-default ui-corner-all plc-botao-quiosque">
+			<div><img class="ui-state-default plc-imagem" style="border: none;" src="#{request.contextPath}/res/midia/home-quiosque-uf.png"/></div><div>Unidade Federativa</div></a>
+			<a href="javascript: document.location = '#{request.contextPath}/f/n/unidadeOrganizacionalman';" class="ui-state-default ui-corner-all plc-botao-quiosque">
+			<div><img class="ui-state-default plc-imagem" style="border: none;" src="#{request.contextPath}/res/midia/home-quiosque-departamento.png"/></div><div>Unidade Organizacional</div></a>
+			<a href="javascript: document.location = '#{request.contextPath}/f/n/funcionariomdt';" class="ui-state-default ui-corner-all plc-botao-quiosque">
+			<div><img class="ui-state-default plc-imagem" style="border: none;" src="#{request.contextPath}/res/midia/home-quiosque-funcionario.png"/></div><div>Funcionário</div></a>
+			<a href="#" onclick="document.getElementById('plc-acao-desconecta').click();" class="ui-state-default ui-corner-all plc-botao-quiosque">
+			<div><img class="ui-state-default plc-imagem" style="border: none;" src="#{request.contextPath}/res/midia/home-quiosque-fim.png"></img></div><div>Sair</div></a> 
+		</div>
+	</div>
+	<div class="home-coluna-dir">
+		<div class="home-titulo">Jaguar</div>
+		<div class="home-subtitulo">
+			O JAGUAR é uma contribuição da Powerlogic à comunidade de software livre que agora passa a contar com um ferramental e framework de integração gratuitos para desenvolvimento <b>Java EE 6</b>, em licença GPLv2 e GPLv3.
+			<br/>
+			É baseado no <b>jCompany Developer Suite</b>, solução com 7 anos de mercado e que já conta com mais de 1.100 projetos em produção, sendo 180 mil pontos de função desenvolvidos em centenas de clientes, públicos e privados. O código inicialmente disponibilizado para o JAGUAR se baseia no jCompany 6.0 Preview, considerando um “Release Candidate” da versão 6.0 oficial, ainda em andamento.
+		</div>
+		<div class="home-subtopico">
+			<div class="home-subtopico-dir">
+			<b>Dicas Sobre Como Aprender o Jaguar</b>
+			<br /><br />
+			<b>Aprendizado Conceitual</b> incluindo padrões, arquitetura geral, usabilidade, etc., sem requerer prática (ideal para coordenadores, projetistas e arquitetos):
+			<br />
+			1. Leia o Módulo A (capítulos de 1 a 5) do livro  “Tirando o Máximo do Java EE 6 Open Source”, disponível para download gratuito em Documentação.
+			<br />
+			2. Em seguida leia os tutoriais do Módulo B, concentrando-se no processo e resultado obtidos.
+			<br />
+			3. Assista aos vídeos no YouTube em Vídeos.
+			<br />
+			<b>Aprendizado Prático</b> (ideal para desenvolvedores):
+			<br />
+			1. Baixe o produto conforme instruções de download.
+			<br />
+			2. Instale o Jaguar conforme instruções do Capítulo 2 do livro “Tirando o Máximo do Java EE 6 Open Source”, disponível para download gratuito em Documentação.
+			<br />
+			3. Crie um novo projeto seguindo a prática do Capítulo 3.
+			<br />
+			4. Em seguida desenvolva atentamente os tutoriais do Módulo B (capítulos 6 a 11).
+			<br />
+			Importante: pode-se estudar os demais capítulos conforme o interesse específico, porém eles sofrerão atualizações importantes previstas para 31/janeiro/2011, quando a Powerlogic cederá uma nova versão de atualização para o Jaguar, com dezenas de inovações. Portanto, sugere-se complementar o estudo para além dos módulos A e B após este lançamento.
+			<br />
+			<b>Aprendizado Através de Cursos Oficiais</b>:
+			<br />
+			Considere registrar-se para algum curso oficial da Powerlogic, fabricante do Jaguar. Para tanto envie um email com interesse para jaguar@powerlogic.com.br.
+			<br /><br />
+			</div>
+		</div>
+			
+
+		<div>
+			<div class="home-subtitulo-rodape">
+				Melhor visualização através dos navegadores	abaixo (* Ou superior)
+			</div>
+			<div class="home-browser-esq">
+				<a href="http://www.mozilla.com/en-US/firefox/"> 
+					<img style="border: 0pt none ; margin: 2px; vertical-align: middle;" 
+					alt="Clique aqui para baixar este Navegador"
+					src="#{request.contextPath}/res/midia/home-firefox.png" />
+				</a>
+					<div class="home-browser-firefox">
+						Firefox 2*
+					</div>
+				</div>
+				
+				
+			<div class="home-browser-esq" >
+				<a href="http://www.google.com/chrome">
+					<img style="border: 0pt none ; margin: 2px; vertical-align: middle; "
+					alt="Clique aqui para baixar este Navegador"
+					src="#{request.contextPath}/res/midia/home-chrome.png" />
+				</a>
+				<div class="home-browser-chrome">
+						Chrome
+				</div>
+			</div>
+			
+			<div class="home-browser-esq" >
+				<a href="http://www.opera.com/download/">
+					<img style="border: 0pt none ; margin: 2px; vertical-align: middle;"
+					alt="Clique aqui para baixar este Navegador"
+					src="#{request.contextPath}/res/midia/home-opera.png" />
+				</a>
+				<div class="home-browser-opera">
+						Opera
+				</div>
+			</div>
+			<div class="home-browser-esq" >
+				<a href="http://www.apple.com/br/safari/download/">
+					<img style="border: 0pt none ; margin: 2px; vertical-align: middle;"
+					alt="Clique aqui para baixar este Navegador"
+					src="#{request.contextPath}/res/midia/home-safari.png" />
+				</a>
+				<div class="home-browser-safari">
+						Safari
+				</div>
+			</div>
+			<div class="home-browser-esq" >
+				<a href="http://www.microsoft.com/downloads/Search.aspx?displaylang=pt-br">
+					<img style="border: 0pt none ; margin: 2px; vertical-align: middle; "
+					alt="Clique aqui para baixar este Navegador"
+					src="#{request.contextPath}/res/midia/home-ie.png" />
+				</a>
+				<div class="home-browser-ie">
+						Internet Explorer 7*
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>
+</ui:define>
+</ui:composition>	
+</body>
+</html>

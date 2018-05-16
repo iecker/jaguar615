@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition template="/fcls/client/formMdtPlc.xhtml">
+	
+		<ui:define name="plc-acao-abrir">	
+			<plcf:botaoAcao id="botao_abrir" urlIcone="ico iAbrir" acao="uf" destino="uf" label="jcompany.evt.abrir" immediate="true" validaForm="false" limpaForm="false" rendered="#{requestScope.exibeAbrirPlc=='S' and requestScope.exibe_jcompany_evt_abrir!='N'}" partialSubmit="#{!partialSubmit}" blocking="true" onclick="document.location.href=document.location.pathname.substring(0, document.location.pathname.indexOf('/', 1))+'/f/n/uf'" />
+		</ui:define>		
+	
+	</ui:composition> 
+</html>

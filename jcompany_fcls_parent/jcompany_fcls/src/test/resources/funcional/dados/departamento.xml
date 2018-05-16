@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<plc-dados logica="crud" xmlns="http://plc.powerlogic.com">
+  <palavra-reservada nome="UrlPaginaInicial" texto="/f/n/departamentoman"/>
+  <palavra-reservada nome="Login" texto="admin"/>
+  <palavra-reservada nome="Senha" texto="senha"/>
+  <palavra-reservada nome="TextoPaginaInicial" texto="Departamento  "/>
+  <palavra-reservada nome="tempoSLATotal" texto=""/>
+  <palavra-reservada nome="tipoSLALog" texto=""/>
+  <palavra-reservada nome="LabelBotaoPesquisar" texto="Pesquisar"/>
+  <palavra-reservada nome="TextoPosGravacao" texto="Registro gravado com sucesso"/>
+  <palavra-reservada nome="LabelBotaoGravar" texto="Gravar"/>
+  <mestre>
+    <sla>
+      <inclusao trts="2" sqls="" ultc="1" ultr="0"/>
+      <edicao trts="2" sqls="" ultc="0" ultr="1"/>
+      <pesquisa trts="2" sqls="1" ultc="" ultr=""/>
+      <exclusao trts="2" sqls="" ultc="1" ultr="0"/>
+    </sla>
+  </mestre>
+  <cenarios-alternativos/>
+  <programado/>
+</plc-dados>

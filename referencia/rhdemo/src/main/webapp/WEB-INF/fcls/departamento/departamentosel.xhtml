@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml"> 
+		<ui:define name="plc-corpo-formulario"> 
+			<div id="plc-form-basico"> 
+				<div id="#{plcAliasPrefixoAction}Arg" class="plc-form-basico-topo">  
+					<plcf:tabela tituloChave="departamentoarg.titulo"> 
+							<plcf:linha> 
+								<plcf:celula> 
+									<plcf:titulo tituloChave="label.id"/>  
+									<plcf:texto id="id" value="#{departamento.id}" ajudaChave="ajuda.id"/> 
+								</plcf:celula>  
+								<plcf:celula> 
+									<plcf:titulo tituloChave="label.descricao"/>  
+									<plcf:texto id="descricao" value="#{departamento.descricao}" ajudaChave="ajuda.descricao"/> 
+								</plcf:celula>  
+								<plcf:celula> 
+									<plcf:titulo tituloChave="label.departamentoPai"/>  
+									<plcf:vinculado id="departamentoPai" value="#{departamento.departamentoPai}" propSelPop="departamento" idExibe="S" idSomenteLeitura="N" autoRecuperacaoClasse="br.com.plc.rhdemo.entity.DepartamentoEntity" actionSel="departamentosel" modal="S" ajudaChave="ajuda.departamentoPai" onkeydown="selecionaPorTecla(event,this);"/> 
+								</plcf:celula> 
+							</plcf:linha> 
+						</plcf:tabela> 
+				</div>  
+				<div id="#{plcAliasPrefixoAction}Sel" class="plc-form-basico-sel"> 
+				
+					<script type="text/javascript">//<![CDATA[
+						jQuery(function(){
+							plc.criaSelecaoJqGrid('plc-grid', 'plc-grid-navegador', {
+								modoJanelaPlc: '${param.modoJanelaPlc}'
+								,nomeLogica: 'departamento'
+								,propAgregada: 'departamento'
+								,jqGrid: {
+									caption:	'Departamento'
+									,colNames:[  'Cód.'	 ,   'Descrição'	 ,   'Departamento Pai' 	]
+									,colModel:[	 {	name: 'id'	,index: 'id'	}
+											 ,  {	name: 'descricao'	,index: 'descricao'		}
+											 ,  {	name: 'departamentoPai'	,index: 'departamentoPai'	}
+											]}
+								,urlEdicao: '#{request.contextPath}/f/n/departamentoman' 		
+							});
+						}); //]]> 
+					</script>  
+					
+					<table id="plc-grid" width="100%" class="scroll" cellpadding="0" cellspacing="0"/>  
+					<div id="plc-grid-navegador" class="scroll" style="text-align:center;"/>
+				</div> 
+			</div> 
+		</ui:define> 
+	</ui:composition> 
+</html>

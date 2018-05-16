@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>jCompany RIA App</title>
+
+<!-- <link rel="stylesheet" type="text/css" media="screen" href="./css/ui-themes/plc-itunes/jquery-ui-1.7.custom.css" />  -->
+<link rel="stylesheet" type="text/css" media="screen" href="./css/ui-themes/smoothness/jquery-ui-1.7.2.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="./js/libs/jquery/plugins/jqGrid/3.5.2/css/ui.jqgrid.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="./css/plc.geral.css">
+
+<script src="./js/libs/jquery/1.3.2/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script src="./js/libs/jquery/plugins/jqGrid/3.5.2/src/grid.loader.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var gridimgpath = './css/ui-themes/smoothness//images';
+jQuery(document).ready(function(){
+
+	jQuery("#grid").jqGrid({
+		datatype: "local",
+		height: 250,
+	   	colNames:['Inv No','Date', 'Client', 'Amount','Tax','Total','Notes'],
+	   	colModel:[
+	   		{name:'id',index:'id', width:60, sorttype:"int"},
+	   		{name:'invdate',index:'invdate', width:90, sorttype:"date"},
+	   		{name:'name',index:'name', width:100},
+	   		{name:'amount',index:'amount', width:80, align:"right",sorttype:"float"},
+	   		{name:'tax',index:'tax', width:80, align:"right",sorttype:"float"},		
+	   		{name:'total',index:'total', width:80,align:"right",sorttype:"float"},		
+	   		{name:'note',index:'note', width:150, sortable:false}		
+	   	],
+	   	imgpath: gridimgpath,
+	   	multiselect: true,
+	   	caption: "Manipulating Array Data"
+	});
+	var mydata = [
+			{id:"1",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"2",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"3",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+			{id:"4",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"5",invdate:"2007-10-05",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"6",invdate:"2007-09-06",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+			{id:"7",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"8",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"9",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"}
+			];
+	for(var i=0;i<=mydata.length;i++)
+	   jQuery("#grid").addRowData(i+1,mydata[i]);
+	
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="plc-topo" class="ui-widget ui-widget-header ui-corner-top plc-topo"></div> 
+
+<div id="plc-menu" class="ui-widget ui-widget-header plc-menu"></div>
+
+<div id="plc-corpo" class="ui-widget ui-widget-content plc-corpo">
+   <table id="grid"></table>
+</div>
+
+<div id="plc-rodape" class="ui-widget ui-widget-header ui-corner-bottom plc-rodape"></div>
+
+</body>
+</html>

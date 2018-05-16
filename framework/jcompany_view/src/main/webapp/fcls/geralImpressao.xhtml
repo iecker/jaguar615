@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	<head>
+		<ui:insert name="plc-cabecalho">
+			<ui:include src="/WEB-INF/fcls-plc/geralHeaderPlc.xhtml" />
+		</ui:insert>
+		<link rel="StyleSheet" href="${request.contextPath}/res-plc/css/plc.impressao.css" type="text/css" charset="UTF-8" />
+	</head>
+	<body onLoad="executaImpressao(); plc.jq('ul.ui-tabs-nav' ).remove(); plc.jq('.plc-form-detalhe').css('border-style','double none none none'); window.print(document); " class="plc-impressao" bgcolor="#ffffff" text="#000000" link="#023264" alink="#023264" vlink="#023264">
+		
+		<script type="text/javascript">
+		//<![CDATA[
+		function trocaValElemento(el) {
+			var newVal = prompt("#{msgPlc['jcompany.novo.titulo']}","");
+			if (newVal != "" && newVal+"" != "null") {
+				el.innerHTML = "<h2>"+newVal+"</h2>";
+			}
+		}
+		if (window.opener && window.opener.objImpressao) {
+			document.title = window.opener.objImpressao.titulo; 
+		}
+
+		function ajustesFinos() {
+			
+			plc.jq(".plc-exclusionbox-button").hide();
+			plc.jq('.plc-form-tab').css('background','none');
+
+			plc.jq(".campo_impressao").each(function(i){
+			var campo = plc.jq(this).attr('id');
+			campo = campo.replace('impressao:','');
+			document.getElementById(campo).value = plc.jq(this).val();			
+			});
+
+			var campos = new Array();
+			var cont = 0; 
+			
+			plc.jq('input').each(function() {
+
+				var valida = true;
+				
+				for(i = 0; i < campos.length; i++) {
+					if(campos[i] == this.value){
+						valida = false;
+					}					
+				}
+				
+				if(valida){
+					plc.jq(this).replaceWith(plc.jq("<span />").text(this.value));
+					campos[cont] = this.value;
+					cont++;
+				}
+			});
+
+			plc.jq(".campo_impressao").remove();
+		}
+	
+		//]]>
+		</script>
+		
+		<table class="plc-tabela-impressao">
+			<tr>
+				<td width="20%" >
+					
+					<img class="plc-impressao-logo" src="#{request.contextPath}/res/midia/topo-logo-empresa.png" border="0" />
+					
+				</td>
+				<td width="70%" align="center">
+					<span id='titulo' onclick="trocaValElemento(this)" style="cursor:hand;pointer:hand;">
+						<script type="text/javascript">
+						//<![CDATA[
+							if (window.opener && window.opener.objImpressao) {
+								document.write("<h2>" +window.opener.objImpressao.titulo+ "</h2>");
+							} else {
+								document.write(document.title);
+							}
+						//]]>
+						</script>
+					</span>
+				</td>
+				<td width="10%" align="right" class="plc-impressao-emitido-em">
+					#{msgPlc['jcompany.emitido.em']}<br/>
+					<script type="text/javascript">document.write((new Date()).toLocaleString());</script>
+				</td>
+			</tr>
+		</table>
+		<script>
+			plc.jq(document).ready(function (){
+				//removendo as abas.
+				
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	<!-- xmlns:rich="http://richfaces.org/rich" -->  
+	<ui:composition> 
+		<plcf:tabela tituloChave="funcionario.mestre.titulo.comp" aoSair="comutaAbaFacelets(1)"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.nome"/>  
+					<plcf:texto id="nome" value="#{funcionario.nome}" ajudaChave="ajuda.nome"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataNascimento"/>  
+	 			<!--<rich:calendar value="#{funcionario.dataNascimento}" id="dataNascimento" 
+					cellWidth="24px" cellHeight="22px" style="width:22px" 
+					locale="pt_BR" />  -->	
+					
+					<plcf:data id="dataNascimento" value="#{funcionario.dataNascimento}" ajudaChave="ajuda.dataNascimento"/>
+				
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.cpf"/>  
+				<plcf:texto id="cpf" value="#{funcionario.cpf}" ajudaChave="ajuda.cpf"/> 
+				<!--   <rich:inplaceInput id="cpf" value="#{funcionario.cpf}" defaultLabel="Clique para adicionar o CPF" />--> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.email"/>  
+					<plcf:texto id="email" value="#{funcionario.email}" ajudaChave="ajuda.email"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.estadoCivil"/>  
+					<plcf:comboEstatico id="estadoCivil" value="#{funcionario.estadoCivil}" dominio="EstadoCivil" exibeBranco="S" ajudaChave="ajuda.estadoCivil"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.sexo"/>  
+					<plcf:radio id="sexo" value="#{funcionario.sexo}" dominio="Sexo" ajudaChave="ajuda.sexo"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.temCursoSuperior"/>  
+					<plcf:caixaMarcacao id="temCursoSuperior" value="#{funcionario.temCursoSuperior}" ajudaChave="ajuda.temCursoSuperior"/> 
+				</plcf:celula>  
+				<plcf:celula columnSpan="2"> 
+					<plcf:titulo tituloChave="label.unidadeOrganizacional"/>  
+					<plcf:vinculado id="unidadeOrganizacional" value="#{funcionario.unidadeOrganizacional}" propSelPop="unidadeOrganizacional" idExibe="S" idSomenteLeitura="N" autoRecuperacaoClasse="com.acme.rhdemoenterprise.entity.UnidadeOrganizacionalEntity" actionSel="unidadeOrganizacionalsel" modal="S" ajudaChave="ajuda.unidadeOrganizacional" onkeydown="selecionaPorTecla(event,this);"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula columnSpan="3"> 
+					<plcf:titulo tituloChave="label.observacao"/>  
+					<plcf:area id="observacao" value="#{funcionario.observacao}" numLinhas="3" colunas="80" ajudaChave="ajuda.observacao"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

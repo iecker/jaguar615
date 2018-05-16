@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.jcompany.ini</groupId>
+	<artifactId>jcompany_ini_parent</artifactId>
+	<version>6.1.5</version>
+	<name>jCompany INI</name>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>jcompany_ini_extension</module>	
+		<module>jcompany_ini_facelets_cdi</module>
+		<module>jcompany_ini_facelets_cdi_jboss</module>
+		<module>jcompany_ini_facelets_cdi_bridge</module>
+		<module>jcompany_ini_facelets_cdi_bridge_simple</module>
+		<module>jcompany_ini_facelets_cdi_modulo</module>	
+		<module>jcompany_ini_facelets_cdi_modulo_simple</module>
+		<module>jcompany_ini_facelets_cdi_simple</module>				
+		<module>jcompany_ini_modulo_negocio</module>
+	</modules>
+
+	<distributionManagement>
+		<repository>
+			<id>powerlogic</id>
+			<name>Repositorio Powerlogic</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powerreleases</url>
+		</repository>
+		<snapshotRepository>
+			<id>powerlogic</id>
+			<name>Repositorio de Snapshots</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powersnapshots</url>
+		</snapshotRepository>
+	</distributionManagement>	
+
+	<properties>
+	  	<modulo.jcompany>scm:svn:http://poseidon.powerlogic.com.br/repositorio/jcompany/trunk/jcompany/ini</modulo.jcompany>
+  		<finalName>${project.artifactId}</finalName>
+	</properties>
+
+</project> 

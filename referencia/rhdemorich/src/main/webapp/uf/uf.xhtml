@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:rich="http://richfaces.org/rich">  
+<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+<ui:define name="plc-corpo-formulario">
+	<div id="plc-corpo-formulario" class="plc-corpo-formulario plc-form-tabular">
+	<fieldset class="plc-fieldset">
+		<legend class="plc-fieldset-legend">Unidades da Federação</legend>
+	 	 <rich:dataTable id="itensPlc" var="uf" value="#{ufLista.itensPlc}" iterationStatusVar="i" >
+		   <f:facet name="header" >
+		       <rich:columnGroup >
+		       		<rich:column />		
+		 	 	  	<rich:column styleClass="celulaFormularioCaixaMarcacao">
+		 	 	  		<h:graphicImage alt="Exc." url="/res-plc/midia/form-lixeira.png" title="Para excluir, marque o(s) item(ns) e clique em gravar"/>
+		 	 	  	</rich:column>					
+					<rich:column><h:outputText value="#{msg['label.id']}" /></rich:column>			
+					<rich:column><h:outputText value="#{msg['label.nome']}" /></rich:column>				
+					<rich:column><h:outputText value="#{msg['label.sigla']}" /></rich:column>
+				</rich:columnGroup>
+			</f:facet>
+			<rich:column>
+				<h:outputText value="#{i.count}." styleClass="af_outputLabel" />
+			</rich:column>	
+	 		<rich:column styleClass="celulaFormularioCaixaMarcacao">
+				<h:selectBooleanCheckbox id="indExcPlc" value="#{uf.indExcPlc}" rendered="#{not empty uf.id}"  />
+				<h:link id="excPlc" styleClass="ico iExcluir" style="cursor:pointer;" rendered="#{empty uf.id}" 
+					title="Clique para remover linha" onclick="deleteItem('itensPlc','#{i.index}');"></h:link>
+			</rich:column>					
+			<rich:column >		
+				<h:inputText id="id" value="#{uf.id}" readonly="true" disabled="true" size="5" />										
+			</rich:column >			
+			<rich:column>
+				<h:inputText id="nome" value="#{uf.nome}" size="30" />
+			</rich:column>				
+			<rich:column>								
+				<h:inputText  id="sigla" value="#{uf.sigla}" size="2" />							
+			</rich:column>
+		</rich:dataTable>
+		<input type="collapse" class="inibeFoco" style="position: absolute; left:-100000px;" onfocus="cliqueBotaoPlc('botaoAcaoNovo')" />
+		</fieldset>
+	</div>
+</ui:define>
+</ui:composition>
+</html>

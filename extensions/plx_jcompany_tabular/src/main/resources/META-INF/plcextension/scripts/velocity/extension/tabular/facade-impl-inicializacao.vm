@@ -1,0 +1,28 @@
+package ${contexto.pacotebase}.facade.${contexto.casouso};
+
+import javax.inject.Inject;
+import com.powerlogic.jcompany.commons.PlcBaseContextVO;
+import com.powerlogic.jcompany.commons.config.qualifiers.QPlcDefault;
+import com.powerlogic.jcompany.model.annotation.PlcTransactional;
+import com.powerlogic.jcompany.commons.config.stereotypes.SPlcFacade;
+import com.powerlogic.jcompany.model.util.PlcIocModelUtil;
+
+import ${contexto.pacotebase}.model.${contexto.casouso}.${contexto.casoUsoC}Repository;
+
+/**
+ * Classe de Fachada gerada pelo extension plx_jcompany_tabular
+ */
+@SPlcFacade
+public class ${contexto.casoUsoC}FacadeImpl implements ${contexto.casoUsoC}Facade {
+	
+ 	@Inject @QPlcDefault 
+ 	protected PlcIocModelUtil iocModeloUtil;
+
+	@PlcTransactional
+	public void importRecords(PlcBaseContextVO context) {
+		${contexto.casoUsoC}Repository ${contexto.casouso}Repository = (${contexto.casoUsoC}Repository)iocModeloUtil.getRepository(${contexto.entidade}.class);
+		${contexto.casouso}Repository.importRecords(context);
+	}
+	
+}
+

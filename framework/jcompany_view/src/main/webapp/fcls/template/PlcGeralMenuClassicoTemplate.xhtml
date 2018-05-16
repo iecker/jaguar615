@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"	xmlns:ui="http://java.sun.com/jsf/facelets">
+	TODO Fazer menus expansiveis dinamicamente "classicoex" e "orientalex"
+	TODO Fazer chamada de seguranca para menu plc-menu-classico - refatorar funcao passando o menu	
+	<ui:composition>
+		<ui:include src="/fcls/javascript/menuJs.xhtml"/>
+		<div id="plc-menu-classico" class="ui-widget ui-widget-header plc-menu ui-state-active #{layoutPlc=='classico' or layoutPlc=='classicoex'?'plc-menu-classico':'plc-menu-oriental'}">
+			<ui:include src="/WEB-INF/fcls/geralMenu.xhtml"/>
+		</div>
+	</ui:composition>
+</html>

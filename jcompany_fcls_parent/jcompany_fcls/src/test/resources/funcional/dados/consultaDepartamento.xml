@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br-->
+<plc-dados logica="livre" xmlns="http://plc.powerlogic.com">
+  <palavra-reservada nome="LabelBotaoPesquisar" texto="Pesquisar"/>
+  <palavra-reservada nome="LabelBotaoNovo" texto="Novo"/>
+  <palavra-reservada nome="LabelBotaoGravar" texto="Gravar"/>
+  <palavra-reservada nome="LabelBotaoExcluir" texto="Excluir"/>
+  <palavra-reservada nome="LabelBotaoLimpar" texto="Limpar"/>
+  <palavra-reservada nome="TextoPosDelecao" texto="Registro excluído com sucesso."/>
+  <palavra-reservada nome="TextoPosGravacao" texto="Registro gravado com sucesso"/>
+  <palavra-reservada nome="UrlPaginaInicial" texto=""/>
+  <palavra-reservada nome="Login" texto="admin"/>
+  <palavra-reservada nome="Senha" texto="senha"/>
+  <generico>
+    <cenario-livre nome="Login">
+      <redirecionar url="/f/n/consultardepartamentocon"/>
+      <preencher>
+        <campo nome="j_username" tipo="input" label="Login:" valor="admin"/>
+        <campo nome="j_password" tipo="input" label="Senha:" valor="senha"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Ok"/>
+      <textos>
+        <texto valor="Consultar Departamento" aparece="true"/>
+      </textos>
+    </cenario-livre>
+    <cenario-livre nome="Validar Pesquisa">
+      <preencher>
+        <campo nome="id" tipo="input" label="Código" valor="22"/>
+      </preencher>
+      <clicar esperar="3"/>
+      <clicar tipo="botao" rotulo="Pesquisar" verificar="" esperar="2"/>
+      <textos>
+        <texto valor="jCompany" aparece="true"/>
+      </textos>
+      <clicar tipo="botao" rotulo="Limpar" esperar="3"/>
+      <verificar>
+        <campo nome="id" tipo="input" padrao="" label="Código"/>
+        <campo nome="descricao" tipo="input" padrao="" label="Descricao"/>
+        <campo nome="departamentoPai" tipo="vinculado" autorecuperacao="S" padrao=""/>
+        <campo nome="endereco_uf" tipo="select" padrao="[Selecione]" label="Uf"/>
+      </verificar>
+      <preencher>
+        <campo nome="endereco_uf" tipo="select" label="Uf" valor="Minas Gerais" padrao="[Selecione]"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Pesquisar" esperar="2"/>
+      <textos>
+        <texto valor="jCompany" aparece="true"/>
+        <texto valor="22" aparece="true"/>
+      </textos>
+    </cenario-livre>
+  </generico>
+  <programado>
+    <itemprogramado>
+      <nome>Classe de Teste</nome>
+      <classe>br.com.plc.jcompany_fcls.jcompanyqa.ConsultaDepartamentoWebTest</classe>
+    </itemprogramado>
+  </programado>
+</plc-dados>

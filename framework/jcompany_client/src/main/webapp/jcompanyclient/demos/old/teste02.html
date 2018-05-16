@@ -1,0 +1,113 @@
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<html>
+<head>
+
+
+
+<meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type" />
+<title>jCompany RIA App</title>
+
+<link href="../src/base/css/blueprint/0.9.1/blueprint/src/reset.css" media="screen" type="text/css" rel="stylesheet" />
+<!--<link href="../src/base/css/blueprint/0.9.1/blueprint/src/grid.css" media="screen" type="text/css" rel="stylesheet" /> -->
+<link href="../src/base/css/blueprint-plugins/liquidgrid/2008.10.06/liquid.css" media="screen" type="text/css" rel="stylesheet" />
+
+<link href="../src/base/css/ui/1.7.2/smoothness/jquery-ui-1.7.2.custom.css" media="screen" type="text/css" rel="stylesheet" />
+<link href="../src/base/js/jqueryplugins/jqGrid/3.5.2/css/ui.jqgrid.css" media="screen" type="text/css" rel="stylesheet" />
+<link href="../src/base/js/jqueryplugins/fg-menu/3.0/src/fg.menu.css" media="screen" type="text/css" rel="stylesheet" />
+
+<link href="../src/css/ui.jcompany_app.css" media="screen" type="text/css" rel="stylesheet" />
+<link href="../src/css/ui.jcompany_topo.css" media="screen" type="text/css" rel="stylesheet" />
+<link href="../src/css/ui.jcompany_menu.css" media="screen" type="text/css" rel="stylesheet" />
+
+<!-- <link href="../src/css/plc.geral.css" media="screen" type="text/css" rel="stylesheet" />  -->
+
+<script type="text/javascript" src="../src/base/js/jquery/1.3.2/jquery-1.3.2.min.js" />
+
+<script type="text/javascript" src="../src/base/js/jqueryui/1.7.2/jquery-ui-1.7.2.custom.min.js" />
+
+<script type="text/javascript" src="../src/base/js/jqueryplugins/fg-menu/3.0/src/fg.menu.js" />
+
+<script type="text/javascript" src="../src/ui/jquery.ui.plc_topo.js" />
+
+<script type="text/javascript" src="../src/ui/jquery.ui.plc_menu.js" />
+
+<script type="text/javascript" src="../src/ui/jquery.ui.plc_corpo.js" />
+
+<script type="text/javascript" src="../src/ui/jquery.ui.plc_rodape.js" />
+
+<script type="text/javascript" src="../src/ui/jquery.ui.plc_app.js" />
+
+
+<script type="text/javascript">
+/*
+jQuery(document).ready(function(){
+
+	jQuery("#my-app").jcompany_app({
+		empresaNome: "Empresa SA",
+		teste2: false
+	});
+	
+});
+*/
+</script>
+<body>
+
+<div id="my-app" class="container-100p">
+
+   <div id="plc-topo" class="ui-widget ui-widget-header ui-corner-top ui-jcompany_topo block">
+   
+      <div id="nome-empresa" class="column span-7 ui-jcompany_topo-empresa">
+         <a href="#"><img src="../src/images/topo-logo-empresa.png" alt="" /></a>
+      </div>
+      
+      <div id="titulo-pagina" class="ui-state-highlight ui-corner-all ui-jcompany_topo-titulo column span-9">Titulo</div>
+      
+      <div id="sigla-aplicacao" class="ui-jcompany_topo-aplicacao column span-7 last">SIGLA</div>
+      
+   </div>
+   
+   <div id="plc-menu" class="ui-widget ui-widget-header ui-jcompany_menu block">
+   
+     <div id="menu-1" class="column">
+        <a id="menu-preferencias" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all">Preferências</a>
+        <!-- <div >  -->
+        <ul class="fg-hidden">
+	       <li><a href="#">Gerar Esquema</a></li>
+	       <li><a href="#">Outro Item</a></li>
+        </ul>
+        <!-- </div>  -->
+     </div>  
+     <div id="menu-2" class="column">
+     <a id="menu-area-ti" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all">Área de TI</a>
+     <!-- <div >  -->
+        <ul class="fg-hidden">
+	       <li><a href="#">Gerar Esquema</a></li>
+	       <li><a href="#">Outro Item</a></li>
+        </ul>
+     <!-- </div>  -->     
+     </div>
+     
+   </div>
+   
+   <div id="plc-corpo" class="ui-widget ui-widget-content block">
+      <div class="span-24">
+      Corpo
+      </div>
+   </div>
+   
+   <div id="plc-rodape" class="ui-widget ui-widget-header ui-corner-bottom block">
+      <div class="span-24">
+      Rodapé
+      </div>   
+   </div>
+   
+ </div>
+   
+</body>
+</html>

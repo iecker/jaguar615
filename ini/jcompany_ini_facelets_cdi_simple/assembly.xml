@@ -1,0 +1,24 @@
+<assembly>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <directory>${basedir}/src/resources</directory>
+      <outputDirectory>/</outputDirectory>
+      <filtered>false</filtered>
+      <includes>
+		<include>**/*</include>
+      </includes>
+	 </fileSet>
+    <fileSet>
+      <directory>${basedir}/target/replace/src/resources</directory>
+      <outputDirectory>/</outputDirectory>
+      <filtered>false</filtered>
+      <includes>
+		<include>**/*</include>
+      </includes>
+	 </fileSet> 
+  </fileSets>
+</assembly>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition>
+		<fieldset class="plc-fieldset">
+			<legend class="plc-fieldset-legend">#{msg['municipioMB.titulo.detalhe']}</legend> 
+			<plcf:iteracao var="municipio" id="municipio" value="#{municipioMB.municipio}" columnClasses="celulaFormulario" headerClass="celulaFormulario">		
+				<h:column>
+					 <h:outputText value="#{rowCounter.index}." />
+				</h:column>
+				<h:column rendered="#{empty requestScope.visualizaDocumentoPlc}">
+					<f:facet name="header"><plcf:tituloExclusao>Exc.</plcf:tituloExclusao></f:facet>
+					<span class="celulaFormularioCaixaMarcacao">
+						<plcf:caixaExclusao id="indExcPlc" value="#{municipio.indExcPlc}" />
+					</span>	
+				</h:column>
+				<h:column>
+					<f:facet name="header"><span class="plc-title af_outputLabel">Nome</span></f:facet>
+					<plcf:texto id="nome" value="#{municipio.nome}" ajudaChave="ajuda.nome"/>
+				</h:column>
+				
+			</plcf:iteracao>
+		
+			<!-- plcf:tabela tituloChave="municipio.detalhe.2.titulo.comp"> 
+				<plcf:linha> 
+					<plcf:celula> 
+						<a href="#" class="plc-link-selection" title="#{jCompanyResources['jcompany.ajuda.todos']}" onclick="selecionaTodosCheckbox('municipioDet')">#{jCompanyResources["jcompany.todos"]}</a> 
+					</plcf:celula>  
+					<plcf:celula header="true" styleClass="cabecalho" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+						<plcf:tituloExclusao caminhoImagem="/res-plc/midia/form-lixeira.png">Exc.</plcf:tituloExclusao> 
+					</plcf:celula>  
+					<plcf:celula header="true" styleClass="cabecalho"> 
+						<plcf:titulo tituloChave="label.nome">Nome</plcf:titulo> 
+					</plcf:celula> 
+				</plcf:linha>  
+				<plcf:iteracao id="municipio" value="#{municipio.municipio}" var="var_municipio"> 
+					<plcf:linha> 
+						<plcf:celula styleClass="celulaFormularioContador"> 
+							<plcf:contador>1.</plcf:contador> 
+						</plcf:celula>  
+						<plcf:celula styleClass="celulaFormularioCaixaMarcacao" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+							<plcf:caixaExclusao id="indExcPlc"/> 
+						</plcf:celula>  
+						<plcf:celula> 
+							<plcf:texto id="nome" value="#{var_municipio.nome}" ajudaChave="ajuda.nome"/> 
+						</plcf:celula> 
+					</plcf:linha> 
+				</plcf:iteracao> 
+			</plcf:tabela--> 
+		</fieldset>	
+	</ui:composition> 
+</html>

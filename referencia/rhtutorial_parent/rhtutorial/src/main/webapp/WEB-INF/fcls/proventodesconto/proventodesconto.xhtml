@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+<ui:define name="plc-corpo-formulario">
+	<div id="plc-corpo-formulario" class="plc-corpo-formulario plc-form-simples">
+	<plcf:tabela tituloChave= "proventodesconto.titulo.arg"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.funcionario"/>  
+					<plcf:vinculado id="funcionario" 
+					value="#{proventodescontoArg.funcionario}"
+					propSelPop="funcionario"
+					autoRecuperacaoClasse="com.empresa.rhtutorial.entity.funcionario.FuncionarioEntity"
+					actionSel="funcionariosel"
+					ajuda="Informe Funcionario"
+					autoRecuperacaoPropriedade="cpf"
+					required="true"
+					onkeydown="selecionaPorTecla(event,this);"
+					tamanho="11"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.anoMesReferencia"/>
+					<plcf:data id="anoMesReferencia"
+						value="#{proventodescontoArg.anoMesReferencia}"
+						riaUsa="datemask(mask='M9/Y999')" 
+						ajudaChave="ajuda.anoMesReferencia"
+						required="true"
+						converter="converterDataMascaraPlc"/>
+					</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+		<fieldset class="plc-fieldset"> 
+					<legend class="plc-fieldset-legend">#{msg['proventodesconto.titulo.arg']}</legend>  
+					<h:dataTable var="uf" value="#{proventodesconto.itensPlc}" styleClass="plc-table-tabsel delimitador tabelaFormulario" columnClasses="celulaFormulario" headerClass="celulaFormulario"> 
+						<h:column> 
+							<h:outputText value="#{rowCounter.index}."/> 
+						</h:column>  
+						<h:column rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+							<f:facet name="header">
+								<plcf:tituloExclusao>Exc.</plcf:tituloExclusao>
+							</f:facet>  
+							<span class="celulaFormularioCaixaMarcacao">
+								<plcf:caixaExclusao id="indExcPlc" value="#{proventodesconto.indExcPlc}"/>
+							</span> 
+						</h:column>  
+						<h:column> 
+							<f:facet name="header">
+								<span class="plc-title af_outputLabel">Descricao</span>
+							</f:facet>  
+							<plcf:texto id="descricao" value="#{proventodesconto.descricao}" ajudaChave="ajuda.descricao"/> 
+						</h:column>  
+						<h:column> 
+							<f:facet name="header">
+								<span class="plc-title af_outputLabel">Natureza Provento Desconto</span>
+							</f:facet>  
+							<plcf:comboEstatico id="naturezaProventoDesconto" value="#{proventodesconto.naturezaProventoDesconto}" dominio="NaturezaProventoDesconto" exibeBranco="S" ajudaChave="ajuda.naturezaProventoDesconto"/> 
+						</h:column>  
+						<h:column> 
+							<f:facet name="header">
+								<span class="plc-title af_outputLabel">Valor</span>
+							</f:facet>  
+							<plcf:numerico id="valor" value="#{proventodesconto.valor}" ajudaChave="ajuda.valor"/>  
+						</h:column> 
+					</h:dataTable> 
+				</fieldset> 
+	</div>
+	</ui:define>
+</ui:composition> 
+</html>

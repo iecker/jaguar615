@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+
+	<!-- definição do parent do projeto -->
+	<parent>
+		<artifactId>jcompany</artifactId>
+		<groupId>powerlogic.jaguar</groupId>
+		<version>6.1.5</version>
+	</parent>
+
+	<!-- dados do projeto -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.jcompany</groupId>
+	<artifactId>jcompany_service</artifactId>
+	<name>jCompany Service</name>
+	<description>Um Service Layer para o JCompany</description>
+
+	<!-- Dependências -->
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.jaguar.oss_base_commons</groupId>
+			<artifactId>oss_base_commons</artifactId>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_controller</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_commons</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jboss.jaxbintros</groupId>
+			<artifactId>jboss-jaxb-intros</artifactId>
+		</dependency>
+
+		<!-- Para testes com container embeeded -->
+		<dependency>
+			<groupId>tjws</groupId>
+			<artifactId>webserver</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+</project>

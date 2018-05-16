@@ -1,0 +1,127 @@
+<style type="text/css">
+.resultado-pesquisa-template {
+	display: none;
+}
+</style>
+
+<!-- {CORPO-ACOES} -->
+<div id="plc-corpo-acao" class="plc-corpo-acao">
+	<div id="plc-corpo-acao-generico" class="plc-corpo-acao-generico">
+
+		<button title="Novo" onclick="plc.Bus.evento('plc.logica.paginas.usuario',function(){plc.Bus.evento('plc.acao.usuario.novo')})" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iNovo"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Novo</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Gravar" onclick="plc.Bus.evento('plc.acao.usuariosel.pesquisar')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iGravar"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Pesquisar</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+	</div>
+</div>
+
+<hr style="clear: both; border: none;"/>
+<!-- {CORPO-ACOES} -->
+
+<!-- {CORPO-FORMULARIO} -->
+<div id="plc-form-basico" class="plc-form-basico-topo">
+	<div id="usuarioSel">
+		<table cellspacing="0" cellpadding="0" border="0" summary="" class="plc-table-tabsel delimitador tabelaSelecao">
+			<tbody>
+				<tr class="ui-widget-header">
+					<th class="cabecalho">
+						<span class="af_outputLabel">C&oacute;d</span>
+					</th>
+					<th class="cabecalho">
+						<span class="af_outputLabel">Nome Completo</span>
+					</th>
+					<th class="cabecalho">
+						<span class="af_outputLabel">Numero Identidade</span>
+					</th>
+					<th class="cabecalho">
+						<span class="af_outputLabel">Login</span>
+					</th>
+					<th class="cabecalho">
+						<span>Data Nascimento</span>
+					</th>
+				</tr>
+				<tr class="resultado-pesquisa-template">
+					<td class="campo">
+						<span>#i</span>
+					</td>
+					<td class="campo">
+						<span>#nomeCompleto</span>
+					</td>
+					<td class="campo">
+						<span>#numeroIdentidade</span>
+					</td>
+					<td class="campo">
+						<span>#login</span>
+					</td>
+					<td class="campo">
+						<span>#dataNascimento</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!-- {/CORPO-FORMULARIO} -->
+
+<script type="text/javascript">
+
+plc.Bus.escutar('plc.acao.usuariosel.pesquisar', function(){
+	// Pede pela pesquisa.
+	plc.Bus.evento('plc.dados.usuariosel.pesquisar', {});
+});
+
+
+// Pega o template de resultado. 
+var tpl = $('table tr.resultado-pesquisa-template', $('#usuarioSel')).html();
+
+plc.Bus.escutar('plc.dados.usuariosel.pesquisar.sucesso', function(evento, lista){
+	// limpa as linhas existentes.
+	$('table tbody', $('#usuarioSel')).find('tr.linhapar, tr.linhaimpar').remove();
+	// Monta cada linha da resposta.
+	$.each(lista, function(i, item){
+		// Monta o Template.
+		var t = tpl.replace('#i', i + 1);
+		for (var p in item) {
+			t = t.replace('#'+p, item[p]);
+		}
+
+		var $tr = $('<tr class="ui-widget-default">'+ t +'</tr>');
+		
+		$tr.addClass(i % 2 == 0 ? 'linhapar': 'linhaimpar')
+		$tr.click(function(){// Dispara o evento de edição para a linha.
+			plc.Bus.evento('plc.logica.usuarioman', function(){
+				plc.Bus.evento('plc.acao.usuarioman.editar', item);
+			});
+		});
+		// Adiciona a linha.
+		$('table tbody', $('#usuarioSel')).append($tr);
+	});
+});
+
+</script>

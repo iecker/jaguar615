@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="profissional.mestre.titulo.comp"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.id"/>  
+					<plcf:oid id="id" ajudaChave="ajuda.id"/> 
+				</plcf:celula>
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.nome"/>  
+					<plcf:texto id="nome" value="#{profissional.nome}" ajudaChave="ajuda.nome"/> 
+				</plcf:celula>    
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataNascimento"/>  
+					<plcf:data id="dataNascimento" value="#{profissional.dataNascimento}" ajudaChave="ajuda.dataNascimento"/> 
+				</plcf:celula>  
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.cpf"/>  
+					<plcf:texto id="cpf" value="#{profissional.cpf}" ajudaChave="ajuda.cpf"/> 
+				</plcf:celula> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.email"/>  
+					<plcf:texto id="email" value="#{profissional.email}" ajudaChave="ajuda.email"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.estadoCivil"/>  
+					<plcf:comboEstatico id="estadoCivil" value="#{profissional.estadoCivil}" dominio="EstadoCivil" exibeBranco="S" ajudaChave="ajuda.estadoCivil"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.sexo"/>  
+					<plcf:radio id="sexo" value="#{profissional.sexo}" dominio="Sexo" ajudaChave="ajuda.sexo"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.temCursoSuperior"/>  
+					<plcf:caixaMarcacao id="temCursoSuperior" value="#{profissional.temCursoSuperior}" ajudaChave="ajuda.temCursoSuperior"/> 
+				</plcf:celula>  
+				<plcf:celula columnSpan="2"> 
+					<plcf:titulo tituloChave="label.departamento"/>  
+					<plcf:vinculado id="departamento" value="#{profissional.departamento}" propSelPop="departamento" idExibe="N" idSomenteLeitura="N" riaUsa="autocomplete(url='#{request.contextPath}/soa/service/autocomplete.departamentoman?q=descricao')" autoRecuperacaoClasse="br.com.plc.jcompany_fcls.entity.departamento.DepartamentoEntity" actionSel="departamentosel" modal="S" ajudaChave="ajuda.departamento" onkeydown="selecionaPorTecla(event,this);"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula columnSpan="2"> 
+					<plcf:titulo tituloChave="label.descricao"/>  
+					<plcf:area id="descricao" value="#{profissional.descricao}" numLinhas="10" colunas="50" ajudaChave="ajuda.descricao"/> 
+				</plcf:celula> 
+				<plcf:celula > 
+						<plct:fileAttach property="foto"/>
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

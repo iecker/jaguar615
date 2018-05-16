@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<dataset>
+	<UF ID_UF="1" DATA_ULT_ALTERACAO="2010-05-13" USUARIO_ULT_ALTERACAO="admin"
+		VERSAO="0" NOME="Minas Gerais" SIGLA="MG" />
+	<FUNCIONARIO ID_FUNCIONARIO="1" DATA_ULT_ALTERACAO="2010-05-13"
+		USUARIO_ULT_ALTERACAO="admin" VERSAO="0" CPF="22222222222"
+		DATA_NASCIMENTO="1978-05-20"  EMAIL="rogerio.baldini@gmail.com" 
+		BAIRRO="Funcionarios" CEP="1111111" LOGRADOURO="Paraiba"
+		NUMERO="1234" ID_UF="1" ESTADO_CIVIL="S"
+		NOME="Rogerio" OBSERVACAO="" SEXO="M"
+		SIT_HISTORICO_PLC="A" TEM_CURSO_SUPERIOR="1"
+		/>
+  <HISTORICO_PROFISSIONAL ID_HISTORICO_PROFISSIONAL="1" 
+  DATA_INICIO="2010-05-05" DATA_ULT_ALTERACAO="2010-05-13" DESCRICAO="dddddd" 
+  SALARIO="222222.22" USUARIO_ULT_ALTERACAO="admin" VERSAO="1" 
+  ID_FUNCIONARIO="1"/>
+		
+</dataset>

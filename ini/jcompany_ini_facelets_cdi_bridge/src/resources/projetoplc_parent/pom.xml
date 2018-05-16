@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+
+	<!-- definição do parent do projeto -->
+	<parent>
+		<groupId>powerlogic.jaguar.jcompany</groupId>
+		<artifactId>projeto-plc</artifactId>
+		<version>###VERSAO_JCOMPANY###</version>
+	</parent>
+
+	<!-- dados do projeto -->	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.app</groupId>
+	<artifactId>projeto-###NOME_PROJETO###</artifactId>
+	<version>1.0</version>
+	<name>projeto-###NOME_PROJETO###</name>
+	<packaging>pom</packaging>
+	
+	<!-- descricao do projeto -->
+	<description>Descrição do projeto</description>
+  	<url>www.meuprojeto.com.br</url>
+  	<issueManagement>
+    	<system>eprocess</system>
+    	<url>http://www.minhaempresa.com.br/eprj</url>
+  	</issueManagement>
+	<!-- dados da organização -->  	
+  	<organization>
+		<name>Minha Empresa</name>
+		<url>www.minhaempresa.com.br</url>
+  	</organization>
+  	<mailingLists>
+		<mailingList>
+			<name>Forum do Projeto</name>
+			<subscribe>http://www.minhaempresa.com.br/ecp/forum.do</subscribe>
+			<unsubscribe>http://www.minhaempresa.com.br/ecp/forum.do</unsubscribe>
+			<post>http://www.minhaempresa.com.br/ecp/forum.do</post>
+			<archive>http://www.minhaempresa.com.br/ecp/forum.do</archive>
+    	</mailingList>
+  	</mailingLists>
+  	<ciManagement>
+	 	<system>Sistema de Integração</system>
+     	<url>www.sisintegracao.com</url>
+    	<notifiers>
+     		<notifier>
+        		<type>email</type>
+        		<sendOnError>true</sendOnError>
+        		<sendOnFailure>true</sendOnFailure>
+        		<sendOnWarning>false</sendOnWarning>
+        		<address>test@address.com</address>
+     		</notifier>
+    	</notifiers>
+  	</ciManagement>
+  	<!-- desenvolvedores do projeto -->  	
+  	<developers>
+    	<developer>
+      		<id>admin</id>
+      		<name>Desenvolvedor 1</name>
+      		<email>desen1@desenvolvedor.com.br</email>
+      		<organization>Empresa</organization>
+      		<organizationUrl>www.minhaempresa.com.br</organizationUrl>
+      		<roles>
+				<role>desenvolvedor</role>
+	  		</roles>
+      		<timezone>-3</timezone>
+    	</developer>
+	</developers>
+  	<contributors>
+    	<contributor>
+      		<name>Contribuidor</name>
+      		<email>cont@contribuidor.com.br</email>
+      		<organization>MinhaEmpresa</organization>
+      		<organizationUrl>www.minhaempresa.com.br</organizationUrl>
+    	  	<roles>
+				<role>Contribuidor</role>
+	  		</roles>
+      		<timezone>-3</timezone>
+    	</contributor>
+  	</contributors>
+
+	<!-- módulos do projeto -->
+	<modules>
+		<!-- Descomentar para construir a bridge no mesmo build do projeto -->
+		<!-- 
+		<module>../jcompany_bridgefcls_parent/jcompany_bridgefcls</module>
+		<module>../jcompany_bridgefcls_parent/jcompany_bridgefcls_commons</module>
+		<module>../jcompany_bridgefcls_parent/jcompany_bridgefcls_model</module>
+		 -->
+		<module>###NOME_PROJETO###_commons</module>
+		<module>###NOME_PROJETO###_model</module>
+		<module>###NOME_PROJETO###</module>
+	</modules>
+
+	<dependencyManagement>
+		
+	</dependencyManagement>
+
+	<!-- Nome final do projeto -->		
+	<properties>
+		<finalName>###NOME_PROJETO###</finalName>
+	</properties>
+</project> 

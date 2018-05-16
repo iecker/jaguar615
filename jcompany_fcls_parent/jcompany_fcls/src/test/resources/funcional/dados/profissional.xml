@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br-->
+<plc-dados logica="livre" xmlns="http://plc.powerlogic.com">
+  <palavra-reservada nome="LabelBotaoPesquisar" texto="Pesquisar"/>
+  <palavra-reservada nome="LabelBotaoNovo" texto="Novo"/>
+  <palavra-reservada nome="LabelBotaoGravar" texto="Gravar"/>
+  <palavra-reservada nome="LabelBotaoExcluir" texto="Excluir"/>
+  <palavra-reservada nome="LabelBotaoLimpar" texto="Limpar"/>
+  <palavra-reservada nome="TextoPosDelecao" texto="Registro excluído com sucesso."/>
+  <palavra-reservada nome="TextoPosGravacao" texto="Registro gravado com sucesso"/>
+  <palavra-reservada nome="UrlPaginaInicial" texto=""/>
+  <palavra-reservada nome="Login" texto="admin"/>
+  <palavra-reservada nome="Senha" texto="senha"/>
+  <generico>
+    <cenario-livre nome="Login">
+      <redirecionar url="/f/n/profissionalmdt"/>
+      <preencher>
+        <campo nome="j_username" tipo="input" label="Login:" valor="admin"/>
+        <campo nome="j_password" tipo="input" valor="senha" label="Senha:"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Ok" esperar="1"/>
+      <textos>
+        <texto valor="Profissional" aparece="true"/>
+      </textos>
+    </cenario-livre>
+    <cenario-livre nome="Cadastrar Profissional">
+      <clicar esperar="4"/>
+      <preencher>
+        <campo nome="nome" tipo="input" label="Nome" valor="Profissional Teste"/>
+        <campo nome="dataNascimento" tipo="input" label="Data Nascimento" valor="05/01/1985"/>
+        <campo nome="cpf" tipo="input" label="CPF" valor="11111111111"/>
+        <campo nome="email" tipo="input" label="Email" valor="profissional@plc.com.br"/>
+        <campo nome="estadoCivil" tipo="select" label="Estado Civil" valor="Solteiro(a)" padrao="[Selecione]"/>
+        <campo nome="sexo" tipo="radio" label="Sexo" valor="0"/>
+        <campo nome="temCursoSuperior" tipo="checkbox" label="Tem Curso Superior" valor="on"/>
+        <campo nome="departamento" tipo="vinculado" autocomplete="S" valor="jCompany"/>
+        <campo nome="descricao" tipo="textarea" label="Descricao" valor="Teste descrição"/>
+        <campo nome="endereco_rua" tipo="input" label="Rua" valor="Rua Teste"/>
+        <campo nome="endereco_numero" tipo="input" label="Numero" valor="123"/>
+        <campo nome="endereco_bairro" tipo="input" label="Bairro" valor="Funcionarios"/>
+        <campo nome="endereco_cep" tipo="input" label="Cep" valor="12345678"/>
+        <campo nome="endereco_uf" tipo="select" label="Uf" valor="Minas Gerais" padrao="[Selecione]"/>
+      </preencher>
+      <clicar tipo="aba" rotulo="DependenteProfissional" esperar="3"/>
+      <preencher>
+        <campo nome="dependenteProfissional[0].nome" tipo="input" label="Nome" valor="Depi 1"/>
+        <campo nome="dependenteProfissional[0].sexo" tipo="radio" label="Sexo" valor="0"/>
+        <campo nome="dependenteProfissional[1].nome" tipo="input" label="Nome" valor="Depi 2"/>
+        <campo nome="dependenteProfissional[1].sexo" tipo="radio" label="Sexo" valor="1"/>
+      </preencher>
+      <clicar tipo="aba" rotulo="HistoricoProfissional" esperar="2"/>
+      <preencher>
+        <campo nome="historicoProfissional[0].descricao" tipo="input" label="Descricao" valor="Descricao 1"/>
+        <campo nome="historicoProfissional[0].departamento" tipo="input" label="Departamento" valor="22"  />
+        <campo nome="historicoProfissional[0].dataInicio" tipo="input" label="Data Inicio" valor="14/06/2010"/>
+        <campo nome="historicoProfissional[0].salario" tipo="input" label="Salario" valor="2.000,00"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso"/>
+    </cenario-livre>
+    <cenario-livre nome="Pesquisar Profissional">
+      <redirecionar url="/f/n/profissionalsel"/>
+      <clicar esperar="3"/>
+      <clicar tipo="botao" rotulo="Pesquisar" esperar="2"/>
+      <clicar tipo="xpath" rotulo="//tr[@id='1']/td[2]" esperar="1"/>
+    </cenario-livre>
+    <cenario-livre nome="Editar Profissional">
+      <verificar>
+        <campo nome="id" tipo="input" padrao="1" label="Código"/>
+        <campo nome="nome" tipo="input" padrao="Profissional Teste" label="Nome"/>
+        <campo nome="dataNascimento" tipo="input" padrao="05/01/1985" label="Data Nascimento"/>
+        <campo nome="cpf" tipo="input" padrao="11111111111" label="CPF"/>
+        <campo nome="email" tipo="input" padrao="profissional@plc.com.br" label="Email"/>
+        <campo nome="estadoCivil" tipo="select" padrao="Solteiro(a)" label="Estado Civil"/>
+        <campo nome="sexo" tipo="radio" padrao="0" label="Sexo"/>
+        <campo nome="temCursoSuperior" tipo="checkbox" padrao="on" label="Tem Curso Superior"/>
+        <campo nome="descricao" tipo="textarea" padrao="Teste descrição" label="Descricao"/>
+        <campo nome="endereco_rua" tipo="input" padrao="Rua Teste" label="Rua"/>
+        <campo nome="endereco_numero" tipo="input" padrao="123" label="Numero"/>
+        <campo nome="endereco_bairro" tipo="input" padrao="Funcionarios" label="Bairro"/>
+        <campo nome="endereco_cep" tipo="input" padrao="12345678" label="Cep"/>
+        <campo nome="endereco_uf" tipo="select" padrao="Minas Gerais" label="Uf"/>
+        <campo nome="lookup_corpo:formulario:departamento" tipo="vinculado-autocomplete" autocomplete="S" padrao="jCompany"/>
+      </verificar>
+      <clicar tipo="aba" rotulo="DependenteProfissional" esperar="2"/>
+      <verificar>
+        <campo nome="dependenteProfissional[0].nome" tipo="input" padrao="Depi 1" label="Nome"/>
+        <campo nome="dependenteProfissional[0].sexo" tipo="radio" padrao="0" label="Sexo"/>
+        <campo nome="dependenteProfissional[1].nome" tipo="input" padrao="Depi 2" label="Nome"/>
+        <campo nome="dependenteProfissional[1].sexo" tipo="radio" padrao="1" label="Sexo"/>
+      </verificar>
+      <clicar tipo="aba" rotulo="HistoricoProfissional"/>
+      <verificar>
+        <campo nome="historicoProfissional[0].descricao" tipo="input" padrao="Descricao 1" label="Descricao"/>
+        <campo nome="historicoProfissional[0].departamento" tipo="input" padrao="22" label="Departamento" />
+        <campo nome="historicoProfissional[0].dataInicio" tipo="input" padrao="14/06/2010" label="Data Inicio"/>
+        <campo nome="historicoProfissional[0].salario" tipo="input" padrao="2.000,00" label="Salario"/>
+      </verificar>
+      <preencher>
+        <campo nome="temCursoSuperior" tipo="checkbox" label="Tem Curso Superior" valor="off"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Funcionário deve ter curso superior e ter último salário maior que 1.000."/>
+      <preencher>
+        <campo nome="temCursoSuperior" tipo="checkbox" label="Tem Curso Superior" valor="on"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso"/>
+      <preencher>
+        <campo nome="dataNascimento" tipo="input" label="Data Nascimento" valor="05/01/2010"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Idade deve ser superior a 18 anos."/>
+      <preencher>
+        <campo nome="dataNascimento" tipo="input" label="Data Nascimento" valor="05/01/1985"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso"/>
+    </cenario-livre>
+    <cenario-livre nome="Inserir Arquivo Anexado">
+      <preencher>
+        <campo nome="arquivoAnexado" tipo="input" valor="/home/hudson/arquivos_teste/teste.txt"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso"/>
+    </cenario-livre>
+    <cenario-livre nome="Clonar Profissional">
+      <clicar tipo="botao" rotulo="Clonar" verificar="Clonagem realizada com sucesso. Altere as informações e submeta a gravação para criar um novo registro. "/>
+      <preencher>
+        <campo nome="nome" tipo="input" label="Nome" valor="Profissional Clonado"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Não deve existir CPF duplicado"/>
+      <preencher>
+        <campo nome="cpf" tipo="input" label="CPF" valor="22222222222"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso"/>
+    </cenario-livre>
+    <cenario-livre nome="Excluir Profissional Clonado">
+      <clicar tipo="botao" rotulo="Excluir"/>
+      <clicar tipo="confirmacao" rotulo="Tem certeza que deseja excluir?" verificar="Registro excluído com sucesso"/>
+    </cenario-livre>
+    <cenario-livre nome="Pesquisar Profissional">
+      <redirecionar url="/f/n/profissionalsel"/>
+      <clicar esperar="3"/>
+      <clicar tipo="botao" rotulo="Pesquisar" esperar="2"/>
+      <clicar tipo="xpath" rotulo="//tr[@id='1']/td[2]" esperar="4"/>
+    </cenario-livre>
+    
+    <cenario-livre nome="Validação nos detalhes">
+      <clicar tipo="aba" rotulo="DependenteProfissional" esperar="2"/>
+      <clicar tipo="botao" rotulo="Novo" esperar="3"/>
+      <preencher>
+        <campo nome="dependenteProfissional[0].indExcPlc" tipo="checkbox" label="?" valor="on"/>
+        <campo nome="dependenteProfissional[1].nome" tipo="input" label="Nome" valor="Alterado"/>
+        <campo nome="dependenteProfissional[2].nome" tipo="input" label="Nome" valor="Novo"/>
+        <campo nome="dependenteProfissional[2].sexo" tipo="radio" label="Sexo" valor="0"/>
+      </preencher>
+      
+      <clicar tipo="botao" rotulo="Gravar" />
+      <clicar tipo="confirmacao" rotulo="Tem certeza de que deseja excluir os registros selecionados?" verificar="Registro gravado com sucesso. Detalhes e/ou SubDetalhes foram excluídos."/>
+      
+      <verificar>
+        <campo nome="dependenteProfissional[0].nome" tipo="input" padrao="Alterado" label="Nome"/>
+        <campo nome="dependenteProfissional[0].sexo" tipo="radio" padrao="1" label="Sexo"/>
+        <campo nome="dependenteProfissional[1].nome" tipo="input" padrao="Novo" label="Nome"/>
+        <campo nome="dependenteProfissional[1].sexo" tipo="radio" padrao="0" label="Sexo"/>
+      </verificar>
+      <clicar tipo="aba" rotulo="HistoricoProfissional" esperar="2"/>
+      <preencher>
+        <campo nome="historicoProfissional[0].descricao" tipo="input" label="Descricao" valor=""/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Descrição é obrigatório(a) na linha 1."/>
+      <preencher>
+        <campo nome="historicoProfissional[0].descricao" tipo="input" label="Descricao" valor="teste"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso"/>
+    </cenario-livre>
+    <cenario-livre nome="Excluir Profissional">
+      <clicar tipo="botao" rotulo="Excluir"/>
+      <clicar tipo="confirmacao" rotulo="Tem certeza que deseja excluir?" verificar="Registro excluído com sucesso"/>
+    </cenario-livre>
+  </generico>
+  <programado>
+    <itemprogramado>
+      <nome>Classe de Teste</nome>
+      <classe>br.com.plc.jcompany_fcls.jcompanyqa.ProfissionalWebTest</classe>
+    </itemprogramado>
+  </programado>
+</plc-dados>

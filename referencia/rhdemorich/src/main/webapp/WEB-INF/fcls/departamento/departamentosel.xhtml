@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf">  
+<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml"> 
+<ui:define name="plc-corpo-formulario">
+<div id="plc-form-basico">
+<div id="departamentoArg" class="plc-form-basico-topo">
+	<fieldset class="plc-fieldset">
+		<legend class="plc-fieldset-legend">Informe argumentos e clique em Pesquisar</legend>
+		<h:panelGrid columns="3" styleClass="rf-dt">
+	   		<h:outputLabel value="Cód." for="id"/>
+			<h:outputLabel value="Nome"  for="nome"/>
+			<h:column  />
+			<h:inputText id="id" value="#{departamento.id}" size="6" maxlength="6"/>
+			<h:inputText id="nome" value="#{departamento.nome}" size="40" maxlength="60"/>
+			<h:column  />
+		</h:panelGrid> 
+	</fieldset>
+</div>
+<div id="departamentoSel" class="plc-form-basico-sel">
+		<script type="text/javascript">//<![CDATA[
+		jQuery(function(){
+			plc.criaSelecaoJqGrid('plc-grid', 'plc-grid-navegador', {
+				evento: '${param.evento}',
+				modoJanelaPlc: '${param.modoJanelaPlc}'
+				,nomeLogica: 'departamento'
+				,propAgregada: 'departamento'
+				,jqGrid: {
+					caption:'Clique em um registro da lista para editar'		
+					,colNames:['Nome','Cód.','Rua','Número']
+					,colModel:[{name: 'nome',index: 'nome'},  
+								{name: 'id',index: 'id'},
+								{name: 'endereco.rua',index: 'endereco.rua'},
+								{name: 'endereco.numero',index: 'endereco.numero'}																																																					]
+				}																														
+				,urlEdicao: '#{request.contextPath}/f/n/departamentoman' 		});
+		});
+	//]]> 
+	</script>  
+	<table id="plc-grid" width="100%" class="scroll" cellpadding="0" cellspacing="0"/>  
+	<div id="plc-grid-navegador" class="scroll" style="text-align:center;"/> 
+</div>
+</div>
+</ui:define>
+</ui:composition> 
+</html>

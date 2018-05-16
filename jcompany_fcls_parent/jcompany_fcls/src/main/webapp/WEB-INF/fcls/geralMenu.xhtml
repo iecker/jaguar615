@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:plcf="http://www.powerlogic.com.br/plcf">
+		<ul>
+			<li>
+				<a>
+					<span class="ico iHome"/>
+					<label jsfc="plcf:titulo" tituloChave="app.m.inicial">Principal</label>
+				</a>
+				<ul class="ui-state-hover">
+					<li>
+						<a href="#">
+							<label jsfc="plcf:titulo" tituloChave="menu.tabular.titulo">Tabular</label>
+						</a>
+						<ul class="plc-menu-base ui-widget-header">
+							<li>
+								<a href="#{request.contextPath}/f/n/uf">
+									<label jsfc="plcf:titulo" tituloChave="menu.uflogica.titulo">Unidade
+				Federativa Lógica</label>
+								</a>
+							</li>
+
+						<li>
+								<a href="#{request.contextPath}/f/pages/uf/ufFisica.xhtml">
+									<label jsfc="plcf:titulo" tituloChave="menu.uffisica.titulo">Unidade
+				Federativa Física</label>
+								</a>
+							</li>	
+							<li>
+								<a href="#{request.contextPath}/f/n/categoriatab">
+									<label jsfc="plcf:titulo" tituloChave="menu.categoria.titulo">Categoria</label>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<label jsfc="plcf:titulo" tituloChave="menu.crud.titulo">Crud</label>
+						</a>
+						<ul class="plc-menu-base ui-widget-header">
+							<li>
+								<a href="#{request.contextPath}/f/n/departamentoman">
+									<label jsfc="plcf:titulo" tituloChave="menu.departamento.titulo">Departamento</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/tipodocumento">
+									<label jsfc="plcf:titulo" tituloChave="menu.tipodocumento.titulo">Tipo
+				Documento</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/usuario">
+									<label jsfc="plcf:titulo" tituloChave="menu.usuario.titulo">Usuário</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/grupoman">
+									<label jsfc="plcf:titulo" tituloChave="menu.grupo.titulo">Mantem Grupo</label>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<label jsfc="plcf:titulo" tituloChave="menu.mdt.titulo">Mestre
+			Detalhe</label>
+						</a>
+						<ul class="plc-menu-base ui-widget-header">
+							<li>
+								<a href="#{request.contextPath}/f/n/funcionariomdt">
+									<label jsfc="plcf:titulo" tituloChave="menu.funcionario.titulo">Funcionário</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/candidatomdt">
+									<label jsfc="plcf:titulo" tituloChave="menu.candidato.titulo">Candidato</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/albummdt">
+									<label jsfc="plcf:titulo" tituloChave="menu.album.titulo">Album</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/profissionalmdt">
+									<label jsfc="plcf:titulo" tituloChave="menu.profissional.titulo">Profissional</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/clientemdt">
+									<label jsfc="plcf:titulo" tituloChave="menu.cliente.titulo">Mantem Cliente com Grupo</label>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<label jsfc="plcf:titulo" tituloChave="menu.mdtSubdetalhe.titulo">Mestre
+			Detalhe Subdetalhe</label>
+						</a>
+						<ul class="plc-menu-base ui-widget-header">
+							<li>
+								<a href="#{request.contextPath}/f/n/empresamds">
+									<label jsfc="plcf:titulo" tituloChave="menu.empresa.titulo">Empresa</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/manutencaoempresamds">
+									<label jsfc="plcf:titulo" tituloChave="menu.manutencaoempresa.titulo">Manutenção
+				de Empresa</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/pedidomds">
+									<label jsfc="plcf:titulo" tituloChave="menu.pedido.titulo">Pedido</label>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<label jsfc="plcf:titulo" tituloChave="menu.mdtPaginado.titulo">Mestre
+			Detalhe Paginado</label>
+						</a>
+						<ul class="plc-menu-base ui-widget-header">
+							<li>
+								<a href="#{request.contextPath}/f/n/colaboradormdt">
+									<label jsfc="plcf:titulo" tituloChave="menu.colaborador.titulo">Colaborador</label>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<label jsfc="plcf:titulo" tituloChave="menu.consultas.titulo">Consultas</label>
+						</a>
+						<ul class="plc-menu-base ui-widget-header">
+							<li>
+								<a href="#{request.contextPath}/f/n/consultardepartamentocon">
+									<label jsfc="plcf:titulo" tituloChave="menu.consultardepartamento.titulo">Consultar	Departamento</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/consultafuncionariosmd">
+									<label jsfc="plcf:titulo" tituloChave="menu.consultafuncionario.titulo">Consultar Funcionário</label>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<label jsfc="plcf:titulo" tituloChave="menu.preferencia.titulo">Preferência</label>
+						</a>
+						<ul class="plc-menu-base ui-widget-header">
+							<li>
+								<a href="#{request.contextPath}/f/n/preferenciausu">
+									<label jsfc="plcf:titulo" tituloChave="menu.preferencia.titulo">Preferência Usuário</label>
+								</a>
+							</li>
+							<li>
+								<a href="#{request.contextPath}/f/n/preferenciaaplicacaoapl">
+									<label jsfc="plcf:titulo" tituloChave="menu.preferenciaaplicacao.titulo">Preferência Aplicação</label>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/proventodescontoctb">
+							<label jsfc="plcf:titulo" tituloChave="menu.proventodesconto.titulo">Provento Desconto</label>
+						</a>
+					</li>
+
+				<li>
+						<a href="#">
+							<label jsfc="plcf:titulo" tituloChave="menu.extensionmatrix.titulo">Extension Matrix</label>
+						</a>
+						<ul class="plc-menu-base ui-widget-header">
+							<li>
+						<a href="#{request.contextPath}/f/n/casotestetab">
+							<label jsfc="plcf:titulo" tituloChave="menu.teste.titulo">Manter Caso Teste</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/suitetab">
+							<label jsfc="plcf:titulo" tituloChave="menu.suite.titulo">Manter Suíte</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/suitecasotesteman">
+							<label jsfc="plcf:titulo" tituloChave="menu.suiteteste.titulo">Manter Suite Caso Teste</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/suitecasotestematrixmmm">
+							<label jsfc="plcf:titulo" tituloChave="menu.suitecasotestematrix.titulo">Suite Caso Teste Matrix</label>
+						</a>
+					</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuAjuda.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuPrefLang.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuAreaTecnica.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuDinamico.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuThemeSwitcher.xhtml"/>
+		</ul>
+	</ui:composition>

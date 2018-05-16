@@ -1,0 +1,137 @@
+Passo a passo de como utilizar o extension manytomany_dataentry_matrix.
+
+Em alguns pontos coloquei nome genérico e em outros coloquei entidades como exemplo.
+
+EntidadeA = Funcionario
+EntidadeB = Habilidade
+EntidadeAssociativa = MatrizHabilidade
+
+1- No pom do projeto principal colocar as configurações
+
+	- Essa configuração copia os artefatos do plugin para a aplicação no momento do build
+
+	<build>
+		<!-- ... -->
+		<plugins>
+			<!-- ... -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>powerlogic.jaguar.jcompany.extension</groupId>
+									<artifactId>plx_jcompany_manytomany_dataentry_matrix</artifactId>
+									<version>6.1.4</version>									
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/${project.name}</outputDirectory>
+									<includes>**/*.xhtml,**/*.js,**/*.css,**/*.gif</includes>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	
+2-Colocar a dependencia no projeto commons
+
+				<dependency>
+					<groupId>powerlogic.jaguar.jcompany.extension</groupId>
+					<artifactId>plx_jcompany_manytomany_dataentry_matrix</artifactId>
+					<version>6.1.4</version>
+				</dependency>
+
+3- Gerar a entidade e caso de uso A (Pode ser tabular, crud ...)
+
+4- Gerar a entidade e caso de uso B (Pode ser tabular, crud ...)
+
+5- Gerar a entidade e o mapeamento Associativa contendo a entidade A e a entidade B e uma propriedade Transiente OpcaoMatrix
+
+	@Transient
+	private OpcaoMatrix opcaoMatrix = OpcaoMatrix.TODOS;			
+
+6- 	Gerar o caso de uso da entidade Associativa como CRUD e marcar as duas entidades como argumentos de seleção, podendo ser combo, vinculado...
+
+
+########################## A PARTIR DESSE PONTO COMEÇAM OS AJUSTES MANUAIS ##############################
+
+
+7- Adicionar em ApplicationResources_pt_BR.properties
+
+label.opcaoMatrix=Opcao Matrix
+ajuda.opcaoMatrix=Selecione a opção de seleção Matrix
+opcaoMatrix.TODOS=Todos
+opcaoMatrix.MARCADOS=Somente Marcados
+opcaoMatrix.DESMARCADOS=Somente Desmarcados
+	
+8- Na action da entidade associativa adicionar
+
+@PlcConfigManyToManyMatrix(classeAssociativa = <classe_entidade_associativa> , 
+		classeEntidade1 = <classe_entidade_A> , 
+		classeEntidade2 = <classe_entidade_B>, 
+		propriedadeEntidade1 = "<nome_propriedade_entidade_A_na_entidade_associativa", 
+		propriedadeEntidade2 = "<nome_propriedade_entidade_B_na_entidade_associativa"
+)
+	
+9- na pasta ...webapp/WEB-INF/fcls/<pasta_caso_de_uso_associativo> 
+
+	9.1- Apagar o <caso_de_uso>Man.xhtml.
+	9.2- Alterar a linha do artefato <caso_de_uso>.xhtml para
+	
+	<ui:composition template="/fcls/client/formularioMmmPlc.xhtml"> 
+
+	9.3- Renomear o artefato <caso_de_uso>sel.xhtml para <caso_de_uso>MmmArg.xhtml
+	9.4- Duplicar o novo arquivo <caso_de_uso>MmmArg.xhtml e chamá-lo de <caso_de_uso>MmmArg2.xhtml
+	
+	9.5- No arquivo ...Arg.xhtml apagar a celula (<plcf:celula> ) que contém o argumento da entidade B e a seleção.
+	9.6- No arquivo ...Arg2.xhtml apagar a celula (<plcf:celula> ) que contém o argumento da entidade A e a seleção.
+	
+	Observação: nos passos 9.5 e 9.6 o usuário pode alterar para fazer pesquisa por outras propriedades da entidade, mas esse ajuste é manual
+	Se o usuário quiser pesquisar por algum atributo da entidade A ou B, lembrar de inicializar os objetos no construtor da entidade associativa
+
+10- Alterar o link no geral menu
+
+	<a href="#{request.contextPath}/f/n/<caso_de_uso>mmm">
+	
+11- Alterar o arquivo <classe_entidade_associativa>Entity.java, adicionando a (deixei os nomes para facilitar o entendimento)
+
+
+	@NamedQuery(name="MatrizHabilidadeEntity.querySelDesmarcados", 
+							query=" select obj as funcionario, obj1 as habilidade " + 
+								  " from FuncionarioEntity obj, HabilidadeEntity obj1 " +
+								  " where obj1.id in ( " +
+								  " 	select obj2.habilidade.id " +
+								  " 	from MatrizHabilidadeEntity obj2 " +
+								  " 	where obj2.funcionario.id = obj.id) " )
+
+
+
+12- Criar no DAO da entidade associativa o método (atenção aos filtros)
+
+
+	@PlcQuery("querySelDesmarcados")
+   	public native List<MatrizHabilidadeEntity> findList(
+   			PlcBaseContextVO context,
+		   @PlcQueryParameter(name = "funcionario", expression=" obj = :funcionario") Funcionario funcionario,
+		   @PlcQueryParameter(name = "habilidade", expression=" obj1 = :habilidade") Habilidade habilidade,
+		   @PlcQueryOrderBy String dynamicOrderByPlc,
+		   @PlcQueryFirstLine Integer primeiraLinhaPlc, 
+		   @PlcQueryLineAmount Integer numeroLinhasPlc		   
+		  );
+
+
+13- Alterar o arquivo package-info.java do pacote com.powerlogic.jcompany.config.app adicionar o Enum OpcaoMatrix como classe de domínio discreto da aplicação
+
+classesDiscreteDomain={com.powerlogic.jcompany.extension.manytomanymatrix.entity.OpcaoMatrix.class}
+	

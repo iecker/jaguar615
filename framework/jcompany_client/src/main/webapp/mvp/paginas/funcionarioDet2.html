@@ -1,0 +1,170 @@
+<div id="plc-corpo-acao" class="plc-corpo-acao">
+	<div id="plc-corpo-acao-generico" class="plc-corpo-acao-generico">
+
+		<button title="Novo" onclick="plc.Bus.evento('plc.acao.usuarioman.novo')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iNovo"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Novo</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Gravar" onclick="plc.Bus.evento('plc.acao.usuarioman.gravar')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iGravar"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Gravar</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Excluir" onclick="plc.Bus.evento('plc.acao.usuarioman.excluir')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iExcluir"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Excluir</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Abrir" onclick="plc.Bus.evento('plc.logica.usuariosel')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iAbrir"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Abrir</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+	</div>
+</div>
+<hr style="clear: both; border: none;"/>
+<!-- {CORPO-ACOES} -->
+
+<!-- {CORPO-FORMULARIO} -->
+<div id="plc-form-basico" class="plc-form-basico-topo">
+
+<div class="plc-form-tab plc-form-detalhe ui-tabs-panel ui-widget-content ui-corner-bottom" id="funcionarioDet2">
+	<table cellspacing="0" cellpadding="0" border="0" summary="" class="plc-table-tabsel delimitador tabelaFormulario">
+		<tbody>
+			<tr>
+				<th class="cabecalho"></th>
+				<th class="cabecalho">
+					<img src="/jcompany_fcls/res-plc/midia/form-lixeira.png" alt="" />
+				</th>
+				<th class="cabecalho">
+					<span class="af_outputLabel">Cód</span>
+				</th>
+				<th class="cabecalho">
+					<span class="af_outputLabel">Nome</span>
+				</th>
+			</tr>
+			<tr>
+				<td class="celulaFormularioContador">
+					<span class="af_outputLabel">1.</span>
+				</td>
+				<td class="celulaFormularioCaixaMarcacao"></td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText p_AFDisabled">
+						<input type="text" maxlength="8" size="8" class="af_inputText_content" disabled="" title="Cód" name="corpo:formulario:dependente:0:funcionario_id" id="corpo:formulario:dependente:0:funcionario_id" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:dependente:0:funcionario_id">Cód</label>
+					</span>
+				</td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText">
+						<input type="text" maxlength="40" size="40" class="af_inputText_content" title="Nome" name="corpo:formulario:dependente:0:nome" id="corpo:formulario:dependente:0:nome" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:dependente:0:nome">Nome</label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="celulaFormularioContador">
+					<span class="af_outputLabel">2.</span>
+				</td>
+				<td class="celulaFormularioCaixaMarcacao"></td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText p_AFDisabled">
+						<input type="text" maxlength="8" size="8" class="af_inputText_content" disabled="" title="Cód" name="corpo:formulario:dependente:1:funcionario_id" id="corpo:formulario:dependente:1:funcionario_id" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:dependente:1:funcionario_id">Cód</label>
+					</span>
+				</td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText">
+						<input type="text" maxlength="40" size="40" class="af_inputText_content" title="Nome" name="corpo:formulario:dependente:1:nome" id="corpo:formulario:dependente:1:nome" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:dependente:1:nome">Nome</label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="celulaFormularioContador">
+					<span class="af_outputLabel">3.</span>
+				</td>
+				<td class="celulaFormularioCaixaMarcacao"></td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText p_AFDisabled">
+						<input type="text" maxlength="8" size="8" class="af_inputText_content" disabled="" title="Cód" name="corpo:formulario:dependente:2:funcionario_id" id="corpo:formulario:dependente:2:funcionario_id" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:dependente:2:funcionario_id">Cód</label>
+					</span>
+				</td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText">
+						<input type="text" maxlength="40" size="40" class="af_inputText_content" title="Nome" name="corpo:formulario:dependente:2:nome" id="corpo:formulario:dependente:2:nome" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:dependente:2:nome">Nome</label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="celulaFormularioContador">
+					<span class="af_outputLabel">4.</span>
+				</td>
+				<td class="celulaFormularioCaixaMarcacao"></td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText p_AFDisabled">
+						<input type="text" maxlength="8" size="8" class="af_inputText_content" disabled="" title="Cód" name="corpo:formulario:dependente:3:funcionario_id" id="corpo:formulario:dependente:3:funcionario_id" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:dependente:3:funcionario_id">Cód</label>
+					</span>
+				</td>
+				<td class="celulaFormulario">
+					<span style="float: left;" class="af_inputText">
+						<input type="text" maxlength="40" size="40" class="af_inputText_content" title="Nome" name="corpo:formulario:dependente:3:nome" id="corpo:formulario:dependente:3:nome" />
+						<label class="p_OraHiddenLabel" for="corpo:formulario:dependente:3:nome">Nome</label>
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table cellspacing="0" cellpadding="0" style="table-layout: fixed; height: 0px; text-align: right;">
+		<tbody>
+			<tr>
+				<td style="height: 0px;">
+					<input type="text" style="height: 0pt; width: 0pt; margin: 0pt; padding: 0pt; border: 0pt none;" class="inibeFoco" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>

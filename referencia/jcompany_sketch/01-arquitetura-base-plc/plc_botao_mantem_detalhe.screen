@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Button" id="6" x="306" y="5" text="{open} Abrir" measuredWidth="86" measuredHeight="34">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="7" x="408" y="14" measuredWidth="16" measuredHeight="16" icon="link (small)"/>
+  <widgets xsi:type="model:Button" id="9" x="8" y="5" width="185" text="{eye} Vis. Documento" measuredWidth="185" measuredHeight="34">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="1" x="200" y="5" text="{save} Gravar" measuredWidth="99" measuredHeight="34">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="4" x="440" y="14" measuredWidth="16" measuredHeight="16" icon="print (small)"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

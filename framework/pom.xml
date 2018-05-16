@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	
+
+	<!-- dados do projeto -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar</groupId>
+	<artifactId>jcompany</artifactId>
+	<version>6.1.5</version>
+	<name>jCompany</name>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>jcompany_pom</module>
+		<!-- Removido temporariamente. Aguardando refactor do mvp --> 
+	 	<!-- <module>jcompany_client</module>  --> 
+		<module>jcompany_commons</module>
+		<module>jcompany_model</module>
+		<module>jcompany_controller</module>
+		<module>jcompany_qa_unit</module>
+		<module>jcompany_integration</module>
+		<module>jcompany_metadata</module>
+		<module>jcompany_view</module>
+		<module>jcompany_service</module>
+	</modules>
+
+	<!-- 
+		Dependências comuns aos módulos, todas definidas com escopo provided ou test
+		
+		Provided: Indica que a JDK ou o container web forneça a dependência em tempo de execução.
+		Por exemplo, ao construir uma aplicação web para Java Enterprise Edition, você deve definir a 
+		dependência da API Servlet e Java EE APIs com o escopo provided, porque o contêiner da Web fornece essas classes. 
+		Esta aplicação está disponível apenas no classpath de compilação e teste, e não é transitiva.
+		
+		Test: Indica que a dependência não é necessária para o uso normal da aplicação.
+		
+		http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+		
+	 -->
+	<dependencies>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<scope>provided</scope>
+		</dependency>		
+		<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<scope>test</scope>
+    	</dependency>
+    	<dependency>
+			<groupId>powerlogic.jaguar.oss_base_qa</groupId>
+			<artifactId>oss_base_qa</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<!--
+		Dependências gerenciadas. 
+		Especificação direta das versões de artefatos a serem utilizados.
+		Quando eles são encontrados nas dependências transitivas ou nas dependências onde nenhuma versão foi especificado. 
+		Todas as versões são trocadas pelo token "${project.version}", que reflete a verão informada na tag <version> definida para o projeto.
+		Ex:
+		Caso a versão acima seja definida pela versão 6.0.1, todas as dependências abaixo vão seguir essa verão no momento do build.
+		
+		Com isso, evitamos de definir a mesma versão para todas as dependências do projeto.
+
+		Só serão utilizadas se o projeto filho declará-las novamente em seu pom.xml
+		É utíl para organizar versões
+	 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bom</artifactId>
+				<version>${project.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_commons</groupId>
+				<artifactId>oss_base_commons</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_commons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_controller</groupId>
+				<artifactId>oss_base_controller</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_servletcontainer</groupId>
+				<artifactId>oss_base_servletcontainer</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_controller</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_model</groupId>
+				<artifactId>oss_base_model</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.oss_base_qa</groupId>
+				<artifactId>oss_base_qa</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_qa_unit</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_integration</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_metadata</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- 
+		Plugins que serão executados durante a construção e devem ser configuradas no elemento <build/> do POM.
+	 -->
+	<build>
+		<plugins>
+		
+			<!-- Seta o compilador para JDK 6.0 no momento do build -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
+			<!-- Geração do javadoc -->
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+ 					<aggregate>true</aggregate>
+ 					<stylesheetfile>${basedir}/jcompany_commons/src/main/resources/stylesheet.css</stylesheetfile>
+					<minmemory>512m</minmemory>
+					<maxmemory>1024</maxmemory>
+					<docencoding>UTF-8</docencoding>
+					<encoding>ISO-8859-1</encoding>
+ 				</configuration>
+			</plugin>
+			
+      		<plugin>
+      			<!-- Esse plugin disponibiliza pequenas implementações para auxiliar o ciclo de vida da geração no Maven -->
+        		<groupId>org.codehaus.mojo</groupId>
+        		<artifactId>build-helper-maven-plugin</artifactId>
+        		<version>1.5</version>
+        		<executions>
+          		<execution>
+            		<id>add-source</id>
+            		<phase>process-resources</phase>
+            		<goals>
+              			<goal>add-source</goal>
+            		</goals>
+            		<configuration>
+              			<sources>
+                			<source>${basedir}/src/main/config</source>
+	              		</sources>
+    	       		</configuration>
+          		</execution>
+        		</executions>
+      		</plugin>
+
+			<!-- 
+				Cria um arquivo jar contendo os fontes do projeto atual. 
+				O arquivo jar é, por padrão, criado no diretório de destino do projeto.
+			 -->
+      		<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-source-plugin</artifactId>
+        		<version>2.1.2</version>
+        		<executions>
+          		<execution>
+            		<id>attach-sources</id>
+            		<phase>verify</phase>
+            		<goals>
+              		<goal>jar</goal>
+            		</goals>
+          		</execution>
+        		</executions>
+      		</plugin>
+				
+			<!-- 
+				É usado durante a fase de testes do build, para executar os testes de unidade de uma aplicação. 
+				Ele gera relatórios em dois formatos diferentes:
+				    * Plain text files (*.txt)
+    				* XML files (*.xml)
+			 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.7.1</version>
+				<configuration>
+					<forkMode>pertest</forkMode>
+				</configuration>
+			</plugin>
+		
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											build-helper-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.5,)
+										</versionRange>
+										<goals>
+											<goal>add-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<!-- 
+		Repositório que será distribuído a aplicação
+		Definição da gerência a distribuição do artefato e arquivos de suporte gerados durante o processo de criação.
+		Informa o repositorio onde os artefatos devem ser enviados  
+	-->
+	<distributionManagement>
+		<repository>
+			<id>powerlogic</id>
+			<name>Repositorio Powerlogic</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powerreleases</url>
+		</repository>
+		<snapshotRepository>
+			<id>powerlogic</id>
+			<name>Repositorio de Snapshots</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powersnapshots</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>		
+	</distributionManagement>
+	
+</project>

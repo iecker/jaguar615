@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+
+<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+	<ui:define name="plc-corpo-formulario">
+	
+		<ui:insert name="plc-corpo-acao-complemento">
+			<div style="float: right; margin-top: 3px;" >
+				<plcf:botaoAcao id="botaoAcaoImportar_EXIBE_ALERTA_ALTERACAO" urlIcone="ico iUpload" acao="${contexto.nomeEvento}" limpaForm="true"  partialSubmit="#{!partialSubmit}" label="jcompany.evt.${contexto.nomeEvento}" validaForm="false" immediate="true" blocking="true" onclick="beforeSubmit();">
+					<f:ajax event="action" execute="@form" render="@form" imediate="true"/>
+				</plcf:botaoAcao>
+			</div>
+		</ui:insert>	
+	
+		<div id="plc-corpo-formulario" class="plc-corpo-formulario plc-form-tabular"> 
+				<fieldset class="plc-fieldset"> 
+					<legend class="plc-fieldset-legend">#{msg['${contexto.casouso}.titulo']}</legend>  
+					<plcf:tabela aoSair="visualizaFormulario()"> 
+						<plcf:iteracao var="${contexto.casouso}" id="${contexto.casouso}" value="#{${contexto.casouso}Lista.itensPlc}" columnClasses="celulaFormulario" headerClass="celulaFormulario"> 
+							<h:column> 
+								<h:outputText value="#{rowCounter.index}."/> 
+							</h:column>  
+							#foreach ($umaProp in $contexto.entidade.listaPropriedades)
+								#if ( $umaProp.gerar == 'S')
+									#if ( $umaProp.nome != 'hashCodePlc')
+										<h:column> 
+											<f:facet name="header"> 
+												<plcf:titulo value="#{msg['label.$umaProp.nome']}"/>
+											</f:facet> 	
+											## TODO Gerar segundo a escolha do usuário
+											#if ($umaProp.nome == 'id')
+												<plcf:oid value="#{${contexto.casouso}.id}" ajudaChave="ajuda.id" />
+											#elseif ($umaProp.tipo == 'texto')
+												<plcf:texto id="${umaProp.nome}" value="#{${contexto.casouso}.${umaProp.nome}}" ajudaChave="ajuda.${umaProp.nome}" />
+											#elseif ($umaProp.tipo == 'inteiro')
+												<plcf:texto id="${umaProp.nome}" value="#{${contexto.casouso}.${umaProp.nome}}" ajudaChave="ajuda.${umaProp.nome}" />
+											#elseif ($umaProp.tipo == 'longo')
+												<plcf:texto id="${umaProp.nome}" value="#{${contexto.casouso}.${umaProp.nome}}" ajudaChave="ajuda.${umaProp.nome}" />
+											#elseif ($umaProp.tipo == 'data')
+												<plcf:data id="${umaProp.nome}" value="#{${contexto.casouso}.${umaProp.nome}}" ajudaChave="ajuda.${umaProp.nome}" />
+											#elseif ($umaProp.tipo == 'numerico')
+												<plcf:numerico id="${umaProp.nome}" value="#{${contexto.casouso}.${umaProp.nome}}" ajudaChave="ajuda.${umaProp.nome}" />
+											#elseif ($umaProp.tipo == 'boolean')
+												<plcf:caixaMarcacao id="${umaProp.nome}" value="#{${contexto.casouso}.${umaProp.nome}}" ajudaChave="ajuda.${umaProp.nome}" />
+											#elseif ($umaProp.tipo == 'radio')
+												<plcf:radio id="${umaProp.nome}" value="#{${contexto.casouso}.${umaProp.nome}}" dominio="${umaProp.dominio}" ajudaChave="ajuda.${umaProp.nome}" />
+											#end
+										</h:column> 
+									#end
+								#end
+							#end
+						</plcf:iteracao> 
+					</plcf:tabela> 
+				</fieldset> 
+			</div> 
+		</ui:define> 
+	</ui:composition> 
+</html>		

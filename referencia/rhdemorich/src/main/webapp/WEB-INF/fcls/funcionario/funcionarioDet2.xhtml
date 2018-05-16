@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" >   
+<ui:composition> 
+<div>
+	<rich:dataTable id="historicoFuncional" var="historicoFuncional" value="#{funcionario.historicoFuncional}" iterationStatusVar="i" >
+	   <f:facet name="header" >
+	       <rich:columnGroup >
+	       		<rich:column />		
+	 	 	  	<rich:column styleClass="celulaFormularioCaixaMarcacao">
+	 	 	  		<h:graphicImage alt="Exc." url="/res-plc/midia/form-lixeira.png" title="Para excluir, marque o(s) item(ns) e clique em gravar"/>
+	 	 	  	</rich:column>					
+				<rich:column><h:outputText value="Cod." /></rich:column>			
+				<rich:column><h:outputText value="Descrição" /></rich:column>
+				<rich:column><h:outputText value="Data Inicio" /></rich:column>
+				<rich:column><h:outputText value="Salário" /></rich:column>
+			</rich:columnGroup>
+		</f:facet>
+		<rich:column>
+			<h:outputText value="#{i.count}." />
+		</rich:column>	
+ 		<rich:column styleClass="celulaFormularioCaixaMarcacao">
+			<h:selectBooleanCheckbox id="indExcPlc" value="#{historicoFuncional.indExcPlc}" rendered="#{not empty historicoFuncional.id}"/>
+			<h:link id="excPlc" styleClass="ico iExcluir" style="cursor:pointer;" rendered="#{empty historicoFuncional.id}" 
+					title="Clique para remover linha" onclick="deleteItem('historicoFuncional','#{i.index}');"></h:link>
+		</rich:column>					
+		<rich:column >		
+			<h:inputText id="id" value="#{historicoFuncional.id}" readonly="true" disabled="true" size="5" />										
+		</rich:column >			
+		<rich:column>
+			<h:inputText id="descricao" value="#{historicoFuncional.descricao}" size="30" maxlength="30" 
+			title="Informe descrição do histórico funcional"  />
+		</rich:column>
+		<rich:column>		  	
+  			<rich:calendar value="#{historicoFuncional.dataInicio}" id="dataInicio" inputSize="11"  datePattern="dd/MM/yyyy" />			
+	    </rich:column>
+		<rich:column>
+			<h:inputText id="salario" value="#{historicoFuncional.salario}" size="11" maxlength="11" 
+               title="Informe salário do histórico funcional"  >
+                <f:convertNumber type="currency"/>
+            </h:inputText>  
+		</rich:column>		
+	</rich:dataTable>
+	<input type="collapse" class="inibeFoco" style="position: absolute; left:-100000px;" onfocus="comutaAbaFacelets(0)" />
+</div>
+</ui:composition> 
+</html>

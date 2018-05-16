@@ -1,0 +1,104 @@
+@charset "UTF-8";
+div.loginContainer{
+   border-color: #CAC7BE;
+	background-color: #FDFBF4;
+}
+.label{
+	color: #687A68;
+}
+.loginTexto{
+	color: #8B8066;
+	border-color: #8B8066 #D7C6BB #D7C6BB #8B8066;
+	background-color: #FCFAF7;
+	background-image: url(bg_input_texto.gif);
+	background-repeat: repeat-x;
+}
+.loginBotao{
+	color: #687A68;
+	border-color: #CFDBB7 #A9B395 #A9B395 #CFDBB7;
+	background-color: #DEEBC4;
+	background-image: url(botao2_bg.gif);
+	background-repeat: repeat-x;
+}
+
+/* Propriedades fixas */
+*{
+	margin: 0;
+	padding: 0;
+	font: bold 11px Verdana, sans-serif;
+}
+div.erro{
+	color: #AB3838;
+	background: #FFDBDB;
+	border-color: #EB7878;
+}
+div.sucesso{
+	color: #144888;
+	background: #D8E5ED;
+	border-color: #698AB3;
+}
+div#marca{
+	margin: 0 0 10px 0;
+	text-align: center;
+}
+div.loginContainer{
+	border-width: 2px;
+	border-style: solid;
+	padding: 10px 10px 0 10px;
+	width: 250px;
+}
+div.container {
+	width: 250px;
+}
+img.alerta {
+	float: left;
+	margin: 0 15px 0 0;
+}
+div.erro,div.sucesso{
+	height: 37px;
+	vertical-align: middle;
+	padding: 5px;
+	margin: 0 0 0 5px;
+	border-width: 2px;
+	border-style: solid;
+}
+.label{
+	text-align: right;
+	vertical-align: middle;
+	padding: 2px 10px 2px 2px;
+	height: 35px;
+}
+.loginTexto{
+	border-width: 1px;
+	border-style: solid;
+	height: 21px;
+	padding: 2px 0 0 3px;
+	width: 150px;
+}
+.loginBotao{
+	border-width: 2px;
+	border-style: solid;
+	height: 23px;
+	text-align: center;
+	margin: 0 0 10px 0;
+	width: 150px;
+}
+div.loginInfo{
+   color: #606060;
+   background-color: #F6F6F6;
+   border-top: 1px solid #A5A5A5;
+   border-left: 1px solid #A5A5A5;
+   padding: 3px;
+	width: 155px;
+	height: 30px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+div.loginInfo, div.loginInfo *{
+	font-size: 9px;
+	font-weight: normal;
+}
+div.loginInfo b{
+	color: #000;
+}

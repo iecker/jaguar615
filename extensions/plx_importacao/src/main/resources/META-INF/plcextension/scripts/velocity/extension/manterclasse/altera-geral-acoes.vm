@@ -1,0 +1,6 @@
+## Criando declaração do evento para Caso de Uso Padrão
+
+<plcf:botaoAcao id="botaoAcaoImportar_EXIBE_ALERTA_ALTERACAO" urlIcone="ico iEspecifico" acao="${contexto.nomeEvento}" limpaForm="true"  partialSubmit="#{!partialSubmit}" label="jcompany.evt.${contexto.nomeEvento}"  
+	rendered="#{requestScope.plcURLSemBarra == '${contexto.casouso}'}" validaForm="false" immediate="true" blocking="true" onclick="beforeSubmit();">
+	<f:ajax event="action" execute="@form" render="@form" imediate="true"/>
+</plcf:botaoAcao>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Button" id="8" x="104" y="11" text="{delete} Exclui" measuredWidth="98" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="9" x="392" y="11" text="{save} Gravar" measuredWidth="107" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="10" x="504" y="11" text="{open} Abrir" measuredWidth="93" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="11" x="604" y="19" measuredWidth="16" measuredHeight="16" icon="link (small)"/>
+  <widgets xsi:type="model:Icon" id="12" x="631" y="19" measuredWidth="16" measuredHeight="16" icon="print (small)"/>
+  <widgets xsi:type="model:Button" id="13" x="208" y="11" width="177" text="{eye} Vis. Documento" measuredWidth="177" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="14" x="6" y="10" width="91" text="{new} Novo" measuredWidth="91" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Button" id="2" x="240" y="8" text="{delete} Exclui" measuredWidth="98" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="3" x="344" y="8" text="{save} Gravar" measuredWidth="107" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="6" x="136" y="8" text="{new} Novo" measuredWidth="98" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="1" x="8" y="8" text="{undo} Retornar" measuredWidth="125" measuredHeight="38">
+    <font size="16px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

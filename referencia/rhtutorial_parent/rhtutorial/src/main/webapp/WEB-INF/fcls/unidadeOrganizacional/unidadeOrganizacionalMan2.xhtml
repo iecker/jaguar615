@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="unidadeOrganizacionalman.endereco.titulo"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.endereco.logradouro"/>  
+					<plcf:texto id="endereco_logradouro" value="#{unidadeOrganizacional.endereco.logradouro}" ajudaChave="ajuda.endereco.logradouro"/> 
+				</plcf:celula>  
+				<plcf:celula > 
+					<plcf:titulo tituloChave="label.endereco.numero"/>  
+					<plcf:texto id="endereco_numero" value="#{unidadeOrganizacional.endereco.numero}" ajudaChave="ajuda.endereco.numero"/> 
+				</plcf:celula> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.endereco.bairro"/>  
+					<plcf:texto id="endereco_bairro" value="#{unidadeOrganizacional.endereco.bairro}" ajudaChave="ajuda.endereco.bairro"/> 
+				</plcf:celula>  
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.endereco.cep"/>  
+					<plcf:texto id="endereco_cep" value="#{unidadeOrganizacional.endereco.cep}" ajudaChave="ajuda.endereco.cep"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<a href="/rhtutorial/f/n/uftab" target="new" >
+					   <plcf:titulo tituloChave="label.endereco.uf" /> 
+					</a> 
+					<plcf:comboDinamico id="endereco_uf" 
+					value="#{unidadeOrganizacional.endereco.uf}" dominio="UfEntity" 
+					exibeBranco="S" ajudaChave="ajuda.endereco.uf"
+					navegacaoParaCampos="endereco.municipio">
+					<f:ajax event="valueChange" render="endereco_municipio" imediate="true"/>
+					</plcf:comboDinamico> 
+				</plcf:celula> 
+				<plcf:celula> 
+					<a href="/rhtutorial/f/n/municipiomad?id=#{unidadeOrganizacional.endereco.uf.id}" 	target="new" >
+						<plcf:titulo tituloChave="municipio.titulo" />
+					</a>
+					<plcf:comboDinamico id="endereco_municipio" 
+					value="#{unidadeOrganizacional.endereco.municipio}" dominio="MunicipioEntity" 
+					exibeBranco="S" ajudaChave="ajuda.endereco.municipio" comboAninhado="S"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

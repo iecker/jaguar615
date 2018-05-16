@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:plct="http://www.powerlogic.com.br/plct"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	
+	#{plct:execOneArg (rowCounter, 'setIndexSubDet', 0)}
+	
+	<c:if test="#{empty requestScope.visualizaDocumentoPlc }">
+		<c:set var="nomeSubDetalhe" value="#{plct:exec (plcConfigUrlColaboracao,'getNomeSubDetalhe' )}"/>
+		<c:set var="colecaoNomeSubDetPlc" value="#{nomeSubDetalhe}" scope="request" />
+		<c:set var="botaoSubDetalhe" value="exibe_jcompany_evt_incluir_subdetalhe_#{nomeSubDetalhe}"/>
+		<c:set var="idBotaoSubDetalhe" value="corpo:formulario:#{nomeDetalhe}:#{rowCounter.indexDetBeforeCounter}:novoSubDetalhe"/>
+	
+		<span id="plc-acaosubdetalhe-#{rowCounter.indexDetBeforeCounter}" class="plc-corpo-acao-subdetalhe-sem-tab">
+			<div class="plc-corpo-acao" id="corpo:formulario:novoSubdetalhe:#{rowCounter.indexDetBeforeCounter}">
+				<div class="plc-corpo-acao-generico" id="novoSubdetalhe:#{rowCounter.indexDetBeforeCounter}">
+					<plcf:botaoAcao acao="create" label="jcompany.evt.incluir.subdetalhe" botaoArrayID="NOVO" id="novoSubdetalhe"  idPlc="#{requestScope.id}"
+						 partialSubmit="#{requestScope.ajaxUsa}" urlIcone="ico iNovo"
+						 validaForm="false" rendered="#{(((requestScope[botaoSubDetalhe] != 'N') and (requestScope['exibe_jcompany_evt_incluir_subdetalhe'] != 'N')) or ((requestScope[botaoSubDetalhe] == 'S') and (requestScope['exibe_jcompany_evt_incluir_subdetalhe'] != 'N')) or ((requestScope[botaoSubDetalhe] == 'S') and (requestScope['exibe_jcompany_evt_incluir_subdetalhe'] == 'N')))}"  >
+						 <f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+						 <f:param name="subDetCorrPlc" value="#{nomeDetalhe}[#{rowCounter.indexDetBeforeCounter -1}].#{nomeSubDetalhe}"/>
+						 <f:param name="skipValidation" value="true"/>
+					</plcf:botaoAcao>	 					 
+				</div>
+				<c:if test="#{sessionScope.SESSION_CACHE['formAcaoExibeTexto']=='I' or sessionScope.SESSION_CACHE['formAcaoExibeTexto']=='G'}">
+					<div id="plc-corpo-acao-generico-icones" class="plc-corpo-acao-generico">
+						<a href='#' onclick="plc.jq('#corpo\\:formulario\\:novoSubdetalhe\\:#{rowCounter.indexDetBeforeCounter}').find('button').click();" class="plc-botao-imagem">
+							<span class="ico iNovo" title="#{app['jcompany.evt.incluir']}"/>
+						</a>
+					</div>
+				</c:if>	
+			</div>
+		</span>
+	</c:if>
+	
+	<ui:include src="#{caminho}" />
+	
+	<script type="text/javascript">
+	//<![CDATA[
+		plc.jq(function(){
+				
+				var $fieldset = plc.jq('#plc-acaosubdetalhe-#{rowCounter.indexDetBeforeCounter}').next();
+				$fieldset.attr('id', 'corpo:formulario:fieldset:#{rowCounter.indexDetBeforeCounter}');
+				var size = plc.jq("legend span.iMinimizar", $fieldset).size();
+				if (size == 0) {
+					plc.jq('<span class="ico iMinimizar"/>')
+					.prependTo($fieldset.find('legend:eq(0)'))
+					.click(function(){
+							plc.jq('#detCorrPlc').val('#{nomeSubDetalhe}');
+							retraiExpandeSubdetalhe(this, '#{rowCounter.indexDetBeforeCounter}');
+					});
+					ajustaSubDetalhe($fieldset);
+					
+				} else if (size == 1) {
+					plc.jq("legend span.iMinimizar", $fieldset).click(function(){
+							plc.jq('#detCorrPlc').val('#{nomeSubDetalhe}');
+							retraiExpandeSubdetalhe(this, '#{rowCounter.indexDetBeforeCounter}');
+					});
+				
+				}
+
+		});
+
+		/** Faz o ajuste do sub-detalhe tirando ele da última coluna do detalhe,
+		* criando uma linha abaixo e inserindo na nova linha*/
+		function ajustaSubDetalhe(parent) {
+			var colSpan = plc.jq(parent).parents("td:first").parents("tr").children("td").size() - 1;
+			if (colSpan == 0) 
+				return;
+			//criando a linha subDetalhe
+			var lineSubDet = plc.jq('<tr><td colSpan="' + colSpan + '">' + plc.jq(parent).parents("td:first").html() + '</td> </tr>');
+			// inserindo a linha
+			plc.jq(lineSubDet).insertAfter(plc.jq(parent).parents("td:first").parents("tr"));
+			//removendo a coluna
+			plc.jq(parent).parents("td:first").parents("tr").children("td:last").remove();						
+		}	
+		//]]>
+	</script>		
+	
+	
+</ui:composition>

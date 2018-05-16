@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<plc-dados logica="tabular" xmlns="http://plc.powerlogic.com">
+  <palavra-reservada nome="UrlPaginaInicial" texto="/f/n/uftab"/>
+  <palavra-reservada nome="Login" texto="admin"/>
+  <palavra-reservada nome="Senha" texto="senha"/>
+  <palavra-reservada nome="TextoPaginaInicial" texto="Unidade Federativa"/>
+  <palavra-reservada nome="tempoSLATotal" texto=""/>
+  <palavra-reservada nome="tipoSLALog" texto=""/>
+  <palavra-reservada nome="LabelBotaoNovo" texto="Novo"/>
+  <palavra-reservada nome="LabelBotaoPesquisar" texto="Pesquisar"/>
+  <palavra-reservada nome="TextoPosGravacao" texto="Registro gravado com sucesso"/>
+  <palavra-reservada nome="LabelBotaoGravar" texto="Gravar"/>
+  <palavra-reservada nome="TextoPosDelecao" texto="Registro gravado com sucesso"/>
+  <palavra-reservada nome="naoExcluirRegistroAoSair" texto="N"/>
+  <palavra-reservada nome="tipoLogin" texto=""/>
+  <palavra-reservada nome="LabelBotaoExcluir" texto="Excluir"/>
+  <tabular tipo="itensPlc" existentes="1">
+    <campo nome="nome" tipo="input" valor="São Paulo" indiceTabular="1"/>
+    <campo nome="sigla" tipo="input" valor="SP" indiceTabular="1"/>
+    <item valor="2">
+      <campo nome="nome" tipo="input" valor="São Paulo" indiceTabular="1"/>
+      <campo nome="sigla" tipo="input" valor="SP" indiceTabular="1"/>
+    </item>
+  </tabular>
+  <cenarios-alternativos>
+    <cenario-alteracao nome="Alteracao">
+      <botao texto="Gravar"/>
+      <retorno texto="Registro gravado com sucesso"/>
+      <campo nome="plcLogicaItens[1].nome" tipo="input" label="Nome" valor="Alterado"/>
+      <sla>
+        <checar trts="" sqls="" ultc="" ultr=""/>
+      </sla>
+    </cenario-alteracao>
+    <cenario-livre nome="Valida Registros Duplicados">
+      <redirecionar url="/f/n/uftab"/>
+      <clicar tipo="botao" rotulo="Novo" esperar="3"/>
+      <preencher>
+        <campo nome="plcLogicaItens[2].nome" tipo="input" label="Nome" valor="Minas Gerais"/>
+        <campo nome="plcLogicaItens[2].sigla" tipo="input" label="Sigla" valor="MG"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Tentativa de inserir registros duplicados. Termo informado: Minas Gerais"/>
+    </cenario-livre>
+  </cenarios-alternativos>
+  <programado/>
+  <manual/>
+</plc-dados>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="1" x="15" y="-2" text="Powerlogic" measuredWidth="162" measuredHeight="49">
+    <font size="18pt" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="2" x="344" y="7" width="306" height="38" measuredWidth="306" measuredHeight="38"/>
+  <widgets xsi:type="model:Rectangle" id="3" x="800" y="5" width="212" height="39" measuredWidth="212" measuredHeight="39" border="solid-rounded">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="4" x="824" y="17" measuredWidth="16" measuredHeight="16" icon="usergroup (small)"/>
+  <widgets xsi:type="model:Icon" id="5" x="888" y="17" measuredWidth="16" measuredHeight="16" icon="country-flag1 (small)"/>
+  <widgets xsi:type="model:Icon" id="6" x="856" y="17" measuredWidth="16" measuredHeight="16" icon="new (small)"/>
+  <widgets xsi:type="model:Icon" id="7" x="952" y="18" measuredWidth="16" measuredHeight="16" icon="home (small)"/>
+  <widgets xsi:type="model:Icon" id="8" x="920" y="17" measuredWidth="16" measuredHeight="16" icon="table (small)"/>
+  <widgets xsi:type="model:HLine" id="9" x="5" y="46" width="1012" measuredWidth="1012" measuredHeight="6" foreground="#999999"/>
+  <widgets xsi:type="model:Icon" id="10" x="981" y="18" measuredWidth="16" measuredHeight="16" icon="shutdown (small)"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="15px"/>
+</model:Screen>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+
+	Realiza a renderizacao de um formulario associativo entre duas entidades
+
+	<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+		
+		<ui:define name="plc-corpo-acao">
+	
+			<link rel="StyleSheet" href="#{request.contextPath}/res-plx/manytomanymatrix/css/plx.mmm.css" type="text/css" charset="UTF-8" />
+			<script src="#{request.contextPath}/res-plx/manytomanymatrix/javascript/plx.mmm.js" type="text/javascript" charset="UTF-8" />
+			<input type="hidden" id="casodeuso" value="#{plcAliasPrefixoAction}" />
+					
+			<input type="button" id="confirma" value="Confirma" class="botao_menu ui-state-default plc-botao af_commandButton"
+							onclick="return false;" style="float: right !important; margin-right: 10px; width: 80px;"  /> 
+					
+		</ui:define>
+		
+		<ui:define name="plc-corpo-formulario">
+	
+			<div id="plc-corpo-formulario" class="plc-corpo-formulario plc-form-mmm">
+				<plcf:tabela>
+	
+					<td style="width: 48%;">
+						<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}MmmArg.xhtml" />
+					</td>
+					<td style="width: 48%;">
+						<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}MmmArg2.xhtml" />
+					</td>
+					
+					<plcf:linha>
+						<plcf:celula columnSpan="2">
+							<div style="float: right; padding-right: 10px; width:450px;" >
+								<plcf:radio layout="horizontal" id="opcaoMatrix"
+										value="#{plcAction.entityPlc.opcaoMatrix}" dominio="OpcaoMatrix"
+										ajudaChave="ajuda.opcaoMatrix" required="true"  />																																
+								<input type="button" id="filtra" value="Filtra" onclick="return false;" style="float: right !important; width: 80px;" class="botao_menu ui-state-default plc-botao af_commandButton" />	
+							</div>
+						</plcf:celula>
+					</plcf:linha>
+				</plcf:tabela>
+				<br/>
+				<plcf:tabela tituloChave="#Matriz"  >
+					<plcf:linha>
+						<plcf:celula>
+						<br/>
+							<table id="mm_matrix" class="plc-tabela-matrix"   />
+						</plcf:celula>
+					</plcf:linha>
+					<plcf:linha>
+						<plcf:celula columnSpan="2">
+							<br/>
+						</plcf:celula>
+					</plcf:linha>
+				</plcf:tabela>
+			</div>
+		</ui:define>
+	</ui:composition>
+	
+</html>

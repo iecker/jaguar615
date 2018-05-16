@@ -1,0 +1,36 @@
+	
+	.desmarcado {background: url(../midia/desmarcado.gif) center no-repeat;}
+	.desmarcando {background: url(../midia/desmarcando.gif) center no-repeat;}
+	.marcado {background: url(../midia/marcado.gif) center no-repeat;}
+	.marcando {background: url(../midia/marcando.gif) center no-repeat;}
+	.desmarcado, .desmarcando, .marcado, .marcando {width: 100%; height: 24px; display: block;}
+	
+	.plc-tabela-matrix {
+		border: 1px solid #333333;
+	}
+	
+	.plc-tabela-matrix tr td {
+		border: 1px solid #333333;
+		padding: 5px;
+	}
+	.colunaVertical {
+		height: 150px;			
+		//width: 20px;
+		background-color: #CCCCCC;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+	
+  .vertical	{
+		display: block;
+		transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);  /* FF3.5+ */
+		-o-transform: rotate(-90deg);  /* Opera 10.5 */
+		-webkit-transform: rotate(-90deg);  /* Saf3.1+, Chrome */
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);  /* IE6,IE7 */
+		-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)"; /* IE8 */
+	}
+	
+	.plc-form-mmm table {
+		float: left;
+	}

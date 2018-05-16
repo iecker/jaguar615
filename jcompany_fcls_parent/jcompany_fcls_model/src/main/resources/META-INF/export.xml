@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<dataset>
+  <UF ID_UF="1" DATA_ULT_ALTERACAO="2010-05-13" USUARIO_ULT_ALTERACAO="admin" VERSAO="2" NOME="Minas Gerais" SIGLA="MG"/>
+  <CATEGORIA SIGLA="01" DATA_ULT_ALTERACAO="2010-05-13" NOME="A" USUARIO_ULT_ALTERACAO="admin" VERSAO="1"/>
+  <DEPARTAMENTO ID_DEPARTAMENTO="22" DATA_ULT_ALTERACAO="2010-05-13" USUARIO_ULT_ALTERACAO="admin" VERSAO="0" DESCRICAO="jCompany" BAIRRO="Funcionários" CIDADE="Belo Horizonte" CEP="30900111" NUMERO="330" RUA="Paraíba" ID_UF="1"/>
+  <TIPO_DOCUMENTO CODIGO="123" SIGLA="CNH" DATA_ULT_ALTERACAO="2010-05-13" DESCRICAO="Carteira Nacional de Habilitação" USUARIO_ULT_ALTERACAO="admin" VERSAO="0" SIGLA_CAT="01"/>
+   <GRUPO ID_GRUPO="1" DATA_ULT_ALTERACAO="2010-06-08" USUARIO_ULT_ALTERACAO="admin" VERSAO="2" INATIVO="0" NOME="Grupo A"/>
+</dataset>

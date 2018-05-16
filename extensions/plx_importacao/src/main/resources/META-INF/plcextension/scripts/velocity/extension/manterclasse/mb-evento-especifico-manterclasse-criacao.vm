@@ -1,0 +1,54 @@
+package ${contexto.pacotebase}.controller.jsf.${contexto.casouso};
+
+import javax.enterprise.inject.Produces;
+import javax.inject.Named;
+
+import com.empresa.rhtutorial.importacao.metadata.EmpConfigImportacao;
+import ${contexto.pacotebase}.controller.jsf.AppMB;
+import com.powerlogic.jcompany.commons.PlcException;
+import com.powerlogic.jcompany.commons.annotation.PlcUriIoC;
+import com.powerlogic.jcompany.commons.config.stereotypes.SPlcMB;
+import com.powerlogic.jcompany.config.aggregation.PlcConfigAggregation;
+import com.powerlogic.jcompany.config.collaboration.FormPattern;
+import com.powerlogic.jcompany.config.collaboration.PlcConfigForm;
+import com.powerlogic.jcompany.config.collaboration.PlcConfigFormLayout;
+import com.powerlogic.jcompany.config.collaboration.PlcConfigTabular;
+import com.powerlogic.jcompany.controller.jsf.PlcEntityList;
+import com.powerlogic.jcompany.controller.jsf.annotations.PlcHandleException;
+
+@PlcConfigAggregation(
+		entity = ${contexto.entidade}.class
+)
+
+@PlcConfigForm(formPattern=FormPattern.Tab,
+	tabular = @PlcConfigTabular(numNew = 4),
+	formLayout = @PlcConfigFormLayout(
+			dirBase="/WEB-INF/fcls/${contexto.subdiretorio}")
+)	
+
+
+
+@EmpConfigImportacao(ehConsultaManterClasse = true)
+
+@SPlcMB
+@PlcUriIoC("${contexto.casouso}")	
+@PlcHandleException
+public class ${contexto.casoUsoC}MB extends AppMB  {
+
+	private static final long serialVersionUID = 1L;
+
+	@Produces  @Named("${contexto.casouso}Lista")
+	public PlcEntityList createEntityListPlc() {
+		if (this.entityListPlc==null) {
+			this.entityListPlc = new PlcEntityList();
+			this.newObjectList();
+		}
+		return this.entityListPlc;
+	}	
+	
+	
+	public String ${contexto.nomeEvento}() throws PlcException {
+		log.info("Importando ...");
+		return null;	
+	}
+}

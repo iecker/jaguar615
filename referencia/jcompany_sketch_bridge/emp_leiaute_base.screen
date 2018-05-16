@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Master" id="1" measuredWidth="1012" measuredHeight="49">
+    <screen xsi:type="model:Screen" href="emp_topo.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="3" x="2" y="623" measuredWidth="1022" measuredHeight="55">
+    <screen xsi:type="model:Screen" href="emp_rodape.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="4" x="2" y="46" measuredWidth="1009" measuredHeight="50">
+    <screen xsi:type="model:Screen" href="emp_menu_barra.screen#/"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="15px"/>
+</model:Screen>

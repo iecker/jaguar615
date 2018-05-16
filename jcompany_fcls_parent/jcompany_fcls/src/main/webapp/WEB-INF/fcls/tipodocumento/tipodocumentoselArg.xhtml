@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="tipodocumentoarg.titulo"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.idNatural.codigo"/>  
+					<plcf:texto id="idNatural_codigo" value="#{tipodocumento.idNatural.codigo}" ajudaChave="ajuda.idNatural.codigo"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.idNatural.sigla"/>  
+					<plcf:texto id="idNatural_sigla" value="#{tipodocumento.idNatural.sigla}" ajudaChave="ajuda.idNatural.sigla"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.descricao"/>  
+					<plcf:texto id="descricao" value="#{tipodocumento.descricao}" ajudaChave="ajuda.descricao"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.categoria"/>  
+					<plcf:comboDinamico id="categoria" value="#{tipodocumento.categoria}" dominio="CategoriaEntity" exibeBranco="S" ajudaChave="ajuda.categoria"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

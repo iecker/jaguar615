@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" >  
+<ui:composition> 
+<h:messages globalOnly="true" />
+	<h:panelGrid columns="3" styleClass="rf-dt">
+	   <h:column>
+		   <h:outputLabel value="Cód." for="id" />	
+		   <h:inputText id="id" value="#{funcionario.id}" size="5" disabled="true" readonly="true" />
+	   </h:column>
+	   <h:column>
+		 	<h:outputLabel value="Nome"  for="nome"/>
+			<h:inputText id="nome" value="#{funcionario.nome}" size="60" maxlength="60"  label="#{msg['label.nome']}"/>
+			<h:message for="nome" styleClass="plc-erro-msg"/>
+	   </h:column>
+	    <h:column>
+		  	<h:outputLabel value="Data Nascimento" for="dataNascimento"/>
+  			<rich:calendar value="#{funcionario.dataNascimento}" id="dataNascimento" inputSize="11"  datePattern="dd/MM/yyyy" />
+
+			<!-- h:inputText id="dataNascimento" styleClass="hasDatepicker" 
+			value="#{funcionario.dataNascimento}" size="11" maxlength="11" required="true"
+			onkeypress="formataDataComMascara('corpo:formulario:dataNascimento',event,'dd/MM/yyyy');" 
+			onkeyup="return validaCaracter(this, event, 'D');" />
+			<button class="ui-datepicker-trigger ui-state-default plc-botao" type="button" tabindex="-1">
+			<span class="ico iCalendario"></span>
+			</button -->	
+			
+	   </h:column>
+	   <h:column>
+			<h:outputLabel value="Estado Civil"  for="estadoCivil" />
+			<h:selectOneMenu id="estadoCivil" label="Estado Civil" value="#{funcionario.estadoCivil}" >
+				<f:selectItem itemValue="" itemLabel="Selecione..."/>
+				<f:selectItems var="item"  label="#{label}"  itemValue="#{item}"
+						value="#{plcDominios.dominios['EstadoCivil']}"
+						noSelectionLabel="Selecione..." />
+			</h:selectOneMenu>
+	   </h:column>
+	   <h:column>
+			<h:outputLabel value="#{msg['label.sexo']}"  for="sexo" />
+			<h:selectOneRadio id="sexo" value="#{funcionario.sexo}" label="#{msg['label.sexo']}" style="width:200px;" styleClass="plc-radio" >
+   				<f:selectItems value="#{plcDominios.dominios['Sexo']}" var="item" itemLabel="#{label}" itemValue="#{item}" />
+	   		</h:selectOneRadio>
+	   </h:column>
+  		<h:column>
+			<h:outputLabel value="CPF"  for="cpf" />
+			<h:inputText id="cpf" value="#{funcionario.cpf}" size="14" maxlength="11" label="#{msg['label.cpf']}" />
+	   </h:column>
+	     <h:column>
+			<h:outputLabel value="Tem Curso Superior?" for="temCursoSuperior"/>
+			<h:selectBooleanCheckbox id="temCursoSuperior" value="#{funcionario.temCursoSuperior}" />	
+	   </h:column>
+	   <h:column >
+		  		<h:outputLabel value="Departamento" for="departamento" /> 
+				<plcf:vinculado id="departamento" value="#{funcionario.departamento}"
+					 propSelPop="departamento" idExibe="N" idSomenteLeitura="N" 
+					 autoRecuperacaoClasse="com.empresa.rhrich.entity.DepartamentoEntity" 
+					 actionSel="departamentosel" 
+					 modal="S" ajudaChave="ajuda.departamento" onkeydown="selecionaPorTecla(event,this);" obrigatorio="S" /> 
+	   </h:column>
+	    <h:column/>
+	</h:panelGrid>
+   	<h:panelGrid columns="1" styleClass="rf-dt">
+	    <h:column >
+			<h:outputLabel value="Observações"  for="observacao" />	
+			<h:inputTextarea id="observacao" value="#{funcionario.observacao}" cols="80" rows="4" maxlength="255" />   
+	    </h:column>
+	   <input type="collapse" class="inibeFoco" style="position: absolute; left:-100000px;" onfocus="comutaAbaFacelets(1)" />
+	</h:panelGrid>
+</ui:composition> 
+</html>

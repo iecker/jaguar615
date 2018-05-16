@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<Context displayName="jcompany_fcls" 
+         docBase="jcompany_fcls" 
+         path="jcompany_fcls" 
+         privileged="true" swallowOutput="off">
+
+		<Resource name="jdbc/jcompany_fcls" type="javax.sql.DataSource" 
+				driverClassName="org.hsqldb.jdbcDriver" 
+			  	url="jdbc:hsqldb:mem:unit-test" 
+			  	username="sa" password=""
+			  	maxActive="50" maxWait="-1" maxIdle="10" removeAbandoned="true" logAbandoned="true" />
+
+	<!--<Resource name="jdbc/jcompany_fcls" type="javax.sql.DataSource" -->
+	<!--		driverClassName="org.apache.derby.jdbc.EmbeddedDriver"-->
+	<!--		url="jdbc:derby:C:\powerlogic\jaguar\servers\tomcat\work\Catalina\localhost\jcompany_fcls\bancoteste\jcompany_fcls;create=true;"-->
+	<!--        username="APP" password="APP"-->
+	<!--		maxActive="50" maxWait="-1" maxIdle="10" removeAbandoned="true" logAbandoned="true" />-->
+
+ 
+
+ <!-- JCDI / Weld (RI)  -->      
+ <Resource name="BeanManager"
+      auth="Container"
+      type="javax.enterprise.inject.spi.BeanManager"
+      factory="org.jboss.weld.resources.ManagerObjectFactory"/>
+ <!-- Uncomment to enable injection into Servlet -->
+ <!-- <Listener className="org.jboss.weld.environment.tomcat.WeldLifecycleListener"/>  -->   
+
+<!-- JBOSS 
+
+<datasources>
+      
+   <local-tx-datasource>
+      <jndi-name>jcompany_fcls</jndi-name>
+      <connection-url>jdbc:hsqldb:mem:unit-test</connection-url>
+      <driver-class>org.hsqldb.jdbcDriver</driver-class>
+      <user-name>sa</user-name>
+      <password></password>
+   </local-tx-datasource>
+
+ </datasources>
+
+-->
+
+</Context>
+

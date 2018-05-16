@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Jaguar-jCompany Developer Suite. Powerlogic 2010-2014. Please read licensing 
+	information in your installation directory.Contact Powerlogic for more information 
+	or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>powerlogic.jaguar.jcompany</groupId>
+		<artifactId>projeto-plc</artifactId>
+		<version>6.1.5</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.app</groupId>
+	<artifactId>rhdemo</artifactId>
+	<name>rhdemo</name>
+	<packaging>war</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_view</artifactId>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>		
+	</dependencies>
+
+	<profiles>
+		<!-- Para a utilização no Tomcat, utilizar o profile abaixo. Se nenhum 
+			profile for passado na execução do Maven, por padrão esse sera chamado -->
+		<profile>
+			<id>tomcat</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>powerlogic.jaguar.jcompany</groupId>
+					<artifactId>jcompany_commons</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>powerlogic.jaguar.jcompany</groupId>
+					<artifactId>jcompany_service</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>powerlogic.jaguar.jcompany</groupId>
+					<artifactId>jcompany_controller</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>powerlogic.jaguar.jcompany</groupId>
+					<artifactId>jcompany_model</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+
+	</profiles>
+
+	<repositories>
+		<repository>
+			<id>powerlogic-release</id>
+			<url>http://update.powerlogic.com.br:8080/archiva/repository/powerlogic</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>powerlogic-release</id>
+			<url>http://update.powerlogic.com.br:8080/archiva/repository/powerlogic</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+				<artifactId>plc-maven-plugin</artifactId>
+				<configuration>
+					<wars>
+						<war>powerlogic.jaguar.jcompany.jcompany_view</war>
+					</wars>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.4,)</versionRange>
+										<goals>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+										<artifactId>plc-maven-plugin</artifactId>
+										<versionRange>[6.1.5,)</versionRange>
+										<goals>
+											<goal>add-sourcepath</goal>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

@@ -1,0 +1,12 @@
+package ${contexto.pacotebase}.facade.${contexto.casouso};
+
+import com.powerlogic.jcompany.commons.PlcBaseContextVO;
+
+/**
+ * Classe de Fachada gerada pelo extension plx_jcompany_tabular
+ */
+public interface ${contexto.casoUsoC}Facade  {
+
+	public void importRecords(PlcBaseContextVO context);
+	
+}

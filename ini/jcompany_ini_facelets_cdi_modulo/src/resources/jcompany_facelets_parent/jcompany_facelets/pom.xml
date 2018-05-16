@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Jaguar-jCompany Developer Suite. Powerlogic 2010-2014. Please read licensing 
+	information in your installation directory.Contact Powerlogic for more information 
+	or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>powerlogic.jaguar.app</groupId>
+		<artifactId>projeto-###NOME_PROJETO###</artifactId>
+		<version>1.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>###NOME_PACOTE###</groupId>
+	<artifactId>###NOME_PROJETO###</artifactId>
+	<name>###NOME_PROJETO###</name>
+	<packaging>war</packaging>
+
+	<!-- Build global -->
+	<build>
+		<plugins>
+			<!-- Esse plugin é necessário para ao realizar o build do projeto, os 
+				artefatos de visão serem importados do jcompany_visao e empacotados junto 
+				à essa aplicação -->
+			<plugin>
+				<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+				<artifactId>plc-maven-plugin</artifactId>
+				<configuration>
+					<wars>
+						<war>powerlogic.jaguar.jcompany.jcompany_view:excludes=/WEB-INF/plcf.tld</war>
+					</wars>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_view</artifactId>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_controller</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>###NOME_PACOTE###</groupId>
+			<artifactId>###NOME_PROJETO###_model</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+</project> 

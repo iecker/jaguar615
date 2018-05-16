@@ -1,0 +1,22 @@
+package ${contexto.pacotebase}.persistence.jpa.${contexto.casouso};
+
+import ${contexto.pacotebase}.persistence.jpa.AppJpaDAO;
+import com.powerlogic.jcompany.commons.annotation.PlcAggregationDAOIoC;
+import com.powerlogic.jcompany.commons.config.stereotypes.SPlcDataAccessObject;
+import com.powerlogic.jcompany.persistence.jpa.PlcQueryService;
+/**
+ * Classe de Persistência gerada pelo extension plx_jcompany_tabular
+  */
+@PlcAggregationDAOIoC(${contexto.entidade}.class)
+@SPlcDataAccessObject
+@PlcQueryService
+public class ${contexto.casoUsoC}DAO extends AppJpaDAO {
+	
+	/*
+	* Método para importar registros
+	*/
+	public void importRecords() {
+		/** implemente aqui sua importação **/
+	}
+
+}

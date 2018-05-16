@@ -1,0 +1,72 @@
+package ${contexto.pacotebase}.controller.jsf.${contexto.casouso};
+
+import javax.enterprise.inject.Produces;
+import javax.inject.Named;
+import javax.inject.Inject;
+
+import ${contexto.pacotebase}.controller.jsf.AppMB;
+
+import ${contexto.pacotebase}.facade.${contexto.casouso}.${contexto.casoUsoC}Facade;
+
+import com.powerlogic.jcompany.commons.PlcException;
+import com.powerlogic.jcompany.commons.annotation.PlcUriIoC;
+import com.powerlogic.jcompany.commons.config.qualifiers.QPlcDefault;
+import com.powerlogic.jcompany.commons.config.stereotypes.SPlcMB;
+import com.powerlogic.jcompany.controller.jsf.annotations.PlcHandleException;
+import com.powerlogic.jcompany.controller.jsf.PlcEntityList;
+import com.powerlogic.jcompany.config.collaboration.FormPattern;
+import com.powerlogic.jcompany.config.collaboration.PlcConfigForm;
+import com.powerlogic.jcompany.config.collaboration.PlcConfigFormLayout;
+import com.powerlogic.jcompany.config.collaboration.PlcConfigTabular;
+import com.powerlogic.jcompany.config.aggregation.PlcConfigAggregation;
+import com.powerlogic.jcompany.domain.validation.PlcMessage;
+import com.powerlogic.jcompany.controller.jsf.util.PlcCreateContextUtil;
+import com.powerlogic.jcompany.extension.tabular.metadados.PlcConfigEditOnlyTabular;
+
+@PlcConfigAggregation(
+		entity = ${contexto.entidade}.class
+)
+
+@PlcConfigForm(formPattern=FormPattern.Tab,
+	tabular = @PlcConfigTabular(numNew = 4),
+	formLayout = @PlcConfigFormLayout(
+			dirBase="/WEB-INF/fcls/${contexto.subdiretorio}")
+)	
+
+
+/**
+ * Classe de Controle gerada pelo assistente
+ */
+@PlcConfigEditOnlyTabular
+@SPlcMB
+@PlcUriIoC("${contexto.casouso}")	
+@PlcHandleException
+public class ${contexto.casoUsoC}MB extends AppMB  {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private ${contexto.casoUsoC}Facade facade;
+
+	@Inject
+	@QPlcDefault
+	protected PlcCreateContextUtil contextMontaUtil;
+
+	/**
+	 * Entidade da ação injetado pela CDI
+	*/
+	@Produces  @Named("${contexto.casouso}Lista")
+	public PlcEntityList createEntityListPlc() {
+		if (this.entityListPlc==null) {
+			this.entityListPlc = new PlcEntityList();
+			this.newObjectList();
+		}
+		return this.entityListPlc;
+	}	
+	
+	
+	public void ${contexto.nomeEvento}() throws PlcException {
+		facade.importRecords(contextMontaUtil.createContextParamMinimum());	
+		msgUtil.msg("Registros importados...", PlcMessage.Cor.msgAzulPlc.toString());	
+	}
+}

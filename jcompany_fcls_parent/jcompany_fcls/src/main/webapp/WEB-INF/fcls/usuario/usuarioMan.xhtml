@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="usuarioman.titulo"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.id"/>  
+					<plcf:oid id="id" ajudaChave="ajuda.id"/> 
+				</plcf:celula>  
+			</plcf:linha>
+			<plcf:linha> 	
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.nomeCompleto"/>  
+					<plcf:texto id="nomeCompleto" value="#{usuario.nomeCompleto}" ajudaChave="ajuda.nomeCompleto"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.cpf"/>  
+					<plcf:texto id="cpf" value="#{usuario.cpf}" ajudaChave="ajuda.nomeCompleto" riaUsa="textmask(mask='999.999.999-99')"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.numeroIdentidade"/>  
+					<plcf:texto id="numeroIdentidade" value="#{usuario.numeroIdentidade}" ajudaChave="ajuda.numeroIdentidade"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.idade"/>  
+					<plcf:texto id="idade" value="#{usuario.idade}" ajudaChave="ajuda.idade"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.contribuicaoInicial"/>  
+					<plcf:numerico id="contribuicaoInicial" value="#{usuario.contribuicaoInicial}" ajudaChave="ajuda.contribuicaoInicial"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.login"/>  
+					<plcf:texto id="login" value="#{usuario.login}" ajudaChave="ajuda.login"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataCriacaoPerfilUsuario"/>  
+					<plcf:data id="dataCriacaoPerfilUsuario" value="#{usuario.dataCriacaoPerfilUsuario}" ajudaChave="ajuda.dataCriacaoPerfilUsuario"/> 
+				</plcf:celula>  
+			</plcf:linha>
+			<plcf:linha> 	
+				<plcf:celula columnSpan="2"> 
+					<plcf:titulo tituloChave="label.observacao"/>  
+					<plcf:area id="observacao" value="#{usuario.observacao}" numLinhas="10" colunas="60" ajudaChave="ajuda.observacao" /> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

@@ -1,0 +1,11 @@
+
+/* Sobrescrevendo Blueprint CSS e/ou liquidgrid plugin */
+.container-100p {
+	min-width: 700px;
+	width: 100%;
+}
+
+.container-950px {
+    margin:0 auto;
+    width:950px;
+}

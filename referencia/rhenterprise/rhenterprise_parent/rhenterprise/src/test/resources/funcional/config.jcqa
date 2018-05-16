@@ -1,0 +1,10 @@
+<configuracoes>
+  <host>localhost</host>
+  <port>8080</port>
+  <protocolo>http</protocolo>
+  <path>rhdemoenterprise</path>
+  <navegador>
+    <tipo>FIREFOX</tipo>
+    <!-- caminhoNavegador>/usr/lib/firefox/firefox-bin</caminhoNavegador-->
+  </navegador>
+</configuracoes>

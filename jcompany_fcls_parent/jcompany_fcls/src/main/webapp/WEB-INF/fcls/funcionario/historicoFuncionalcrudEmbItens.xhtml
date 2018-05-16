@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<script type="text/javascript">
+		//<![CDATA[
+		
+	plc.jq(function(){
+		plc.criaSelecaoJqGrid('plc-grid', 'plc-grid-navegador', {
+			
+			modoJanelaPlc: '${param.modoJanelaPlc}'
+			
+			,evento: 'y'
+			
+			,params: ['funcionario='+plc.jq('#corpo\\:formulario\\:funcionario_id').attr('value')]
+			
+			,nomeLogica: 'historicoFuncional'
+
+			,emiteMensagem: false	
+			
+			,propAgregada: 'historicoFuncional'
+			
+			,jqGrid: {
+				height:300
+				,caption:'Historico Funcional'
+				,colNames:['Cód.', 'Descrição', 'Salário']
+				,colModel:[{name: 'id',index: 'id'},  {name: 'descricao',index: 'descricao'},  {name: 'salario',index: 'salario'}]
+				}
+
+			,aoSelecionar: crudEmbAoSelecionar		
+		});
+	});
+
+
+
+//]]> 
+	</script>  
+	<div id="plc-grid-parent" style="width:1200px;">
+		<table id="plc-grid" width="100%" class="scroll" cellpadding="0" cellspacing="0"/>  
+		<div id="plc-grid-navegador" class="scroll" style="text-align:center;"/>
+	</div>	 
+	</ui:composition> 
+</html>

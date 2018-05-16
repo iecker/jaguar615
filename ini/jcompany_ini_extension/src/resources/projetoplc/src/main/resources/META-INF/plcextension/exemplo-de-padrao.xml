@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Declaração do script - Informação contendo o Titulo do Padrão, exibdo na tela inicial do wizard - Ex.: (Tabular - Mestre Detalhe - Consulta)-->
+<plc-padrao titulo="Caso de Uso Exemplo">
+ 
+ <!-- 
+	 Exemplo de Utilização do Plugin Dinâmico para geração de uma lógica.
+ -->
+
+ <!-- Definição do ícone que será exibido na tela inicial -->
+ <padrao-imagem>$nome_projeto_extension/plcextension/img/comuns/folder_aberta.gif</padrao-imagem>
+ 
+ <!-- Descrição do Padrão que será utilizado -->
+ <padrao-descricao>Bem-vindo ao tutorial do jCompany para o Caso de Uso Exemplo.</padrao-descricao>
+ 
+ <!-- Esteriótipo utilizado internamente pelo Plugin Dinâmico. Deve ter nome unico... -->
+ <padrao-estereotipo>exemplo</padrao-estereotipo>
+ 
+ <!-- Exemplo de definição de uma página -->
+  <pagina titulo="Página 1 - Exemplo">
+    <!-- Exemplo de definição dos campos -->
+
+	<campo>
+		<codigo>exemplo1</codigo>
+		<rotulo>Exemplo 1: </rotulo>
+		<ajuda>Ajuda Exemplo 1.</ajuda>
+		<dominio>STRING</dominio>
+		<obrigatoriedade>true</obrigatoriedade>
+	  	<valor-default></valor-default>
+   	 </campo>
+	
+  </pagina>
+  
+  <pagina titulo="Página 2 - Exemplo">
+	<campo>
+		<codigo>exemplo2</codigo>
+		<rotulo>Exemplo 2: </rotulo>
+		<ajuda>Ajuda Exemplo 2.</ajuda>
+		<dominio>STRING</dominio>
+		<obrigatoriedade>true</obrigatoriedade>
+		<valor-default></valor-default>
+	</campo>
+  </pagina>
+  
+  <!-- Mais exemplos de utilização das tarefas do plugin dinâmico, verificar plugin jcompany_extension_tabular no diretório meus_projetos -->
+  
+  
+</plc-padrao>
+

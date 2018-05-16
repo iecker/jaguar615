@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.jcompany</groupId>
+	<artifactId>birt-viewer-completo</artifactId>
+	<version>6.1.5</version>
+	<name>Birt Viewer Completo</name>
+	<packaging>pom</packaging>
+	<description />
+
+	<modules>
+		<module>birt-viewer</module>
+		<module>plc-birt-viewer</module>
+	</modules>
+	
+	<properties>
+  		<finalName>${project.artifactId}</finalName>
+	</properties>
+	
+	<distributionManagement>
+		<repository>
+			<id>powerlogic</id>
+			<name>Repositorio Powerlogic</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powerreleases</url>
+		</repository>
+		<snapshotRepository>
+			<id>powerlogic</id>
+			<name>Repositorio de Snapshots</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powersnapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project> 

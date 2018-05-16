@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="consultardepartamentoarg.titulo"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.id"/>  
+					<plcf:texto id="id" value="#{consultardepartamento.id}" ajudaChave="ajuda.id"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.descricao"/>  
+					<plcf:texto id="descricao" value="#{consultardepartamento.descricao}" ajudaChave="ajuda.descricao"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.departamentoPai"/>  
+					<plcf:vinculado id="departamentoPai" value="#{consultardepartamento.departamentoPai}" propSelPop="departamento" idExibe="S" idSomenteLeitura="N" autoRecuperacaoClasse="br.com.plc.jcompany_fcls.entity.departamento.DepartamentoEntity" actionSel="departamentosel" modal="S" ajudaChave="ajuda.departamentoPai" onkeydown="selecionaPorTecla(event,this);"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.endereco.uf"/>  
+					<plcf:comboDinamico id="endereco_uf" value="#{consultardepartamento.endereco.uf}" dominio="UfEntity" exibeBranco="S" ajudaChave="ajuda.endereco.uf"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

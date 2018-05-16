@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Declaração do script - Informação contendo o Titulo do Padrão, exibdo na tela inicial do wizard - Ex.: (Tabular - Mestre Detalhe - Consulta)-->
+<plc-padrao titulo="&lt;&lt;plxTabular&gt;&gt; Manter Classe via Extension">
+ 
+ <!-- 
+	 Exemplo de Utilização do Plugin Dinâmico para geração de uma lógica Tabular Simples.
+	 Neste script, você encontrara exemplos de utilização dos componentes do Plugin Dinâmico.
+	  - Definição de Telas
+	  - Definição de Campos
+	  - Invocação das tarefas para criação ou alteração dos arquivos.
+  
+ -->
+ <!-- Definição do ícone que será exibido na tela inicial -->
+ <padrao-imagem>plx_jcompany_tabular/plcextension/img/comuns/folder_aberta.gif</padrao-imagem>
+ 
+ <!-- Descrição do Padrão que será utilizado -->
+ <padrao-descricao>Este é a apenas um exemplo de uma geração alternativa, via tecnologia de Extension, do padrão &lt;&lt;plcTabular&gt;&gt; do Kernel chamado Manter Classe, também conhecido como Tabular, usado para manutenção de classes com poucos objetos ou, no jargão relacional, "tabelas básicas, com população estável de registros". </padrao-descricao>
+ 
+ <!-- Esteriótipo utilizado internamente pelo Plugin Dinâmico. Deve ter nome unico... -->
+ <padrao-estereotipo>tabular</padrao-estereotipo>
+ 
+ <!-- Exemplo de definição de uma página -->
+  <pagina titulo="Página 1 - Definição do Caso de Uso">
+    <!-- Exemplo de definição dos campos -->
+    <campo>
+      <codigo>projeto</codigo>
+      <rotulo>Projeto Selecionado: </rotulo>
+      <ajuda>Digite aqui o nome do projeto.</ajuda>
+      <dominio>STRING</dominio>
+      <obrigatoriedade>true</obrigatoriedade>
+	  <valor-default></valor-default>
+	  <script>groovy/comuns/PlcValoresDefault</script>
+    </campo>
+	<campo>
+      <codigo>casouso</codigo>
+      <rotulo>Caso de Uso: </rotulo>
+      <ajuda>Digite aqui o nome do caso de uso.</ajuda>
+      <dominio>STRING</dominio>
+      <obrigatoriedade>true</obrigatoriedade>
+	  <valor-default></valor-default>
+    </campo>
+	<campo>
+      <codigo>subdiretorio</codigo>
+      <rotulo>Subdiretório: </rotulo>
+      <ajuda>Digite o nome do subdiretorio de páginas.</ajuda>
+      <dominio>STRING</dominio>
+      <obrigatoriedade>false</obrigatoriedade>
+    </campo>
+    <campo>
+      <codigo>titulo</codigo>
+      <rotulo>Título: </rotulo>
+      <ajuda>Digite o Título para o caso de uso.</ajuda>
+      <dominio>STRING</dominio>
+      <obrigatoriedade>true</obrigatoriedade>
+	  <valor-default></valor-default>
+    </campo>
+	<campo>
+      <codigo>entidade</codigo>
+      <rotulo>Entidade: </rotulo>
+      <ajuda>Escolha a entidade do caso de uso.</ajuda>
+      <dominio>CLASSE</dominio>
+      <obrigatoriedade>true</obrigatoriedade>
+    </campo>
+  </pagina>
+  
+  <pagina titulo="Página 2 - Definição componentes da tela">
+	<campo>
+      <codigo>pacotebase</codigo>
+      <ajuda>Pacote Base do Projeto: </ajuda>
+      <dominio>HIDDEN</dominio>
+      <obrigatoriedade>false</obrigatoriedade>
+	  <script>groovy/comuns/PlcValoresDefault</script>
+    </campo>
+    <campo>
+      <codigo>propriedades</codigo>
+      <rotulo>Propriedades da Entidade</rotulo>
+      <ajuda>Propriedades da Entidade</ajuda>
+      <dominio>GRID</dominio>
+	  <grid-def>
+			<campo>
+				<codigo>propriedade</codigo>
+				<rotulo>Propriedade</rotulo>
+				<ajuda>Propriedades que serão geradas na lógica</ajuda>
+				<dominio>STRING</dominio>
+				<tamanhoColuna>300</tamanhoColuna>
+			</campo>
+			<campo>
+				<codigo>gerar</codigo>
+				<rotulo>Gerar Propriedade</rotulo>
+				<ajuda>Se essa propriedade será gerada para manutenção</ajuda>
+				<dominio>COMBO</dominio>
+				<dominioDiscreto>
+						<opcao><rotulo>Sim</rotulo><valor>S</valor></opcao>
+						<opcao><rotulo>Não</rotulo><valor>N</valor></opcao>
+				</dominioDiscreto>
+			</campo>
+			<campo>
+				<codigo>tipo</codigo>
+				<rotulo>Tipo Propriedade</rotulo>
+				<ajuda>Tipo da propriedade</ajuda>
+				<dominio>COMBO</dominio>
+				<dominioDiscreto>
+					<opcao><rotulo>Texto</rotulo><valor>texto</valor></opcao>
+					<opcao><rotulo>Inteiro</rotulo><valor>inteiro</valor></opcao>
+					<opcao><rotulo>Longo</rotulo><valor>longo</valor></opcao>
+					<opcao><rotulo>Big Decimal</rotulo><valor>numerico</valor></opcao>
+					<opcao><rotulo>Data</rotulo><valor>data</valor></opcao>
+					<opcao><rotulo>Radio</rotulo><valor>radio</valor></opcao>
+				</dominioDiscreto>
+			</campo>
+			<campo>
+				<codigo>titulo</codigo>
+				<rotulo>Título</rotulo>
+				<ajuda>Título para a propriedade informada</ajuda>
+				<dominio>STRING</dominio>
+			</campo>
+		</grid-def>
+      <obrigatoriedade>true</obrigatoriedade>
+	  <valor-default> 
+			
+	  </valor-default>
+	  <script>groovy/comuns/PlcRecuperaPropsClasse</script>
+    </campo>
+  </pagina>
+  
+  <!-- 
+	  Criação de uma página xhtml através da chamada a uma classe Groovy.
+	  O Corpo do xhtml será o conteúdo do template velocity/extensions/tabular/corpo-xhtml-tabular.vm.
+	  Possibilita ao usuário escolher o arquivo de destino.
+	  Exemplo de funcionamento em PlcCriarPagina.groovy
+   -->  
+  <acao>
+	<tipo-acao>groovy/comuns/PlcCriarPagina</tipo-acao>
+	<template-origem>/scripts/velocity/extension/tabular/corpo-xhtml-tabular.vm</template-origem>
+	<diretorio-arq-destino>/src/main/webapp/WEB-INF/fcls/${subdiretorio}/${casouso}.xhtml</diretorio-arq-destino>
+  </acao>
+  
+  <!-- 
+	  Esta ação altera um arquivo texto, adicionando o conteúdo desejado (através de um template velocity).
+	  Esta ação invoca a Classe PlcAlterarArquivo.groovy, alterando o arquivo ApplicationResources.properties
+	  inserindo o conteúdo do template velocity/comuns/plc-application-resources.vm. 
+   -->    
+  <acao>
+	<tipo-acao>groovy/comuns/PlcAlterarArquivo</tipo-acao>
+	<template-origem>/scripts/velocity/comuns/plc-application-resources.vm</template-origem>
+	<diretorio-arq-destino>/src/main/resources/ApplicationResources_pt_BR.properties</diretorio-arq-destino>
+  </acao>
+  
+  <!-- 
+	  Alteração do menu, adicionando o link para acesso através da chamada a uma classe Groovy.
+	  Esta ação, altera o arquivo geralMenu.xhtml, criando um link para acessar a lógica.
+	  O link é montado dinamicamente, de acordo com os dados fornecidos pelo usuário.
+   -->    
+   <acao>
+	<tipo-acao>groovy/comuns/PlcAlterarMenu</tipo-acao>
+	<diretorio-arq-destino>/src/main/webapp/WEB-INF/fcls/geralMenu.xhtml</diretorio-arq-destino>
+  </acao>
+  
+  <acao>
+	<tipo-acao>groovy/comuns/PlcCriarClasse</tipo-acao>
+	<template-origem>/scripts/velocity/extension/tabular/mb-tabular-padrao.vm</template-origem>
+	<diretorio-arq-destino>/src/main/java/${pacotebase}/controller/jsf/${casouso}/${casouso}MB.java</diretorio-arq-destino>
+  </acao>
+  
+  <!-- Criando log -->
+  <acao>
+	<tipo-acao>groovy/comuns/PlcGerarLog</tipo-acao>
+	<diretorio-arq-destino>/</diretorio-arq-destino>
+  </acao>
+
+  
+</plc-padrao>
+

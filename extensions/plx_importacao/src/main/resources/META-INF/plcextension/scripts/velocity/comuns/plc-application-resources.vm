@@ -1,0 +1,13 @@
+## Criando títulos para Caso de Uso Padrão
+
+${contexto.casouso}.titulo=Manutenção de ${contexto.titulo}
+menu.${contexto.casouso}.titulo=${contexto.titulo}
+
+#foreach ($umaProp in $contexto.entidade.listaPropriedades)
+label.$umaProp.nome=$!umaProp.titulo
+ajuda.$umaProp.nome=$!umaProp.titulo
+#end
+
+#if (${contexto.nomeEvento} )
+jcompany.evt.${contexto.nomeEvento}=${contexto.labelEvento}
+#end

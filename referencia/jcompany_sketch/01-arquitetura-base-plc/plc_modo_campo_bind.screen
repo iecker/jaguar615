@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="8" x="1" y="6" measuredWidth="272" measuredHeight="72">
+    <widgets xsi:type="model:WidgetGroup" id="9" measuredWidth="272" measuredHeight="72">
+      <widgets xsi:type="model:Rectangle" id="2" width="272" height="72" measuredWidth="272" measuredHeight="72" border="solid-rounded">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="5" x="42" y="8" width="230" text="Exibir Campos Amarrados (Bind)" measuredWidth="230" measuredHeight="28">
+        <font size="9pt"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="6" x="42" y="39" width="224" text="Exibir Dados de Amostra" measuredWidth="224" measuredHeight="28">
+        <font size="9pt"/>
+      </widgets>
+      <widgets xsi:type="model:Callout" id="3" x="11" y="12" width="21" height="16" measuredWidth="21" measuredHeight="16" annotation="true" background="#ff0000">
+        <font bold="true"/>
+      </widgets>
+      <widgets xsi:type="model:Callout" id="4" x="11" y="40" width="21" height="17" measuredWidth="21" measuredHeight="17" annotation="true" background="#b6d7a8" alpha="0">
+        <font bold="true"/>
+      </widgets>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

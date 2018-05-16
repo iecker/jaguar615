@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<fieldset class="plc-fieldset" >
+			<legend class="plc-fieldset-legend">Grupo Clientes</legend>
+			<plcf:iteracao var="grupoClienteDetalhe" value="#{cliente.grupoCliente}" styleClass="plc-table-tabsel delimitador tabelaFormulario" columnClasses="celulaFormulario" headerClass="celulaFormulario">
+				<h:column>
+					 <h:outputText value="#{rowCounter.index}." />
+				</h:column>
+				<h:column rendered="#{empty requestScope.visualizaDocumentoPlc}">
+					<f:facet name="header"><plcf:tituloExclusao>Exc.</plcf:tituloExclusao></f:facet>
+					<span class="celulaFormularioCaixaMarcacao">
+						<plcf:caixaExclusao id="indExcPlc" value="#{grupoClienteDetalhe.indExcPlc}" />
+					</span>	
+				</h:column>
+				<h:column>
+					<f:facet name="header"><span class="plc-title af_outputLabel">Cód</span></f:facet>
+					<plcf:oid id="grupoClienteDetalhe_id" value="#{grupoClienteDetalhe.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"><span class="plc-title af_outputLabel">Grupo</span></f:facet>
+					<plcf:vinculado id="grupo" value="#{grupoClienteDetalhe.grupo}" propSelPop="grupo" idExibe="S" 
+						autoRecuperacaoClasse="br.com.plc.jcompany_fcls.entity.cliente.GrupoEntity" actionSel="gruposel" modal="S" 
+						ajudaChave="ajuda.grupo" riaUsa="autocomplete(url='#{request.contextPath}/soa/service/autocomplete.grupoman?q=nome')"
+						onkeydown="selecionaPorTecla(event,this);"/>
+				</h:column>
+			</plcf:iteracao>
+		</fieldset>
+	</ui:composition> 
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<plcf:tabela tituloChave="preferenciaaplicacao.titulo"> 
+	<plcf:linha> 
+		<plcf:titulo tituloChave="label.timeOut"/>  
+		<plcf:texto id="timeOut" value="#{preferenciaaplicacao.timeOut}" ajudaChave="ajuda.timeOut"/> 
+	</plcf:linha>
+	<plcf:linha> 	
+		<plcf:titulo tituloChave="label.numMaxTentativasLogin"/>  
+		<plcf:texto id="numMaxTentativasLogin" value="#{preferenciaaplicacao.numMaxTentativasLogin}" ajudaChave="ajuda.numMaxTentativasLogin"/> 
+	</plcf:linha>
+	<plcf:linha>			  
+		<plcf:titulo tituloChave="label.mensagemBoasVindas"/> 
+		<plcf:area 	id="mensagemBoasVindas" value="#{preferenciaaplicacao.mensagemBoasVindas}" ajudaChave="ajuda.mensagemBoasVindas"  colunas="50" numLinhas="5" riaUsa="fckeditor"/> 
+	</plcf:linha>  
+	<plcf:linha> 
+		<plcf:titulo tituloChave="label.servidorEmail"/>  
+		<plcf:texto id="servidorEmail" value="#{preferenciaaplicacao.servidorEmail}" ajudaChave="ajuda.servidorEmail"/> 
+	</plcf:linha>
+	<plcf:linha>			
+		<plcf:titulo tituloChave="label.dataExpiracaoSenha"/>  
+		<plcf:data id="dataExpiracaoSenha" value="#{preferenciaaplicacao.dataExpiracaoSenha}" ajudaChave="ajuda.dataExpiracaoSenha"/> 
+	</plcf:linha> 
+	</plcf:tabela> 
+</html>

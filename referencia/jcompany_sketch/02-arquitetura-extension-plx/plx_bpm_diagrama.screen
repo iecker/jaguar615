@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" width="945" height="417" text="Diagrama" measuredWidth="945" measuredHeight="417"/>
+  <widgets xsi:type="model:Image" x="10" y="40" measuredWidth="905" measuredHeight="353" src="plx_bpm_diagrama_image.png" grayscale="true"/>
+  <hRuler/>
+  <vRuler/>
+  <font/>
+</model:Screen>

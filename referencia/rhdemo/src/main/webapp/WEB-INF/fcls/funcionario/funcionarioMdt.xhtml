@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="funcionario.mestre.titulo.comp" aoSair="comutaAbaFacelets(1)"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.id">Cód.</plcf:titulo>  
+					<plcf:oid id="funcionario_id"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.nome"/>  
+					<plcf:texto id="nome" value="#{funcionario.nome}" ajudaChave="ajuda.nome"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataNascimento"/>  
+					<plcf:data id="dataNascimento" value="#{funcionario.dataNascimento}" ajudaChave="ajuda.dataNascimento"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.departamento"/>  
+					<plcf:vinculado id="departamento" value="#{funcionario.departamento}" propSelPop="departamento" idExibe="S" idSomenteLeitura="N" autoRecuperacaoClasse="br.com.plc.rhdemo.entity.DepartamentoEntity" 
+					riaUsa="autocomplete(url='#{request.contextPath}/soa/service/autocomplete.departamentoman?q=descricao')" actionSel="departamentosel" modal="S" ajudaChave="ajuda.departamento" onkeydown="selecionaPorTecla(event,this);"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.sexo"/>  
+					<plcf:radio id="sexo" value="#{funcionario.sexo}" dominio="Sexo" ajudaChave="ajuda.sexo"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.temCursoSuperior"/>  
+					<plcf:caixaMarcacao id="temCursoSuperior" value="#{funcionario.temCursoSuperior}" ajudaChave="ajuda.temCursoSuperior"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.cpf"/>  
+					<plcf:texto id="cpf" value="#{funcionario.cpf}" ajudaChave="ajuda.cpf" riaUsa="textmask(mask='999.999.999-99')"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+			<plcf:linha> 
+				<plcf:celula columnSpan="3"> 
+					<plcf:titulo tituloChave="label.observacao"/>  
+					<plcf:area id="observacao" value="#{funcionario.observacao}" numLinhas="10" colunas="40" riaUsa="fckeditor(width='750',height='250')" ajudaChave="ajuda.observacao"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

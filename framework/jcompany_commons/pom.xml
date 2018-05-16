@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+
+	<!-- definição do parent do projeto -->
+	<parent>
+		<groupId>powerlogic.jaguar</groupId>
+		<artifactId>jcompany</artifactId>
+		<version>6.1.5</version>
+	</parent>
+	
+	<!-- dados do projeto -->	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.jcompany</groupId>
+	<artifactId>jcompany_commons</artifactId>
+	<name>jCompany Commons</name>
+	<description>Classes comuns a todos os modulos do jCompany e de aplica??es que utilizam o framework</description>
+
+	<!-- dependências -->
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.jaguar.oss_base_commons</groupId>
+			<artifactId>oss_base_commons</artifactId>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_integration</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_metadata</artifactId>
+		</dependency>		
+		
+		<!-- Test Dependencies -->
+		<dependency>
+			<groupId>org.jboss.arquillian</groupId>
+			<artifactId>arquillian-junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.0.0-rc9</version>
+			<scope>test</scope>
+		</dependency>	
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>sqltool</artifactId>
+			<version>2.0.0-rc9</version>
+			<scope>test</scope>
+		</dependency>	
+				
+	</dependencies>
+	
+ 
+	
+</project> 

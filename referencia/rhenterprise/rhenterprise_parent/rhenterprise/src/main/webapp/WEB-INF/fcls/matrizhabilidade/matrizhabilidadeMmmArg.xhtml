@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+<ui:composition>
+	<plcf:tabela tituloChave="suitecasotestematrix.entidade1.filtro">
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.funcionario"/>  
+				<plcf:vinculado id="funcionario" value="#{matrizhabilidade.funcionario}" propSelPop="funcionario" idExibe="S" idSomenteLeitura="N" autoRecuperacaoClasse="com.acme.rhdemoenterprise.entity.FuncionarioEntity" actionSel="funcionariosel" modal="S" ajudaChave="ajuda.funcionario" onkeydown="selecionaPorTecla(event,this);"/> 
+			</plcf:celula>
+		</plcf:linha>
+	</plcf:tabela>	
+</ui:composition>
+</html>

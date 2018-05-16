@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="funcionario.mestre.2.titulo.comp"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.enderecoResidencial.logradouro']}"/>  
+					<plcf:texto id="enderecoResidencial_logradouro" value="#{funcionario.enderecoResidencial.logradouro}" ajudaChave="ajuda.enderecoResidencial.logradouro"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.enderecoResidencial.numero']}"/>  
+					<plcf:texto id="enderecoResidencial_numero" value="#{funcionario.enderecoResidencial.numero}" ajudaChave="ajuda.enderecoResidencial.numero"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.enderecoResidencial.bairro']}"/>  
+					<plcf:texto id="enderecoResidencial_bairro" value="#{funcionario.enderecoResidencial.bairro}" ajudaChave="ajuda.enderecoResidencial.bairro"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.enderecoResidencial.cep']}"/>  
+					<plcf:texto id="enderecoResidencial_cep" value="#{funcionario.enderecoResidencial.cep}" ajudaChave="ajuda.enderecoResidencial.cep"/> 
+				</plcf:celula>  
+				<plcf:celula columnSpan="2"> 
+					<plcf:titulo value="#{msg['label.enderecoResidencial.uf']}"/>  
+					<plcf:comboDinamico id="enderecoResidencial_uf" value="#{funcionario.enderecoResidencial.uf}" dominio="UfEntity" exibeBranco="S" ajudaChave="ajuda.enderecoResidencial.uf"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

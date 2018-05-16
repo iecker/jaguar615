@@ -1,0 +1,125 @@
+<style type="text/css">
+.template-linha-tabular {
+	display: none;
+}
+</style>
+
+<!-- {CORPO-ACOES} -->
+<div id="plc-corpo-acao" class="plc-corpo-acao">
+	<div id="plc-corpo-acao-generico" class="plc-corpo-acao-generico">
+
+		<button title="Novo" onclick="plc.Bus.evento('plc.acao.tagtab.novo')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iNovo"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Novo</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Gravar" onclick="plc.Bus.evento('plc.acao.tagtab.gravar')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iGravar"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Gravar</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Pesquisar" onclick="plc.Bus.evento('plc.acao.tagtab.pesquisar')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iPesquisar"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Pesquisar</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+	</div>
+</div>
+<hr style="clear: both; border: none;"/>
+<!-- {CORPO-ACOES} -->
+
+<!-- {CORPO-FORMULARIO} -->
+<div id="plc-form-basico" class="plc-form-basico-topo">
+	<div id="tagTab">
+		<fieldset class="plc-fieldset">
+			<legend class="plc-fieldset-legend">Tag</legend>
+			<table class="plc-table-tabsel plc-table-tabsel plc-table-tabsel plc-table-tabsel delimitador tabelaFormulario">
+				<tbody>
+					<tr>
+						<td class="celulaFormulario"></td>
+						<td class="celulaFormulario"><img src="/messagebus/res-plc/midia/form-lixeira.png" alt=""></td>
+						<td class="celulaFormulario"><span class="af_outputLabel">C&oacute;d</span></td>
+						<td class="celulaFormulario"><span class="af_outputLabel">Texto</span></td>
+					</tr>
+					<tr class="template-linha-tabular">
+						<td class="celulaFormularioContador">#i#.</td>
+						<td class="celulaFormularioCaixaMarcacao"></td>
+						<td class="celulaFormulario">
+							<input type="text" maxlength="8" size="8" class="af_inputText_content" disabled="" name="id[#i#]" id="id[#i#]">
+						</td>
+						<td class="celulaFormulario">
+							<input type="text" maxlength="32" size="32" class="af_inputText_content" title="Texto" name="texto[#i#]" id="texto[#i#]">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+	</div>
+</div>
+<!-- {/CORPO-FORMULARIO} -->
+
+<script type="text/javascript">
+
+plc.Bus.escutar('plc.acao.tagtab.pesquisar', function(){
+	// Pede pela pesquisa.
+	plc.Bus.evento('plc.dados.tagtab.pesquisar', {});
+});
+
+
+// Pega o template de resultado. 
+var tpl = $('table tr.template-linha-tabular', $('#tagTab')).html();
+
+plc.Bus.escutar('plc.dados.tagtab.pesquisar.sucesso', function(evento, lista){
+	// limpa as linhas existentes.
+	$('table tbody', $('#usuarioSel')).find('tr.linhapar, tr.linhaimpar').remove();
+	// Monta cada linha da resposta.
+	$.each(lista, function(i, item){
+		// Monta o Template.
+		var t = tpl.replace('#i#', i + 1);
+		for (var p in item) {
+			t = t.replace('#'+p+'#', item[p]);
+		}
+
+		var $tr = $('<tr class="ui-widget-default">'+ t +'</tr>');
+		
+		$tr.addClass(i % 2 == 0 ? 'linhapar': 'linhaimpar')
+		$tr.click(function(){// Dispara o evento de edição para a linha.
+			plc.Bus.evento('plc.logica.usuarioman', function(){
+				plc.Bus.evento('plc.acao.usuarioman.editar', item);
+			});
+		});
+		// Adiciona a linha.
+		$('table tbody', $('#tabTag')).append($tr);
+	});
+});
+
+</script>

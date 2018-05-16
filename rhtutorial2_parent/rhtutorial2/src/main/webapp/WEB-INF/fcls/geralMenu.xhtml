@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:plcf="http://www.powerlogic.com.br/plcf">
+		<ul>
+			<li>
+				<a>
+					<span class="ico iLeiautepadrao"/>
+					<label jsfc="plcf:titulo" tituloChave="app.m.inicial">Principal</label>
+				</a>
+				<ul class="ui-state-hover">
+					<li>
+						<a href="#{request.contextPath}/f/n/uf">
+							<label jsfc="plcf:titulo" tituloChave="menu.uf.titulo">Manter UF</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/unidadeorganizacional">
+							<label jsfc="plcf:titulo" tituloChave="menu.unidadeorganizacional.titulo">Unidade
+							Organizacional</label>
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/funcionario">
+							<label jsfc="plcf:titulo" tituloChave="menu.funcionario.titulo">Funcionário</label>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span class="ico iLeiautepadrao"/>
+							<label jsfc="plcf:titulo" titulo="Parâmetros">Parâmetros</label>
+						</a>
+						<ul class="ui-state-hover">
+							<li>
+								<a href="#{request.contextPath}/f/n/preferenciausuario">
+									<label jsfc="plcf:titulo"
+									tituloChave="menu.preferenciausuario.titulo">
+							 		Perfil e Preferências
+							 		</label>
+								</a>
+							</li>
+						
+							<li>
+								<a href="#{request.contextPath}/f/n/parametroglobal">
+									<label jsfc="plcf:titulo"
+										tituloChave="menu.parametroglobal.titulo">Parâmetros Globais</label>
+								</a>
+							</li>
+						</ul>
+					</li> 
+					<li>
+						<a href="#{request.contextPath}/f/n/parametroglobal">
+							<label jsfc="plcf:titulo" tituloChave="menu.parametroglobal.titulo">Parâmetros Globais</label>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuAjuda.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuPrefLang.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuAreaTecnica.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuDinamico.xhtml"/>
+			<ui:include src="/WEB-INF/fcls-plc/geralMenuThemeSwitcher.xhtml"/>
+		</ul>
+	</ui:composition>

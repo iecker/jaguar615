@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:ButtonBar" id="1" x="8" y="6" width="361" text="{previous} {rewind}, Página  2  de 20,{fast-forward} {skip}" measuredWidth="361" measuredHeight="36" selection="0">
+    <font size="15px"/>
+    <items x="0" y="0" width="84" height="36" text="{previous} {rewind}"/>
+    <items x="84" y="0" width="188" height="36" text="Página  2  de 20"/>
+    <items x="272" y="0" width="89" height="36" text="{fast-forward} {skip}"/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="2" x="221" y="10" width="41" text="20" measuredWidth="41" measuredHeight="28">
+    <font size="15px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="3" x="180" y="10" width="22" text="2" measuredWidth="22" measuredHeight="28">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="4" x="392" y="11" text="Visualizando 11 a 20 de 40" measuredWidth="192" measuredHeight="28">
+    <font size="15px" bold="true"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="15px"/>
+</model:Screen>

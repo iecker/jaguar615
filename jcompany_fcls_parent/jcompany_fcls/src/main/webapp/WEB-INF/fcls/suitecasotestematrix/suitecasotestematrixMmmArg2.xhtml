@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+<ui:composition>
+
+	<plcf:tabela tituloChave="suitecasotestematrix.entidade2.filtro">
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="suitecasotestematrix.entidade2.label" />
+				<plcf:vinculado id="casoTeste" value="#{suitecasotestematrix.casoTeste}"
+					idExibe="S" idSomenteLeitura="N"
+					required="false"
+					propSelPop="casoteste"
+					autoRecuperacaoClasse="br.com.plc.jcompany_fcls.entity.suitecasoteste.CasoTesteEntity"
+					actionSel="casotestesel" modal="S" ajudaChave="suitecasotestematrix.entidade2.ajuda"
+					onkeydown="selecionaPorTecla(event,this);" />
+					
+					
+			</plcf:celula>
+		</plcf:linha>
+	</plcf:tabela>
+
+
+</ui:composition>
+</html>

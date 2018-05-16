@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- definição do parent do projeto -->
+	<parent>
+		<groupId>powerlogic.jaguar</groupId>
+		<artifactId>jcompany</artifactId>
+		<version>6.1.5</version>
+		<relativePath>../../framework/pom.xml</relativePath>
+	</parent>
+
+
+	<!-- dados do projeto -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar</groupId>
+	<artifactId>jcompany-extensions</artifactId>
+	<version>6.1.5</version>
+	<name>jCompany Extensions</name>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>plx_jcompany_audit</module>
+		<module>plx_jcompany_manytomany_dataentry_matrix</module>
+		<module>plx_jcompany_tabular</module>
+	</modules>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>powerlogic.jaguar.jcompany</groupId>
+				<artifactId>jcompany_bom</artifactId>
+				<version>6.1.5</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+			
+	<distributionManagement>
+		<repository>
+			<id>powerlogic</id>
+			<name>Repositorio Powerlogic</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powerreleases</url>
+		</repository>
+		<snapshotRepository>
+			<id>powerlogic</id>
+			<name>Repositorio de Snapshots</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powersnapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+</project> 

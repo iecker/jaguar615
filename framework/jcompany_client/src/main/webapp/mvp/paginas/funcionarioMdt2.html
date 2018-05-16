@@ -1,0 +1,202 @@
+<div id="plc-corpo-acao" class="plc-corpo-acao">
+	<div id="plc-corpo-acao-generico" class="plc-corpo-acao-generico">
+
+		<button title="Novo" onclick="plc.Bus.evento('plc.acao.usuarioman.novo')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iNovo"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Novo</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Gravar" onclick="plc.Bus.evento('plc.acao.usuarioman.gravar')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iGravar"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Gravar</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Excluir" onclick="plc.Bus.evento('plc.acao.usuarioman.excluir')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iExcluir"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Excluir</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<button title="Abrir" onclick="plc.Bus.evento('plc.logica.usuariosel')" class="botao_menu ui-state-default plc-botao">
+			<table>
+				<tr>
+					<td>
+						<div class="plc-corpo-acao-i">
+							<span class="ico iAbrir"></span>
+						</div>
+					</td>
+					<td>
+						<div class="plc-corpo-acao-t">Abrir</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+	</div>
+</div>
+<hr style="clear: both; border: none;"/>
+<!-- {CORPO-ACOES} -->
+
+<!-- {CORPO-FORMULARIO} -->
+<div id="plc-form-basico" class="plc-form-basico-topo">
+
+<div class="plc-form-tab plc-form-basico-topo ui-tabs-panel ui-widget-content ui-corner-bottom" id="funcionarioMestre2">
+	<table cellspacing="0" cellpadding="0" border="0" summary="" class="plc-table-tabsel delimitador tabelaFormulario">
+		<tbody>
+			<tr>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Rua</span>
+					<script type="text/javascript" id="avaliar:corpo:formulario:endereco_rua">validacaoCriaCampo("corpo:formulario:endereco_rua","obrigatorio",'endereco.rua{propTitulo} é obrigatório(a)', 'PARAM_0', 'null', 'PARAM_3', '1')</script>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="float: left;" class="af_inputText p_AFRequired plc-obrigatorio">
+										<input type="text" maxlength="30" size="30" class="af_inputText_content" title="Rua" name="corpo:formulario:endereco_rua" id="corpo:formulario:endereco_rua" />
+										<label class="p_OraHiddenLabel" for="corpo:formulario:endereco_rua">Rua</label>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:endereco_rua_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Numero</span>
+					<script type="text/javascript" id="avaliar:corpo:formulario:endereco_numero">validacaoCriaCampo("corpo:formulario:endereco_numero","obrigatorio",'endereco.numero{propTitulo} é obrigatório(a)', 'PARAM_0', 'null', 'PARAM_3', '1')</script>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="float: left;" class="af_inputText p_AFRequired plc-obrigatorio">
+										<input type="text" maxlength="10" size="10" class="af_inputText_content" title="Numero" name="corpo:formulario:endereco_numero" id="corpo:formulario:endereco_numero" />
+										<label class="p_OraHiddenLabel" for="corpo:formulario:endereco_numero">Numero</label>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:endereco_numero_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Bairro</span>
+					<script type="text/javascript" id="avaliar:corpo:formulario:endereco_bairro">validacaoCriaCampo("corpo:formulario:endereco_bairro","obrigatorio",'endereco.bairro{propTitulo} é obrigatório(a)', 'PARAM_0', 'null', 'PARAM_3', '1')</script>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="float: left;" class="af_inputText p_AFRequired plc-obrigatorio">
+										<input type="text" maxlength="30" size="30" class="af_inputText_content" title="Bairro" name="corpo:formulario:endereco_bairro" id="corpo:formulario:endereco_bairro" />
+										<label class="p_OraHiddenLabel" for="corpo:formulario:endereco_bairro">Bairro</label>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:endereco_bairro_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="celulaFormulario">
+					<span class="af_outputLabel">Cep</span>
+					<script type="text/javascript" id="avaliar:corpo:formulario:endereco_cep">validacaoCriaCampo("corpo:formulario:endereco_cep","obrigatorio",'endereco.cep{propTitulo} é obrigatório(a)', 'PARAM_0', 'null', 'PARAM_3', '1')</script>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<span style="float: left;" class="af_inputText p_AFRequired plc-obrigatorio">
+										<input type="text" maxlength="8" size="8" class="af_inputText_content" title="Cep" name="corpo:formulario:endereco_cep" id="corpo:formulario:endereco_cep" />
+										<label class="p_OraHiddenLabel" for="corpo:formulario:endereco_cep">Cep</label>
+									</span>
+								</td>
+								<td>
+									<span class="plc-img-obrigatorio">
+										<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:endereco_cep_icone" />
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td colspan="2" class="celulaFormulario">
+					<span class="af_outputLabel">Uf</span>
+					<span style="float: left;">
+						<script type="text/javascript" id="avaliar:corpo:formulario:endereco_uf">validacaoCriaCampo("corpo:formulario:endereco_uf","obrigatorio",'null{propTitulo} é obrigatório(a)', 'PARAM_0', 'null', 'PARAM_3', '1')</script>
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<span style="float: left;" class="af_selectOneChoice p_AFRequired plc-obrigatorio">
+											<select class="af_selectOneChoice_content" title="Uf" name="corpo:formulario:endereco_uf" id="corpo:formulario:endereco_uf">
+												<option value="">[Selecione]</option>
+												<option value="0">jhghjg</option>
+												<option value="1">bnnm</option>
+												<option value="2">vklfjkl</option>
+											</select>
+											<label class="p_OraHiddenLabel" for="corpo:formulario:endereco_uf">Uf</label>
+										</span>
+									</td>
+									<td>
+										<span class="plc-img-obrigatorio">
+											<img title="Este campo é obrigatório. Preencha-o antes de gravar." style="float: left; border: 0pt none;" src="/jcompany_fcls/res-plc/midia/ico_obrig.png" id="corpo:formulario:endereco_uf_icone" />
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table cellspacing="0" cellpadding="0" style="table-layout: fixed; height: 0px; text-align: right;">
+		<tbody>
+			<tr>
+				<td style="height: 0px;">
+					<input type="text" style="height: 0pt; width: 0pt; margin: 0pt; padding: 0pt; border: 0pt none;" class="inibeFoco" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>

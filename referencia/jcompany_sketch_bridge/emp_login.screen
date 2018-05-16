@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Master" id="4" x="248" y="176" measuredWidth="369" measuredHeight="225">
+    <screen xsi:type="model:Screen" href="../jcompany_sketch/01-arquitetura-base-plc/plc_login.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="5" x="224" y="56" measuredWidth="407" measuredHeight="105" src="../jcompany_sketch/01-arquitetura-base-plc/plc_login_logo.png" grayscale="true"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="15px"/>
+</model:Screen>

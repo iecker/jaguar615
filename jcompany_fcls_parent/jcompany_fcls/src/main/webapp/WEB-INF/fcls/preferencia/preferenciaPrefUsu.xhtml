@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html"> 
+	<ui:composition> 
+	<plcf:tabela tituloChave="preferencia.titulo"> 
+		<plcf:linha> 
+			<plcf:celula> 
+				<plcf:titulo tituloChave="label.caminhoRaiz"/>  
+				<plcf:texto id="caminhoRaiz" value="#{preferenciausu.caminhoRaiz}" ajudaChave="ajuda.caminhoRaiz"/> 
+			</plcf:celula>  
+			<plcf:celula> 
+				<plcf:titulo tituloChave="label.paginaInicial"/>  
+				<plcf:texto id="paginaInicial" value="#{preferenciausu.paginaInicial}" ajudaChave="ajuda.paginaInicial"/> 
+			</plcf:celula> 
+		</plcf:linha>  
+		<plcf:linha> 
+			<plcf:celula> 
+				<plcf:titulo tituloChave="label.numeroPaginacao"/>  
+				<plcf:texto id="numeroPaginacao" value="#{preferenciausu.numeroPaginacao}" ajudaChave="ajuda.numeroPaginacao"/> 
+			</plcf:celula>  
+			<plcf:celula columnSpan="2"> 
+				<plcf:titulo tituloChave="label.dataAniversario"/>  
+				<plcf:data id="dataAniversario" value="#{preferenciausu.dataAniversario}" ajudaChave="ajuda.dataAniversario"/> 
+			</plcf:celula> 
+		</plcf:linha> 
+	</plcf:tabela> 
+	</ui:composition>
+</html>

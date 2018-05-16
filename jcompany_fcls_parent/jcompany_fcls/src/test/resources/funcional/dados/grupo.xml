@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br-->
+<plc-dados logica="crud" xmlns="http://plc.powerlogic.com">
+  <palavra-reservada nome="LabelBotaoPesquisar" texto="Pesquisar"/>
+  <palavra-reservada nome="LabelBotaoNovo" texto="Novo"/>
+  <palavra-reservada nome="LabelBotaoGravar" texto="Gravar"/>
+  <palavra-reservada nome="LabelBotaoExcluir" texto="Excluir"/>
+  <palavra-reservada nome="LabelBotaoLimpar" texto="Limpar"/>
+  <palavra-reservada nome="TextoPosDelecao" texto="Registro excluído com sucesso."/>
+  <palavra-reservada nome="TextoPosGravacao" texto="Registro gravado com sucesso"/>
+  <palavra-reservada nome="tempoSLATotal" texto=""/>
+  <palavra-reservada nome="tipoSLALog" texto=""/>
+  <palavra-reservada nome="UrlPaginaInicial" texto="/f/n/grupoman"/>
+  <palavra-reservada nome="Login" texto="admin"/>
+  <palavra-reservada nome="Senha" texto="senha"/>
+  <palavra-reservada nome="TextoPaginaInicial" texto=""/>
+  <palavra-reservada nome="tipoLogin" texto=""/>
+  <mestre>
+    <campo nome="nome" tipo="input" valor="Grupo Teste" label="Nome"/>
+    <campo nome="inativo" tipo="checkbox" valor="off" label="Inativo"/>
+  </mestre>
+  <cenarios-alternativos>
+    <cenario-alteracao>
+      <botao texto="Gravar"/>
+      <retorno texto="Registro gravado com sucesso"/>
+      <campo nome="inativo" tipo="checkbox" label="Inativo" valor="on"/>
+    </cenario-alteracao>
+  </cenarios-alternativos>
+  <programado>
+    <itemprogramado>
+      <nome>Classe de Teste</nome>
+      <classe>br.com.plc.jcompany_fcls.jcompanyqa.GrupoWebTest</classe>
+    </itemprogramado>
+  </programado>
+</plc-dados>

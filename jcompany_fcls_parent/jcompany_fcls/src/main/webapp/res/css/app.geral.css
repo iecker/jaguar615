@@ -1,0 +1,139 @@
+/* Estilos específicos da aplicação.
+   Deve-se habilitar sua renderização no web.xml, se for usado */
+   
+div.home-subtitulo{
+ font-size: 150%;
+   line-height: 120%;
+}
+div.home-subtopico {
+  padding-top: 5px;
+}
+div.home-subtopico-esq {
+ font-size: 200%;
+}
+div.home-subtopico-dir {
+   font-size: 150%;
+   line-height: 130%;
+}
+div.home-subtopico-dir a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+div.home-subtitulo-rodape {
+font-size: 150%;
+}
+
+a.plc-botao-quiosque{
+vertical-align: middle;
+padding-bottom: 10px;
+border: thin;
+border-style: solid;
+cursor: pointer;
+}
+
+a.plc-botao-quiosque img{
+margin-right: 5px;
+}
+
+a.plc-botao-quiosque div{
+float: left;
+font-size: 150%;
+}
+
+
+
+
+
+
+
+
+
+
+
+div.plc-menu-sistema-pulldown-bpm ul li {
+}
+
+div.plc-menu-sistema-pulldown-bpm ul li.ui-state-hover {
+	background: #F2F2F2 !important;
+	border: none !important;
+	color: #434343 !important;
+}
+div.plc-menu-sistema-pulldown-bpm ul li a {
+	color: #434343;
+	text-shadow: 1px 1px 0 #EEEDED;
+}
+div.plc-menu ul li a:hover { color: #0E1A29; }
+
+/* 2º nível */
+div.plc-menu-sistema-pulldown-bpm ul ul {
+	background: #F2F2F2 !important;
+	border: none !important;
+	-moz-border-radius: 0 8px 8px 8px;
+	-webkit-border-radius: 0 8px 8px 8px;
+	-moz-box-shadow: 0 4px 6px -2px #C8CBCC;
+	-webkit-box-shadow: 0 4px 6px -2px #C8CBCC;	
+	padding-bottom: 10px;
+}
+
+
+.plc-menu-sistema-pulldown-bpm > ul ul { visibility: hidden; }
+.plc-menu-sistema-pulldown-bpm > li { visibility: hidden; }
+
+div.plc-menu-sistema-pulldown-bpm ul li {
+	float: left;
+	position: relative;
+}
+div.plc-menu-sistema-pulldown-bpm ul li a {
+	display: inline;
+	float: left;
+	height: 30px;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 30px;
+	padding: 3px 15px 0 8px;
+	cursor: pointer;
+}
+div.plc-menu ul li,
+div.plc-menu ul li a:hover {
+	border: none;
+}
+div.plc-menu-sistema-pulldown-bpm a span.ico { margin: 8px 8px 0 0; }
+
+div.plc-menu-sistema-pulldown-bpm ul ul {
+	visibility: hidden;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 99999 !important;
+}
+div.plc-menu-sistema-pulldown-bpm ul ul ul {
+	top: 0 !important;
+	left: 100% !important;
+}
+div.plc-menu-sistema-pulldown-bpm ul ul li {
+	width: 100%;
+	float: left;
+}
+div.plc-menu-sistema-pulldown-bpm ul ul li a {
+ 	background: none;
+ 	display: block;
+ 	width: 190px;
+ 	padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<web-app
+	 xmlns="http://java.sun.com/xml/ns/j2ee"
+	 version="2.4"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>Eclipse BIRT Report Viewer</display-name>
+
+    	<!-- plc-ecpReportsUsa -->
+	<context-param>
+		<param-name>ecpReportsUsa</param-name>
+		<param-value>N</param-value>
+	</context-param>
+
+	<!-- Default locale setting -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOCALE</param-name>
+		<param-value>en-US</param-value>
+	</context-param>
+
+	<!-- 
+		Default timezone setting.
+		Examples: "Europe/Paris", "GMT+1".
+		Defaults to the container's timezone.		
+	 -->
+	<context-param>
+		<param-name>BIRT_VIEWER_TIMEZONE</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<!-- Report resources directory for preview. Default to ${birt home} -->
+	<context-param>
+		<param-name>BIRT_VIEWER_WORKING_FOLDER</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<!-- The generated document files directory. Default to ${birt home}/documents -->
+	<context-param>
+		<param-name>BIRT_VIEWER_DOCUMENT_FOLDER</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- If only access the reprot resources under working folder. Default is false -->
+	<context-param>
+		<param-name>WORKING_FOLDER_ACCESS_ONLY</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<!-- Output image/chart directory. Default to ${birt home}/report/images -->
+    <!-- plc-BIRT_VIEWER_IMAGE_DIR -->
+	<context-param>
+		<param-name>BIRT_VIEWER_IMAGE_DIR</param-name>
+		<param-value>${birt.viewer.working.path}/rel/images</param-value>
+	</context-param>
+
+	<!-- Engine log directory. Default to ${birt home}/logs -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Report engine log level -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_LEVEL</param-name>
+		<param-value>WARNING</param-value>
+	</context-param>
+
+	<!-- Directory to store all birt report script libraries (JARs). Default to ${birt home}/scriptlib -->
+	<context-param>
+		<param-name>BIRT_VIEWER_SCRIPTLIB_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<!-- Resource location directory. Default to ${birt home} -->
+	<context-param>
+		<param-name>BIRT_RESOURCE_PATH</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Preview report max rows limited. -->
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_ROWS</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Preview report max cube fetch levels limited.(Only support to preview a report design file using preview pattern.) -->
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_CUBE_ROWLEVELS</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_CUBE_COLUMNLEVELS</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Memory size(MB) for creating cube. -->
+	<context-param>
+		<param-name>BIRT_VIEWER_CUBE_MEMORY_SIZE</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<!-- If always overwrite generated document file. For runtime,efalult to true -->
+	<context-param>
+		<param-name>BIRT_OVERWRITE_DOCUMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!-- Define BIRT viewer configuration file -->
+	<context-param>
+		<param-name>BIRT_VIEWER_CONFIG_FILE</param-name>
+		<param-value>WEB-INF/viewer.properties</param-value>
+	</context-param>
+
+	<!-- If turn on the function that supports print on the server side. Default to on. -->
+	<context-param>
+		<param-name>BIRT_VIEWER_PRINT_SERVERSIDE</param-name>
+		<param-value>ON</param-value>
+	</context-param>
+
+	<!-- If force optimized HTML output. Default to true -->
+	<context-param>
+		<param-name>HTML_ENABLE_AGENTSTYLE_ENGINE</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!-- Viewer Filter.Currently, set request character encoding to UTF-8. -->
+	<filter>
+    	<filter-name>ViewerFilter</filter-name>
+        <filter-class>org.eclipse.birt.report.filter.ViewerFilter</filter-class>
+	</filter>
+    <!-- plc-filer -->
+	<filter>
+		<filter-name>PlcBirtViewerSegFilter</filter-name>
+		<filter-class>
+			com.powerlogic.birtviewer.filter.PlcBirtViewerSegFilter
+		</filter-class>
+	</filter>
+    <filter-mapping>
+        <filter-name>ViewerFilter</filter-name>
+        <servlet-name>ViewerServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ViewerFilter</filter-name>
+        <servlet-name>EngineServlet</servlet-name>
+    </filter-mapping>
+    <!-- plc-filer-mapping -->
+    <filter-mapping>
+		<filter-name>PlcBirtViewerSegFilter</filter-name>
+		<url-pattern>/frameset</url-pattern>
+	</filter-mapping>
+    				
+	<!-- Viewer Servlet Context Listener -->
+	<listener>
+		<listener-class>org.eclipse.birt.report.listener.ViewerServletContextListener</listener-class>
+	</listener>
+
+	<!-- Viewer HttpSession Listener -->
+	<listener>
+		<listener-class>org.eclipse.birt.report.listener.ViewerHttpSessionListener</listener-class>
+	</listener>
+	
+	<!-- Viewer Plc Listener -->
+	
+	<!-- Viewer Servlet, Support SOAP -->	
+	<servlet>
+		<servlet-name>ViewerServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.ViewerServlet</servlet-class>
+	</servlet>
+
+	<!-- Engine Serlvet -->
+	<servlet>
+		<servlet-name>EngineServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.BirtEngineServlet</servlet-class>
+	</servlet>
+
+	<!-- plc-EcpReportsViewerservlet -->
+	<servlet>
+		<servlet-name>EcpReportsViewerServlet</servlet-name>
+		<description>Servlet utilizado para visualizacao on-demand atraves do ecpReports</description>
+		<servlet-class>com.powerlogic.plcvis.report.listener.PlcReportViewer</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/frameset</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/run</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/preview</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/download</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/parameter</url-pattern>
+	</servlet-mapping>	
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/document</url-pattern>
+	</servlet-mapping>	
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/output</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/extract</url-pattern>
+	</servlet-mapping>
+
+	<!-- plc-servlet-mapping -->
+	<servlet-mapping>
+		<servlet-name>EcpReportsViewerServlet</servlet-name>
+		<url-pattern>/viewer</url-pattern>
+	</servlet-mapping>
+	
+	<!-- plc-error-page -->		
+	<error-page>
+		<error-code>403</error-code>
+		<location>/plc/erros/erro403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>503</error-code>
+		<location>/plc/erros/erro503.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/plc/erros/erro400.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>408</error-code>
+		<location>/plc/erros/erro408.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>599</error-code>
+		<location>/plc/erros/erro599.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>401</error-code>
+		<location>/plc/erros/erro401.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/plc/erros/erro500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/plc/erros/erro404.jsp</location>
+	</error-page>
+			
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/birt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/birt.tld</taglib-location>
+		</taglib>
+	</jsp-config>		
+	
+	<!-- plc-resource-env-ref -->
+	<resource-env-ref> 
+    	<description>Onde achar o JBatchPluginService</description>  
+    	<resource-env-ref-name>jcpbatch/plugin-server</resource-env-ref-name>  
+    	<resource-env-ref-type>com.powerlogic.jcpbatch.pluginservice.JBatchPluginService</resource-env-ref-type> 
+  	</resource-env-ref>  
+
+	<!-- plc-security-constraint -->
+	<security-constraint>
+		<display-name>Restricao de Todos os Relatorios</display-name>
+		<web-resource-collection>
+			<web-resource-name>Todas as Relatorios</web-resource-name>
+			<url-pattern>/frameset</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Membros</role-name>
+			<role-name>Demo</role-name>
+			<role-name>Administrador</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- plc-login-config -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>default</realm-name>
+		<form-login-config>
+			<form-login-page>
+				/plc/recursos/loginPlc.jsp
+			</form-login-page>
+			<form-error-page>
+				/plc/recursos/loginErroPlc.jsp
+			</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<!-- plc-security-role -->
+	<security-role>
+		<role-name>Administrador</role-name>
+	</security-role>
+	<security-role>
+		<description>Usuarios para demonstracao</description>
+		<role-name>Demo</role-name>
+	</security-role>
+	<security-role>
+		<description>Todos os usuarios com Login</description>
+		<role-name>Membros</role-name>
+	</security-role>
+	
+</web-app>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<plc-dados logica="mestredetalhe" xmlns="http://plc.powerlogic.com">
+  <palavra-reservada nome="UrlPaginaInicial" texto="/f/n/albummdt"/>
+  <palavra-reservada nome="Login" texto="admin"/>
+  <palavra-reservada nome="Senha" texto="senha"/>
+  <palavra-reservada nome="TextoPaginaInicial" texto=""/>
+  <palavra-reservada nome="tempoSLATotal" texto=""/>
+  <palavra-reservada nome="tipoSLALog" texto=""/>
+  <mestre/>
+  <cenarios-alternativos>
+    <cenario-alteracao/>
+    <cenario-livre>
+      <redirecionar url="asdfghjklç"/>
+      <clicar tipo="botao"/>
+      <preencher/>
+    </cenario-livre>
+    <cenario-livre>
+      <redirecionar url="fdafsdgsfdgsdfgsdfgfdg"/>
+      <preencher/>
+    </cenario-livre>
+    <cenario-alteracao/>
+    <cenario-alteracao/>
+    <cenario-alteracao/>
+    <cenario-livre/>
+  </cenarios-alternativos>
+  <programado/>
+</plc-dados>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml"> 
+		<ui:define name="plc-corpo-formulario"> 
+			<div id="plc-corpo-formulario" class="plc-corpo-formulario plc-form-simples"> 
+				<plcf:tabela tituloChave="preferenciausuario.titulo"> 
+					<plcf:linha> 
+						<plcf:celula> 
+							<plcf:titulo value="#{msg['label.nomeCompleto']}"/>  
+							<plcf:texto id="nomeCompleto" value="#{preferenciausuario.nomeCompleto}" ajudaChave="ajuda.nomeCompleto"/> 
+						</plcf:celula>  
+						<plcf:celula> 
+							<plcf:titulo value="#{msg['label.cpf']}"/>  
+							<plcf:texto id="cpf" value="#{preferenciausuario.cpf}" ajudaChave="ajuda.cpf"/> 
+						</plcf:celula> 
+					</plcf:linha>  
+					<plcf:linha> 
+						<plcf:celula columnSpan="3"> 
+							<plcf:titulo value="#{msg['label.formularioInicial']}"/>  
+							<plcf:texto id="formularioInicial" value="#{preferenciausuario.formularioInicial}" ajudaChave="ajuda.formularioInicial"/> 
+						</plcf:celula> 
+					</plcf:linha> 
+				</plcf:tabela> 
+			</div> 
+		</ui:define> 
+	</ui:composition> 
+</html>

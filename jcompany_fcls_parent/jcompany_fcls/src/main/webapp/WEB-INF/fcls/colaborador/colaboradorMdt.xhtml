@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="colaborador.mestre.titulo.comp"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.id"/>  
+					<plcf:oid id="id" ajudaChave="ajuda.id"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.nome"/>  
+					<plcf:texto id="nome" value="#{colaborador.nome}" ajudaChave="ajuda.nome"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.cpf"/>  
+					<plcf:texto id="cpf" value="#{colaborador.cpf}" ajudaChave="ajuda.cpf"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataCadastro"/>  
+					<plcf:data id="dataCadastro" value="#{colaborador.dataCadastro}" ajudaChave="ajuda.dataCadastro"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.email"/>  
+					<plcf:texto id="email" value="#{colaborador.email}" ajudaChave="ajuda.email"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.responsavelCadastro"/>  
+					<plcf:texto id="responsavelCadastro" value="#{colaborador.responsavelCadastro}" ajudaChave="ajuda.responsavelCadastro"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.estadoCivil"/>  
+					<plcf:comboEstatico id="estadoCivil" value="#{colaborador.estadoCivil}" dominio="EstadoCivil" exibeBranco="S" ajudaChave="ajuda.estadoCivil"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.sexo"/>  
+					<plcf:comboEstatico id="sexo" value="#{colaborador.sexo}" dominio="Sexo" exibeBranco="S" ajudaChave="ajuda.sexo"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

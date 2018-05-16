@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Rectangle" id="2" x="200" y="120" width="369" height="225" measuredWidth="369" measuredHeight="225" border="solid-rounded">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="3" x="238" y="174" text="Usuário:" measuredWidth="76" measuredHeight="36">
+    <font size="12pt"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="4" x="247" y="216" text="Senha:" measuredWidth="62" measuredHeight="36">
+    <font size="12pt"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="5" x="320" y="267" width="201" text="OK" measuredWidth="201" measuredHeight="41">
+    <font size="14pt"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="6" x="320" y="216" width="196" measuredWidth="196" measuredHeight="36">
+    <font size="12pt"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="1" x="320" y="174" width="196" measuredWidth="196" measuredHeight="36">
+    <font size="12pt"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="15px"/>
+</model:Screen>

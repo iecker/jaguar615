@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<plc-dados logica="livre" xmlns="http://plc.powerlogic.com">
+  <palavra-reservada nome="LabelBotaoPesquisar" texto="Pesquisar"/>
+  <palavra-reservada nome="LabelBotaoNovo" texto="Novo"/>
+  <palavra-reservada nome="LabelBotaoGravar" texto="Gravar"/>
+  <palavra-reservada nome="LabelBotaoExcluir" texto="Excluir"/>
+  <palavra-reservada nome="LabelBotaoLimpar" texto="Limpar"/>
+  <palavra-reservada nome="TextoPosDelecao" texto="Registro excluído com sucesso."/>
+  <palavra-reservada nome="TextoPosGravacao" texto="Registro gravado com sucesso"/>
+  <palavra-reservada nome="UrlPaginaInicial" texto=""/>
+  <palavra-reservada nome="Login" texto="admin"/>
+  <palavra-reservada nome="Senha" texto="senha"/>
+  <generico>
+    <cenario-livre nome="Login">
+      <redirecionar url="/f/n/clientemdt"/>
+      <preencher>
+        <campo nome="j_username" tipo="input" label="Login:" valor="admin"/>
+        <campo nome="j_password" tipo="input" label="Senha:" valor="senha"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Ok" esperar="4"/>
+      <textos>
+        <texto valor="Mantem Cliente com Grupo" aparece="true"/>
+      </textos>
+    </cenario-livre>
+    <cenario-livre nome="Cadastrar Cliente">
+      <preencher>
+        <campo nome="loginCliente" tipo="input" label="Login Cliente" valor="cliente.teste"/>
+        <campo nome="corpo:formulario:grupoCliente:0:grupo" tipo="vinculado" autocomplete="S" valor="Grupo"/>
+      </preencher>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso" esperar="0"/>
+      <verificar>
+        <campo nome="lookup_corpo:formulario:grupoCliente:0:grupo" tipo="vinculado-autocomplete" padrao="Grupo A"/>
+      </verificar>
+    </cenario-livre>
+    <cenario-livre nome="Pesquisar Cliente">
+      <redirecionar url="/f/n/clientesel"/>
+      <clicar esperar="3"/>
+      <clicar tipo="botao" rotulo="Pesquisar" esperar="2"/>
+      <clicar tipo="xpath" rotulo="//tr[@id='1']/td[1]" esperar="2"/>
+      <verificar>
+        <campo nome="loginCliente" tipo="input" padrao="cliente.teste" label="Login Cliente"/>
+        <campo nome="lookup_corpo:formulario:grupoCliente:0:grupo" tipo="vinculado" autocomplete="S" padrao="Grupo A"/>
+      </verificar>
+    </cenario-livre>
+    <cenario-livre nome="Clonar Cliente">
+      <clicar tipo="botao" rotulo="Clonar" verificar="Clonagem realizada com sucesso. Altere as informações e submeta a gravação para criar um novo registro. "/>
+      <clicar tipo="botao" rotulo="Gravar" verificar="Registro gravado com sucesso"/>
+      <verificar>
+        <campo nome="loginCliente" tipo="input" padrao="cliente.teste" label="Login Cliente"/>
+        <campo nome="lookup_corpo:formulario:grupoCliente:0:grupo" tipo="vinculado-autocomplete" padrao="Grupo A"/>
+      </verificar>
+    </cenario-livre>
+    <cenario-livre nome="Excluir Cliente Clonado">
+      <clicar tipo="botao" rotulo="Excluir"/>
+      <clicar tipo="confirmacao" rotulo="Tem certeza que deseja excluir?" verificar="Registro excluído com sucesso"/>
+    </cenario-livre>
+    <cenario-livre nome="Pesquisar Cliente">
+      <redirecionar url="/f/n/clientesel"/>
+      <clicar tipo="botao" rotulo="Pesquisar" esperar="2"/>
+      <clicar tipo="xpath" rotulo="//tr[@id='1']/td[1]" esperar="2"/>
+      <verificar>
+        <campo nome="loginCliente" tipo="input" padrao="cliente.teste" label="Login Cliente"/>
+        <campo nome="lookup_corpo:formulario:grupoCliente:0:grupo" tipo="vinculado" autocomplete="S" padrao="Grupo A"/>
+      </verificar>
+    </cenario-livre>
+    <cenario-livre nome="Excluir Cliente">
+      <clicar tipo="botao" rotulo="Excluir"/>
+      <clicar tipo="confirmacao" rotulo="Tem certeza que deseja excluir?" verificar="Registro excluído com sucesso"/>
+    </cenario-livre>
+  </generico>
+  <programado>
+    <itemprogramado>
+      <nome>Classe de Teste</nome>
+      <classe>br.com.plc.jcompany_fcls.jcompanyqa.ClienteGrupoWebTest</classe>
+    </itemprogramado>
+  </programado>
+</plc-dados>

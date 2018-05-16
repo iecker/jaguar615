@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+                
+	<parent>
+		<groupId>powerlogic.jaguar.app</groupId>
+		<artifactId>rhenterprise_modulo_parent</artifactId>
+		<version>6.1.5</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.app</groupId>
+	<artifactId>rhenterprise_modulo</artifactId>
+	<name>rhenterprise_modulo</name>
+	<packaging>war</packaging>
+
+	<!-- Build global -->
+	<build>
+		<plugins>
+			<!-- Esse plugin é necessário para ao realizar o build do projeto, os artefatos de visão
+			     serem importados do jcompany_visao e empacotados junto à essa aplicação 
+			  -->
+			<plugin>
+				<groupId>powerlogic.jaguar.jcompany.maven</groupId>
+				<artifactId>plc-maven-plugin</artifactId>
+				<configuration>
+					<wars>
+						<war>powerlogic.jaguar.jcompany.jcompany_view</war>
+					</wars>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_view</artifactId>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.jcompany</groupId>
+			<artifactId>jcompany_controller</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>jasperreports</groupId>
+					<artifactId>jasperreports</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>eclipsebirt-engine</groupId>
+					<artifactId>eclipsebirt-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>eclipsebirt-engine</groupId>
+					<artifactId>eclipsebirt-engine</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>eclipsebirt-engine</groupId>
+					<artifactId>eclipsebirt-modelapi</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.app</groupId>
+			<artifactId>rhenterprise_modulo_commons</artifactId>
+			<version>6.1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jaguar.app</groupId>
+			<artifactId>rhenterprise_modulo_model</artifactId>
+			<version>6.1.5</version>
+		</dependency>
+	</dependencies>
+</project> 

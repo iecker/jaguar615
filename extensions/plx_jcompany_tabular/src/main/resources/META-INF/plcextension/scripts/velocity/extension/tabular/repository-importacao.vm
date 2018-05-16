@@ -1,0 +1,30 @@
+package ${contexto.pacotebase}.model.${contexto.casouso};
+
+import ${contexto.pacotebase}.persistence.jpa.${contexto.casouso}.${contexto.casoUsoC}DAO;
+
+import javax.inject.Inject;
+
+import com.powerlogic.jcompany.commons.PlcBaseContextVO;
+import com.powerlogic.jcompany.commons.config.stereotypes.SPlcRepository;
+import com.powerlogic.jcompany.commons.annotation.PlcAggregationIoC;
+import com.powerlogic.jcompany.model.PlcBaseRepository;	
+
+/**
+ * Classe de Modelo gerada pelo extension plx_jcompany_tabular
+  */
+@SPlcRepository 
+@PlcAggregationIoC(clazz=${contexto.entidade}.class)
+public class ${contexto.casoUsoC}Repository extends PlcBaseRepository {
+
+	@Inject
+	private ${contexto.casoUsoC}DAO entidadeDAO;
+
+	/*
+	* Método para importar registros
+	*/
+	public void importRecords(PlcBaseContextVO context) {
+		/** invocando o DAO para importar **/
+		entidadeDAO.importRecords();
+	}
+
+}

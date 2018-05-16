@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:rich="http://richfaces.org/rich" >  
+<ui:composition> 
+<fieldset class="plc-fieldset">
+	<legend class="plc-fieldset-legend">Endereço</legend>
+	<h:panelGrid columns="3" styleClass="rf-dt">
+		<rich:column>
+		   <h:outputLabel value="Rua" for="endereco_rua"  />
+		   <h:inputText id="endereco_rua" value="#{departamento.endereco.rua}" size="40" maxlength="40" label="#{msg['label.endereco.rua']}" title="#{msg['ajuda.endereco.rua']}" />
+		</rich:column>
+		<rich:column>
+		  	<h:outputLabel value="Bairro" for="endereco_bairro"/>
+		  	<h:inputText id="endereco_bairro" value="#{departamento.endereco.bairro}" size="40" maxlength="40" label="#{msg['label.endereco.bairro']}" title="#{msg['ajuda.endereco.bairro']}"/>
+		</rich:column>
+		<rich:column>
+		  	<h:outputLabel value="Número"  for="endereco_numero" />
+  			<h:inputText id="endereco_numero" value="#{departamento.endereco.numero}" size="15" maxlength="15" label="#{msg['label.endereco.numero']}" title="#{msg['ajuda.endereco.numero']}"/>
+		</rich:column>
+		<rich:column>
+			<h:outputLabel value="CEP" for="endereco_cep" />	
+			<h:inputText id="endereco_cep" value="#{departamento.endereco.cep}"  size="10" maxlength="10" label="#{msg['label.endereco.cep']}" title="#{msg['ajuda.endereco.cep']}">	   
+				<f:validateBean />
+			</h:inputText>
+		</rich:column>
+		<rich:column>
+			<h:outputLabel value="UF" for="endereco_uf" />	
+			<h:selectOneMenu id="endereco_uf" value="#{departamento.endereco.uf.id}" label="#{msg['label.endereco.uf']}" 
+			     title="#{msg['ajuda.endereco.uf']}" required="true">	  
+				<f:selectItem itemValue="" itemLabel="Selecione..."  />
+				<f:selectItems var="item"  
+						label="#{item}"  itemValue="#{item.id}"
+						value="#{plcDominios.dominios['UfEntity']}"
+						noSelectionLabel="Selecione..." />
+			</h:selectOneMenu>
+		</rich:column>
+		<rich:column/>
+	</h:panelGrid> 
+</fieldset>
+</ui:composition> 
+</html>

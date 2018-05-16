@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Group" id="1" x="16" y="63" width="417" text="Argumentos para filtrar                                      " measuredWidth="417" measuredHeight="100">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Group" id="2" x="464" y="63" width="441" text="Argumentos para filtrar                                   " measuredWidth="441" measuredHeight="100">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="3" x="800" y="24" text="{save} Confirma" measuredWidth="119" measuredHeight="34">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="4" x="833" y="176" text="{find} Filtra" measuredWidth="86" measuredHeight="34">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="5" x="437" y="181" text="Todos" measuredWidth="61" measuredHeight="28" selected="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="6" x="503" y="181" text="Somente Marcados" measuredWidth="148" measuredHeight="28">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="7" x="656" y="181" text="Somente Desmarcados" measuredWidth="173" measuredHeight="28">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Rectangle" id="8" x="16" y="216" width="889" height="327" measuredWidth="889" measuredHeight="327">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="9" x="207" y="216" measuredWidth="118" measuredHeight="143">
+    <widgets xsi:type="model:VLine" id="10" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:VLine" id="11" x="56" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:HLine" id="12" x="3" y="137" width="115" measuredWidth="115" measuredHeight="6"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="13" x="324" y="215" measuredWidth="118" measuredHeight="143">
+    <widgets xsi:type="model:VLine" id="14" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:VLine" id="15" x="56" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:HLine" id="16" x="3" y="137" width="115" measuredWidth="115" measuredHeight="6"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="17" x="558" y="216" measuredWidth="118" measuredHeight="143">
+    <widgets xsi:type="model:VLine" id="18" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:VLine" id="19" x="56" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:HLine" id="20" x="3" y="137" width="115" measuredWidth="115" measuredHeight="6"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="21" x="672" y="216" measuredWidth="118" measuredHeight="143">
+    <widgets xsi:type="model:VLine" id="22" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:VLine" id="23" x="56" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:HLine" id="24" x="3" y="137" width="115" measuredWidth="115" measuredHeight="6"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="25" x="787" y="216" measuredWidth="118" measuredHeight="143">
+    <widgets xsi:type="model:VLine" id="26" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:VLine" id="27" x="56" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:HLine" id="28" x="3" y="137" width="115" measuredWidth="115" measuredHeight="6"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="29" x="441" y="216" measuredWidth="118" measuredHeight="143">
+    <widgets xsi:type="model:VLine" id="30" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:VLine" id="31" x="56" height="137" measuredWidth="6" measuredHeight="137"/>
+    <widgets xsi:type="model:HLine" id="32" x="3" y="137" width="115" measuredWidth="115" measuredHeight="6"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="33" x="17" y="353" width="192" measuredWidth="192" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" id="34" x="17" y="400" width="192" measuredWidth="192" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" id="35" x="17" y="448" width="192" measuredWidth="192" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" id="36" x="16" y="488" width="192" measuredWidth="192" measuredHeight="6"/>
+  <widgets xsi:type="model:VLine" id="37" x="207" y="357" height="186" measuredWidth="6" measuredHeight="186"/>
+  <widgets xsi:type="model:Arrow" id="38" x="16" y="216" width="192" height="138" measuredWidth="192" measuredHeight="138" annotation="true" left="false"/>
+  <widgets xsi:type="model:Rectangle" id="39" x="26" y="202" width="89" height="23" text="Matriz" measuredWidth="89" measuredHeight="23" border="solid-rounded">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="40" x="264" y="354" measuredWidth="66" measuredHeight="184">
+    <widgets xsi:type="model:VLine" id="41" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+    <widgets xsi:type="model:VLine" id="42" x="60" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="43" x="381" y="354" measuredWidth="66" measuredHeight="184">
+    <widgets xsi:type="model:VLine" id="44" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+    <widgets xsi:type="model:VLine" id="45" x="60" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="46" x="496" y="354" measuredWidth="66" measuredHeight="184">
+    <widgets xsi:type="model:VLine" id="47" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+    <widgets xsi:type="model:VLine" id="48" x="60" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="49" x="614" y="358" measuredWidth="66" measuredHeight="184">
+    <widgets xsi:type="model:VLine" id="50" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+    <widgets xsi:type="model:VLine" id="51" x="60" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="52" x="728" y="354" measuredWidth="66" measuredHeight="184">
+    <widgets xsi:type="model:VLine" id="53" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+    <widgets xsi:type="model:VLine" id="54" x="60" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="55" x="840" y="354" measuredWidth="66" measuredHeight="184">
+    <widgets xsi:type="model:VLine" id="56" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+    <widgets xsi:type="model:VLine" id="57" x="60" height="184" measuredWidth="6" measuredHeight="184" foreground="#666666"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="58" x="212" y="447" width="693" measuredWidth="693" measuredHeight="6" foreground="#666666"/>
+  <widgets xsi:type="model:HLine" id="59" x="212" y="488" width="693" measuredWidth="693" measuredHeight="6" foreground="#666666"/>
+  <widgets xsi:type="model:HLine" id="60" x="208" y="400" width="693" measuredWidth="693" measuredHeight="6" foreground="#666666"/>
+  <widgets xsi:type="model:Icon" id="61" x="224" y="416" measuredWidth="24" measuredHeight="24" foreground="#93c47d" icon="check (medium)"/>
+  <widgets xsi:type="model:Icon" id="62" x="516" y="460" measuredWidth="24" measuredHeight="24" foreground="#93c47d" icon="check (medium)"/>
+  <widgets xsi:type="model:Icon" id="63" x="288" y="460" measuredWidth="24" measuredHeight="24" foreground="#93c47d" icon="check (medium)"/>
+  <widgets xsi:type="model:Icon" id="64" x="285" y="368" measuredWidth="24" measuredHeight="24" foreground="#3d85c6" icon="add (medium)"/>
+  <widgets xsi:type="model:Icon" id="65" x="399" y="416" measuredWidth="24" measuredHeight="24" foreground="#3d85c6" icon="add (medium)"/>
+  <widgets xsi:type="model:Label" id="66" x="339" y="299" text="_" measuredWidth="38" measuredHeight="114" foreground="#ff0000">
+    <font size="48pt" bold="true"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="15px"/>
+</model:Screen>

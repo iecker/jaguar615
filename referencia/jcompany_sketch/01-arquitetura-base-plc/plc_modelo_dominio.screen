@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Rectangle" id="2" x="1" y="6" width="440" height="35" measuredWidth="440" measuredHeight="35" border="solid-rounded">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Callout" id="3" x="14" y="18" width="20" height="16" measuredWidth="20" measuredHeight="16" annotation="true" background="#ff0000" alpha="0">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Callout" id="4" x="215" y="17" width="20" height="17" measuredWidth="20" measuredHeight="17" annotation="true" background="#ff0000">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="5" x="40" y="13" width="179" text="Modelo Casos de Uso" measuredWidth="179" measuredHeight="28">
+    <font size="9pt"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="6" x="240" y="13" width="201" text="Modelo Entidades (Domínio)" measuredWidth="201" measuredHeight="28">
+    <font size="9pt"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

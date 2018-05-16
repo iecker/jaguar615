@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#n#planosman" PATH="/n/planosman"
+  SHAPE="288,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#n#planosman:0" NAME="item"
+   PATH="/n/planosman" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="mesmaPagina::#n#planosman" NAME="output"
+    PATH="/n/planosman" TARGET="rules:#n#planosman" TITLE="mesmaPagina" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="abre::#n#planossel" NAME="output1"
+    PATH="/n/planossel" TARGET="rules:#n#planossel" TITLE="abre" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#n#planossel" PATH="/n/planossel"
+  SHAPE="48,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#n#planossel:0" NAME="item"
+   PATH="/n/planossel" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="mesmaPagina::#n#planossel" NAME="output"
+    PATH="/n/planossel" TARGET="rules:#n#planossel" TITLE="mesmaPagina" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="edita::#n#planosman" NAME="output1"
+    PATH="/n/planosman" TARGET="rules:#n#planosman" TITLE="edita" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="novo::#n#planosman" NAME="output2"
+    PATH="/n/planosman" TARGET="rules:#n#planosman" TITLE="novo" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

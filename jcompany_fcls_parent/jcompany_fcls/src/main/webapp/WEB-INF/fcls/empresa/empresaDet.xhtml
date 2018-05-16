@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+	<div>
+		<plcf:iteracao var="endereco" value="#{empresa.endereco}" styleClass="plc-table-tabsel delimitador tabelaFormulario" columnClasses="celulaFormulario" headerClass="celulaFormulario"  >
+			<h:column>
+				 <h:outputText value="#{rowCounter.index}." />
+			</h:column>
+			<h:column rendered="#{empty requestScope.visualizaDocumentoPlc}">
+				<f:facet name="header"><plcf:tituloExclusao>Exc.</plcf:tituloExclusao></f:facet>
+				<span class="celulaFormularioCaixaMarcacao">
+					<plcf:caixaExclusao id="indExcPlc" value="#{endereco.indExcPlc}" />
+				</span>	
+			</h:column>
+			<h:column>
+				<f:facet name="header"><span class="plc-title af_outputLabel">Cód</span></f:facet>
+				<plcf:oid id="endereco_id" value="#{endereco.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><span class="plc-title af_outputLabel">Logradouro</span></f:facet>
+				<plcf:texto id="logradouro" value="#{endereco.logradouro}" ajudaChave="ajuda.logradouro"/> 
+			</h:column>
+			<h:column>
+				<f:facet name="header"><span class="plc-title af_outputLabel">Numero</span></f:facet>
+				<plcf:texto id="numero" value="#{endereco.numero}" formato="NUMERICO" ajudaChave="ajuda.numero" tamanho="15" /> 
+			</h:column>
+			<h:column>
+				<f:facet name="header"><span class="plc-title af_outputLabel">Bairro</span></f:facet>
+				<plcf:texto id="bairro" value="#{endereco.bairro}" ajudaChave="ajuda.bairro"/> 
+			</h:column>
+			<h:column>
+				<f:facet name="header"><span class="plc-title af_outputLabel">UF</span></f:facet>
+				<plcf:comboDinamico id="uf" value="#{endereco.uf}" dominio="UfEntity" exibeBranco="S" ajudaChave="ajuda.uf"/> 
+			</h:column>
+			<h:column>
+				<f:facet name="header"><span class="plc-title af_outputLabel">Cep</span></f:facet>
+				<plcf:texto id="cep" value="#{endereco.cep}" ajudaChave="ajuda.cep" riaUsa="textmask(mask='99.999-999')" tamanho="11" tamanhoMaximo="11"/> 
+			</h:column>
+			<h:column>
+				<f:facet name="header"><span class="plc-title af_outputLabel"></span></f:facet>
+				<plct:subDetalhe caminho="/WEB-INF/fcls/empresa/empresaSubDet.xhtml"/> 
+			</h:column>
+		</plcf:iteracao>
+	</div>
+		<script>
+			applyCheckTarja("endereco");
+		</script>	
+	</ui:composition> 
+</html>

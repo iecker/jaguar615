@@ -1,0 +1,29 @@
+/* Fieldset geral*/
+.manytomanypanel .plc-fieldset {padding: 15px;}
+
+/* Botões de associação*/
+.manytomanypanel .rf-pick-btn {
+	border: none !important;
+	width: 30px;
+	height: 30px;
+	margin: 2px 10px;
+}
+
+/* Títulos das listas*/
+.manytomanypanel .rf-pick-src-cptn, .manytomanypanel .rf-pick-tgt-cptn {font-size: 12px;}
+
+/* Estilo no hover dos botões*/
+.manytomanypanel .rf-pick-btn:hover {border:1px outset #ababab !important;}
+.manytomanypanel .rf-pick-btn-dis:hover {border: none !important;}
+
+/* Botões no estado de habilitados*/
+.manytomanypanel .rf-pick-add {background: transparent url(../midia/add.gif) no-repeat 50% !important;}
+.manytomanypanel .rf-pick-add-all {background: transparent url(../midia/add-all.gif) no-repeat 50% !important;}
+.manytomanypanel .rf-pick-rem {background: transparent url(../midia/remove.gif) no-repeat 50% !important;}
+.manytomanypanel .rf-pick-rem-all {background: transparent url(../midia/remove-all.gif) no-repeat 50% !important;}
+
+/* Botões no estado de desabilitados*/
+.manytomanypanel .rf-pick-btn-dis:disabled {background: transparent url(../midia/add-bw.gif) no-repeat 50% !important;}
+.manytomanypanel .rf-pick-add-all:disabled {background: transparent url(../midia/add-all-bw.gif) no-repeat 50% !important;}
+.manytomanypanel .rf-pick-rem:disabled {background: transparent url(../midia/remove-bw.gif) no-repeat 50% !important;}
+.manytomanypanel .rf-pick-rem-all:disabled {background: transparent url(../midia/remove-all-bw.gif) no-repeat 50% !important;}

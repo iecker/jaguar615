@@ -1,0 +1,17 @@
+<configuracoes>
+  <host>localhost</host>
+  <port>8081</port>
+  <protocolo>http</protocolo>
+  <tipoLogin>GLOBAL</tipoLogin>
+  <usuario>admin</usuario>
+  <senha>senha</senha>
+  <path>rhdemorich</path>
+  <navegador>
+    <tipo>FIREFOX</tipo>
+  </navegador>
+  <rodaSpider>false</rodaSpider>
+  <pesquisar>Pesquisar</pesquisar>
+  <gravar>Gravar</gravar>
+  <novo>Novo</novo>
+  <abrir>Abrir</abrir>
+</configuracoes>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Jaguar-jCompany Developer Suite. Powerlogic 2010-2014. Please read licensing 
+	information in your installation directory.Contact Powerlogic for more information 
+	or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<artifactId>projeto-plc</artifactId>
+		<groupId>powerlogic.jaguar.jcompany</groupId>
+		<version>6.1.5</version>
+		<relativePath>../../../../framework/jcompany_pom/pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jaguar.app</groupId>
+	<artifactId>rhenterprise_bridge_parent</artifactId>
+	<name>RHEnterprise Brigde Parent</name>
+	<packaging>pom</packaging>
+	<version>6.1.5</version>
+	
+	<modules>
+		<module>rhenterprise_bridge_commons</module>
+		<module>rhenterprise_bridge_model</module>
+		<module>rhenterprise_bridge</module>
+	</modules>
+</project> 

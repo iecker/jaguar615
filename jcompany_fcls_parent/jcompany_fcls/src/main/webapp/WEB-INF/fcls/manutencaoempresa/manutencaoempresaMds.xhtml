@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="manutencaoempresa.mestre.titulo.comp"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.id">Cód.</plcf:titulo>  
+					<plcf:oid id="manutencaoempresa_id"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.nome"/>  
+					<plcf:texto id="nome" value="#{manutencaoempresa.nome}" ajudaChave="ajuda.nome"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.capitalSocial"/>  
+					<plcf:numerico id="capitalSocial" value="#{manutencaoempresa.capitalSocial}" ajudaChave="ajuda.capitalSocial" tamanho="15"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.cnpjBasico"/>  
+					<plcf:texto id="cnpjBasico" value="#{manutencaoempresa.cnpjBasico}" ajudaChave="ajuda.cnpjBasico" riaUsa="textmask(mask='99.999.999/9999-99')" tamanho="20" tamanhoMaximo="20"/> 
+				</plcf:celula> 
+	 
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.dataInicio"/>  
+					<plcf:data id="dataInicio" value="#{manutencaoempresa.dataInicio}" /> 
+				</plcf:celula>				
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

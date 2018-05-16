@@ -1,0 +1,13 @@
+.ui-jcompany_topo { }
+.ui-jcompany_topo-empresa { }
+.ui-jcompany_topo-titulo {text-align:center;}
+.ui-jcompany_topo-aplicacao{text-align:right;}
+
+
+/* topo antigo */
+/*
+div.plc-topo { margin-left: 2px;margin-right: 2px;margin-top: 1px;height:30px;border:solid; border-bottom:none;border-width: 1px;border-color: black;}
+div.plc-topo-empresa {float: left;height: 30px;margin-left: 5px;margin-top: 1px;}
+div.plc-topo-titulo {float: left;height: 21px;position:relative;left:20%;margin-top:2px;width:400px;text-align:center;-moz-border-radius: 15px; -webkit-border-radius: 15px;}
+div.plc-topo-aplicacao{float:right;margin-right: 5px;height: 26px;vertical-align: bottom;}
+*/
