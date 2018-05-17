@@ -34,15 +34,13 @@
 		
 		<!-- Para auditoria rígida descomentar código abaixo -->
 		<!--  Extension de auditoria -->
-		<!-- 
+		 
 		<dependency>
 			<groupId>powerlogic.jaguar.jcompany.extension</groupId>
 			<artifactId>plx_jcompany_audit</artifactId>
 			<version>${jcompany.versao}</version>
 		</dependency>
-		 -->
-		
-		
+				
 	</dependencies>
 
 </project> 

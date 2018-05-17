@@ -12,7 +12,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:/comp/env/jdbc/rhtutorial2</non-jta-data-source>
 		
-		
+		<class>com.powerlogic.jcompany.extension.audit.entity.PlcBaseEntityRevision</class>
 
 		<class>com.empresa.rhtutorial2.entity.UfEntity</class>
 	

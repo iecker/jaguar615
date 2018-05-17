@@ -33,6 +33,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ForeignKey;
+import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.Email;
 
 import com.empresa.rhtutorial2.entity.AppBaseEntity;
@@ -81,7 +82,7 @@ public class Funcionario extends AppBaseEntity {
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 
-	// @Audited
+	@Audited
 	@PlcValCpf
 	@NotNull
 	@Size(max = 14)
