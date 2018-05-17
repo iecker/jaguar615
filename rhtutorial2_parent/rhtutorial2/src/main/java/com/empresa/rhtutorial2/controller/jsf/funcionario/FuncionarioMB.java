@@ -1,11 +1,15 @@
 package com.empresa.rhtutorial2.controller.jsf.funcionario;
 
+import java.math.BigDecimal;
+
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 
 import com.empresa.rhtutorial2.controller.jsf.AppMB;
 import com.empresa.rhtutorial2.entity.funcionario.Funcionario;
 import com.empresa.rhtutorial2.entity.funcionario.FuncionarioEntity;
+import com.empresa.rhtutorial2.entity.funcionario.HistoricoProfissional;
+import com.empresa.rhtutorial2.entity.funcionario.HistoricoProfissionalEntity;
 import com.powerlogic.jcompany.commons.annotation.PlcUriIoC;
 import com.powerlogic.jcompany.commons.config.stereotypes.SPlcMB;
 import com.powerlogic.jcompany.config.aggregation.PlcConfigAggregation;
@@ -52,8 +56,15 @@ import com.powerlogic.jcompany.controller.jsf.annotations.PlcHandleException;
 public class FuncionarioMB extends AppMB  {
 
 	private static final long serialVersionUID = 1L;
+	private BigDecimal mediaSalarial = new BigDecimal(0);
 	
-	
+	public BigDecimal getMediaSalarial() {
+		return mediaSalarial;
+	}
+ 
+	public void setMediaSalarial(BigDecimal mediaSalarial) {
+		this.mediaSalarial = mediaSalarial;
+	}	
      		
 	/**
 	* Entidade da ação injetado pela CDI
@@ -91,5 +102,27 @@ public class FuncionarioMB extends AppMB  {
 			//contextUtil.getRequest().setAttribute( PlcConstants.ACAO.EXIBE_BT_GRAVAR, PlcConstants.NAO_EXIBIR);
 		}
 	}
+	
+	public String eventoCalculaMediaSalario(){
+		setMediaSalarial(new BigDecimal(0));
+		FuncionarioEntity func = (FuncionarioEntity)this.entityPlc;
+		if (func.getHistoricoProfissional() != null) {
+			HistoricoProfissionalEntity hist;
+			BigDecimal somaSalario = new BigDecimal(0);
+			int qtd = 0;
+			for (HistoricoProfissional historico : func.getHistoricoProfissional()) {
+				hist = (HistoricoProfissionalEntity)historico;
+				if(!"S".equals(hist.getIndExcPlc()) && hist.getSalario()!= null){
+					somaSalario = somaSalario.add(hist.getSalario());
+					qtd++;
+				}
+			}
+			if(qtd!=0){
+				setMediaSalarial(somaSalario.divide(new BigDecimal(qtd)));
+			}
+		}
+		//msgUtil.msg("Média salarial calculada! Verifique a aba Histórico Profissional!", PlcMessageCor.msgAzulPlc.toString());
+		return "";
+	}	
 		
 }
