@@ -31,6 +31,8 @@
 		<class>com.empresa.rhtutorial2.entity.PreferenciaUsuarioEntity</class>
 	
 		<class>com.empresa.rhtutorial2.entity.ParametroGlobalEntity</class>
+	
+		<class>com.empresa.rhtutorial2.entity.funcionario.pendencia.PendenciaEntity</class>
 	<properties>
 			<property name="hibernate.archive.autodetection" value="class, hbm"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>

@@ -4,7 +4,7 @@
 			    		    
 		Please read licensing information in your installation directory.Contact Powerlogic for more 
 		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
-*/
+ */
 package com.empresa.rhtutorial2.entity.funcionario;
 
 import java.math.BigDecimal;
@@ -48,85 +48,80 @@ import com.powerlogic.jcompany.domain.validation.PlcValMultiplicity;
  */
 @SuppressWarnings("serial")
 @MappedSuperclass
-
 public class Funcionario extends AppBaseEntity {
 
-	
-	@OneToMany (targetEntity = com.empresa.rhtutorial2.entity.funcionario.HistoricoProfissionalEntity.class, fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="funcionario")
-	@ForeignKey(name="FK_HISTORICOPROFISSIONAL_FUNCIONARIO")
-	@PlcValDuplicity(property="descricao")
-	@PlcValMultiplicity(min=1, referenceProperty="descricao",  message="{jcompany.aplicacao.mestredetalhe.multiplicidade.HistoricoProfissionalEntity}")
+	@OneToMany(targetEntity = com.empresa.rhtutorial2.entity.funcionario.HistoricoProfissionalEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "funcionario")
+	@ForeignKey(name = "FK_HISTORICOPROFISSIONAL_FUNCIONARIO")
+	@PlcValDuplicity(property = "descricao")
+	@PlcValMultiplicity(min = 1, referenceProperty = "descricao", message = "{jcompany.aplicacao.mestredetalhe.multiplicidade.HistoricoProfissionalEntity}")
 	@Valid
 	private List<HistoricoProfissional> historicoProfissional;
 
-
-	
-	@OneToMany (targetEntity = com.empresa.rhtutorial2.entity.funcionario.DependenteEntity.class, fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="funcionario")
-	@ForeignKey(name="FK_DEPENDENTE_FUNCIONARIO")
-	@PlcValDuplicity(property="nome")
-	@PlcValMultiplicity(max=2, referenceProperty="nome",  message="{jcompany.aplicacao.mestredetalhe.multiplicidade.DependenteEntity}")
+	@OneToMany(targetEntity = com.empresa.rhtutorial2.entity.funcionario.DependenteEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "funcionario")
+	@ForeignKey(name = "FK_DEPENDENTE_FUNCIONARIO")
+	@PlcValDuplicity(property = "nome")
+	@PlcValMultiplicity(max = 2, referenceProperty = "nome", message = "{jcompany.aplicacao.mestredetalhe.multiplicidade.DependenteEntity}")
 	@Valid
 	private List<Dependente> dependente;
 
-
-	
-	@Id 
- 	@GeneratedValue(strategy=GenerationType.AUTO, generator = "SE_FUNCIONARIO")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SE_FUNCIONARIO")
 	private Long id;
 
-
 	public static final int MAIORIDADE = 18;
-	public static final BigDecimal SALARIO_MINIMO_SUPERIOR = new BigDecimal(1000);
-	
+	public static final BigDecimal SALARIO_MINIMO_SUPERIOR = new BigDecimal(
+			1000);
+
 	@NotNull
 	@Size(max = 40)
 	private String nome;
-	
+
 	@Past
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
-	
-	//@Audited
+
+	// @Audited
 	@PlcValCpf
 	@NotNull
 	@Size(max = 14)
 	private String cpf;
-	
+
 	@Email
 	@Size(max = 60)
 	private String email;
-	
+
 	@Enumerated(EnumType.STRING)
 	@NotNull
-	@Column(length=1)
+	@Column(length = 1)
 	private EstadoCivil estadoCivil;
-	
+
 	@Enumerated(EnumType.STRING)
 	@NotNull
-	@Column(length=1)
+	@Column(length = 1)
 	private Sexo sexo;
 	private Boolean temCursoSuperior;
-	
-	@ManyToOne (targetEntity = UnidadeOrganizacionalEntity.class, fetch = FetchType.LAZY)
-	@ForeignKey(name="FK_FUNCIONARIO_UNIDADEORGANIZACIONAL")
+
+	@ManyToOne(targetEntity = UnidadeOrganizacionalEntity.class, fetch = FetchType.LAZY)
+	@ForeignKey(name = "FK_FUNCIONARIO_UNIDADEORGANIZACIONAL")
 	private UnidadeOrganizacional unidadeOrganizacional;
-	
+
 	@Size(max = 255)
 	private String observacao;
-	
+
 	@Embedded
 	@NotNull
 	@Valid
 	private Endereco enderecoResidencial;
-	//private Foto foto;
-	//private List<Curriculo> curriculo;
+
+	// private Foto foto;
+	// private List<Curriculo> curriculo;
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
-		this.id=id;
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -134,7 +129,7 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setNome(String nome) {
-		this.nome=nome;
+		this.nome = nome;
 	}
 
 	public Date getDataNascimento() {
@@ -142,7 +137,7 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento=dataNascimento;
+		this.dataNascimento = dataNascimento;
 	}
 
 	public String getCpf() {
@@ -150,7 +145,7 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setCpf(String cpf) {
-		this.cpf=cpf;
+		this.cpf = cpf;
 	}
 
 	public String getEmail() {
@@ -158,7 +153,7 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setEmail(String email) {
-		this.email=email;
+		this.email = email;
 	}
 
 	public EstadoCivil getEstadoCivil() {
@@ -166,7 +161,7 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setEstadoCivil(EstadoCivil estadoCivil) {
-		this.estadoCivil=estadoCivil;
+		this.estadoCivil = estadoCivil;
 	}
 
 	public Sexo getSexo() {
@@ -174,7 +169,7 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setSexo(Sexo sexo) {
-		this.sexo=sexo;
+		this.sexo = sexo;
 	}
 
 	public Boolean getTemCursoSuperior() {
@@ -182,15 +177,16 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setTemCursoSuperior(Boolean temCursoSuperior) {
-		this.temCursoSuperior=temCursoSuperior;
+		this.temCursoSuperior = temCursoSuperior;
 	}
 
 	public UnidadeOrganizacional getUnidadeOrganizacional() {
 		return unidadeOrganizacional;
 	}
 
-	public void setUnidadeOrganizacional(UnidadeOrganizacional unidadeOrganizacional) {
-		this.unidadeOrganizacional=unidadeOrganizacional;
+	public void setUnidadeOrganizacional(
+			UnidadeOrganizacional unidadeOrganizacional) {
+		this.unidadeOrganizacional = unidadeOrganizacional;
 	}
 
 	public String getObservacao() {
@@ -198,7 +194,7 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setObservacao(String observacao) {
-		this.observacao=observacao;
+		this.observacao = observacao;
 	}
 
 	public Endereco getEnderecoResidencial() {
@@ -206,7 +202,7 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setEnderecoResidencial(Endereco enderecoResidencial) {
-		this.enderecoResidencial=enderecoResidencial;
+		this.enderecoResidencial = enderecoResidencial;
 	}
 
 	public List<Dependente> getDependente() {
@@ -214,37 +210,40 @@ public class Funcionario extends AppBaseEntity {
 	}
 
 	public void setDependente(List<Dependente> dependente) {
-		this.dependente=dependente;
+		this.dependente = dependente;
 	}
 
 	public List<HistoricoProfissional> getHistoricoProfissional() {
 		return historicoProfissional;
 	}
 
-	public void setHistoricoProfissional(List<HistoricoProfissional> historicoProfissional) {
-		this.historicoProfissional=historicoProfissional;
+	public void setHistoricoProfissional(
+			List<HistoricoProfissional> historicoProfissional) {
+		this.historicoProfissional = historicoProfissional;
 	}
-	
-	
-	@AssertTrue(message="{trienamento.funcionario.assertiva.maior.idade}")
-	public boolean getValidaMaiorIdade(){
-		
-		final long mileSegundosPorDia = 1000*60*60*24;
-		
-		long numeroDias = (new Date().getTime() - getDataNascimento().getTime()) / mileSegundosPorDia;
-		
+
+	@AssertTrue(message = "{trienamento.funcionario.assertiva.maior.idade}")
+	public boolean getValidaMaiorIdade() {
+
+		final long mileSegundosPorDia = 1000 * 60 * 60 * 24;
+
+		long numeroDias = (new Date().getTime() - getDataNascimento().getTime())
+				/ mileSegundosPorDia;
+
 		return (numeroDias / 365) >= MAIORIDADE;
 	}
 
-	
-	@SuppressWarnings("rawtypes")
 	public BigDecimal obtemSalarioAtual() {
 		// funcionário tem no minimo um histórico profissional
-		BigDecimal salarioAtual = this.getHistoricoProfissional().get(0).getSalario();
-		Date dataInicio = this.getHistoricoProfissional().get(0).getDataInicio();
+		BigDecimal salarioAtual = this.getHistoricoProfissional().get(0)
+				.getSalario();
+		Date dataInicio = this.getHistoricoProfissional().get(0)
+				.getDataInicio();
 		if (dataInicio != null) {
-			for (Iterator iterator = this.getHistoricoProfissional().iterator(); iterator.hasNext();) {
-				HistoricoProfissional hp = (HistoricoProfissional) iterator.next();
+			for (Iterator iterator = this.getHistoricoProfissional().iterator(); iterator
+					.hasNext();) {
+				HistoricoProfissional hp = (HistoricoProfissional) iterator
+						.next();
 				if (hp.getDataInicio().getTime() - dataInicio.getTime() > 0) {
 					salarioAtual = hp.getSalario();
 					dataInicio = hp.getDataInicio();
