@@ -26,5 +26,31 @@
 			</plcf:botaoAcao>
 		</div>
 	</ui:define>
+	<!-- Barra Acoes -->
+	<ui:define name="plc-corpo-acao-uc">
+		<div id='plc-corpo-acao-personalisado' class='plc-corpo-acao-generico'>
+			<plcf:botaoAcao id="bloquear_desbloquear" acao="alterarStatusUsuario"
+				limpaForm="true" partialSubmit="#{!partialSubmit}"
+				label="funcionario.bloquear_desbloquear" botaoArrayID="CLONAR"
+				validaForm="false" immediate="false" blocking="true"
+				onclick="beforeSubmit();">
+
+				<f:ajax event="action" execute="@form" render="@form"
+					imediate="true" />
+
+			</plcf:botaoAcao>
+		</div>
+	</ui:define>
+
+	<!-- Rodape -->
+	<ui:define name="plc-rodape-complemento">
+		Última edição feita por:
+		<plcf:exibe value="#{funcionario.usuarioUltAlteracao}" />
+		na data
+		<plcf:exibe value="#{funcionario.dataUltAlteracao}" />
+		Número da versão atual:
+		<plcf:exibe value="#{funcionario.versao}" />.
+	</ui:define>
+
 </ui:composition>
 </html>

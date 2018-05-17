@@ -19,7 +19,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -29,6 +28,7 @@ import javax.validation.constraints.Size;
 import org.apache.myfaces.extensions.validator.crossval.annotation.RequiredIf;
 import org.apache.myfaces.extensions.validator.crossval.annotation.RequiredIfType;
 import org.hibernate.annotations.ForeignKey;
+import org.hibernate.envers.Audited;
 
 import com.empresa.rhtutorial2.entity.AppBaseEntity;
 import com.powerlogic.jcompany.domain.validation.PlcValGroupEntityList;
@@ -81,6 +81,7 @@ public abstract class HistoricoProfissional extends AppBaseEntity {
 	@Temporal(TemporalType.DATE)
 	private Date dataInicio;
 	
+	@Audited
 	@Min(value=0)
 	@NotNull(groups=PlcValGroupEntityList.class)
 	@RequiredIf(valueOf="descricao",is=RequiredIfType.not_empty)

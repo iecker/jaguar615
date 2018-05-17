@@ -8,7 +8,25 @@
 	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
 	xmlns:tr="http://myfaces.apache.org/trinidad" 
 	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
-	<ui:composition> 
+	<ui:composition>
+	
+		<script>//<![CDATA[
+			function verificarFuncionarioCursoSuperior() {
+				//verificar se e modo edicao. Se funcionario possui id
+				var modoEdicao = jQuery("#corpo\\:formulario\\:id").val();
+			
+				//verifica se tem curso superior pelo checkbox
+				var temCursoSuperior = jQuery("#corpo\\:formulario\\:temCursoSuperior:checked").length;
+			
+				if(modoEdicao && !temCursoSuperior){
+					plc.mensagem('advertencia', 'Atenção: funcionário sem curso superior.');
+				}
+			}
+
+			jQuery(document).ready(verificarFuncionarioCursoSuperior);
+		//]]>		
+		</script>
+	 
 		<plcf:tabela tituloChave="funcionario.mestre.titulo.comp"> 
 			<plcf:linha> 
 				<plcf:celula> 
