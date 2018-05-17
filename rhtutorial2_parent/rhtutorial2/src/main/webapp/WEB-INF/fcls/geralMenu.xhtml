@@ -8,11 +8,13 @@
 					<label jsfc="plcf:titulo" tituloChave="app.m.inicial">Principal</label>
 				</a>
 				<ul class="ui-state-hover">
-					<li>
-						<a href="#{request.contextPath}/f/n/uf">
-							<label jsfc="plcf:titulo" tituloChave="menu.uf.titulo">Manter UF</label>
-						</a>
-					</li>
+					<ui:fragment rendered="#{plct:execOneArg(sessionScope.USER_INFO, 'isUserInRole', 'CURSO')}">
+						<li>
+							<a href="#{request.contextPath}/f/n/uf">
+								<label jsfc="plcf:titulo" tituloChave="menu.uf.titulo">Manter UF</label>
+							</a>
+						</li>
+					</ui:fragment>
 					<li>
 						<a href="#{request.contextPath}/f/n/unidadeorganizacional">
 							<label jsfc="plcf:titulo" tituloChave="menu.unidadeorganizacional.titulo">Unidade
