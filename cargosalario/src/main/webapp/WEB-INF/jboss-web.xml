@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!--  																													
+	    			       Jaguar-jCompany Developer Suite.																		
+			    		        Powerlogic 2010-2014.
+			    		    
+		Please read licensing information in your installation directory.Contact Powerlogic for more 
+		information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br																								
+  -->
+  <jboss-web>
+	<resource-ref>
+        <res-ref-name>jdbc/cargosalario</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <jndi-name>java:cargosalario</jndi-name>
+    </resource-ref>
+ 
+ </jboss-web>
