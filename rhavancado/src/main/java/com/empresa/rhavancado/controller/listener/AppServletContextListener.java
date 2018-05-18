@@ -2,11 +2,30 @@
 *  Contact Powerlogic for more information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br  */ 
 package com.empresa.rhavancado.controller.listener;
 
-import com.empresa.controller.listener.EmpServletContextListener;
+import javax.servlet.ServletContextEvent;
+
+import org.apache.log4j.Logger;
+
+import com.powerlogic.jcompany.commons.PlcException;
 
 /**
  * Classe destinada a programações em tempo de inicialização  da aplicação
  */
-public class AppServletContextListener extends EmpServletContextListener {
+public class AppServletContextListener /*extends EmpServletContextListener*/ {
+	
+	protected static final Logger log = Logger.getLogger(AppServletContextListener.class.getCanonicalName());
+
+	//@Override
+	public void cdAoEncerrarAplicacao(ServletContextEvent event)
+			throws PlcException {
+		log.info( "Encerrando a Aplicacao");
+
+	}
+
+	//@Override
+	public void ciAoInicializarAplicacao(ServletContextEvent event)
+			throws PlcException {
+		log.info( "Tratamento da Aplicacao: Inicializando a Aplicacao");
+	}
 	
 }

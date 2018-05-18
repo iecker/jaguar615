@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>powerlogic.jaguar.jcompany</groupId>
 		<artifactId>projeto-plc</artifactId>
-		<version>6.1.1</version>
+		<version>6.1.5</version>
 	</parent>
 
 	<!-- dados do projeto -->
@@ -21,6 +21,18 @@
 	<name>rhavancado</name>
 	<packaging>war</packaging>
 
+	<repositories>
+		<repository>
+			<id>powerlogic-release</id>
+			<url>http://update.powerlogic.com.br:8080/archiva/repository/powerlogic</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>powerlogic-release</id>
+			<url>http://update.powerlogic.com.br:8080/archiva/repository/powerlogic</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<!-- O pom.xml é dividido em dependências gerais e profiles. Os profiles 
 		são utilizados para importarem dependências, plugins, executar tarefas, específicas 
@@ -33,7 +45,7 @@
 		é utilizado o profile que contém o argumento "<activeByDefault>" definido 
 		como "true". -->
 
-	<!-- Área de dependências globais -->
+	<!-- �?rea de dependências globais -->
 	<dependencies>
 		<dependency>
 			<groupId>powerlogic.jaguar.jcompany</groupId>
@@ -41,29 +53,19 @@
 			<type>war</type>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>powerlogic.jaguar.jcompany</groupId>
-			<artifactId>jcompany_bridgefcls</artifactId>
-			<type>war</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>powerlogic.jaguar.jcompany</groupId>
-			<artifactId>jcompany_bridgefcls_commons</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>powerlogic.jaguar.jcompany</groupId>
-			<artifactId>jcompany_bridgefcls_model</artifactId>
-		</dependency>		
 		<!-- Para auditoria rígida descomentar código abaixo -->
 		<!-- Extension de auditoria -->
-		<!-- 
-		<dependency> 
-			<groupId>powerlogic.jaguar.jcompany.extension</groupId> 
-			<artifactId>plx_jcompany_audit</artifactId> 
-			<version>${jcompany.versao}</version> 
-		</dependency> 
-		-->
+		<!-- <dependency> <groupId>powerlogic.jaguar.jcompany.extension</groupId> 
+			<artifactId>plx_jcompany_audit</artifactId> <version>${jcompany.versao}</version> 
+			</dependency> -->
+
+
+		<dependency>
+			<groupId>com.empresa.cargosalario</groupId>
+			<artifactId>cargosalarioservice</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 	<!-- Build global -->
 	<build>
@@ -77,7 +79,6 @@
 				<configuration>
 					<wars>
 						<war>powerlogic.jaguar.jcompany.jcompany_view:excludes=/WEB-INF/plcf.tld</war>
-						<war>powerlogic.jaguar.jcompany.jcompany_bridgefcls</war>
 					</wars>
 				</configuration>
 			</plugin>
@@ -111,7 +112,7 @@
 									<pluginExecutionFilter>
 										<groupId>powerlogic.jaguar.jcompany.maven</groupId>
 										<artifactId>plc-maven-plugin</artifactId>
-										<versionRange>[6.1.1,)</versionRange>
+										<versionRange>[6.1.5,)</versionRange>
 										<goals>
 											<goal>add-sourcepath</goal>
 											<goal>unpack</goal>
@@ -170,6 +171,11 @@
 				<dependency>
 					<groupId>org.hibernate.javax.persistence</groupId>
 					<artifactId>hibernate-jpa-2.0-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<artifactId>hibernate-core</artifactId>
+					<groupId>org.hibernate</groupId>
 					<scope>provided</scope>
 				</dependency>
 				<dependency>

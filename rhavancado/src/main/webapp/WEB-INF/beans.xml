@@ -14,5 +14,5 @@
 		<class>com.powerlogic.jcompany.model.interceptors.PlcTransactionalInterceptor</class>
 		<class>com.powerlogic.jcompany.persistence.jpa.dao.PlcQueryHandler</class>
 	</interceptors>
-	      
+		      
 </beans>

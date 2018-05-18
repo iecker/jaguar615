@@ -48,13 +48,18 @@
 		<buildCommand>
 			<name>org.hibernate.eclipse.console.hibernateBuilder</name>
 			<arguments>
-			</arguments>
+			</arguments>		
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>com.powerlogic.jcompany.builder.hotdeploy</name>
+			<arguments>
+			</arguments>
+		</buildCommand>		
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
@@ -68,28 +73,7 @@
 		<nature>org.jboss.tools.cdi.core.cdinature</nature>
 		<nature>org.hibernate.eclipse.console.hibernateNature</nature>
 		<nature>org.jboss.tools.ws.jaxrs.nature</nature>
-		<nature>org.apache.derby.ui.derbyEngine</nature>
+		<nature>com.powerlogic.jcompany.nature</nature>
+		<nature>org.jboss.tools.jsf.jsfnature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/main/webapp/fcls</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/jcompany_visao/fcls</locationURI>
-		</link>
-		<link>
-			<name>src/main/webapp/res-plc</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/jcompany_visao/res-plc</locationURI>
-		</link>
-		<link>
-			<name>src/main/webapp/WEB-INF/fcls-plc</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/jcompany_visao/WEB-INF/fcls-plc</locationURI>
-		</link>
-		<link>
-			<name>src/main/webapp/WEB-INF/tags</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/jcompany_visao/WEB-INF/tags</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="funcionarioman.titulo"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.id']}"/>  
+					<plcf:oid id="id" value="#{funcionario.id}" ajudaChave="ajuda.id"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.nome']}"/>  
+					<plcf:texto id="nome" value="#{funcionario.nome}" ajudaChave="ajuda.nome"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.cpf']}"/>  
+					<plcf:texto id="cpf" value="#{funcionario.cpf}" ajudaChave="ajuda.cpf"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.sexo']}"/>  
+					<plcf:comboEstatico id="sexo" value="#{funcionario.sexo}" dominio="Sexo" exibeBranco="S" ajudaChave="ajuda.sexo"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.estadoCivil']}"/>  
+					<plcf:comboEstatico id="estadoCivil" value="#{funcionario.estadoCivil}" dominio="EstadoCivil" exibeBranco="S" ajudaChave="ajuda.estadoCivil"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.dataNascimento']}"/>  
+					<plcf:data id="dataNascimento" value="#{funcionario.dataNascimento}" ajudaChave="ajuda.dataNascimento"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.temCursoSuperior']}"/>  
+					<plcf:caixaMarcacao id="temCursoSuperior" obrigatorio="N" value="#{funcionario.temCursoSuperior}" ajudaChave="ajuda.temCursoSuperior"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.codigoCargo']}"/>  
+					<plcf:texto id="codigoCargo" value="#{funcionario.codigoCargo}" ajudaChave="ajuda.codigoCargo"/> 
+				</plcf:celula>
+				<plcf:celula>
+				    <plcf:titulo titulo="Salário Cargo"/>
+				    <plcf:exibe value="#{funcionario.valorSalario}" ></plcf:exibe>
+				</plcf:celula>
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.observacao']}"/>  
+					<plcf:texto id="observacao" value="#{funcionario.observacao}" ajudaChave="ajuda.observacao"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

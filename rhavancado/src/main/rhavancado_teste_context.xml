@@ -17,23 +17,6 @@
       factory="org.jboss.weld.resources.ManagerObjectFactory"/>
  <!-- Uncomment to enable injection into Servlet -->
  <!-- <Listener className="org.jboss.weld.environment.tomcat.WeldLifecycleListener"/>  -->   
- 
-<!-- JBOSS 
-
-<datasources>
-      
-   <local-tx-datasource>
-      <jndi-name>rhavancado</jndi-name>
-      <connection-url>jdbc:derby:sysacad;create=true</connection-url>
-      <driver-class>org.apache.derby.jdbc.EmbeddedDriver</driver-class>
-      <user-name></user-name>
-      <password></password>
-   </local-tx-datasource>
-
- </datasources>
-
--->
-
 
 </Context>
 

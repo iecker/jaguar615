@@ -6,10 +6,6 @@
 	version="2.0"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
-	<application>
-		<default-render-kit-id>com.powerlogic.jsf.renderkit</default-render-kit-id>
-	</application>
-
 	<navigation-rule>
 		<from-view-id>/*</from-view-id>
 		<navigation-case>
@@ -17,10 +13,7 @@
 			<to-view-id>/fcls/public/loginDesconectaPlc.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	<lifecycle>
-		<phase-listener>com.empresa.rhavancado.controller.listener.AppPhaseListener</phase-listener>
-	</lifecycle>
-	
+
 	<application>
 		<resource-bundle>
 			<base-name>ApplicationResources</base-name>
@@ -30,10 +23,12 @@
 		<locale-config>
 			<default-locale>pt_BR</default-locale>
 			<supported-locale>pt_BR</supported-locale>
-			<supported-locale>es_ES</supported-locale>
-			<supported-locale>en_US</supported-locale>
 		</locale-config>
 	</application>
+
+	<lifecycle>
+		<phase-listener>com.empresa.rhavancado.controller.listener.AppPhaseListener</phase-listener>
+	</lifecycle>
  
 
 </faces-config>
