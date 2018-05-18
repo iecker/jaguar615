@@ -21,7 +21,7 @@
 	<artifactId>rhjboss</artifactId>
 	<name>rhjboss</name>
 	<packaging>war</packaging>
-
+		
 	<!-- O pom.xml é dividido em dependências gerais e profiles. Os profiles 
 		são utilizados para importarem dependências, plugins, executar tarefas, específicas 
 		para um fim. Ex. realizar testes ou não, empacotar a aplicação para um servidor 
