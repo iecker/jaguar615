@@ -3,7 +3,6 @@ package com.empresa.cargosalario.persistence.jpa.cargo;
 import com.empresa.cargosalario.persistence.jpa.AppJpaDAO;
 import com.empresa.cargosalario.entity.CargoEntity;
 import com.powerlogic.jcompany.persistence.jpa.PlcQueryParameter;
-import java.math.BigDecimal;
 
 import java.util.List;
 
@@ -31,20 +30,14 @@ public class CargoDAO extends AppJpaDAO  {
 			@PlcQueryFirstLine Integer primeiraLinhaPlc, 
 			@PlcQueryLineAmount Integer numeroLinhasPlc,		   
 			
-			@PlcQueryParameter(name="id", expression="id = :id") Long id,
-			@PlcQueryParameter(name="codigo", expression="codigo like :codigo || '%' ") String codigo,
-			@PlcQueryParameter(name="descricao", expression="descricao like :descricao || '%' ") String descricao,
-			@PlcQueryParameter(name="salario", expression="salario = :salario") BigDecimal salario
+			@PlcQueryParameter(name="id", expression="id = :id") Long id
 	);
 
 	@PlcQuery("querySel")
 	public native Long findCount(
 			PlcBaseContextVO context,
 			
-			@PlcQueryParameter(name="id", expression="id = :id") Long id,
-			@PlcQueryParameter(name="codigo", expression="codigo like :codigo || '%' ") String codigo,
-			@PlcQueryParameter(name="descricao", expression="descricao like :descricao || '%' ") String descricao,
-			@PlcQueryParameter(name="salario", expression="salario = :salario") BigDecimal salario
+			@PlcQueryParameter(name="id", expression="id = :id") Long id
 	);
 	
 }

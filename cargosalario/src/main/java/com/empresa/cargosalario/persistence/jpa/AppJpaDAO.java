@@ -1,13 +1,13 @@
-/* Jaguar-jCompany Developer Suite. Powerlogic 2010-2014. Please read licensing information in your installation directory. 
-*  Contact Powerlogic for more information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br  */ 
+/* Jaguar-jCompany Developer Suite. Powerlogic 2010-2014. Please read licensing information or contact Powerlogic 
+ * for more information or contribute with this project: suporte@powerlogic.com.br - www.powerlogic.com.br        */ 
 package com.empresa.cargosalario.persistence.jpa;
 
-import com.empresa.persistency.jpa.EmpJpaDAO;
 import com.powerlogic.jcompany.commons.config.qualifiers.QPlcDefault;
 import com.powerlogic.jcompany.commons.config.stereotypes.SPlcDataAccessObject;
+import com.powerlogic.jcompany.persistence.jpa.PlcBaseJpaDAO;
 
 @SPlcDataAccessObject
 @QPlcDefault
-public class AppJpaDAO extends EmpJpaDAO {
+public class AppJpaDAO extends PlcBaseJpaDAO {
 
 }

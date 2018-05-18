@@ -1,23 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<Context displayName="cargosalario" 
-         docBase="cargosalario" 
-         path="cargosalario" 
+<Context displayName="cargosalario"
+         docBase="cargosalario"
+         path="cargosalario"
          privileged="true" swallowOutput="off">
 
- <Resource name="jdbc/cargosalario" type="javax.sql.DataSource" driverClassName="org.apache.derby.jdbc.ClientDriver" 
+ <Resource name="jdbc/cargosalario" type="javax.sql.DataSource" driverClassName="org.apache.derby.jdbc.ClientDriver"
    url="jdbc:derby://localhost:1529/bancolocal;create=true" username="APP" password="APP"
    maxActive="50" maxWait="-1" maxIdle="10" removeAbandoned="true" logAbandoned="true" />
    
- <Resource name="jdbc/bridge" type="javax.sql.DataSource" driverClassName="org.apache.derby.jdbc.ClientDriver" 
+ <Resource name="jdbc/bridge" type="javax.sql.DataSource" driverClassName="org.apache.derby.jdbc.ClientDriver"
    url="jdbc:derby://localhost:1528/bancolocal;create=true" username="APP" password="APP"
    maxActive="50" maxWait="-1" maxIdle="10" removeAbandoned="true" logAbandoned="true" />
 
- <!-- JCDI / Weld (RI)  -->      
+ <!-- JCDI / Weld (RI) -->
  <Resource name="BeanManager"
       auth="Container"
       type="javax.enterprise.inject.spi.BeanManager"
       factory="org.jboss.weld.resources.ManagerObjectFactory"/>
 
 </Context>
-

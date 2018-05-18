@@ -9,7 +9,7 @@
 		<groupId>powerlogic.jaguar.jcompany</groupId>
 		<artifactId>projeto-plc</artifactId>
 		<version>6.1.5</version>
-		<relativePath>../../framework/jcompany_pom/pom.xml</relativePath>
+		<relativePath>../framework/jcompany_pom/pom.xml</relativePath>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>

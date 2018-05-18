@@ -10,7 +10,12 @@
 		<title>
 			<ui:insert name="plc-titulo">
 				<c:set var="msgKey" value="#{plcAliasPrefixoAction}.titulo"/>
-				#{plct:execOneArg(plcComponenteVisual,'getMensagem', msgKey)}
+				<c:if test="#{(not empty plcAliasSufixoEntidadeCorrente)}">
+					#{plct:execOneArg(plcComponenteVisual,'getMensagem', msgKey)}:#{plcAliasSufixoEntidadeCorrente}					
+				</c:if>
+				<c:if test="#{(empty plcAliasSufixoEntidadeCorrente)}">					
+					#{plct:execOneArg(plcComponenteVisual,'getMensagem', msgKey)}
+				</c:if>	
 			</ui:insert>
 		</title>
 		<c:if test="${msgKey}">
@@ -25,28 +30,126 @@
 			<ui:include src="/WEB-INF/fcls-plc/geralHeaderPlc.xhtml" />
 		</ui:insert>
 		
-		<c:set var="layoutPlc" value="#{sessionScope.SESSION_CACHE.layout}"/>
+		<c:set var="layoutPlc" value="#{ (not empty requestScope.layoutPlc) ? requestScope.layoutPlc : sessionScope.SESSION_CACHE.layout}"/>
+		<c:set var="layoutReduzidoPlc" value="#{(not empty requestScope.layoutReduzidoPlc) ? requestScope.layoutReduzidoPlc : sessionScope.SESSION_CACHE.indLayoutReduzido}"/>
 		
 	</h:head>
 	<h:body id="corpo_geral" onload="iniciarPagina();" >
 		<div id="app">
-			<div id="plc-topo" class="ui-widget ui-widget-header ui-corner-top plc-topo">
+			<c:if test="#{param.modoJanelaPlc != 'modal' and layoutReduzidoPlc == 'N' and param['laysc'] != 's' and requestScope.SELECAO_POPUP != 'S'}">
+			<div id="plc-topo" class="ui-widget ui-widget-header ui-corner-top plc-topo
+				#{layoutPlc!='sistema'?'plc-topo-classico':''}">
 				<ui:insert name="plc-topo"><ui:include src="/WEB-INF/fcls-plc/geralTopoPlc.xhtml" /></ui:insert>
-			</div>
-			<div id="plc-corpo" class="ui-widget ui-widget-content plc-corpo">			
+			</div>	
+			</c:if>
+			<c:if test="#{(layoutPlc!='oriental' and layoutPlc!='orientalex') and param.modoJanelaPlc != 'modal' and requestScope.SELECAO_POPUP != 'S' }">
+			<ui:insert name="plc-menu">
+				<c:if test="#{param['laysc']!= 's'}">
+					<c:if test="#{layoutPlc=='sistema'}">
+						<ui:include src="/fcls/template/PlcGeralMenuPullDownTemplate.xhtml" />
+					</c:if>
+					<c:if test="#{layoutPlc!='sistema'}">
+						<ui:include src="/fcls/template/PlcGeralMenuClassicoTemplate.xhtml" />
+					</c:if>
+				</c:if>
+			</ui:insert>
+			</c:if>
+		
+			<div id="plc-corpo" class="ui-widget ui-widget-content plc-corpo 
+					#{(layoutPlc=='oriental' or layoutPlc=='orientalex') and !(param.modoJanelaPlc == 'popup' and layoutReduzidoPlc == 'N' and param['laysc'] != 's') ? 'plc-corpo-oriental':''}
+					#{(layoutPlc=='classico' or layoutPlc=='classicoex') and !(param.modoJanelaPlc == 'popup' and layoutReduzidoPlc == 'N' and param['laysc'] != 's') ? 'plc-corpo-classico':''}
+					#{(param.modoJanelaPlc == 'popup' or param.modoJanelaPlc == 'modal') and layoutReduzidoPlc == 'N' and param['laysc'] != 's' ?' plc-corpo-popup ':''}">			
 				<f:view>
 					<f:subview id="corpo">
-						<ui:insert name="plc-corpo"><ui:include src="/fcls/template/PlcFormTemplate.xhtml"/></ui:insert>
+						<ui:insert name="plc-corpo">
+						
+						 	<c:if test="#{sessionScope['SESSION_CACHE'].explorerAtivo and requestScope.explorerUsaPlc == 'S'}">
+								<h:form id="treeview" enctype="" >
+										<ui:insert name="plc-corpo-mensagem">
+											<ui:include src="/WEB-INF/fcls-plc/geralMensagemPlc.xhtml" />
+										</ui:insert>
+										<ui:insert name="plc-treeview">
+											<div class="plc-form-com-treeview">
+												<div class="plc-corpo-formulario-treeview" id="div-treeview">
+													<script type="text/javascript">
+													//<![CDATA[
+													plc.jq(function(){
+														plc.criaTreeView({titulo:'#{plct:entidadeTitulo('Tree View', plcAction.entityPlc['class'])}', logica:'#{plcURLSemBarra}', urlEdicao:plcGeral.contextPath+'/f/n/#{plcURLSemBarra}'})
+													})
+													//]]>
+													</script>
+												</div>
+											</div>
+										</ui:insert>
+								</h:form>
+							</c:if>
+							<h:form id="formulario" enctype=""  >
+									<script type="text/javascript">
+										//<![CDATA[
+											plc.jq(document).unbind('keydown');
+										//]]>	
+									</script>	
+									<ui:insert name="plc-corpo-mensagem">
+										<ui:include src="/WEB-INF/fcls-plc/geralMensagemPlc.xhtml" />
+									</ui:insert>
+									<ui:insert name="plc-corpo-acao">
+										<ui:include src="/fcls/template/PlcFormAcaoTemplate.xhtml" />
+									</ui:insert>	
+								
+									<!-- INI --><!-- Usado para impressao -->
+									<c:choose>
+										<c:when test="#{sessionScope['SESSION_CACHE'].explorerAtivo and requestScope.explorerUsaPlc == 'S'}">
+											<div class="plc-form-com-treeview-formulario">
+												<ui:insert name="plc-corpo-formulario" >
+													Nenhum conteudo definido para "corpoFormularioPlc"
+												</ui:insert>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<ui:insert name="plc-corpo-formulario">
+												Nenhum conteudo definido para "corpoFormularioPlc"
+											</ui:insert>
+										</c:otherwise>
+									</c:choose>
+									<c:if test="#{plcControleConversacao.modoPlc == 'alteracaoPlc'}">
+										<script type="text/javascript">
+											//<![CDATA[
+												configuraEventos();
+											//]]>
+										</script>
+									</c:if>
+									<ui:insert name="plc-corpo-formulario-apos">
+										<ui:include src="/WEB-INF/fcls-plc/geralFormularioAposPlc.xhtml" />
+									</ui:insert>
+									<script type="text/javascript">
+										//<![CDATA[
+											initializesForm();
+										//]]>	
+									</script>	
+									<!-- FIM -->
+								</h:form>
+									<c:if test="#{not empty sessionScope['modoTestePlc']}">
+										<plct:logFimDocumento/>
+									</c:if>
+								<div class="clear"> </div>
+						
+						
+						</ui:insert>
 					</f:subview>
 				</f:view>
-			</div>
-			<ui:insert name="plc-corpo-acao">
-				<ui:include src="/fcls/template/PlcFormAcaoTemplate.xhtml" />
-			</ui:insert>	
-		
-			<ui:insert name="plc-menu">
-					<ui:include src="/fcls/template/PlcGeralMenuPullDownTemplate.xhtml" />
-			</ui:insert>
+			</div>		
+			<c:if test="#{param['laysc']!= 's'}">
+				<c:if test="#{(layoutPlc=='oriental' or layoutPlc=='orientalex') and param.modoJanelaPlc != 'modal' and requestScope.SELECAO_POPUP != 'S'}">
+					<ui:insert name="plc-menu">
+							<ui:include src="/fcls/template/PlcGeralMenuClassicoTemplate.xhtml" />
+					</ui:insert>
+				</c:if>
+			</c:if>
+			<c:if test="#{param.modoJanelaPlc != 'modal' and layoutReduzidoPlc == 'N' and param['laysc'] != 's' and requestScope.SELECAO_POPUP != 'S'}">
+				<div id="plc-rodape" class="ui-widget ui-widget-header ui-corner-bottom plc-rodape #{layoutPlc!='sistema'?'plc-rodape-classico':''}">
+					<ui:insert name="plc-rodape"><ui:include src="/fcls/template/PlcGeralRodapeTemplate.xhtml" /></ui:insert>
+				</div>
+			</c:if>	
 		</div>
 	</h:body>
 </html>

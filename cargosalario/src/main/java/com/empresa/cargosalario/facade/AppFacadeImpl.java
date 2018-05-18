@@ -8,5 +8,5 @@ import com.powerlogic.jcompany.facade.PlcFacadeImpl;
 @QPlcDefault
 @SPlcFacade
 public class AppFacadeImpl extends PlcFacadeImpl{
-	
+
 }
