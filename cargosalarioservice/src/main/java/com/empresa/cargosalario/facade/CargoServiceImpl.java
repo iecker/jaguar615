@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.empresa.cargosalario.persistence.jpa.CargoServiceDAO;
 import com.empresa.cargosalario.service.CargoServiceWSClient;
+import com.empresa.rhavancado.entity.Funcionario;
 import com.powerlogic.jcompany.commons.PlcBaseContextVO;
 
 public class CargoServiceImpl implements ICargoService {
@@ -33,6 +34,11 @@ public class CargoServiceImpl implements ICargoService {
 		BigDecimal extras = cargoServiceWSClient.extrasPorCargo(codigoCargo);
 		BigDecimal total = salario.add(extras);
 		return total;
+	}
+
+	@Override
+	public Funcionario buscaFuncionario(String cpf) {
+		return cargoServiceWSClient.buscaFuncionario(cpf);
 	}
 
 }

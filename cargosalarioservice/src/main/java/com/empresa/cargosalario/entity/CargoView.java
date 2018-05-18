@@ -8,8 +8,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import org.apache.xpath.operations.String;
-
 import com.powerlogic.jcompany.commons.annotation.PlcDbFactory;
 
 @PlcDbFactory(nome = "default_module")

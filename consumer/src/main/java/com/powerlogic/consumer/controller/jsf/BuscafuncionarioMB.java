@@ -22,6 +22,9 @@ public class BuscafuncionarioMB extends AppMB  {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Inject
+	protected ICargoService cargoService;
+	
 	private String cpf;
 	
 	private Funcionario funcionario;
@@ -32,6 +35,10 @@ public class BuscafuncionarioMB extends AppMB  {
 		Funcionario f = port.busca(cpf);
 		setFuncionario(f);
 	}
+	
+	/*public void buscar() {
+		setFuncionario(cargoService.buscaFuncionario(cpf));	
+	}*/
 
 	public String getCpf() {
 		return cpf;
