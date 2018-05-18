@@ -8,7 +8,7 @@
 @PlcConfigApplication(
 	definition=@PlcConfigApplicationDefinition(name="rhavancado", acronym="rhavancado", version=1, release=0),
 	classesDiscreteDomain={com.empresa.rhavancado.entity.Sexo.class,com.empresa.rhavancado.entity.EstadoCivil.class},
-	classesLookup={}
+	classesLookup={com.empresa.rhavancado.entity.UnidadeOrganizacionalEntity.class,com.empresa.rhavancado.entity.EnderecoEntity.class}
 )
 
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="unidadeorganizacionalman.titulo"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.id']}"/>  
+					<plcf:oid id="id" value="#{unidadeorganizacional.id}" ajudaChave="ajuda.id"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.nome']}"/>  
+					<plcf:texto id="nome" value="#{unidadeorganizacional.nome}" ajudaChave="ajuda.nome"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo value="#{msg['label.unidadePai']}"/>  
+					<plcf:comboDinamico id="unidadePai" value="#{unidadeorganizacional.unidadePai}" dominio="UnidadeOrganizacionalEntity" exibeBranco="S" ajudaChave="ajuda.unidadePai"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula columnSpan="3"> 
+					<plcf:titulo value="#{msg['label.endereco']}"/>  
+					<plcf:comboDinamico id="endereco" 
+										value="#{unidadeorganizacional.endereco}" 
+										dominio="EnderecoEntity" 
+										exibeBranco="S" 
+										ajudaChave="ajuda.endereco"/> 
+										
+					<plcf:texto id="endereco_bairro" 
+								value="#{unidadeorganizacional.endereco.bairro}" 
+								ajudaChave="ajuda.endereco.bairro" 
+								riaUsa="googlemaps(mapa='mapaLocalizacaoUnidadeOrganizacional', 
+								campos='corpo:formulario:endereco_logradouro, 
+								corpo:formulario:endereco_numero, 
+								corpo:formulario:endereco_bairro, 
+								corpo:formulario:endereco_cidade, 
+								corpo:formulario:endereco_cep,corpo:formulario:endereco_uf')" />
+
+					
+					<div id="mapaLocalizacaoUnidadeOrganizacional"></div> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

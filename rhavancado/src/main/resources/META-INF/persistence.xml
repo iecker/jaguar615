@@ -15,6 +15,10 @@
 		
 
 		<class>com.empresa.rhavancado.entity.FuncionarioEntity</class>
+	
+		<class>com.empresa.rhavancado.entity.UnidadeOrganizacionalEntity</class>
+	
+		<class>com.empresa.rhavancado.entity.EnderecoEntity</class>
 	<properties>
 			<property name="hibernate.archive.autodetection" value="class, hbm"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
