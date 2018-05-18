@@ -105,6 +105,22 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.ws</groupId>
+			<artifactId>jaxws-api</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.jws</groupId>
+			<artifactId>jsr181-api</artifactId>
+			<version>1.0-MR1</version>
+		</dependency>
+
 	</dependencies>
 	<!-- Build global -->
 	<build>
@@ -448,6 +464,55 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<profile>
+			<id>webservice</id>
+			<activation>
+				<property>
+					<name>webservice</name>
+					<value>S</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>jaxws-maven-plugin</artifactId>
+						<version>1.10</version>
+						<executions>
+							<execution>
+								<id>1</id>
+								<goals>
+									<goal>wsgen</goal>
+								</goals>
+								<configuration>
+									<sei>com.empresa.rhavancado.ws.BuscaFuncionarioWS</sei>
+									<sourceDestDir>src/main/java</sourceDestDir>
+								</configuration>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>javax.xml.ws</groupId>
+								<artifactId>jaxws-api</artifactId>
+								<version>2.1</version>
+							</dependency>
+							<dependency>
+								<groupId>com.sun.xml.ws</groupId>
+								<artifactId>jaxws-tools</artifactId>
+								<version>2.1.3</version>
+							</dependency>
+							<dependency>
+								<groupId>javax.jws</groupId>
+								<artifactId>jsr181-api</artifactId>
+								<version>1.0-MR1</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 	</profiles>
 
 	<!-- Nome final do projeto -->

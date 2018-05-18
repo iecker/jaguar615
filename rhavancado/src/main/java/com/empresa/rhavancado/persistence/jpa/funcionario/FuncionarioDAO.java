@@ -37,7 +37,8 @@ public class FuncionarioDAO extends AppJpaDAO {
 			@PlcQueryParameter(name = "nome", expression = "nome like :nome || '%' ") String nome,
 			@PlcQueryParameter(name = "estadoCivil", expression = "estadoCivil = :estadoCivil") EstadoCivil estadoCivil,
 			@PlcQueryParameter(name = "dataNascimentoMin", expression = "dataNascimento <= :dataNascimentoMin ") Date dataNascimentoMin,
-			@PlcQueryParameter(name = "dataNascimentoMax", expression = "dataNascimento >= :dataNascimentoMax ") Date dataNascimentoMax) {
+			@PlcQueryParameter(name = "dataNascimentoMax", expression = "dataNascimento >= :dataNascimentoMax ") Date dataNascimentoMax,
+			@PlcQueryParameter(name="cpf", expression="cpf like :cpf") String cpf) {
 
 		String querySQL = "from com.powerlogic.rhavancado.entity.funcionario.FuncionarioEntity f "
 				+ "where "
