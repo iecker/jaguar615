@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<ui:composition>
+		<c:if test="#{layoutPlc=='sistema'}">							
+			<script type="text/javascript">
+			//<![CDATA[
+				seg.security.load(function( security ){
+					plc.jq(function( ){
+						var idMenu = "plc-menu-sistema";
+						// Remove os LI que contenham links negados.
+						if (security) {
+							plc.jq("#" + idMenu).find("li > a").each(function(){
+								var a = plc.jq(this);
+								var href = a.attr("href");
+								if (href && href != "#" && !security.isValidUrl(href)) {
+									//remove o LI se for uma URL invalida.
+									a.parent().remove();
+								}
+							});
+						}
+						// Remove os Menus Vazios!
+						plc.jq("#" + idMenu).find("li > ul").each(function(){
+							var ul = plc.jq(this);
+							if (ul.children("li").length === 0) {
+								ul.parent().remove();
+							}
+						});
+					});
+				});
+				/* Cria o Menu Pulldown */
+				plc.jq(function() {
+					plc.jq("div.plc-menu-sistema-pulldown li").hover(function(){
+						plc.jq(this).addClass("ui-state-hover");
+						plc.jq('ul:first',this).css('visibility', 'visible');
+					}, function(){
+						plc.jq(this).removeClass("ui-state-hover");
+						plc.jq('ul:first',this).css('visibility', 'hidden');
+					}).mouseup(function(){
+						plc.jq(this).removeClass("ui-state-hover");
+						plc.jq('ul:first',this).css('visibility', 'hidden');
+					});
+					if (ExpYes){
+						/* erro no internet explorer 7, as abas do mestredetalhe estao sobrepondo o menu */
+						plc.jq("div.plc-menu-sistema-pulldown > ul").css('z-index', 1000);
+					}
+					plc.jq('div.plc-menu li li').hover(
+						function() { plc.jq(this).addClass('ui-state-highlight'); },
+						function() { plc.jq(this).removeClass('ui-state-highlight'); }
+					);
+				});
+			//]]>
+			</script>		
+		</c:if>		
+		<c:if test="#{layoutPlc!='sistema'}">			
+			<script type="text/javascript">
+			//<![CDATA[				
+				seg.security.load(function( security ){
+					plc.jq(function( ){
+						var idMenu = "plc-menu-classico";
+						// Remove os LI que contenham links negados.
+						if (security) {
+							plc.jq("#" + idMenu).find("li > a").each(function(){
+								var a = plc.jq(this);
+								var href = a.attr("href");
+								if (href && href != "#" && !security.isValidUrl(href)) {
+									//remove o LI se for uma URL invalida.
+									a.parent().remove();
+								}
+							});
+						}
+						// Remove os Menus Vazios!
+						plc.jq("#" + idMenu).find("li > ul").each(function(){
+							var ul = plc.jq(this);
+							if (ul.children("li").length === 0) {
+								ul.parent().remove();
+							}
+						});
+					});
+				});				
+				//]]>
+				</script>
+		</c:if>
+	</ui:composition>
+</html>

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/* Estilos específicos para modo de impressao */
+span.af_inputText{font-size: 14px; display:block; float:left; width: 100%;}
+span.plc-title{font-weight: bold; display:block; float:left; width: 100%;font-size: 14px;padding-top:15px;}
+td.celulaFormulario span{font-size: -18px; vertical-align: middle;}
+span.af_selectOneRadio_content{padding: 0px;border-width: 0px;}
+input,textarea{padding: 0px;border-width: 0px; border-style: none;}
+a.iconeCalendario {display: none;}
+span{font-size: 14px; }
+span.plc-botao {display: none}
+span.p_AFRequired img{font-size: 14px; display: none}
+span.af_inputDate{font-size: 14px}
+span.af_selectOneRadio{font-size: 14px;}
+span.af_selectOneChoice {font-size: 14px;}
+span.plc-obrigatorio{font-size: 14px;}
+span.plc-titulo-aba{font-size: 16px; font-weight: bold;}
+table.paginacao-css {display:none}
+div.plc-corpo-acao-generico button {display:none}
+.ui-datepicker-trigger {display:none}
+.plc-impressao{font-family:Lucida Grande,Tahoma,sans-serif}
+.plc-impressao-emitido-em{font-size:11px}
+
+.plc-form-tab {border: none !important; padding: 0px !important;}
+
+body.plc-impressao th.cabecalho {
+  font-size:110%;  !important;
+}
+
+span.cabecalho {font-size: 0px; !important;}
+
+table.tabelaFormulario tr table tr {border: none !important;  }
+
+body.plc-impressao span#titulo {
+	font-size: 200%;
+	cursor: pointer;
+}
+body.plc-impressao td.celulaFormulario {
+	padding: 2px;
+}
+body.plc-impressao table.tabelaFormulario {
+	margin-top:10px;
+}
+body.plc-impressao table {
+	margin-left:5px;
+}
+body.plc-impressao span.af_selectOneRadio_content label {
+	font-weight: normal;
+	float: none;
+}
+body.plc-impressao iframe {display: none;}
+
+.plc-form-detalhe span.af_selectBooleanCheckbox,
+.plc-table-tabsel th.cabecalho img,
+.plc-botao-agregado,
+.plc-paginacao,
+.plc-img-obrigatorio {display: none;}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:plct="http://www.powerlogic.com.br/plct"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	<!--
+	@param nomeDetalhe Nome do detalhe.
+	-->
+	<ui:composition>
+		
+		<c:set var="controladorDetalhe" value="#{plcControleDetalhePaginado.mapaControles[nomeDetalhe]}" />
+
+		<c:if test="#{visualizaDocumentoPlc != 'S' and not empty controladorDetalhe}">
+			<br/>
+
+			<center>
+
+				<fieldset class="plc-fieldset">
+					<div id="linhaPag">
+						<plcf:linha>
+							 
+								<plcf:botaoAcao id="navFirst_#{nomeDetalhe}" onclick="plc.jq('#detCorrPlc').val('#{nomeDetalhe}');plc.jq('#detCorrPlcPaginado').val('#{nomeDetalhe}')" acao="navigationDetailFirst" partialSubmit="true" urlIcone="ico iNavPrimeiro" disabled="#{controladorDetalhe.paginaAtual == 1}" >
+									<f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+									<f:param name="skipValidation" value="true"/>
+								</plcf:botaoAcao>
+								
+								<plcf:botaoAcao id="navPrevious_#{nomeDetalhe}" onclick="plc.jq('#detCorrPlc').val('#{nomeDetalhe}');plc.jq('#detCorrPlcPaginado').val('#{nomeDetalhe}')" acao="navigationDetailPrevious" partialSubmit="true" urlIcone="ico iNavAnterior" disabled="#{controladorDetalhe.paginaAtual == 1}" >
+									<f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+									<f:param name="skipValidation" value="true"/>
+								</plcf:botaoAcao>
+														
+								Página #{controladorDetalhe.paginaAtual} de #{controladorDetalhe.numTotalPaginas}
+								
+								<plcf:botaoAcao id="navNext_#{nomeDetalhe}" onclick="plc.jq('#detCorrPlc').val('#{nomeDetalhe}');plc.jq('#detCorrPlcPaginado').val('#{nomeDetalhe}')" acao="navigationDetailNext" partialSubmit="true" urlIcone="ico iNavProximo" disabled="#{controladorDetalhe.paginaAtual == controladorDetalhe.numTotalPaginas}" >
+									<f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+									<f:param name="skipValidation" value="true"/>
+								</plcf:botaoAcao>
+														
+								<plcf:botaoAcao id="navLast_#{nomeDetalhe}" onclick="plc.jq('#detCorrPlc').val('#{nomeDetalhe}');plc.jq('#detCorrPlcPaginado').val('#{nomeDetalhe}')" acao="navigationDetailLast" partialSubmit="true" urlIcone="ico iNavUltimo" disabled="#{controladorDetalhe.paginaAtual == controladorDetalhe.numTotalPaginas}" >
+									<f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+									<f:param name="skipValidation" value="true"/>
+								</plcf:botaoAcao>						
+								<c:if test="#{controladorDetalhe.numTotalPaginas != 1}">
+									Ir para a página:
+									<div id="irParaPagina_#{nomeDetalhe}" style="width:50px" >
+										<tr:selectOneChoice autoSubmit="true" 
+												valueChangeListener="#{plcAction.navigationToPage}" 
+												value="#{controladorDetalhe.paginaAtual}" 
+												partialSubmit="true"
+												onfocus="plc.jq('#detCorrPlc').val('#{nomeDetalhe}');plc.jq('#detCorrPlcPaginado').val('#{nomeDetalhe}')"> 
+
+											<f:ajax event="valueChange" render="@form" immediate="true"/>
+
+											<c:forEach begin="1" end="#{controladorDetalhe.numTotalPaginas}" varStatus="statusPagina">
+												<tr:selectItem label="#{statusPagina.index}" value="#{statusPagina.index}"/>
+											</c:forEach>
+										</tr:selectOneChoice>
+									</div>
+								</c:if>			
+						</plcf:linha>
+					</div>
+				</fieldset>
+			</center>
+		</c:if>		
+	</ui:composition>
+</html>

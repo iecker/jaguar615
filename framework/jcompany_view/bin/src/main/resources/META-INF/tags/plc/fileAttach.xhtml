@@ -1,0 +1,308 @@
+<ui:composition xmlns:c="http://java.sun.com/jsp/jstl/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+				xmlns:tr="http://myfaces.apache.org/trinidad"
+				xmlns:plcf="http://www.powerlogic.com.br/plcf">
+				
+				
+	<tr:panelGroupLayout id="multiplosArquivosAnexados_#{property}" partialTriggers="uploadArquivo botaoAcaoBaixarArquivo"
+		rendered="#{requestScope.IND_ARQ_ANEXADO=='S' || param['corpo:formulario:IND_ARQ_ANEXADO']=='S' || (not empty plcAction.entityPlc[property] || not empty plcAction.entityPlc[property].id) }">
+		
+		<ui:insert name="plc-corpo-anexo">
+		 
+			
+			<c:set var="dirIcones" value="${pageContext.request.contextPath}/res-plc/midia/icoArrojado/" scope="view"/>
+			<c:set var="titulo" value="label.#{property}" />
+			
+			<c:set var="showImage" value="#{plct:execOneArg (plcConfigUrlColaboracao,'showImageFileAttach', property )}"/>	
+			<c:set var="showImageWidth" value="#{plct:execOneArg (plcConfigUrlColaboracao,'getShowImageWidth', property )}"/>	
+			<c:set var="showImageHeight" value="#{plct:execOneArg (plcConfigUrlColaboracao,'getShowImageHeight', property )}"/>	
+
+			<plcf:titulo value="#{msg[titulo]}" />
+			<input type="hidden" name="indexFile" />
+			<input type="hidden" name="nameFile" />
+			
+		 
+			
+			<script avaliar="S">       
+			//<![CDATA[     
+				
+				function downloadFile(element) {
+					plc.jq(element).parents(".plc-line-arquivo-download").children("button").click();
+				}				
+
+				function createUploader(property) {            
+					var uploader = new qq.FileUploader({
+						element: document.getElementById('uploadFile_' + property),
+						multiple: false,
+						action: "#{request.contextPath}/soa/service/file/#{plct:exec(plcConfigUrlColaboracao,'getNomeColaboracao')}(" + property + ")",
+						onComplete: function(id, fileName, responseJSON) {
+							if (responseJSON.messages && responseJSON.messages.erro) {
+								plc.mensagem("erro", responseJSON.messages.erro, true);
+							} else {
+								//solução que evita o cache do Browser...
+								var timestamp = new Date().getTime();
+								
+								plc.jq("#plc-container-file-image_#{property} .plc-file-image").attr("src", "#{request.contextPath}/soa/service/file/#{plct:exec(plcConfigUrlColaboracao,'getNomeColaboracao')}(" + property + ")?" +timestamp); 
+								 
+							}	
+						}
+					});          
+					
+				}
+				
+				function deleteFileAttach(property) {      
+					plc.jq.ajax({
+						url: "#{request.contextPath}/soa/service/file/#{plct:exec(plcConfigUrlColaboracao,'getNomeColaboracao')}(" + property + ")"
+						,type: "DELETE"
+						,dataType: "json"
+						,success: function(data){
+							plc.mensagem(false);
+							plc.jq("#plc-container-file-image_" + property + " .plc-file-image").attr("src","#{request.contextPath}/res-plc/midia/noimage.jpg");
+							plc.jq("#plc-container-file-image_" + property + " .plc-remove-file-image").hide();
+						}
+						,error: function(data){
+							plc.mensagem("erro", "Erro ao apagar imagem.", false);
+						}
+					});	
+				}
+
+				function viewRemoveButton(view, property) {
+					var noimage = plc.jq("#plc-container-file-image_" + property + " .plc-file-image").attr("src").indexOf("noimage.jpg");
+					if (view && (noimage == -1)) {
+						plc.jq("#plc-container-file-image_" + property + " .plc-remove-file-image").show();
+					} else {
+						plc.jq("#plc-container-file-image_" + property + " .plc-remove-file-image").hide();
+					}
+				}
+
+				//]]>					
+			</script>		
+			
+			<!-- Identificando o comportamento, se é arquivo(s) ou imagem  -->
+			
+			<!-- Se for arquivo -->
+			<c:if test="${!showImage}">
+				
+				<script avaliar="S">       
+				//<![CDATA[     
+					
+					function beforeSubmitFile(element) {
+						plc.jq("<input type='hidden' value='true' name='skipValidation' />").appendTo("#corpo\\:formulario");
+						plc.jq("#corpo\\:formulario").attr("enctype", "multipart/form-data").attr("encoding", "multipart/form-data");
+						plc.jq("[name=nameFile]").val("#{property}");
+					}
+
+					function uploadFile(element) {
+						
+						plc.jq(element).parents("#plc-enviar-arquivo-anexado_#{property}").children("button").click();
+					}
+
+				//]]>					
+				</script>	
+				
+				<c:if test="#{requestScope.visualizaDocumentoPlc!='S'}">		
+					<div class="plc-enviar-arquivo-anexado"  id="plc-enviar-arquivo-anexado_#{property}">
+						<plcf:arquivoAnexado id="uploadFile_#{property}" propriedade="#{property}" valueChangeListener="#{plcAction.uploadFile}" onchange="uploadFile(this)" tituloChave="label.fileAttach" ajudaChave="ajuda.fileAttach" simple="true" label="label.#{property}"/>	
+						<img id="indicatorRecursos_#{property}" src="#{request.contextPath}/res-plc/midia/indicator.gif"/>	
+						<plcf:botaoAcao id="botaoAcaoAnexarArquivo_#{property}"  partialSubmit="false" 
+								onclick="beforeSubmitFile()" />
+					</div>
+				</c:if>	
+				
+				<div class="plc-exibe-arquivo-anexado">
+					<tr:iterator id="colecaoMultiplosArquivos_#{property}" value="#{plcAction.entityPlc[property]}" var="item" varStatus="i">
+						<div class="plc-line plc-line-arquivo-download" >
+								<h:panelGroup rendered="#{requestScope.visualizaDocumentoPlc!='S'}">	
+									<div class="plc-exclusionbox-button plc-exclusionboxcheck-button" onclick="checkTarja(this)" 
+											style="float:left;" title="#{msg['ajuda.excluir.arquivo.anexado']}" />
+									<span class="celulaFormularioCaixaMarcacao" >
+										<plcf:caixaMarcacao id="excluiArquivo_#{property}" value="#{item.indExcPlc}" />
+									</span>			
+								</h:panelGroup>		
+								<h:panelGroup rendered="#{not empty item.id}" >
+									<a class="plc-link-arquivo-anexado" id="nomeArquivo_#{property}" onclick="downloadFile(this)" title="#{msg['ajuda.download.arquivo.anexado']}">#{item.nome}</a>
+								</h:panelGroup>		
+								<h:panelGroup rendered="#{empty item.id}" >
+									<h:outputText class="plc-span-arquivo-anexado" value="#{item.nome}" />									
+								</h:panelGroup>	
+								<plcf:botaoAcao id="botaoAcaoBaixarArquivo_#{property}" acao="downloadFile" validaForm="false" rendered="#{not empty item.id}"
+									onclick="jQuery('[name=indexFile]').val(#{i.index}); jQuery('[name=nameFile]').val('#{property}');" immediate="true">									
+								</plcf:botaoAcao>
+						</div>	
+						<div class="plc-line plc-line-exclusion plc-line-arquivo-download"  >
+							<div class="plc-exclusionbox-button plc-exclusionboxuncheck-button" onclick="uncheckTarja(this)" 
+								style="float:left;" alt="Excluir" title="#{msg['ajuda.desfazer.excluir.arquivo.anexado']}" />
+							<div class="plc-exclusionbox-title">#{msg['ajuda.excluir.arquivo.anexado.mensagem']}</div>	
+						</div>		
+					</tr:iterator>
+				</div>
+			</c:if>	
+			
+			<!-- Se for imagem -->
+			<c:if test="${showImage}">
+				
+				<script avaliar="S">       
+				//<![CDATA[     
+										
+					function beforeSubmitFileImage(element) {
+						plc.jq("<input type='hidden' value='true' name='skipValidation' />").appendTo("#corpo\\:formulario");
+						plc.jq("#corpo\\:formulario").attr("enctype", "multipart/form-data").attr("encoding", "multipart/form-data");
+						plc.jq("[name=nameFile]").val("#{property}");
+					}				
+					
+					function uploadFileImage(element) {
+						
+						plc.jq(element).parents("#plc-enviar-arquivo-anexado_#{property}").children("button").click();
+					}
+					
+
+				//]]>					
+				</script>	
+				
+			
+				<!-- Necessário exibir o botão de seleção para o IE. -->
+				<!-- Por questões de usabilidade e para evitar a insconsistência entre os layouts ( IE - FIREFOX - CHROME).-->
+				<!-- Esse botão é necessário somente no IE, onde existe uma política de segurança: -->
+				<!-- Impede a seleção de um arquivo (utilizando um input do tipo FILE) onde a abertura da popup de seleção seja aberta através de um comando javascript -->
+				<!-- Utilizamos o componente de file upload do trinidad, o mesmo faz o uso da tag do input=file. -->
+				<c:if test="#{requestScope.visualizaDocumentoPlc!='S'}">		
+					<div class="plc-enviar-arquivo-anexado"  id="plc-enviar-arquivo-anexado_#{property}">
+
+						<plcf:arquivoAnexado id="uploadFile_#{property}" propriedade="#{property}" 
+							valueChangeListener="#{plcAction.uploadFile}" onchange="uploadFileImage(this)" 
+							tituloChave="label.fileAttach" ajudaChave="ajuda.fileAttach" simple="true" label="label.#{property}"/>	
+						
+						<plcf:botaoAcao id="botaoAcaoAnexarArquivo_#{property}"  partialSubmit="false" onclick="beforeSubmitFileImage()" />						
+							
+					</div>
+				</c:if>						
+				
+				<script type="text/javascript" src="#{request.contextPath}/res-plc/javascript/un/fileuploader.js" ></script>
+				
+				<c:set var="imageProperty" value="#{plct:exec(plcConfigUrlColaboracao,'getNomeColaboracao')}_#{property}"/>
+				<c:set var="existsImage" value="#{plct:execOneArg (plcConfigUrlColaboracao,'existsImageInSession', imageProperty )}"/>					
+	
+				<c:if test="${!fn:contains(sessionScope.BROWSER_INFO.userAgent, 'MSIE')}">
+					
+					<div class="plc-container-file-image plc-enviar-arquivo-anexado" id="plc-container-file-image_#{property}" >
+						
+						<span class="plc-hidden-button" >
+							<div id="uploadFile_#{property}"  />
+							<script>
+								if (plc.jq('#plc-container-file-image_#{property} input[name=file]').size() == 0) {
+									createUploader('#{property}');
+								}
+							</script>
+						</span>
+						
+						<div class="plc-upload-file">
+							<div class="plc-container-image" style="width:${showImageWidth + 12}px; height:${showImageHeight + 35}px"
+								onmouseover="viewRemoveButton(true,'#{property}')" onmouseout="viewRemoveButton(false,'#{property}')">	
+							
+								<c:if test="${existsImage}">
+									<img class="plc-file-image" src="#{request.contextPath}/soa/service/file/#{plct:exec(plcConfigUrlColaboracao,'getNomeColaboracao')}(${property})" 
+										title="#{msgPlc['ajuda.fileAttach']}"
+										width="${showImageWidth}" height="${showImageHeight}" 
+										onclick="plc.jq('#plc-container-file-image_#{property} input[name=file]').click()" />		
+									<div class="plc-remove-file-image" title="Clique para limpar o arquivo"
+										onclick="deleteFileAttach('#{property}')" ></div>	
+								</c:if>	
+								<c:if test="${!existsImage}">
+								
+									<c:set var="imageId" value="#{plcAction.entityPlc[property]}"/>			
+									
+									<h:panelGroup rendered="#{empty imageId.id}">
+										<img class="plc-file-image" src="#{request.contextPath}/res-plc/midia/noimage.jpg" 
+											title="#{msgPlc['ajuda.fileAttach']}"
+											width="${showImageWidth}" height="${showImageHeight}" 
+											onclick="plc.jq('#plc-container-file-image_#{property} input[name=file]').click()" />	
+										<div class="plc-remove-file-image" title="Clique para limpar o arquivo"
+												onclick="deleteFileAttach('#{property}')" style="display: hidden;" ></div>	
+									</h:panelGroup>	
+									<h:panelGroup rendered="#{not empty imageId.id}">
+										<img class="plc-file-image"  width="${showImageWidth}" height="${showImageHeight}"
+											src="#{request.contextPath}/soa/service/file/#{plct:exec(plcConfigUrlColaboracao,'getNomeColaboracao')}(#{plcAction.entityPlc['id']})/${property}" 
+											onclick="plc.jq('#plc-container-file-image_#{property} input[name=file]').click()" />
+										<div class="plc-remove-file-image" title="Clique para limpar o arquivo"
+											onclick="deleteFileAttach('#{property}')" ></div>	
+									</h:panelGroup>						
+								</c:if>							
+							</div>				
+							<img id="indicatorRecursos_#{property}" src="#{request.contextPath}/res-plc/midia/indicator.gif"/>							
+						</div>			
+					</div>					
+				</c:if>
+				
+				<!-- Existe uma restrição de segurança somente nos IE's, onde a caixa de seleção não pode ser chamada através de um comando javascript --> 				
+				<c:if test="${fn:contains(sessionScope.BROWSER_INFO.userAgent, 'MSIE')}">
+					
+					<div class="plc-container-file-image plc-enviar-arquivo-anexado" id="plc-container-file-image_#{property}" >
+						
+						<div class="plc-upload-file">
+							
+							<div class="plc-container-file-image" style="width:${showImageWidth + 12}px; height:${showImageHeight + 35}px"
+								onmouseover="viewRemoveButton(true,'#{property}')" onmouseout="viewRemoveButton(false,'#{property}')">	
+								
+								<c:set var="imageId" value="#{plcAction.entityPlc[property]}"/>		
+								
+								<c:if test="${existsImage}">
+									<img class="plc-file-image" 
+										src="#{request.contextPath}/soa/service/file/#{plct:exec(plcConfigUrlColaboracao,'getNomeColaboracao')}(${property})" 
+										title="#{msgPlc['ajuda.fileAttach']}"
+										width="${showImageWidth}" height="${showImageHeight}" 
+										/>
+										
+									<div class="plc-remove-file-image" 
+										title="Clique para limpar o arquivo" 
+										onclick="deleteFileAttach('#{property}')" />	
+								</c:if>	
+								
+								<c:if test="${!existsImage}">
+								
+									<h:panelGroup rendered="#{empty imageId.id}">
+								
+										<img class="plc-file-image" 
+											src="#{request.contextPath}/res-plc/midia/noimage.jpg" 
+											title="#{msgPlc['ajuda.fileAttach']}"
+											width="${showImageWidth}" height="${showImageHeight}" 
+											/>	
+											
+										<div class="plc-remove-file-image" 
+											title="Clique para limpar o arquivo"
+											onclick="deleteFileAttach('#{property}')" 
+											style="display: hidden;" />
+									</h:panelGroup>	
+									<h:panelGroup rendered="#{not empty imageId.id}">
+										<img class="plc-file-image"  
+											width="${showImageWidth}" height="${showImageHeight}"
+											src="#{request.contextPath}/soa/service/file/#{plct:exec(plcConfigUrlColaboracao,'getNomeColaboracao')}(#{plcAction.entityPlc['id']})/${property}" 
+											/>
+											
+										<div class="plc-remove-file-image" title="Clique para limpar o arquivo" onclick="deleteFileAttach('#{property}')" />	
+									</h:panelGroup>						
+								</c:if>							
+							</div>				
+						</div>		
+					</div>
+				</c:if>
+			
+			</c:if>	
+			<script avaliar="S">       
+			//<![CDATA[     
+				plc.jq("#plc-container-file-image_#{property} .plc-remove-file-image").hide();
+				plc.jq("#indicatorRecursos_#{property}").hide();
+				plc.jq('#corpo\\:formulario\\:botaoAcaoAnexarArquivo_#{property}').click(function(){
+					plc.jq("#indicatorRecursos_#{property}").show();
+				});
+			//]]>		
+			</script>		
+			
+		
+		</ui:insert>
+	</tr:panelGroupLayout>
+</ui:composition>
+
+

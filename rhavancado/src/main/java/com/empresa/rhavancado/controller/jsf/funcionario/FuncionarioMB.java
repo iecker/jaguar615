@@ -61,11 +61,10 @@ public class FuncionarioMB extends AppMB {
 		if (this.entityPlc == null) {
 			this.entityPlc = new FuncionarioEntity();
 			this.newEntity();
-			PlcBaseContextVO context = contextMontaUtil
-					.createContextParam(plcControleConversacao);
-			BigDecimal valor = cargoService.salarioPorCargo(context,
-					((FuncionarioEntity) this.entityPlc).getCodigoCargo());
-			((FuncionarioEntity) this.entityPlc).setValorSalario(valor);
+			PlcBaseContextVO context = contextMontaUtil.createContextParam(plcControleConversacao);
+			BigDecimal valor = cargoService.salarioPorCargo (context, ((FuncionarioEntity) this.entityPlc).getCodigoCargo());
+			FuncionarioEntity entity = ((FuncionarioEntity) this.entityPlc);
+			entity.setValorSalario(valor);
 		}
 
 		return (FuncionarioEntity) this.entityPlc;

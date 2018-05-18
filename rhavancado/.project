@@ -48,18 +48,18 @@
 		<buildCommand>
 			<name>org.hibernate.eclipse.console.hibernateBuilder</name>
 			<arguments>
-			</arguments>		
-		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
-			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
 			<name>com.powerlogic.jcompany.builder.hotdeploy</name>
 			<arguments>
 			</arguments>
-		</buildCommand>		
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
@@ -75,5 +75,7 @@
 		<nature>org.jboss.tools.ws.jaxrs.nature</nature>
 		<nature>com.powerlogic.jcompany.nature</nature>
 		<nature>org.jboss.tools.jsf.jsfnature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.apache.derby.ui.derbyEngine</nature>
 	</natures>
 </projectDescription>

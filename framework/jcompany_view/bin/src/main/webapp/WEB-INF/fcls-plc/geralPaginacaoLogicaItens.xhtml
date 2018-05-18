@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	<body>
+		Componente de navegacao de selecao quando usa padrao JSF
+		<ui:composition>
+			
+			<c:set var="controladorPaginacao" value="#{plcControlePaginacao.mapaControles[plcURLSemBarra]}" />
+
+			<plcf:tabela rendered="#{not empty controladorPaginacao}">
+				<plcf:linha>
+					
+					<plcf:celula>
+						
+						<input type="hidden" id="navDe" name="navDe" value="#{controladorPaginacao.navDe}" />
+						
+						<c:if test="#{not empty param.mcPlc}">
+							<input type="hidden" id="mcPlc" name="mcPlc" value="#{param.mcPlc}" />
+						</c:if>
+						<c:if test="#{not empty param.mfPlc}">
+							<input type="hidden" id="mfPlc" name="mfPlc" value="#{param.mfPlc}" />
+						</c:if>
+						<c:if test="#{not empty param.modoJanelaPlc}">
+							<input type="hidden" id="modoJanelaPlc" name="modoJanelaPlc" value="#{param.modoJanelaPlc}" />
+						</c:if>
+						<c:if test="#{not empty param.indMultiSelPlc}">
+							<input type="hidden" id="indMultiSelPlc" name="indMultiSelPlc" value="#{param.indMultiSelPlc}" />
+						</c:if>
+
+						<h:panelGroup rendered="#{controladorPaginacao.navDe gt 0 and not empty plcAction.entityListPlc and not empty plcAction.entityListPlc.itensPlc}">
+							
+							<plcf:botaoAcao id="navFirst" onclick="plc.jq('#navDe').val('1');" acao="search" partialSubmit="#{!partialSubmit}" urlIcone="ico iNavPrimeiro" disabled="#{controladorPaginacao.paginaAtual == 1}" >
+								<f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+								<f:param name="skipValidation" value="true"/>
+							</plcf:botaoAcao>
+														
+							<plcf:botaoAcao id="navPrevious" onclick="plc.jq('#navDe').val('#{controladorPaginacao.navAnterior}');" acao="search" partialSubmit="#{!partialSubmit}" urlIcone="ico iNavAnterior" disabled="#{controladorPaginacao.paginaAtual == 1}" >
+								<f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+								<f:param name="skipValidation" value="true"/>
+							</plcf:botaoAcao>
+							
+							<span class="plc-nav-text">#{controladorPaginacao.navDe} at&eacute; #{controladorPaginacao.navAte} de #{controladorPaginacao.numTotalRegistros}</span>
+
+							<plcf:botaoAcao id="navProx" onclick="plc.jq('#navDe').val('#{controladorPaginacao.navProxima}');" acao="search" partialSubmit="#{!partialSubmit}" urlIcone="ico iNavProximo" disabled="#{controladorPaginacao.paginaAtual == controladorPaginacao.numTotalPaginas}" >
+								<f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+								<f:param name="skipValidation" value="true"/>
+							</plcf:botaoAcao>
+
+							<plcf:botaoAcao id="navLast" onclick="plc.jq('#navDe').val('#{controladorPaginacao.navUltima}');" acao="search" partialSubmit="#{!partialSubmit}" urlIcone="ico iNavUltimo" disabled="#{controladorPaginacao.paginaAtual == controladorPaginacao.numTotalPaginas}" >
+								<f:ajax event="action" execute="@form" render="@form" immediate="true"/>
+								<f:param name="skipValidation" value="true"/>
+							</plcf:botaoAcao>
+								
+							<h:selectOneMenu value="#{controladorPaginacao.paginaAtual}"  onchange="mudaPaginaGridJsf(#{controladorPaginacao.numPorPagina})" immediate="true" styleClass="plc-pag-list-jsf" id="plc-pag-list-jsf"  >  
+								<f:selectItems value="#{controladorPaginacao.numTotalPaginasList}" var="pagina" itemLabel="#{pagina + 1}" itemValue="#{pagina + 1}"/>    
+							</h:selectOneMenu>		
+ 
+						</h:panelGroup>
+						
+					</plcf:celula>
+					
+				</plcf:linha>
+			</plcf:tabela>
+		</ui:composition>
+	</body>
+</html>

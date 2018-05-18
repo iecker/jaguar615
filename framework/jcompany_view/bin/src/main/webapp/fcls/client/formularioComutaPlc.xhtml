@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	Formularios principais sao chamados de acordo com o final da URL em um diretorio interno (URL Logica).
+	Os de selecao idem, porem usam sufixo padrao 'sel'.
+	<ui:composition>
+		<c:if test="#{plcAliasSufixoAction=='Sel' or plcAliasSufixoAction=='Smd'}">
+			<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}sel.xhtml"  />
+		</c:if>
+		<c:if test="#{plcAliasSufixoAction!='Sel' and plcAliasSufixoAction!='Smd'}">
+			<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}.xhtml"  />
+		</c:if>
+	</ui:composition>	
+	
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	
+	Realiza a renderizacao de um formulario de "pesquisa e seleção", contendo uma seção de argumentos
+	e outra com "grade de seleção".
+
+	<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+		<ui:define name="plc-corpo-formulario">
+			<div id="plc-form-basico">
+				
+				<div id="#{plcAliasPrefixoAction}Arg" class="plc-form-basico-topo">
+					<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}selArg.xhtml" />
+				</div>
+				
+				<div id="#{plcAliasPrefixoAction}Sel" class="plc-form-basico-sel">
+					<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}selItens.xhtml" />
+				</div>
+				
+				<div id="#{plcAliasPrefixoAction}Nav" class="plc-navegacao">
+					<ui:include src="/WEB-INF/fcls-plc/geralPaginacaoLogicaItens.xhtml" />
+				</div>				
+				
+				<script>
+
+					plc.jq("table.plc-table-seljsf tr td span.idItem").each(function(index, value) {
+			
+						var cod = plc.jq(this).text();
+						plc.jq(this).parents("tr:first")
+							.click(function() {document.location.href= plcGeral.contextPath + "/f/n#{sessionScope.actionUltManPlc}?id=" + cod;})
+							.addClass(((index % 2) == 0 ? "linhapar" : "linhaimpar ui-widget-default"));
+			
+					});
+			
+				</script>
+				
+			</div>
+		</ui:define>
+	</ui:composition>	
+</html>
