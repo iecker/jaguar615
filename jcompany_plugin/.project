@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>jcompany_plugin</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>templates_custom</name>
+			<type>2</type>
+			<location>/media/josivansilva/94d21e75-e460-40de-9d10-de26c8f76987/treinamentoPLC/jaguar615/eclipse/pluginsPlc/powerlogic/templates/templates_custom</location>
+		</link>
+	</linkedResources>
+</projectDescription>

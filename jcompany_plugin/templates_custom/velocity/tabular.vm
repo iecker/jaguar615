@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+##------------------------------
+## GERACAO RICHFACES
+##------------------------------
+#if ($global.tipoPaginaFacelets.toString() == 'RICHFACES')
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	[jCompany 6.0 / Jaguar 6.1] Esta eh uma funcionalidade experimental. Alguns recursos nao estarao funcionais.
+<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+<ui:define name="plc-corpo-formulario">
+<div id="plc-corpo-formulario" class="plc-corpo-formulario plc-form-tabular">
+#set ($titulo = "${global.casoUso}.titulo")
+#set ($tituloResultado = "Manutencao de ${global.tituloLogica}")
+#if (!$mensagens.containsKey($titulo))
+	$!mensagens.put($titulo,$tituloResultado)
+#end
+#set ($propChaveNatural = "")
+	<fieldset class="plc-fieldset">
+		<legend class="plc-fieldset-legend">#tituloI18nLivre($global $tituloResultado $titulo)</legend>
+ 		<rich:dataTable var="${global.casoUso}" value="#{${global.casoUso}Lista.itensPlc}" iterationStatusVar="i" >
+	  		<f:facet name="header" >
+	      		<rich:columnGroup >
+	       			<rich:column />		
+	 	 	  		<rich:column styleClass="celulaFormularioCaixaMarcacao"><h:outputText value="Exc." /></rich:column>	
+	#foreach ($umaProp in $propsPorLinha)
+		#if ($umaProp.existeMan)
+					<rich:column><h:outputText value="$umaProp.rotulo" /></rich:column>	
+		#end
+	#end
+				</rich:columnGroup >
+			</f:facet>
+			<rich:column>
+				<h:outputText value="#{i.count}." styleClass="af_outputLabel" />
+			</rich:column>	
+	 		<rich:column styleClass="celulaFormularioCaixaMarcacao">
+				<h:selectBooleanCheckbox id="indExcPlc" #if ($propChaveNatural != "" ) value="#{${global.casoUso}.$propChaveNatural.replace('_','.')}"#end/>
+			</rich:column>	
+	#foreach ($umaProp in $propsPorLinha)
+		#if ($umaProp.existeMan)
+					#set($formato = $helperPlc.retornaTipo($umaProp.formatoPlc))
+					#retornaCampo($formato $umaProp "${global.casoUso}." "" false true [1..5] true false)
+		#end
+	#end
+	</rich:dataTable>
+	</fieldset>	
+</div>
+</ui:define>
+</ui:composition>
+</html>
+##------------------------------
+## GERACAO TRINIDAD - POWERLOGIC
+##------------------------------
+#elseif($global.tipoPaginaFacelets.toString() == 'OO') 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	
+	<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+		<ui:define name="plc-corpo-formulario">
+			<div id="plc-corpo-formulario" class="plc-corpo-formulario plc-form-tabular">
+				<fieldset class="plc-fieldset" >
+					#if($global.i18n)
+						#if (!$global.siglaModulo)
+							<legend class="plc-fieldset-legend">#{msg['${global.casoUso}.titulo']}</legend>
+						#else
+							<legend class="plc-fieldset-legend">#{msg${global.siglaModulo}['${global.casoUso}.titulo']}</legend>
+						#end
+					#else
+						<legend class="plc-fieldset-legend">$global.tituloLogica</legend>
+					#end									  
+						<plcf:iteracao var="$global.casoUso" id="$global.casoUso" value="#{${global.casoUso}Lista.itensPlc}"							
+							columnClasses="celulaFormulario" headerClass="celulaFormulario" >						
+							<h:column>
+								 <h:outputText value="#{rowCounter.index}." />
+							</h:column>
+							<h:column rendered="#{empty requestScope.visualizaDocumentoPlc}">
+								<f:facet name="header"><plcf:tituloExclusao>Exc.</plcf:tituloExclusao></f:facet>
+								<span class="celulaFormularioCaixaMarcacao"><plcf:caixaExclusao id="indExcPlc" value="#{${global.casoUso}.indExcPlc}" /></span>
+							</h:column>						
+							#foreach ($umaProp in $propsPorLinha)
+								#if ($umaProp.existeMan)#**#
+										<h:column>
+											#if (!$global.siglaModulo)
+												<f:facet name="header"><plcf:titulo value="#{msg['label.$umaProp.nome.replace('_','.')']}" /></f:facet>												
+											#else
+												<f:facet name="header"><plcf:titulo value="#{msg${global.siglaModulo}['label.$umaProp.nome.replace('_','.')']}" /></f:facet>												
+											#end																						
+											#retornaCampo($helperPlc.retornaTipo($umaProp.formatoPlc) $umaProp "${global.casoUso}." "" false true [1..5] true false)
+										</h:column>
+								#end
+							#end#**#
+						</plcf:iteracao>						
+				</fieldset>
+				<script>
+				  	applyCheckTarja("$global.casoUso");
+				  	</script>
+				</div>					
+			</div>
+		</ui:define>
+	</ui:composition>
+</html>	
+#end

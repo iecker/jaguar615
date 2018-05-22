@@ -1,0 +1,13 @@
+#if ($global.tipoPaginaFacelets.toString() == 'RICHFACES')
+	<input type="radio" jsfc="plcf:radio" id="$prop.nome" value="#{${prefixo}${prop.nome.replace('_','.')}${sufixo}}" dominio="$prop.tipo.getElementName()" #ajudaI18n($global $titulo "ajuda.$prop.nome.replace('_','.')")
+		#if (!$simple) 
+		simple="false" 
+		#end
+	/>
+#else
+<plcf:radio id="$prop.nome" value="#{${prefixo}${prop.nome.replace('_','.')}${sufixo}}" dominio="$prop.tipo.getElementName()" #ajudaI18n($global $titulo "ajuda.$prop.nome.replace('_','.')")
+#if (!$simple)
+simple="false"
+#end
+layout="horizontal"/>
+#end
