@@ -12,7 +12,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:/comp/env/jdbc/rhavancado</non-jta-data-source>
 
-		
+		<class>com.empresa.rhavancado.entity.Uf</class>
 
 		<class>com.empresa.rhavancado.entity.FuncionarioEntity</class>
 	
