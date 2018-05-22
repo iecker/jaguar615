@@ -21,7 +21,7 @@ import com.powerlogic.jcompany.commons.config.stereotypes.SPlcEntity;
 
 
 @NamedQueries({
-	@NamedQuery(name="FuncionarioEntity.querySelLookup", query="select id as id, nome as nome from FuncionarioEntity where id = ? order by id asc")
+	@NamedQuery(name="FuncionarioEntity.querySelLookup", query="select codigoCargo, id as id, nome as nome from FuncionarioEntity where id = ? order by id asc")
 })
 public class FuncionarioEntity extends Funcionario {
 

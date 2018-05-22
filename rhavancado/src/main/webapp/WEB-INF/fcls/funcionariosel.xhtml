@@ -50,11 +50,19 @@
 					['#{msg['label.id']}'],
 				colModel:[
 					{name:'id',index:'id'}]},
-			urlEdicao:'#{request.contextPath}/f/n/funcionarioman'});});//]]> </script>
-				<table id="plc-grid" width="100%" class="scroll" cellpadding="0"
-					cellspacing="0" />
-				<div id="plc-grid-navegador" class="scroll"
-					style="text-align: center;" />
+			urlEdicao:'#{request.contextPath}/f/n/funcionarioman'});,
+
+			,gridComplete: function(){
+				var salario = plc.jq('#plc-grid').jqGrid().getUserData('salario');
+				if(!plc.jq.isEmptyObject(salario))
+				plc.jq('#totalSal').html('<div><h1 style="color:red;">Total da Folha de Pagamento: '+plc.jq('#plc-grid').getUserData('salario')+'</h1></div>');},
+
+
+			});//]]> </script>
+				<table id="plc-grid" width="100%" class="scroll" cellpadding="0" cellspacing="0" />
+				<div id="plc-grid-navegador" class="scroll" style="text-align: center;" />
+				<div id="plc-grid-navegador" class="scroll" style="text-align:center;"></div>
+				<div id="totalSal" align="center"></div>
 			</div>
 		</div>
 	</ui:define>

@@ -11,14 +11,14 @@
 	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:/comp/env/jdbc/rhavancado</non-jta-data-source>
-
 		<class>com.empresa.rhavancado.entity.Uf</class>
-
-		<class>com.empresa.rhavancado.entity.FuncionarioEntity</class>
-	
-		<class>com.empresa.rhavancado.entity.UnidadeOrganizacionalEntity</class>
-	
+		<class>com.empresa.rhavancado.entity.FuncionarioEntity</class>	
+		<class>com.empresa.rhavancado.entity.UnidadeOrganizacionalEntity</class>	
 		<class>com.empresa.rhavancado.entity.EnderecoEntity</class>
+		<class>com.empresa.rhavancado.entity.funcionario.Foto</class>
+		<class>com.empresa.rhavancado.entity.funcionario.Curriculo</class>
+		<class>com.empresa.rhavancado.entity.funcionario.FotoConteudo</class>
+		<class>com.empresa.rhavancado.entity.funcionario.CurriculoConteudo</class>
 	<properties>
 			<property name="hibernate.archive.autodetection" value="class, hbm"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
