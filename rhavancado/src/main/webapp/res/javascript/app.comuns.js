@@ -1,0 +1,1 @@
+document.write('<'+'script'+' src="#contextPath#/res/javascript/jquery/jCalculator1.0/calculator.js">'+'</'+'script'+'>');

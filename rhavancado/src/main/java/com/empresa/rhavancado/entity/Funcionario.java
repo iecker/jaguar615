@@ -88,7 +88,7 @@ public class Funcionario implements Serializable {
 	@Transient
 	private Date dataNascimentoMax;
 	
-	private BigDecimal valorSalario;
+	private BigDecimal salario;
 
 	public String getNome() {
 		return nome;
@@ -176,6 +176,14 @@ public class Funcionario implements Serializable {
 
 	public Integer getIdadeMin() {
 		return idadeMin;
+	}
+	
+	public BigDecimal getSalario() {
+		return salario;
+	}
+
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
 	}
 
 	public void setIdadeMin(Integer idadeMin) {

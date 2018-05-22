@@ -57,15 +57,17 @@
 					ajudaChave="ajuda.codigoCargo" />
 			</plcf:celula>
 			<plcf:celula>
-				<plcf:titulo titulo="Salário Cargo" />
-				<plcf:exibe value="#{funcionario.valorSalario}"></plcf:exibe>
-			</plcf:celula>			
+				<plcf:titulo titulo="Salário Funcionário" />
+				<plcf:numerico id="funcsalario" value="#{funcionario.salario}"
+					riaUsa="calculadora" />
+			</plcf:celula>
 		</plcf:linha>
 		<plcf:linha>
 			<plcf:celula columnSpan="3">
 				<plcf:titulo titulo="Observacao" />
 				<plcf:area id="observacao" value="#{funcionario.observacao}"
-					numLinhas="3" colunas="50" ajuda="Observacao" riaUsa="fckeditor(width='800',height='250')" />
+					numLinhas="3" colunas="50" ajuda="Observacao"
+					riaUsa="fckeditor(width='800',height='250')" />
 			</plcf:celula>
 		</plcf:linha>
 	</plcf:tabela>
