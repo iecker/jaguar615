@@ -154,10 +154,10 @@
   <listener-class>com.powerlogic.jcompany.controller.listener.PlcWeldListener</listener-class>
  </listener>
  <listener>
-  <listener-class>com.empresa.rhavancado.controller.listener.AppServletContextListener</listener-class>
+  <listener-class>com.powerlogic.rhavancado.controller.listener.AppServletContextListener</listener-class>
  </listener>
  <listener>
-  <listener-class>com.empresa.rhavancado.controller.listener.AppHttpSessionListener</listener-class>
+  <listener-class>com.powerlogic.rhavancado.controller.listener.AppHttpSessionListener</listener-class>
  </listener>
  <servlet>
   <servlet-name>Resteasy</servlet-name>
@@ -195,25 +195,6 @@
   <servlet-name>PlcTrinidadResourceServlet</servlet-name>
   <url-pattern>/adf/*</url-pattern>
  </servlet-mapping>
- 
- <listener>
-	<listener-class>
-		com.sun.xml.ws.transport.http.servlet.WSServletContextListener
-	</listener-class>
-</listener>
-<servlet>
-	<display-name>webservice</display-name>
-	<servlet-name>webservice</servlet-name>
-	<servlet-class>
-		com.sun.xml.ws.transport.http.servlet.WSServlet
-	</servlet-class>
-<load-on-startup>1</load-on-startup>
-</servlet>
-<servlet-mapping>
-	<servlet-name>webservice</servlet-name>
-	<url-pattern>/busca</url-pattern>
-</servlet-mapping>
- 
  <session-config>
   <session-timeout>30</session-timeout>
  </session-config>

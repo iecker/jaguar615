@@ -11,14 +11,10 @@
 	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:/comp/env/jdbc/rhavancado</non-jta-data-source>
-		<class>com.empresa.rhavancado.entity.Uf</class>
-		<class>com.empresa.rhavancado.entity.FuncionarioEntity</class>	
-		<class>com.empresa.rhavancado.entity.UnidadeOrganizacionalEntity</class>	
-		<class>com.empresa.rhavancado.entity.EnderecoEntity</class>
-		<class>com.empresa.rhavancado.entity.funcionario.Foto</class>
-		<class>com.empresa.rhavancado.entity.funcionario.Curriculo</class>
-		<class>com.empresa.rhavancado.entity.funcionario.FotoConteudo</class>
-		<class>com.empresa.rhavancado.entity.funcionario.CurriculoConteudo</class>
+
+		
+
+		<class>com.powerlogic.rhavancado.entity.funcionario.FuncionarioEntity</class>
 	<properties>
 			<property name="hibernate.archive.autodetection" value="class, hbm"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
@@ -27,11 +23,11 @@
 			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
 			<!-- 
 				A propriedade abaixo define a estratégia para nomes de colunas
-				Ao encontrar uma letra maiÃºscula no nome da coluna, esse letra é transformada
-				em minÃºscula e é adicionado um "_" antes dela. Sua utilização é aconselhada na maioria dos casos.
+				Ao encontrar uma letra maiÃºscula no nome da coluna, esse letra Ã© transformada
+				em minÃºscula e Ã© adicionado um "_" antes dela. Sua utilizaÃ§Ã£o Ã© aconselhada na maioria dos casos.
 				Ex: departamentPai fica departamento_pai 
-				Atenção: para bancos legados recomenda-se retirar essa propriedade para o hibernate utilizar
-				a estratégia "default" que não altera o nome da coluna
+				AtenÃ§Ã£o: para bancos legados recomenda-se retirar essa propriedade para o hibernate utilizar
+				a estratÃ©gia "default" que nÃ£o altera o nome da coluna
 			 -->
 			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
 			

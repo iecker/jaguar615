@@ -27,7 +27,7 @@
 	</application>
 
 	<lifecycle>
-		<phase-listener>com.empresa.rhavancado.controller.listener.AppPhaseListener</phase-listener>
+		<phase-listener>com.powerlogic.rhavancado.controller.listener.AppPhaseListener</phase-listener>
 	</lifecycle>
  
 

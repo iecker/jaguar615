@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml"> 
+		<ui:define name="plc-titulo">Funcionario</ui:define>  
+		<ui:define name="plc-corpo-formulario"> 
+			<div id="plc-form-basico"> 
+				<div id="#{plcAliasPrefixoAction}Arg" class="plc-form-basico-topo"> 
+					<plcf:tabela titulo="Funcionario"> 
+						<plcf:linha> 
+							<plcf:celula> 
+								<plcf:titulo titulo="Cód."/>  
+								<plcf:numerico id="id" value="#{funcionario.id}" ajuda="Cód." tamanho="5"/> 
+							</plcf:celula>  
+							<plcf:celula> 
+								<plcf:titulo titulo="Nome"/>  
+								<plcf:texto id="nome" value="#{funcionario.nome}" ajuda="Nome"/> 
+							</plcf:celula>  
+							<plcf:celula> 
+								<plcf:titulo titulo="Estado Civil"/>  
+								<plcf:comboEstatico id="estadoCivil" value="#{funcionario.estadoCivil}" dominio="EstadoCivil" exibeBranco="S" ajuda="Estado Civil"/> 
+							</plcf:celula>  
+							<plcf:celula> 
+								<plcf:titulo titulo="Data Nascimento"/>  
+								<plcf:data id="dataNascimento" value="#{funcionario.dataNascimento}" ajuda="Data Nascimento"/> 
+							</plcf:celula> 
+						</plcf:linha> 
+					</plcf:tabela> 
+				</div>
+				<div id="#{plcAliasPrefixoAction}Sel" class="plc-form-basico-sel"> 
+					<script type="text/javascript">//<![CDATA[
+	jQuery(function(){plc.criaSelecaoJqGrid('plc-grid','plc-grid-navegador',{
+		evento:'${param.evento}'
+				,modoJanelaPlc:'${param.modoJanelaPlc}'
+				,rowNum:'20'
+				,nomeLogica:'funcionario'
+				,propAgregada:'funcionario'
+				,jqGrid:{caption:
+				'Funcionário',
+						colNames:
+					['Cód.','Nome','EstadoCivil','DataNascimento'],
+			colModel:[
+					{name:'id',index:'id'},
+					{name:'nome',index:'nome'},
+					{name:'estadoCivil',index:'estadoCivil'},
+					{name:'dataNascimento',index:'dataNascimento'}]},
+			urlEdicao:'#{request.contextPath}/f/n/funcionarioman'});});//]]> </script>  
+					<table id="plc-grid" width="100%" class="scroll" cellpadding="0" cellspacing="0"/>  
+					<div id="plc-grid-navegador" class="scroll" style="text-align:center;"/> 
+				</div> 
+			</div> 
+		</ui:define> 
+	</ui:composition> 
+</html>
