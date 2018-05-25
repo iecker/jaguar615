@@ -4,15 +4,11 @@ package com.empresa.cargosalario.commons;
 
 import javax.enterprise.inject.Specializes;
 
-import com.empresa.commons.EmpBaseUserProfileVO;
-import com.powerlogic.jcompany.commons.PlcBaseUserProfileVO;
-import com.powerlogic.jcompany.commons.config.qualifiers.QPlcDefault;
-
 /**
 * Implementar aqui atributos de personalização específicos do usuario.
 */
 @Specializes
-public class AppUsuarioPerfilVO extends EmpBaseUserProfileVO {
+public class AppUsuarioPerfilVO /*extends EmpBaseUserProfileVO*/ {
 
 	/**
 	 * 
