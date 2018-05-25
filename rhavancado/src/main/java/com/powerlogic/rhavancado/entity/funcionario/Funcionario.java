@@ -56,10 +56,10 @@ public class Funcionario  implements Serializable {
 	@Column(length=1)
 	private Sexo sexo;
 	
-	@Enumerated(EnumType.STRING)
-	@NotNull
-	@Column(length=4)
-	private EstadoCivil estadoCivil;
+	//@Enumerated(EnumType.STRING)
+	//@NotNull
+	//@Column(length=4)
+	//private EstadoCivil estadoCivil;
 	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -108,13 +108,13 @@ public class Funcionario  implements Serializable {
 		this.sexo=sexo;
 	}
 
-	public EstadoCivil getEstadoCivil() {
+	/*public EstadoCivil getEstadoCivil() {
 		return estadoCivil;
-	}
+	}*/
 
-	public void setEstadoCivil(EstadoCivil estadoCivil) {
+	/*public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil=estadoCivil;
-	}
+	}*/
 
 	public Date getDataNascimento() {
 		return dataNascimento;

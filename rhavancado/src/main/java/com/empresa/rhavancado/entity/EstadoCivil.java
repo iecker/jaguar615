@@ -1,8 +1,5 @@
 package com.empresa.rhavancado.entity;
 
-/**
- * Enum de domínio discreto gerada automaticamente pelo assistente do jCompany.
- */
 public enum EstadoCivil {
    
 	S("{estadoCivil.S}"),
@@ -11,13 +8,13 @@ public enum EstadoCivil {
 	V("{estadoCivil.V}");
 
 	
-    /**
-     * @return Retorna o codigo.
-     */
+    //**
+     //* @return Retorna o codigo.
+     //*
      
 	private String label;
     
-    private EstadoCivil(String label) {
+    private EstadoCivil (String label) {
     	this.label = label;
     }
      

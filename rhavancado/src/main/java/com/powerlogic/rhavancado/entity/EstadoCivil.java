@@ -1,7 +1,7 @@
 package com.powerlogic.rhavancado.entity;
 
 /**
- * Enum de domínio discreto gerada automaticamente pelo assistente do jCompany.
+ * Enum de dominio discreto gerada automaticamente pelo assistente do jCompany.
  */
 public enum EstadoCivil {
     

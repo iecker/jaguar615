@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import com.empresa.rhavancado.entity.EstadoCivil;
 import com.empresa.rhavancado.entity.Funcionario;
 import com.empresa.rhavancado.entity.FuncionarioEntity;
 import com.empresa.rhavancado.persistence.jpa.AppJpaDAO;
@@ -18,6 +17,7 @@ import com.powerlogic.jcompany.persistence.jpa.PlcQueryLineAmount;
 import com.powerlogic.jcompany.persistence.jpa.PlcQueryOrderBy;
 import com.powerlogic.jcompany.persistence.jpa.PlcQueryParameter;
 import com.powerlogic.jcompany.persistence.jpa.PlcQueryService;
+import com.powerlogic.rhavancado.entity.EstadoCivil;
 
 /**
  * Classe de Persistência gerada pelo assistente

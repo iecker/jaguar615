@@ -34,7 +34,7 @@ public class FuncionarioDAO extends AppJpaDAO  {
 			
 			@PlcQueryParameter(name="id", expression="id = :id") Long id,
 			@PlcQueryParameter(name="nome", expression="nome like :nome || '%' ") String nome,
-			@PlcQueryParameter(name="estadoCivil", expression="estadoCivil = :estadoCivil") EstadoCivil estadoCivil,
+			//@PlcQueryParameter(name="estadoCivil", expression="estadoCivil = :estadoCivil") EstadoCivil estadoCivil,
 			@PlcQueryParameter(name="dataNascimento", expression="dataNascimento >= :dataNascimento  ") Date dataNascimento
 	);
 
@@ -44,7 +44,7 @@ public class FuncionarioDAO extends AppJpaDAO  {
 			
 			@PlcQueryParameter(name="id", expression="id = :id") Long id,
 			@PlcQueryParameter(name="nome", expression="nome like :nome || '%' ") String nome,
-			@PlcQueryParameter(name="estadoCivil", expression="estadoCivil = :estadoCivil") EstadoCivil estadoCivil,
+			//@PlcQueryParameter(name="estadoCivil", expression="estadoCivil = :estadoCivil") EstadoCivil estadoCivil,
 			@PlcQueryParameter(name="dataNascimento", expression="dataNascimento >= :dataNascimento  ") Date dataNascimento
 	);
 	

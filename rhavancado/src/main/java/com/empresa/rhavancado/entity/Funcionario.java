@@ -24,6 +24,7 @@ import javax.validation.constraints.Size;
 import com.powerlogic.jcompany.commons.config.qualifiers.QPlcDefaultLiteral;
 import com.powerlogic.jcompany.commons.util.PlcDateUtil;
 import com.powerlogic.jcompany.commons.util.cdi.PlcCDIUtil;
+import com.powerlogic.rhavancado.entity.EstadoCivil;
 
 
 
@@ -227,13 +228,12 @@ public class Funcionario implements Serializable {
 	}
 
 	public BigDecimal getValorSalario() {
-		return valorSalario;
+		//return valorSalario;
+		return null;
 	}
 
 	public void setValorSalario(BigDecimal valorSalario) {
-		this.valorSalario = valorSalario;
-	}
-	
-	
+		//this.valorSalario = valorSalario;
+	}	
 
 }
