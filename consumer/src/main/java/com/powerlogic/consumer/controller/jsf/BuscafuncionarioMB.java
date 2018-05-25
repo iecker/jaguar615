@@ -1,5 +1,8 @@
 package com.powerlogic.consumer.controller.jsf;
 
+import javax.inject.Inject;
+
+//import com.empresa.cargosalario.facade.ICargoService;
 import com.powerlogic.jcompany.commons.annotation.PlcUriIoC;
 import com.powerlogic.jcompany.commons.config.stereotypes.SPlcMB;
 import com.powerlogic.jcompany.config.collaboration.FormPattern;
@@ -22,8 +25,8 @@ public class BuscafuncionarioMB extends AppMB  {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
-	protected ICargoService cargoService;
+	//@Inject
+	//protected ICargoService cargoService;
 	
 	private String cpf;
 	
