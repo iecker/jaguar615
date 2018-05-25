@@ -6,20 +6,19 @@ import javax.inject.Inject;
 
 import com.empresa.cargosalario.persistence.jpa.CargoServiceDAO;
 import com.empresa.cargosalario.service.CargoServiceWSClient;
-import com.empresa.rhavancado.entity.Funcionario;
+//import com.empresa.rhavancado.entity.Funcionario;
 import com.powerlogic.jcompany.commons.PlcBaseContextVO;
 
 public class CargoServiceImpl implements ICargoService {
 
 	@Inject
 	protected CargoServiceDAO cargoServiceDAO;
-
+	
 	@Inject
 	protected CargoServiceWSClient cargoServiceWSClient;
-
+	
 	@Override
-	public BigDecimal salarioPorCargo(PlcBaseContextVO context,
-			String codigoCargo) {
+	public BigDecimal salarioPorCargo(PlcBaseContextVO context, String codigoCargo) {
 		return cargoServiceDAO.salarioPorCargo(context, codigoCargo);
 	}
 
@@ -31,14 +30,14 @@ public class CargoServiceImpl implements ICargoService {
 	@Override
 	public BigDecimal salarioComExtrasPorCargo(String codigoCargo) {
 		BigDecimal salario = cargoServiceDAO.salarioPorCargo(null, codigoCargo);
-		BigDecimal extras = cargoServiceWSClient.extrasPorCargo(codigoCargo);
-		BigDecimal total = salario.add(extras);
-		return total;
+		BigDecimal extras  = cargoServiceWSClient.extrasPorCargo(codigoCargo);
+		BigDecimal total   = salario.add(extras); 
+		return  total;
 	}
 
-	@Override
+	/*@Override
 	public Funcionario buscaFuncionario(String cpf) {
 		return cargoServiceWSClient.buscaFuncionario(cpf);
-	}
-
+	}*/
+	
 }

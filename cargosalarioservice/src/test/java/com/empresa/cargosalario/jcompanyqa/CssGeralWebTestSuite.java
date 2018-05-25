@@ -14,9 +14,9 @@ import junit.framework.Test;
 /**
 * 
 * Suite de testes funcionais
-* Para rodar os testes funcionais, é necessário que esteja no classpath do aplicativo referencia Ã  biblioteca
+* Para rodar os testes funcionais, é necessário que esteja no classpath do aplicativo referencia à biblioteca
 * jCompany QA: jcompany_qa_funcional, jcompany_qa_funcional_xml e jcompany_qa_funcional_modelo.
-* Ã necessário também que seja adicionada a dependencia para o projeto jcompany_qa_funcional no pom.xml do projeto.
+* É necessário também que seja adicionada a dependencia para o projeto jcompany_qa_funcional no pom.xml do projeto.
 * Caso tenha sido preenchido o campo de "Amostra Teste" junto com a criação do caso de uso, as açoes acima já
 * terão sido automaticamente executadas, caso contrario, terão que ser feitas manualmente.
 * Para maiores informações cosulte o manual jCompany QA Functional Tests.

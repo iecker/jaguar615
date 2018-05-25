@@ -16,7 +16,7 @@
 	    Contatos: plc@powerlogic.com.br - www.powerlogic.com.br 														
 																														
  */ 
- /** ******************* REDEFINIÇÃES DE META-DADOS GLOBAIS DA EMPRESA **********************
+ /** ******************* REDEFINIÇÕES DE META-DADOS GLOBAIS DA EMPRESA **********************
   ********************** Configurações default para toda a empresa *************************
   *******************************************************************************************/
 @PlcConfigCompany(name = "Empresa S/A", domain = "www.powerlogic.com.br", acronym = "Emp", 

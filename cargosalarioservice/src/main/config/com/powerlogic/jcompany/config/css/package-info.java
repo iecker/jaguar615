@@ -1,4 +1,4 @@
-/* ************************* META-DADOS GLOBAIS DA APLICAÇÃO ******************************
+/* ************************* META-DADOS GLOBAIS DA APLICAÇÃO ******************************
   ********************** Configurações padrão para toda a aplicação *************************
   ************ Obs: configurações corporativas devem estar no nível anterior,****************
   ************              preferencialmente na camada Bridge               ****************
